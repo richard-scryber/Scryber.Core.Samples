@@ -9,31 +9,57 @@ using Microsoft.Extensions.Logging;
 using Scryber.Core.Samples.Web.Models;
 using Scryber.Core.Samples.Web;
 using Microsoft.Extensions;
+using Scryber.Components;
+using Scryber.Components.Mvc;
 
 namespace Scryber.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IPDFDocumentService _docService;
+        
         private readonly IWebHostEnvironment _env;
         private readonly string _absPath;
 
-        private const string SamplesPath = "../Samples/";
+        private const string SamplesPath = "Samples";
         
 
-        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment, IPDFDocumentService documentService)
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
         {
-            _docService = documentService;
+            
             _logger = logger;
             _env = environment;
-            _absPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(environment.WebRootPath, SamplesPath));
+            _absPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(environment.ContentRootPath, SamplesPath));
         }
 
         public IActionResult Index()
         {
-            var allDocs = _docService.GetDocumentReferences(_absPath);
-            return View(allDocs);
+            return View();
+        }
+
+        public IActionResult HelloWorld()
+        {
+            using (var doc = new PDFDocument())
+            {
+                PDFPage pg = new PDFPage();
+                doc.Pages.Add(pg);
+                PDFLabel label = new PDFLabel();
+                label.Text = "Hello World";
+
+                pg.Contents.Add(label);
+
+                return this.PDF(doc);
+
+            }
+            
+        }
+
+        public IActionResult HelloTemplate()
+        {
+            string path = _env.ContentRootPath;
+            path = System.IO.Path.Combine(path, "Views", "PDF", "HelloWorld.pdfx");
+
+            return this.PDF(path);
         }
 
         public IActionResult Privacy()
@@ -41,27 +67,7 @@ namespace Scryber.Controllers
             return View();
         }
 
-        [HttpGet]
-        [ResponseCache(NoStore = true)]
-        public IActionResult Generate(string name)
-        {
-            name = Uri.UnescapeDataString(name);
-            var reference = _docService.GetAReference(_absPath, name);
-            if (null == reference)
-                return NotFound(name);
-            else
-            {
-                var doc = _docService.GetDocument(reference);
-
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                doc.ProcessDocument(ms);
-                ms.Flush();
-                ms.Position = 0;
-                
-                return new FileStreamResult(ms, "application/pdf");
-            }
-
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

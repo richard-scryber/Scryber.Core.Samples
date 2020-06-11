@@ -32,17 +32,6 @@
     <None Remove="Samples\Document1.pdfx"/>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Samples\Document.pdfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\HelloWorld.pdfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Document1.pdfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Scryber.Core" Version="1.0.0.3"/>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3"/>
     <PackageReference Include="Scryber.Core.Mvc" Version="1.0.0.4"/>
