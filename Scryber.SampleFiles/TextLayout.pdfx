@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="All System Tests"/>
+  <Params>
+    <pdf:String-Param id="Title" value="All Text Options"/>
+  </Params>
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="TextLayout" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Laying out text" />
+        <pdf:Date-Param id="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+
+        <pdf:Section id="SimpleText" style:class="system-test-page with-roman" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Simple Text Options" />
+            <pdf:String-Param id="SimpleTextValue" value="This is some text in an item that is databound to the value"/>
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Putting text in a file is as simple as including it in the file content. The text will be read in and used
+              as part of the content. Alternatively it can be specified within a label, or bound to some xpath or item value.<pdf:Br/>
+              The text can then be styled as required. The container can adjust the layout of block with the text in it.
+            </pdf:Para>
+
+            <!-- 
+              Some text inclusion
+            -->
+
+            <pdf:Div id="FlowingText" style:class="wide" >
+
+              <pdf:Div outline-title="Adding text to a document" style:font-family="Arial" >
+                <pdf:H4 text="Adding text to a document" style:class="group-heading"></pdf:H4>
+                <pdf:Para>
+                  This text is simply added in-line to the file.
+                  <pdf:Text value=" Simple text inline." ></pdf:Text>
+                  <pdf:Text> More Inline text that cannot be styled.</pdf:Text>
+                  <pdf:Label text=" This text is the value of a label which can be styled. " style:fill-color="gray" ></pdf:Label>
+                  <pdf:Text value="{item:SimpleTextValue}"></pdf:Text>. 
+                  <pdf:Label style:fill-color="gray" text="{item:SimpleTextValue}" ></pdf:Label>
+                </pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div outline-title="Flowing text in a document" style:font-family="Arial" >
+                <pdf:H4 text="Flowing text in a document" style:class="group-heading"></pdf:H4>
+                <pdf:Para>
+                  Text will by default always flow along the available width of the container, splitting on words where possible
+                  and as with HTML the white space normalized. Explicit line breaks can be added <pdf:Br/>
+                  So the content moves onto a new line, and multile line breaks should be honoured<pdf:Br/>
+                  <pdf:Br/>
+                  <pdf:Br/>
+                  So the content moves down a single
+                  line each time. VerylongWordsWithNoSpacesThatCannotFitOnASingleLineShouldBeBrokenAtTheAppropriateCharacterInTheLineButWillAlwaysStartOnANewLine
+                </pdf:Para>
+              </pdf:Div>
+
+
+              <pdf:Div id="LongTextWrapper" style:font-family="Arial" outline-title="Flowing long text along pages" >
+                <pdf:H4 text="Flowing long text along pages" style:class="group-heading"></pdf:H4>
+
+                <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                  Long blocks of text should flow witin the container and move to the next region, and page as available.
+                  <pdf:Br/>
+                  <pdf:Br/>
+                  Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:Br/>
+                  Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                  <pdf:Br/>
+                  Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                  <pdf:Br/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:Br/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:Br/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:Br/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:Div id="NotWrapping" style:font-family="Arial" outline-title="Non-Wrapping text" >
+                <pdf:H4 text="Non-Wrapping text" style:class="group-heading"></pdf:H4>
+
+                <pdf:Para id="LongTextPara" style:font-family="Arial" style:text-wrap="NoWrap" >
+                  Paragraph marked as non wrapping, so long blocks of text should NOT flow witin the container and just continue off the end of the page.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:Div id="WhiteSpaceSignificant" style:font-family="Arial" outline-title="White space significant" >
+                <pdf:H4 text="White space significant" style:class="group-heading"></pdf:H4>
+
+                <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                  <Style>
+                    <style:Text whitespace-significant="true"/>
+                  </Style>
+When white space is significant
+then the flow as part of the file will be 
+
+preserved including line
+
+breaks
+              and space at the start of lines.
+Long lines of text will STILL wrap across multiple lines so should continue across the entire width of the page and break onto a new line.   
+              But does not affect the presevation of white-space.
+                </pdf:Para>
+              </pdf:Div>
+              
+              <pdf:Div id="NotWrappingWhiteSpace" style:font-family="Arial" outline-title="White space significant no wrapping." >
+                <pdf:H4 text="White space significant, no wrapping" style:class="group-heading"></pdf:H4>
+
+                <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                  <Style>
+                    <style:Text whitespace-significant="true" wrap="NoWrap"/>
+                  </Style>
+When white space is significant
+then the flow as part of the file will be 
+
+preserved including line
+
+breaks
+              and space at the start of lines.
+When combines with the NoWrap option, long lines of text will NOT wrap across multiple lines so should continue across the entire width of the page and break onto a new line.   
+              But does not affect the presevation of white-space.
+                </pdf:Para>
+              </pdf:Div>
+              
+              
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="VariousFontSizes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Font Sizes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Specifying the text size as part of the paragraph can be done on the component or as part of the style. The line leading will automatically increase to match the font size.
+            </pdf:Para>
+
+            <pdf:Div id="VariousSizes" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="4pt Arial Text" text="4pt Arial Text" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="4">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="6pt Arial Text" text="6pt Arial Text" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="6">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="10pt Arial Text" text="10pt Arial Text" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="18pt Arial Text" text="18pt Arial Text" style:class="group-heading" />
+              <pdf:Para style:font-family="Arial" style:font-size="18">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="24pt Arial Text" text="24pt Arial Text" style:class="group-heading" />
+              <pdf:Para style:font-family="Arial" style:font-size="24">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="36pt Arial Text" text="36pt Arial Text" style:class="group-heading" />
+              <pdf:Para style:font-family="Arial" style:font-size="36">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="48pt Arial Text" text="48pt Arial Text" style:class="group-heading" />
+              <pdf:Para style:font-family="Arial" style:font-size="48">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+              
+              <pdf:H4 outline-title="60pt Arial Text" text="60pt Arial Text" style:class="group-heading" />
+              <pdf:Para style:font-family="Arial" style:font-size="60">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+
+              <pdf:H4 outline-title="72pt Arial Text" text="72pt Arial Text" style:class="group-heading" />
+              <pdf:Para style:font-family="Arial" style:font-size="72">
+                The quick brown fox jumps over the lazy dog. 1234567890
+              </pdf:Para>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="VariousLeadingSizes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Text line leading" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Line leading can be altered using the text style. Normal leading will use the Font specified line height, but to increase line legibility
+              then this can be increased to any value, and also reduced to support other effects. Inner content blocks should not affect the leading unless explictly assigned.
+            </pdf:Para>
+
+            <pdf:Div id="VariousSizes" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="10pt Arial Text - Standard Leading" text="10pt Arial Text - Standard Leading" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="10pt Arial Text - 12pt Leading" text="10pt Arial Text - 12pt Leading" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-leading="12pt">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="10pt Arial Text - 20pt Leading" text="10pt Arial Text - 20pt Leading" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-leading="20pt">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="10pt Arial Text - 6pt Leading" text="10pt Arial Text - 6pt Leading" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-leading="6pt">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="Complex Arial Text - Various Leading" text="Complex Arial Text - Various Leading" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-leading="14pt">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. <pdf:Span style:font-bold="true"  >Inner span that should not have a different leading value assigned to it.</pdf:Span>
+                Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, 
+                <pdf:Span style:font-bold="true" style:text-leading="20pt" >Inner span that does have a specific leading value assigned to it, so should be takern into account for the wrapped lines.</pdf:Span>
+                te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="VariousHorizontalAlignments" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Text horizontal alignment" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Text alignment is by default left aligned. Lines will flow from left to right, and when they don't fit any more move down to the next line,
+              starting again from the left.<pdf:Br/>
+              With scryber alignment is appled on  the position style at the block level (Panels, Divs, Para etc), not at the item level. And Left; Right and Centre alignments are supported.
+            </pdf:Para>
+
+            <pdf:Div id="VariousSizes" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="Standard Alignment" text="Standard Alignment" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="Explicit Left Aligned" text="Explicit Left Aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:h-align="Left">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="Explicit Right Aligned" text="Explicit Right Aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:h-align="Right">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="Explicit Center Aligned" text="Explicit Center Aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:h-align="Center">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="Explicit Justified Alignment" text="Explicit Justified Alignment" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:h-align="Justified" style:font-size="10" style:text-leading="12pt">
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="FirstLineIndent" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Character Position Adjustment" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The layout of text can be altered using the text style options for first line indent, character spacing,
+              word spacing and horizontal stretch.
+            </pdf:Para>
+
+            <pdf:Div id="VariousIndents" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="10pt Indent, left aligned" text="10pt Indent, left aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-first-indent="10pt" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B> Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.
+                <pdf:Br/>
+                Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U></pdf:B> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  /> Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="40pt Indent, Justified" text="40pt Indent, Justified" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-first-indent="40pt" style:h-align="Justified" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B> Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.
+                  <pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum. <pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  />Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+            </pdf:Div>
+
+            <pdf:Div id="MixedSpacing" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="2pt character spacing, left aligned" text="2pt character spacing, left aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-char-spacing="2pt" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B> Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.
+                  <pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum. <pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  />Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="2pt character spacing, right aligned" text="2pt character spacing, right aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-char-spacing="2pt" style:h-align="Right" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B> Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.
+                  <pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  /> Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.</pdf:Para>
+
+              <pdf:H4 outline-title="2pt character spacing, justified" text="2pt character spacing, justified  (ignored for explicit char spacing)" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-char-spacing="2pt" style:h-align="Justified" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B>
+                  Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.
+                  <pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  /> Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="10pt word spacing, left aligned" text="10pt word spacing, left aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-word-spacing="10pt" style:h-align="Left" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B>
+                  Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.<pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.<pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  /> Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+
+              <pdf:H4 outline-title="10pt word spacing, right aligned" text="10pt word spacing, right aligned" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-word-spacing="10pt" style:h-align="Right" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B>
+                  Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.<pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.<pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  /> Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.</pdf:Para>
+
+              <pdf:H4 outline-title="10pt word spacing, justified" text="10pt word spacing, justified  (ignored for explicit char spacing)" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" style:text-word-spacing="10pt" style:h-align="Justified" >
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd.<pdf:B>
+                  Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.
+                  <pdf:Br/>
+                  Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe <pdf:U>pârtiéndo réfôrmidàns vîm id.</pdf:U>
+                </pdf:B> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  /> Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              </pdf:Para>
+              
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="MixedFontSizes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Vertical alignment of lines" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Running of text and components inline with mixed font sizes and image sizes is supported and should always follow the baseline of the text.<pdf:Br/>
+              The leading value should be honoured for the paragraph, no matter what the text size. And it should still follow the baseline.
+            </pdf:Para>
+
+            <pdf:Div id="VariousSizes" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="Text in various sizes" text="Text in various sizes" style:class="group-heading"/>
+              <pdf:Para style:font-family="Arial" style:font-size="10" >
+                Default size of the text on the line is 10 point <pdf:Span style:font-size="20" >But this is in 20 point</pdf:Span>. Back to
+                10 point <pdf:Span style:font-size="30" >But this is multiple lines in 30 point font</pdf:Span>. And this goes back to
+                the standard 10 point again over a coulple of lines of the page, with some longer and longer text to keep then lines flowing over and over
+                and over again, pushing onto more and more lines, until we finally end with some more text that is
+                <pdf:Span style:font-size="20" >20 point font.</pdf:Span>
+              </pdf:Para>
+
+            </pdf:Div>
+
+            <pdf:Div id="VariousSizesLeaded" style:class="wide" style:font-family="Arial" >
+
+              <pdf:H4 outline-title="Text in various sizes 50pt leading" text="Text in various sizes 50pt leading" style:class="group-heading"/>
+              <pdf:Para style:text-leading="50pt" style:font-family="Arial" style:font-size="10">
+                Default size of the text on the line is 10 point <pdf:Span style:font-size="20" >But this is in 20 point</pdf:Span>. Back to
+                10 point <pdf:Span style:font-size="30" >But this is multiple lines in 30 point font</pdf:Span>. And this goes back to
+                the standard 10 point again over a coulple of lines of the page, with some longer and longer text to keep then lines flowing over and over
+                and over again, pushing onto more and more lines, until we finally end with some more text that is
+                <pdf:Span style:font-size="20" >20 point font.</pdf:Span>
+              </pdf:Para>
+
+              <pdf:H4 outline-title="Text in various sizes 12pt leading" text="Text in various sizes 20pt leading" style:class="group-heading"/>
+              <pdf:Para style:text-leading="12pt" style:font-family="Arial" style:font-size="10" >
+                Default size of the text on the line is 10 point <pdf:Span style:font-size="20" >But this is in 20 point</pdf:Span>. Back to
+                10 point <pdf:Span style:font-size="30" >But this is multiple lines in 30 point font</pdf:Span>. And this goes back to
+                the standard 10 point again over a coulple of lines of the page, with some longer and longer text to keep then lines flowing over and over
+                and over again, pushing onto more and more lines, until we finally end with some more text that is
+                <pdf:Span style:font-size="20" >20 point font.</pdf:Span>
+              </pdf:Para>
+
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

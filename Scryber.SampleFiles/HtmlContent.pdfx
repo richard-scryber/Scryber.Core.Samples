@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='false' parser-log='true' parser-mode='Lax' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Info >
+    <Title>{item:Title}</Title>
+  </Info>
+  <Outline title="{item:Title}"/>
+  <Render-Options img-cache-mins="20" compression-type="None"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Links"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage" fit-window="true" hide-windowUI="false" hide-menubar="true" hide-toolbar="true"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style applied-class="lcRom" >
+      <style:List number-style="LowercaseRoman"/>
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="Links" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Link Support" />
+        <pdf:Date-Param id="ReportDate"/>
+      </Items>
+      <Pages>
+        <pdf:Section id="SimpleLinks" style:class="system-test-page" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Links" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}" name="StartOfLinksSection"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Links are invisible container components that provide navigation 
+              within the current document, between documents, and to other resources.<pdf:Br/>
+              Links by default do not apply any style to the inner components, but inherited style information (fills, fonts etc) will be 
+              implictly part of the stack and impact the inner component style.<pdf:Br/>
+              
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Standard Document Links" outline-title="Standard Document Links" style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Div>There are a few standard link actions defined and available in the PDF document that allow direct navigation to the Next, Previous, First and Last Page</pdf:Div>
+              <pdf:Link action="NextPage" >Next Page</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="PrevPage" >Previous Page</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="FirstPage" >First Page</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="LastPage" >Last Page</pdf:Link>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="In Document Links" outline-title="In Document Links" style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Div>Links to content within the document can be detailed with an action of Destination and a @destination of either the name of a component,
+              or the id of the component (preceded by #)</pdf:Div>
+              <pdf:Link action="Destination" destination="#NestedLists" >Link to the section with the id of NestedLists</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link destination="SimpleLists" >Link to the section with the name of SimpleLists (if a destination is specified then Destination action is implied)</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="Destination" destination="#FinalPage" alt="Forward looking link" >Links can be forward or backward pointing (the location is determined at render time)</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link >Empty links still get the style, but do not go anywhere.</pdf:Link>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Link Fit" outline-title="Link Fit" style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Div>
+                By default clicking a link will go to the relevant page fit to the with in the reader window. But the destination fit can be used
+                to adjust the fit mechanism to full page, bounding box, width or height.
+              </pdf:Div>
+              <pdf:Link action="Destination" destination-fit="FullPage" destination="#NestedLists" >Link to NestedLists at full page</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="Destination" destination="SimpleLists" destination-fit="PageWidth" >Link to SimpleLists page width </pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="Destination" destination="#BoundingLinkBox" destination-fit="BoundingBox" alt="Forward looking link" >Link to a small relatively positioned div with bounding box fit</pdf:Link>
+              <pdf:Div style:x="450" style:y="100" style:bg-color="gray" style:font-size="4" id="BoundingLinkBox" style:padding="4" >
+                <pdf:Link destination="#SimpleLinks" destination-fit="PageHeight" >Back out to the page height</pdf:Link>
+              </pdf:Div>
+              
+            </pdf:Div>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Remote Link" outline-title="Remote Link" style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Div>
+                Links to other content e.g. Web pages and other PDF documents are supported with the Uri and ExternalDestination.<pdf:Br/>
+                Linked PDF documents can either be opened in a new window or the same window if they are PDF's (based on the functionality of the reader).
+              </pdf:Div>
+              <pdf:Link action="Uri" file="http://www.google.com" new-window="true" >Link to Google</pdf:Link>
+              <pdf:Br/>
+              <pdf:Link action="ExternalDestination" file="../../ReferenceFiles/AllSystemTests.pdf" destination="SimpleLists" new-window="true" >Link to the SimpleLists section of the AllSystemTests.pdf document in a new window</pdf:Link>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Complex Link Content" outline-title="Complex Link Content" style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Div>
+                Links to other content e.g. Web pages and other PDF documents are supported with the Uri and ExternalDestination.<pdf:Br/>
+                Linked PDF documents can either be opened in a new window or the same window if they are PDF's (based on the functionality of the reader).
+              </pdf:Div>
+              <pdf:Div style:column-count="3"  >
+                <pdf:Link action="Uri" file="http://www.google.com" new-window="true" >This is a very long link to www.google.com with mixed content. 
+                  <pdf:Image src=".\images\scryber_logo_380.png" />
+                  And this is part of the link too.
+                  <pdf:Div style:bg-color="#DDD" style:fill-color="#FF3333" style:padding="5" style:margins="5">
+                    In a child div component with a border and some colour specified
+                    this will flow over onto the new column, but still be picked up as the link.
+                  </pdf:Div>
+                </pdf:Link>
+              </pdf:Div>
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Section>
+        
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

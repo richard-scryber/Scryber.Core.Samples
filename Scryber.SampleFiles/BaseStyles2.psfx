@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<styles:Styles xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:styles="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+  >
+  <styles:Style applied-type="pdf:Page" >
+    <styles:Page size="A4" orientation="Portrait"/>
+  </styles:Style>
+
+  <styles:Style applied-class="sp-table" >
+    <styles:Margins all="20pt" />
+    <styles:Size full-width="true"/>
+  </styles:Style>
+
+  <styles:Style applied-class="sp-item" applied-type="pdf:Cell" >
+    <styles:Border width="1pt" />
+    <styles:Padding all="4pt" />
+  </styles:Style>
+
+  <styles:Style applied-class="sp-table3">
+  </styles:Style>
+</styles:Styles>

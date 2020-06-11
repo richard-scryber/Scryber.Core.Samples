@@ -5,8 +5,7 @@
     <Pages>
         <pdf:Page>
             <Content>
-                <pdf:Div styles:padding="20pt" styles:font-family="Palatino" >Hello World, from scryber.
-<pdf:Span styles:font-family="Marker Felt" >This is going to be great fun!</pdf:Span></pdf:Div>
+                <pdf:Label>Hello World, from scryber.</pdf:Label>
             </Content>
        </pdf:Page>
     </Pages>

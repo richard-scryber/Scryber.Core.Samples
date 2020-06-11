@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='false' parser-log='true' parser-mode='Lax' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:bind="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Binding.Components.xsd"
+              auto-bind="true" >
+  <Info >
+    <Title>{item:Title}</Title>
+  </Info>
+  <Outline title="{item:Title}"/>
+  <Render-Options img-cache-mins="20" compression-type="None"/>
+  <Viewer page-display="Outlines" page-layout="SinglePage" fit-window="true" hide-windowUI="false" hide-menubar="true" hide-toolbar="true"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+    <style:Style applied-class="rowbg">
+      <style:Background color="#CCC"/>
+    </style:Style>
+    <style:Style applied-class="lightrowbg">
+      <style:Background color="#CCF"/>
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="DataGridAndListGroup" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Data Grid and List" />
+        <pdf:Date-Param id="ReportDate"/>
+      </Items>
+
+      <Pages>
+
+
+        <pdf:Section id="SqlDataCommand" outline-title="Single Data Grid" >
+          <Items>
+            <!-- Used with the SQL Command with parameters for the report limits-->
+            <pdf:Double-Param id="ReportBreakPoint" value="10000.00" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="Single Data Grid"></pdf:H2>
+            <data:ForEach datasource-id="" select="//">
+              <Template>
+                
+              </Template>
+            </data:ForEach>
+            <data:XMLDataSource id="SQLCustomersWithNamespace"  execute="Customer"  >
+              <Commands>
+                
+                <data:SqlCommand id="Customer" element-name="ACustomer" element-namespace="http://samples.scryber.co.uk/doesnot/exist"
+                                 connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" connection-provider="System.Data.SQLite" >
+                  <Statement>
+                    SELECT CustomerID, CompanyName, ContactName, ContactTitle,
+                    Address || IFNULL(', '|| City,'') || IFNULL(', ' || Region,'')  || IFNULL(', ' || PostalCode,'')  || IFNULL(', ' || Country,'') AS FullAddress
+                    FROM Customers
+                  </Statement>
+                </data:SqlCommand>
+              </Commands>
+              <Namespaces>
+                <data:Xmlns prefix="c" namespace="http://samples.scryber.co.uk/doesnot/exist"/>
+              </Namespaces>
+            </data:XMLDataSource>
+
+
+            <pdf:Div style:class="wide" >
+              
+              <data:DataGrid datasource-id="SQLCustomersWithNamespace" 
+                             cell-class="lightrowbg" alternate-cell-class="rowbg"
+                             select="c:SQLCustomersWithNamespace/c:ACustomer" style:full-width="true"  >
+                <Columns>
+                  <data:TextColumn header-text="Contact Name" text="{xpath:c:ContactName}" >
+                    <CellStyle>
+                      <style:Background color="#FFF"/>
+                      <style:Padding all="4pt"/>
+                    </CellStyle>
+                    <AlternatingCellStyle>
+                      <style:Background color="#CFF"/>
+                    </AlternatingCellStyle>
+                  </data:TextColumn>
+                  <data:TextColumn header-text="Company Name" text="{xpath:c:CompanyName}" />
+                  <data:TextColumn header-text="Address" text="{xpath:c:FullAddress}" />
+                </Columns>
+              </data:DataGrid>
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="NestedListAndGrid" outline-title="List with Nested Grid" >
+          <Content>
+            
+            <pdf:H2 text="List with Nested Grid" style:class="section-heading" ></pdf:H2>
+            
+            
+            <pdf:Div style:class="wide" >
+              <data:ForEach datasource-id="NestedSQLCustomer"
+                             select="c:NestedSQLCustomer/c:ACustomer" 
+                             >
+                <Template>
+                  <pdf:Div style:overflow-split="Never" style:padding="2" >
+                    <pdf:H4 text="{xpath:c:CompanyName}" style:class="group-heading" />
+
+                    <data:DataGrid select="c:AnOrder" style:full-width="true" >
+                      <Columns>
+                        <bind:TextColumn text="{xpath:c:OrderID}" header-text="Order ID" />
+                        <bind:DateColumn style:date-format="d" value="{xpath:c:OrderDate}" header-text="Order Date" />
+                        <!--<bind:NumberColumn style:number-format="C" value="{xpath:c:OrderTotal}" has-footer="true"
+                                           header-text="Order Total" footer-text="{xpath:c:GrandTotal}" />-->
+                        <bind:TemplateColumn header-text="Order Total">
+                          <ItemTemplate>
+                            <pdf:Number style:number-format="C" value="{xpath:c:OrderTotal}" ></pdf:Number>
+                          </ItemTemplate>
+                          <FooterCellStyle>
+                            <style:Border color="gray" sides="Top" width="1"/>
+                            <style:Margins top="3"/>
+                          </FooterCellStyle>
+                          <FooterTemplate>
+                            <pdf:Number style:font-bold="true" style:number-format="C" value="{xpath:c:GrandTotal}" />
+                          </FooterTemplate>
+                        </bind:TemplateColumn>
+                      </Columns>
+                    </data:DataGrid>
+                  </pdf:Div>
+                </Template>
+              </data:ForEach>
+            </pdf:Div>
+
+            <data:XMLDataSource id="NestedSQLCustomer" execute="Customer" cache-duration="1" >
+              <Commands>
+                <!-- Main select statement that is executed -->
+                <data:SqlCommand id="Customer" element-name="ACustomer" element-namespace="http://samples.scryber.co.uk/doesnot/exist"
+                                 connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" connection-provider="System.Data.SQLite" >
+                  <Statement>
+                    SELECT C.CustomerID, CompanyName, ContactName, ContactTitle,
+                    SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) AS GrandTotal
+                    FROM Customers AS C
+                    INNER JOIN Orders AS O ON C.CustomerID = O.CustomerID
+                    INNER JOIN [OrderDetails] AS OD ON O.OrderID = OD.OrderID
+                    GROUP BY C.CustomerID, CompanyName, ContactName, ContactTitle
+                    ORDER BY CompanyName
+                  </Statement>
+                  <Relations>
+                    <!-- Declaration of the nested relation onto the Orders command -->
+                    <data:Nested command="Orders" >
+                      <data:Match child="CustomerID" parent="CustomerID"/>
+                    </data:Nested>
+                  </Relations>
+                </data:SqlCommand>
+
+                <!-- Child orders command -->
+                <data:SqlCommand id="Orders" element-name="AnOrder" >
+                  <Statement>
+                    SELECT O.CustomerID, O.OrderID, O.OrderDate, O.RequiredDate, O.ShippedDate,
+                    SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) AS OrderTotal
+                    FROM Orders AS O
+                    INNER JOIN [OrderDetails] AS OD ON O.OrderID = OD.OrderID
+                    GROUP BY O.CustomerID, O.OrderID, O.OrderDate, O.RequiredDate, O.ShippedDate
+                  </Statement>
+                </data:SqlCommand>
+              </Commands>
+              <Namespaces>
+                <data:Xmlns prefix="c" namespace="http://samples.scryber.co.uk/doesnot/exist"/>
+              </Namespaces>
+            </data:XMLDataSource>
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section outline-title="Dynamic Nested Xml" style:padding="10">
+          <Items>
+            <pdf:Xml-Param id="SourceData" >
+              <CatalogueList>
+                <CountryList>
+                  <Country>
+                    <CountryName>Argentina</CountryName>
+                    <!-- These are the catalogue items for Argentina -->
+                    <VCatalogueItem>
+                      <ProductCode>ABC123</ProductCode>
+                      <ProductDescription>Grade 6 Industrial</ProductDescription>
+                    </VCatalogueItem>
+                    <VCatalogueItem>
+                      <ProductCode>CBA456</ProductCode>
+                      <ProductDescription>Grade 6 Residential</ProductDescription>
+                    </VCatalogueItem>
+                  </Country>
+                  <Country>
+                    <CountryName>France</CountryName>
+                    <!-- These are the catalogue items for France -->
+                    <VCatalogueItem>
+                      <ProductCode>08081</ProductCode>
+                      <ProductDescription>Coverage Product</ProductDescription>
+                    </VCatalogueItem>
+                    <VCatalogueItem>
+                      <ProductCode>100518</ProductCode>
+                      <ProductDescription>Water-based soluble</ProductDescription>
+                    </VCatalogueItem>
+                  </Country>
+                  <Country>
+                    <CountryName>Peru</CountryName>
+                    <!-- These are the catalogue items for Peru -->
+                    <VCatalogueItem>
+                      <ProductCode>762873A</ProductCode>
+                      <ProductDescription>Inland Waterways</ProductDescription>
+                    </VCatalogueItem>
+                    <VCatalogueItem>
+                      <ProductCode>762873B</ProductCode>
+                      <ProductDescription>Ocean Use</ProductDescription>
+                    </VCatalogueItem>
+                  </Country>
+                </CountryList>
+              </CatalogueList>
+            </pdf:Xml-Param>
+          </Items>
+          
+          <Content>
+            <!-- assign the data directly in this example, 
+                 normally comes from the Stored Procedure -->
+            
+            <data:XMLDataSource id="MySource" xml-node-data="{item:SourceData}" />
+
+            <!-- Loop though each of the countries -->
+            <data:ForEach datasource-id="MySource" select="//CountryList/Country" >
+              <Template>
+                <pdf:H2 text="{xpath:CountryName}" />
+                <pdf:Div style:padding="5" >
+                  <!-- Loop through each of the catalogue items for that country -->
+                  <data:ForEach select="VCatalogueItem" >
+                    <Template>
+                      <!-- Substitute your own formatting -->
+                      <pdf:Label text="{xpath:concat(ProductCode,', ',ProductDescription)}" />
+                      <pdf:Br/>
+                    </Template>
+                  </data:ForEach>
+                </pdf:Div>
+              </Template>
+            </data:ForEach>
+            
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

@@ -1,16 +1,12 @@
-﻿@model Scryber.Core.Samples.Web.Models.DocumentReference[]
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "PDF Simple Samples";
 }
 
 <div>
-    <h1 class="display-4">Available Samples</h1>
+    <h1 class="display-4">Simple samples from the PDF Controller</h1>
     <ul>
-        @foreach (var dref in Model)
-        {
-            <li><a href="@Url.Action("Generate","Home", new { name = dref.Name })" target="_blank">@dref.Name</a></li>
-        }
-        
+        <li><a href="@Url.Action("HelloWorld","PDF")" target="_blank">Hello World</a></li>
+        <li><a href="@Url.Action("HelloTemplates","PDF")" target="_blank">Hello World from a document template</a></li>
     </ul>
     
 </div>

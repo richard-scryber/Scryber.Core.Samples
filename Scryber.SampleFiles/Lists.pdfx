@@ -1,0 +1,1007 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='true' parser-log='true' log-level='Messages' parser-mode='Lax' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Info >
+    <Title>{item:Title}</Title>
+  </Info>
+  <Outline title="{item:Title}"/>
+  <Render-Options img-cache-mins="20" compression-type="None"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Lists"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage" fit-window="true" hide-windowUI="false" hide-menubar="true" hide-toolbar="true"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style applied-class="lcRom" >
+      <style:List number-style="LowercaseRoman"/>
+    </style:Style>
+
+    <style:Style applied-type="pdf:Page" >
+      <style:Margins all="20pt"/>
+    </style:Style>
+
+    <style:Style applied-type="pdf:Div" >
+      <style:Border color="fuchsia" style="Solid" opacity="0.5" width="0.5"/>
+    </style:Style>
+
+    <style:Style applied-type="pdf:List" >
+      <style:Border color="lime" style="Solid" opacity="0.5" width="0.5"/>
+    </style:Style>
+
+    <style:Style applied-type="pdf:Li" >
+      <style:Border color="maroon" style="Solid" opacity="0.5" width="0.5"/>
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="ListSupport" style:column-count="{item:SectionTitle.Length}"  >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="List Support" />
+        <pdf:Date-Param id="ReportDate" value="12 April 2020"/>
+      </Items>
+      <Pages>
+        <pdf:Section name="SimpleLists" id="SimpleLists" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Simple Lists" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Lists are ordered or un-ordered collections of list items. The style governs the type of list and it's layout, and groups govern the numbering. Scryber also supports definition lists
+              that contain terms and content. A list or definition item can contain any inner content.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="An Un-ordered List" outline-title="An Un-ordered List" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Ul>
+                <pdf:Li >List Item one.</pdf:Li>
+                <pdf:Li >List Item two.</pdf:Li>
+                <pdf:Li >List Item three.</pdf:Li>
+                <pdf:Li >List Item four.</pdf:Li>
+              </pdf:Ul>
+
+            </pdf:Div>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="An Ordered List" outline-title="An Ordered List" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Ol>
+                <pdf:Li >List Item one.</pdf:Li>
+                <pdf:Li >List Item two.</pdf:Li>
+                <pdf:Li >List Item three.</pdf:Li>
+                <pdf:Li >List Item four.</pdf:Li>
+              </pdf:Ol>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Different Number styles" outline-title="Different Number styles" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="4">
+                Uppercase Roman
+                <pdf:Ol style:number-style="UppercaseRoman">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Lowercase Roman
+                <pdf:Ol style:number-style="LowercaseRoman">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Uppercase Letters
+                <pdf:Ol style:number-style="UppercaseLetters">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Lowercase Letters
+                <pdf:Ol style:number-style="LowercaseLetters">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Different Unordered styles" outline-title="Different Unordered styles" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3">
+                Bullet
+                <pdf:Ol style:number-style="Bullet">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Labels
+                <pdf:Ul style:number-style="Labels" >
+                  <pdf:Li style:item-label="One">List Item one.</pdf:Li>
+                  <pdf:Li style:item-label="Two">List Item two.</pdf:Li>
+                  <pdf:Li style:item-label="Three">List Item three.</pdf:Li>
+                  <pdf:Li style:item-label="Four">List Item four.</pdf:Li>
+                </pdf:Ul>
+                <pdf:ColumnBreak/>
+                None
+                <pdf:Ul style:number-style="None">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ul>
+
+              </pdf:Div>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Definition Lists" outline-title="Definition Lists" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="1">
+                The definition list is simply a list with a default number style of Labels and a list inset of 100 rather than the usual 30.
+                <pdf:Dl>
+                  <pdf:Di style:item-label="First" >First definition item</pdf:Di>
+                  <pdf:Di style:item-label="Second" >Second definition item</pdf:Di>
+                  <pdf:Di style:item-label="Third" >Third definition item</pdf:Di>
+                  <pdf:Di style:item-label="Long flowing text on the fourth item" >Fourth definition item</pdf:Di>
+                  <pdf:Di style:item-label="Fifth" >Fifth definition item</pdf:Di>
+                </pdf:Dl>
+              </pdf:Div>
+
+            </pdf:Div>
+
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="NestedLists" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Nested Lists" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Lists can be nested to any depth, and the numbering will be displayed based on that lists number style. Using the concatenation feature, inner lists will have the parent value(s) pre-pended to them.
+              Use the pre-fix and post-fix options to show sepation on the numbers.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Single Nested Lists" outline-title="Simple Nested Lists" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3">
+                Bullet not concatenated
+                <pdf:Ol style:number-style="Bullet">
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="Bullet">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="Bullet">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="Bullet">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Numbers not concatenated
+                <pdf:Ol style:number-style="Decimals">
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="Decimals">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="Decimals">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="Decimals">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak />
+                Mixed Numbers not concatenated
+                <pdf:Ol style:number-style="Decimals">
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="UppercaseRoman">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="UppercaseLetters">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="LowercaseLetters">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Concatenated Nested Lists" outline-title="Concatenated Nested Lists" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3">
+                Bullet with concatenation
+                <pdf:Ol style:number-style="Bullet" style:number-concat="true">
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="Bullet" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="Bullet" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="Bullet" style:number-concat="true">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Numbers with concatenation
+                <pdf:Ol style:number-style="Decimals">
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="Decimals" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="Decimals" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="Decimals" style:number-concat="true">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak />
+                Mixed Numbers with concatenation
+                <pdf:Ol style:number-style="Decimals">
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="LowercaseRoman" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="UppercaseLetters" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="LowercaseLetters" style:number-concat="true">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" style:overflow-split="Never" id="OuterNoSplit" >
+              <pdf:H4 text="Pre and Post-Fix Nested Lists" outline-title="Pre and Post-Fix Nested Lists" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3" id="MulitColumn">
+                Numbers with prefixes
+                <pdf:Ol id="Outer" style:number-style="Decimals" >
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List id="InnerOne" style:number-style="Decimals" style:number-prefix=". " style:number-concat="true" >
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List id="InnerFour" style:number-style="Decimals" style:number-prefix="." style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List id="InnerInnerFour" style:number-style="LowercaseLetters" style:number-prefix=" - " style:number-concat="true">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Numbers with pre and post fixes
+                <pdf:Ol style:number-style="Decimals" style:number-prefix="#" style:number-postfix="." >
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="Decimals" style:number-concat="true" >
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="Decimals" style:number-concat="true" >
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="Decimals" style:number-concat="true" style:number-prefix=" - ">
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak />
+                Mixed Numbers with pre and post fixes
+                <pdf:Ol style:number-style="Decimals" style:number-prefix="#" style:number-postfix="." >
+                  <pdf:Li >
+                    List Item one.
+                    <pdf:List style:number-style="UppercaseRoman" style:number-concat="true">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four.
+                    <pdf:List style:number-style="UppercaseLetters" style:number-concat="true" >
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >
+                        Inner Two
+                        <pdf:List style:number-style="LowercaseLetters"  style:number-concat="true" style:number-prefix=" - " >
+                          <pdf:Li >Inner Inner One</pdf:Li>
+                          <pdf:Li >Inner Inner Two</pdf:Li>
+                          <pdf:Li >Inner Inner Three</pdf:Li>
+                        </pdf:List>
+                      </pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:List>
+                  </pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="ListGrouping" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Number Groups" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              By specifying a named group on a list the numbering will continue on rather than starting again.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Single Grouped Lists" outline-title="Single Grouped Lists" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="3">
+                First list with group 'contiguous' and uppercase roman style.
+                <pdf:Ol style:number-style="UppercaseRoman" style:number-group="contiguous" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Second list with group 'contiguous' (inludes the number style from previous list)
+                <pdf:Ol style:number-group="contiguous" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Final list with group 'contiguous' (changes the number style are ignored)
+                <pdf:Ol style:number-style="UppercaseLetters" style:number-group="contiguous" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Multiple Grouped Lists" outline-title="Multiple Grouped Lists" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="3">
+                List with group 'outer-contig' and inner list.
+                <pdf:Ol style:number-style="Decimals" style:number-group="outer-contig" style:padding="5 0 0 0">
+                  <pdf:Li >
+                    List Item one with inner list group of 'inner-contig'
+                    <pdf:Ol style:number-style="Decimals" style:number-concat="true" style:number-prefix=". " style:number-group="inner-contig">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four and another inner list group of 'inner-contig'
+                    <pdf:Ol style:number-group="inner-contig">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Second list with group 'inner-contig' at the top level
+                <pdf:Ol style:number-group="inner-contig" style:padding="5 0 0 0">
+                  <pdf:Li >
+                    List Item one also inner-contig
+                    <pdf:Ol style:number-group="inner-contig">
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >Inner Three</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Final list with group 'contiguous' from the previous set
+                <pdf:Ol style:number-group="contiguous" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four with NO inner group
+                    <pdf:Ol>
+                      <pdf:Li >Inner One</pdf:Li>
+                      <pdf:Li >Inner Two</pdf:Li>
+                      <pdf:Li >
+                        Inner Three with inner inner group of outer-contig
+                        <pdf:Ol style:number-group="outer-contig" >
+                          <pdf:Li >Inner Inner one.</pdf:Li>
+                          <pdf:Li >Inner Inner two.</pdf:Li>
+                          <pdf:Li >Inner Inner three.</pdf:Li>
+                          <pdf:Li >Inner Inner four.</pdf:Li>
+                        </pdf:Ol>
+                      </pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Style Class Based Groups" outline-title="Style Class Based Groups" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="3">
+                List style:class is num-1 to get the styles from the stylesheet
+                <pdf:Ol style:class="num-1">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Second list with class num-1 should use the same numberiong group.
+                <pdf:Ol style:class="num-1">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Final list, with an inner list that has a style class of num-1
+                <pdf:Ol>
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four with inner list
+                    <pdf:Ol style:class="num-1" >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <!-- Number inset and alignment -->
+        <pdf:Section id="ListInsetAndAlign" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Number inset and alignment" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The position of the number and the inset used for the number are controlled on the style so it can be adjusted as required.
+              And the alley between the number and the item content is based on the standard style columns attribute
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Number Alignment" outline-title="Number Aligment" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3">
+                Left aligned number
+                <pdf:Ol style:number-alignment="Left" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four - inner items should NOT inherit the aligment
+                    <pdf:Ol >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Center aligned number
+                <pdf:Ol style:number-alignment="Center" style:number-style="LowercaseRoman" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four - inner items Left aligned
+                    <pdf:Ol style:number-alignment="Left" >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Right aligned number (default)
+                <pdf:Ol style:number-alignment="Right" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four - inner items Centre with group inner-contig based on a style
+                    <pdf:Ol style:class="inner-center" >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Number Inset" outline-title="Number Inset" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3">
+                Number Inset reduced to 10pt
+                <pdf:Ol style:number-inset="10pt" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four - inner items do NOT inherit the inset
+                    <pdf:Ol >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Both lists have an explicit 10pt inset Left.
+                <pdf:Ol style:number-inset="10"  style:number-alignment="Left" style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four - 10pt inset
+                    <pdf:Ol style:number-inset="10" style:number-alignment="Left" >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+                <pdf:ColumnBreak/>
+                Both have an explicit 10pt inset and 3pt Alley with right alignment.
+                <pdf:Ol style:number-alignment="Right" style:alley-width="3"
+                        style:number-postfix="." style:number-inset="10pt"  style:padding="5 0 0 0">
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >
+                    List Item four
+                    <pdf:Ol style:number-alignment="Right" style:alley-width="3"
+                        style:number-postfix="." style:number-inset="10pt"   >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Individual item inset and alignment" outline-title="Individual item inset and alignment"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="2" >
+                Explicit item styles
+                <pdf:Ol style:number-style="UppercaseRoman" style:number-alignment="Right"
+                        style:number-postfix="." style:number-inset="40pt" >
+                  <pdf:Li>No Explicit style (40pt and Right Aligned)</pdf:Li>
+                  <pdf:Li style:number-inset="20" style:number-alignment="Left">20pt inset with Left alignment</pdf:Li>
+                  <pdf:Li style:number-inset="25" style:number-alignment="Left">25pt inset with Left alignment</pdf:Li>
+                  <pdf:Li style:number-inset="30" style:number-alignment="Left">30pt inset with Left alignment</pdf:Li>
+                  <pdf:Li style:number-inset="35" style:number-alignment="Left">35pt inset with Left alignment</pdf:Li>
+                  <pdf:Li>No Explicit style (40pt and Right Aligned)</pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="OverflowLists" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Overflowing Lists" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Lists and their items can overflow onto new columns and pages. The list items themselves are set not to split, so
+              items (and any comlex content, other lists within them) will be moved en-mass to the new region if available.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Fixed height div with 3 columns" outline-title="Fixed height div with 3 columns"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              
+              <pdf:Div style:column-count="3" style:height="100pt" >
+                <pdf:Ol>
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                  <pdf:Li >List Item five.</pdf:Li>
+                  <pdf:Li >List Item six.</pdf:Li>
+                  <pdf:Li >List Item seven.</pdf:Li>
+                  <pdf:Li >List Item eight.</pdf:Li>
+                  <pdf:Li >List Item nine.</pdf:Li>
+                  <pdf:Li >List Item ten.</pdf:Li>
+                  <pdf:Li >List Item eleven.</pdf:Li>
+                  <pdf:Li >List Item twelve.</pdf:Li>
+                  <pdf:Li >List Item thirteen.</pdf:Li>
+                  <pdf:Li >List Item fourteen.</pdf:Li>
+                  <pdf:Li >List Item fifteen.</pdf:Li>
+                  <pdf:Li >List Item sixteen.</pdf:Li>
+                  <pdf:Li >List Item seventeen.</pdf:Li>
+                  <pdf:Li >List Item eighteen.</pdf:Li>
+                  <pdf:Li >List Item nineteem.</pdf:Li>
+                  <pdf:Li >List Item twenty.</pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Fixed height div, long content" outline-title="Fixed height div, long content"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="3" style:height="130pt" >
+                <pdf:Ol>
+                  <pdf:Li >List Item one that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item two that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item three that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item four that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item five that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item six that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item seven that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item eight that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Nested list overflow" outline-title="Nested list overflow"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="3" style:height="100pt">
+                <pdf:Ol>
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >
+                    List Item two.
+                    <pdf:Ol >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                  <pdf:Li >
+                    List Item three.
+                    <pdf:Ol >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                  <pdf:Li >
+                    List Item five.
+                    <pdf:Ol >
+                      <pdf:Li >Inner Inner one.</pdf:Li>
+                      <pdf:Li >Inner Inner two.</pdf:Li>
+                      <pdf:Li >Inner Inner three.</pdf:Li>
+                      <pdf:Li >Inner Inner four.</pdf:Li>
+                    </pdf:Ol>
+                  </pdf:Li>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div id="OuterDiv" style:class="wide" >
+              <pdf:H4 text="Overflowing onto a new page" outline-title="Overflowing onto a new page"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This list will fill the available space on the current page and then continue the layout on a new page
+              <!--<pdf:Div style:height="200pt" style:margins="10pt" style:border-color="blue" style:v-align="Middle" style:h-align="Center" >SPACER</pdf:Div>-->
+              <pdf:Div id="ListWrapper" style:column-count="2"  >
+                <pdf:Ol id="NewpageList">
+                  <pdf:Li >List Item one that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item two that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item three that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item four that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item five that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item six that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item seven that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item eight that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item nine that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item ten that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item eleven that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item twelve that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item thirteen that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item fourteen that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item fifteen that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item sixteen that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item seventeen that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item eighteen that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item nineteem that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                  <pdf:Li >List Item twenty that will flow over a few lines of text, but should be kept together.</pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+              After the list.
+            </pdf:Div>
+            
+            
+          </Content>
+        </pdf:Section>
+
+
+
+        <pdf:Page id="DoesNotOverflow" visible="false" outline-title="{item:SectionTitle}" style:overflow-action="Truncate" >
+          <Style>
+            <style:Overflow action="Truncate"/>
+          </Style>
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Truncated List" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The following lists hit the maximum possible content space and stop laying out. They are on a page (not a section), and this is not set to overflow.<pdf:Br/>
+              
+              As the last list is laid out it will reach the limit of items that can
+              be added to the page.<pdf:Br/>
+              Once no more items can be added, then layout will stop and the list will be closed.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Fixed height div cannot overflow" outline-title="Fixed height div cannot overflow"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This list of twenty items will fill all available columns in a fixed height div, and as there is no where else to go, will stop once complete.
+              <pdf:Div style:column-count="3" style:height="60pt" style:border-color="gray" style:border-width="0.5" >
+                <pdf:Ol>
+                  <pdf:Li >List Item one.</pdf:Li>
+                  <pdf:Li >List Item two.</pdf:Li>
+                  <pdf:Li >List Item three.</pdf:Li>
+                  <pdf:Li >List Item four.</pdf:Li>
+                  <pdf:Li >List Item five.</pdf:Li>
+                  <pdf:Li >List Item six.</pdf:Li>
+                  <pdf:Li >List Item seven.</pdf:Li>
+                  <pdf:Li >List Item eight.</pdf:Li>
+                  <pdf:Li >List Item nine.</pdf:Li>
+                  <pdf:Li >List Item ten.</pdf:Li>
+                  <pdf:Li >List Item eleven.</pdf:Li>
+                  <pdf:Li >List Item twelve.</pdf:Li>
+                  <pdf:Li >List Item thirteen.</pdf:Li>
+                  <pdf:Li >List Item fourteen.</pdf:Li>
+                  <pdf:Li >List Item fifteen.</pdf:Li>
+                  <pdf:Li >List Item sixteen.</pdf:Li>
+                  <pdf:Li >List Item seventeen.</pdf:Li>
+                  <pdf:Li >List Item eighteen.</pdf:Li>
+                  <pdf:Li >List Item nineteem.</pdf:Li>
+                  <pdf:Li >List Item twenty.</pdf:Li>
+                </pdf:Ol>
+
+              </pdf:Div>
+            </pdf:Div>
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Fixed height div cannot overflow" outline-title="Fixed height div cannot overflow"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This list will flow down the page and once it reaches the end - stop as there is no 
+              <pdf:Div style:height="400pt" style:margins="10pt" style:border-color="blue" style:v-align="Middle" style:h-align="Center" >SPACER</pdf:Div>
+
+              <pdf:Ol id="TruncatedList" style:number-alignment="Right" style:padding="5 0 0 0" style:border-color="blue" >
+                <pdf:Li >List Item one.</pdf:Li>
+                <pdf:Li >List Item two.</pdf:Li>
+                <pdf:Li >List Item three.</pdf:Li>
+                <pdf:Li >List Item four.</pdf:Li>
+                <pdf:Li >List Item five.</pdf:Li>
+                <pdf:Li >List Item six.</pdf:Li>
+                <pdf:Li >List Item seven.</pdf:Li>
+                <pdf:Li >List Item eight.</pdf:Li>
+                <pdf:Li >List Item nine.</pdf:Li>
+                <pdf:Li >List Item ten.</pdf:Li>
+                <pdf:Li >List Item eleven.</pdf:Li>
+                <pdf:Li >List Item twelve.</pdf:Li>
+                <pdf:Li >List Item thirteen.</pdf:Li>
+                <pdf:Li >List Item fourteen.</pdf:Li>
+                <pdf:Li >List Item fifteen.</pdf:Li>
+                <pdf:Li >List Item sixteen.</pdf:Li>
+              </pdf:Ol>
+
+            </pdf:Div>
+
+          </Content>
+        </pdf:Page>
+
+        <!-- Complex Styles -->
+        <pdf:Section id="ListComplexStyle" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Complex Styles" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              As block elements the list items can be styled, and the contents of a list item can be any content supported.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide complex" >
+
+              <pdf:List style:class="complex">
+
+                <pdf:Li style:class="complex" >This is the first item</pdf:Li>
+                <pdf:Li style:fill-color="gray" style:class="complex overrides" style:overflow-action="Clip" >
+                  Inner content
+                  <pdf:Image src="images/scryber_logo_380.png"  style:x="30" style:y="10" />
+                  Centered on a fixed width
+                  and height div
+                  <pdf:Div  style:v-align="Middle" style:padding="20pt" style:h-align="Center" style:border-color="gray" >
+                    Inner div content
+                  </pdf:Div>
+
+                </pdf:Li>
+                <pdf:Li style:class="complex" >This is the last item</pdf:Li>
+              </pdf:List>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

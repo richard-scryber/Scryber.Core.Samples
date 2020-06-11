@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:UserComponent xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
+  <Content>
+    <pdf:Table  style:class="pg-header-table" style:border-width="0pt" style:border-style="None" >
+      <pdf:Row>
+        <pdf:Cell style:class="pg-header-left" >
+          <pdf:Label text="{item:SectionTitle}" />
+        </pdf:Cell>
+        <pdf:Cell style:class="pg-header-mid" >
+          <pdf:Label text="{item:Title}" />
+        </pdf:Cell>
+        <pdf:Cell style:class="pg-header-right">
+          <pdf:Date style:date-format="D" value="{item:ReportDate}"  />
+        </pdf:Cell>
+      </pdf:Row>
+      <pdf:Row>
+        <pdf:Cell id="bottombannerimgcell" style:class="pg-header-bottom" >
+          <pdf:Image src="./images/banner_image.png" />
+        </pdf:Cell>
+      </pdf:Row>
+    </pdf:Table>
+  </Content>
+</pdf:UserComponent>

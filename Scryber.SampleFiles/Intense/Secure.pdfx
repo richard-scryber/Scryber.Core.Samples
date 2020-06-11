@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:attach="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Attachments.xsd"
+              xmlns:secure="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Secure.xsd"
+              auto-bind="true">
+  <Render-Options>
+    <secure:Writer owner-password="Owner" type="Standard128Bit"
+                   allow-printing="false" allow-copying="false" allow-accessibility="true" />
+  </Render-Options>
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="../BaseStyles.psfx"/>
+  </Styles>
+  <Pages>
+    <pdf:Page id="AttachmentPage" outline-title="Attachment Page" style:margins="20pt" >
+      <Content>
+        This is a secure document that has restrictions on it for printing, copying and commenting etc.
+      </Content>
+    </pdf:Page>
+  </Pages>
+</pdf:Document>

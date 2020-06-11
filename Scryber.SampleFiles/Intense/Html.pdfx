@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<?scryber parser-mode='Lax' ?>
+<pdf:Document xmlns:pdf="Scryber.Components, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:data="Scryber.Data, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:style="Scryber.Styles, Scryber.Styles, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:attach="Scryber.Attachments.Components, Scryber.Attachments, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f88ebab663f8ed8"
+              xmlns:html="Scryber.Html.Components, Scryber.Html, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f88ebab663f8ed8"
+              auto-bind="true" >
+  
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Additions>
+  </Additions>
+  <Items>
+    <pdf:Color-Item key="bg" value="#CCCCCC" ></pdf:Color-Item>
+    <pdf:Xml-Item key="MyXml">
+      <div class="test">THis is <div>Inner content</div> a test</div>
+    </pdf:Xml-Item>
+  </Items>
+  <Styles>
+    <!--
+    <style:Styles-Ref source="../BaseStyles.psfx"/>
+    
+    <html:CssStyle source="../BaseStyles.css" >
+      p.test p.assigned{ bg-color:#555555;}
+    </html:CssStyle>
+     -->   
+    <style:Style applied-class="test" >
+      <style:Background color="{item:bg}"/>
+    </style:Style>
+    
+    <style:Style applied-type="html:div" >
+      <style:Padding all="4"/>
+      <style:Border color="aqua" width="0"/>
+    </style:Style>
+
+    <style:Style applied-type="pdf:PageHeader" >
+      <style:Border color="black" width="0.1"/>
+    </style:Style>
+
+    <style:Style applied-class="bordered" >
+      <style:Border color="black" width="0.1"/>
+    </style:Style>
+
+    <style:Style applied-type="html:body" >
+      <style:Font size="12"/>
+    </style:Style>
+
+    <style:Style applied-type="html:a" >
+      <style:Font size="12pt"/>
+      <style:Fill color="blue"/>
+      <style:Text decoration="Underline"/>
+    </style:Style>
+  </Styles>
+  
+ 
+  <Pages>
+    
+   
+
+    <html:Page id="HtmlPage" outline-title="A full html page" style:margins="10" >
+      <Header>This is the header</Header>
+      <Content>
+        <html>
+          <body class="bordered">
+            This is inside the fragment <div class="test">
+              This is some text in a <b>&lt;div&gt;</b> That should appear in its own block
+            </div>
+            This is outside the div, but still in the fragment.
+            <test>Ignored elements</test>
+          </body>
+        </html>
+      </Content>
+      <Footer>This is the footer</Footer>
+    </html:Page>
+    
+    
+    <html:Page id="WikipediaPage" outline-title="A full wikipedia page" style:margins="10"
+                    source="https://en.wikipedia.org/wiki/Home" />
+  </Pages>
+</pdf:Document>

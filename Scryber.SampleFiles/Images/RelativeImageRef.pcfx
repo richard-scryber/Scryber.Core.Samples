@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:UserComponent xmlns:pdf="Scryber.Components, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:data="Scryber.Data, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:style="Scryber.Styles, Scryber.Styles, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+             style:border-color="aqua" style:padding="4" style:margins="4">
+  <Content>
+    ./scryber_logo_380.png
+    <pdf:Image src="./scryber_logo_380.png" />
+  </Content>
+</pdf:UserComponent>

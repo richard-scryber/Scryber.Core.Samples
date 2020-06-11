@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="Text Styles"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Text Styles"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="TextStyles" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Styling text" />
+        <pdf:Date-Param id="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+
+        <pdf:Section id="FilledAndStrokedText" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Colour fills and strokes" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The default colour of text in scryber is black. This is specified in the default base style of the document,
+              but scryber can use any colour for filling and stroking text - either my applying a style or by explicitly specifying
+              on the component itself. The fill and stroke styles are inherrited, so inner components also get the same fill and stroke.
+            </pdf:Para>
+
+            <!-- 
+              Some text inclusion
+            -->
+
+            <pdf:Div id="SimpleColours" style:class="wide" >
+
+              <pdf:Div outline-title="Simple Coloured text" style:font-family="Arial" >
+                <pdf:H4 text="Simple Coloured text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:fill-color="red">
+                  This text is explicitly specified as red, with in-line style on the containing paragraph.
+                  <pdf:Para style:padding="0 10 0 0">This text is in an inner paragrapgh, but should also be red, as no other fill has been applied.</pdf:Para>
+                </pdf:Para>
+                
+                <pdf:Para style:fill-color="#AAAAFF">
+                  This text is explicitly specified as hex light blue (#AAAAFF), with in-line style on the containing paragraph.
+                  <pdf:Para style:padding="0 10 0 0">This text is in an inner paragrapgh, but should also be light blue, as no other fill has been applied.</pdf:Para>
+                </pdf:Para>
+
+                <pdf:Para style:fill-color="rgb(20, 255, 20)">
+                  This text is explicitly specified with an rgb colour of green 'rgb(20, 255, 20)', with in-line style on the containing paragraph.
+                  <pdf:Para style:padding="0 10 0 0"  style:fill-color="red" >This text is in an inner paragrapgh, but should be red, as a fill has been applied to it.</pdf:Para>
+                  And this should revert back to the rgb colour green
+                </pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div outline-title="Style based, coloured text" style:font-family="Arial" >
+                <pdf:H4 text="Style based, coloured text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:class="red-fill">
+                  This text is red because of the class attribute on the containing paragraph.
+                 <pdf:Para style:padding="0 10 0 0">This text is in an inner paragrapgh, but should also be red, as no other fill has been applied.</pdf:Para>
+                </pdf:Para>
+
+                <pdf:Para style:class="blue-fill">
+                  This text is light blue (#AAAAFF), because of the class attribute on the containing paragraph. <pdf:Span style:class="red-fill">
+                    But this text is in an inner span, that should be red because of the class.
+                  </pdf:Span> Outside the span it should revert back to blue.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:Div outline-title="Stroked text" style:font-family="Arial" >
+                <pdf:H4 text="Stroked text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:class="red-stroke">
+                  This text has a red outline because of the class attribute 'red-stroke' on the containing paragraph.
+                  <pdf:Para style:padding="0 10 0 0">This text is in an inner paragrapgh, but should also be red, as no other fill has been applied.</pdf:Para>
+                </pdf:Para>
+
+                <pdf:Para style:class="blue-stroke">
+                  This text has a light blue (#AAAAFF) stroke, because of the class attribute on the contiaining paragraph. 
+                  <pdf:Span style:class="red-fill">
+                    This class has the blue-stroke AND the red fill.
+                  </pdf:Span> Outside the span it should revert back to blue.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:Div outline-title="Dashed text" style:font-family="Arial" >
+                <pdf:H4 text="Dashed text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:class="red-stroke dashed" style:font-size="24">
+                  This text has a red DASHED outline because of the class attributes 'red-stroke' and 'dashed' on the containing paragraph.
+                </pdf:Para>
+
+                <pdf:Para style:class="blue-stroke dashed" style:font-size="24">
+                  This text has a light blue (#AAAAFF) DASHED stroke, because of the class attribute on the contiaining paragraph.
+                  <pdf:Span style:class="blue-fill">
+                    This span has the blue fill applied as well.
+                  </pdf:Span> Outside the span it should revert back to blue dashed only.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              
+              
+              
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="graphicFillsAndStrokes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Graphic fills and strokes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              
+              Along with colours the use of images is supported as fills and strokes to text. 
+              Because of the complexities involved in image patterns
+              only the basic attributes can be defined inline within the component element. More complex patterns can be 
+              used when defined within the child style element, or as an applied style.
+            </pdf:Para>
+
+            <pdf:Div id="SimpleColours" style:class="wide" >
+
+              <pdf:Div outline-title="Image Pattern Text" style:font-family="Arial" >
+                <pdf:H4 text="Image Pattern Text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-bold="true" style:font-size="30" style:fill-image="./Images/gradient2.png" >
+                  Repeating image fill
+                  <pdf:Para style:margins="0 10 0 0" >Inner repeating fill</pdf:Para>
+                </pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div outline-title="Image Repeat and Step" style:font-family="Arial" >
+                <pdf:H4 text="Image Pattern Repeat and Step" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-bold="true" style:font-size="50" style:text-leading="55pt" style:fill-image="./Images/gradient2.png" >
+                  <Style>
+                    <style:Fill color="blue" repeat="RepeatBoth" y-pos="15pt" y-size="10pt" y-step="12pt" x-step="12pt" x-size="10pt"/>
+                  </Style>
+                  10pt repeating pattern, 12pt step.
+                </pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div outline-title="Image Repeat and Border" style:font-family="Arial" >
+                <pdf:H4 text="Image Pattern Repeat and Step" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-bold="true" style:font-size="50" style:text-leading="55pt" style:fill-image="./Images/gradient2.png" >
+                  <Style>
+                    <style:Fill color="blue" repeat="RepeatBoth" y-pos="15pt" y-size="10pt" y-step="10pt" x-step="10pt" x-size="10pt"/>
+                    <style:Stroke color="blue" style="Solid" width="2pt"/>
+                  </Style>
+                  10pt repeating pattern, with stoke.
+                </pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div outline-title="Overlay image repeats" style:font-family="Arial" >
+                <pdf:H4 text="Overlay image repeats" style:class="group-heading"></pdf:H4>
+                <pdf:Div id="WithRelativePositions" style:bg-color="#CCCCCC" style:padding="10 10 10 0" style:margins="10 0 0 0" >
+                  <pdf:Para style:font-bold="true" style:font-size="30" style:x="2" style:y="2" >
+                    <Style>
+                      <style:Fill img-src="./Images/gradient2.png"/>
+                    </Style>
+                    Using overlays for text effects.
+                  </pdf:Para>
+                  <pdf:Para style:font-bold="true" style:font-size="30" style:x="0" style:y="0" >
+                    <Style>
+                      <style:Fill img-src="./Images/gradient.png"/>
+                    </Style>
+                    Using overlays for text effects.
+                  </pdf:Para>
+                </pdf:Div>
+              </pdf:Div>
+              
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="textDecorations" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Text Decorations" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Scryber supports the decorations of text using Underline, Overline or StrikeThrough (or any combination of the 3).
+              The decorations should respect the size of the text, and also the fill COLOUR of the text.
+            </pdf:Para>
+
+            <pdf:Div id="Underline" style:class="wide" >
+
+              <pdf:Div outline-title="Underline Text" style:font-family="Arial" >
+                <pdf:H4 text="Underline Text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-size="10" style:text-decoration="Underline" >
+                  Underlined text at 10pt font size.
+                  <pdf:Para style:margins="0 10 0 0" >Underline continues to be applied to inner components as the style is inherited.
+                  It also includes any subsequent lines that the content flows onto.</pdf:Para>
+                </pdf:Para>
+                 <pdf:Para style:font-size="20pt" style:text-decoration="Underline" >
+                  Underlined text at 20pt font size.
+                  <pdf:Para style:margins="0 10 0 0" style:fill-color="blue" >
+                    Underline continues to be applied to inner components as the style is inherited.
+                    It also includes any subsequent lines that the content flows onto, and matches the colour.</pdf:Para>
+                </pdf:Para>
+                <pdf:Para style:font-size="10pt" style:font-bold="true" style:font-italic="true" >
+                  Text can either use the &lt;pdf:U&gt; component or a &lt;pdf:Span&gt; with @style:text-decoration="Underline"
+                  to <pdf:U>Underline</pdf:U> specific sets of <pdf:Span style:text-decoration="Underline">characters</pdf:Span> in a
+                  run.
+                </pdf:Para>
+              </pdf:Div>
+
+
+            </pdf:Div>
+            
+            <pdf:Div id="Strikethrough" style:class="wide" >
+
+              <pdf:Div outline-title="Strikethrough Text" style:font-family="Arial" >
+                <pdf:H4 text="Strikethrough Text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-size="10" style:text-decoration="StrikeThrough" >
+                  Strikethrough text at 10pt font size.
+                  <pdf:Para style:margins="0 10 0 0" >
+                    Strikethrough continues to be applied to inner components as the style is inherited.
+                    It also includes any subsequent lines that the content flows onto.</pdf:Para>
+                </pdf:Para>
+                <pdf:Para style:font-size="20pt" style:text-decoration="StrikeThrough" >
+                  StrikeThrough text at 20pt font size.
+                  <pdf:Para style:margins="0 10 0 0" style:fill-color="blue" >
+                    StrikeThrough continues to be applied to inner components as the style is inherited.
+                    It also includes any subsequent lines that the content flows onto, and matches the colour.
+                  </pdf:Para>
+                </pdf:Para>
+                <pdf:Para style:font-size="10pt" style:font-bold="true" style:font-italic="true" >
+                  Text can use the&lt;pdf:Span&gt; with @style:text-decoration="StrikeThrough"
+                  to <pdf:Span style:text-decoration="StrikeThrough">StrikeThrough specific sets of characters</pdf:Span> in a
+                  run.
+                </pdf:Para>
+              </pdf:Div>
+
+
+            </pdf:Div>
+
+            <pdf:Div id="Overline" style:class="wide" >
+
+              <pdf:Div outline-title="Overline Text" style:font-family="Arial" >
+                <pdf:H4 text="Overline Text" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-size="10" style:text-decoration="Overline" >
+                  Overline text at 10pt font size.
+                  <pdf:Para style:margins="0 10 0 0" >
+                    Overline continues to be applied to inner components as the style is inherited.
+                    It also includes any subsequent lines that the content flows onto.
+                  </pdf:Para>
+                </pdf:Para>
+                <pdf:Para style:font-size="20pt" style:text-decoration="Overline" >
+                  Overline text at 20pt font size.
+                  <pdf:Para style:margins="0 10 0 0" style:fill-color="blue" >
+                    Overline continues to be applied to inner components as the style is inherited.
+                    It also includes any subsequent lines that the content flows onto, and matches the colour.
+                  </pdf:Para>
+                </pdf:Para>
+                <pdf:Para style:font-size="10pt" style:font-bold="true" style:font-italic="true" >
+                  Text can use the&lt;pdf:Span&gt; with @style:text-decoration="Overline"
+                  to <pdf:Span style:text-decoration="Overline">Overline specific sets of characters</pdf:Span> in a
+                  run.
+                </pdf:Para>
+              </pdf:Div>
+
+
+            </pdf:Div>
+
+            <pdf:PageBreak/>
+            <pdf:Div id="Combined" style:class="wide" >
+
+              <pdf:Div outline-title="Combined Text Decoration" style:font-family="Arial" >
+                <pdf:H4 text="Combined Text Decoration" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-size="10" style:font-bold="true" >
+                  Text decorations like <pdf:Span style:text-decoration="Underline">underline</pdf:Span> and  <pdf:Span style:text-decoration="StrikeThrough">strikethrough</pdf:Span>
+                  can be combined onto <pdf:Span style:text-decoration="Underline StrikeThrough">a single set of <pdf:Span style:fill-color="blue"> characters</pdf:Span> in a run</pdf:Span>. But must be applied at the
+                  attribute level.
+                </pdf:Para>
+                
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div id="Leading" style:class="wide" >
+
+              <pdf:Div outline-title="Decorations and Text Leading" style:font-family="Arial" >
+                <pdf:H4 text="Decorations and Text Leading" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-size="10" style:text-decoration="Underline" style:text-leading="20pt" >
+                  Underline text at 10pt font size with explicit leading of 20pt will still have the underline going with the font baseline
+                  so that it is not impacted by the increased leading value.
+                  <pdf:Para style:margins="0 10 0 0" >
+                    Underline and leading continues to be applied to inner components as the style is inherited.
+                    It also includes any subsequent lines that the content flows onto.
+                  </pdf:Para>
+                </pdf:Para>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div id="GraphicFills" style:class="wide" >
+
+              <pdf:Div outline-title="Decorations and Graphic Fills" style:font-family="Arial" >
+                <pdf:H4 text="Decorations and Graphic fills" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-size="14" style:fill-image="./images/gradient2.png" style:fill-color="blue" style:text-decoration="Underline" >
+                  Underline text at 14pt font size with a graphic fill will have the underline in black.
+                  <pdf:Para style:margins="0 10 0 0" style:text-decoration="Underline StrikeThrough" >
+                    Underline and StrikeThrough continues to be applied to inner components.
+                    It also includes any subsequent lines that the content flows onto.
+                  </pdf:Para>
+                </pdf:Para>
+              </pdf:Div>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

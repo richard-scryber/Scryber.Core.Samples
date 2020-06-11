@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='false' parser-log='true' parser-mode='Lax' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Info >
+    <Title>{item:Title}</Title>
+  </Info>
+  <Outline title="{item:Title}"/>
+  <Render-Options img-cache-mins="20" compression-type="None"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Links"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage" fit-window="true" hide-windowUI="false" hide-menubar="true" hide-toolbar="true"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+    
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="PlaceHolder" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Placeholder" />
+        <pdf:Date-Param id="ReportDate"/>
+        <pdf:String-Param id="PlaceHolderContent" value="&lt;pdf:I&gt;This is some &lt;pdf:B&gt;inline content&lt;/pdf:B&gt; as an item string that is bound to the place-holder &lt;/pdf:I&gt;" ></pdf:String-Param>
+      </Items>
+      <Pages>
+        <pdf:Section id="PlaceholderComponent" style:class="system-test-page" >
+          <Content>
+            <pdf:H2 style:class="section-heading" text="PlaceHolder Component"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The PlaceHolder is an invisible container, that by default does nothing, and does not affect the output.<pdf:Br/>
+              However, as a container, any one or more components can be added to it / put inside, either declaritively, data-binding
+              or as part of some code block.<pdf:Br/>
+              These inner components will be laid out just as if they were part of the original content.
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Setting PlaceHolder content" outline-title="Setting PlaceHolder content" 
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                An empty placeholder <pdf:Br/>
+                Before the PlaceHolder <pdf:PlaceHolder id="EmptyPlaceHolder" />After the PlaceHolder
+              </pdf:Para>
+            
+              <pdf:Para  >
+                A PlaceHolder with the content text set on the element itself.<pdf:Br/>
+                Before the PlaceHolder <pdf:PlaceHolder id="InlinePlaceHolder" contents="&lt;pdf:I&gt;This is some &lt;pdf:B&gt;inline content&lt;/pdf:B&gt; in the place holder. &lt;/pdf:I&gt;" />After the PlaceHolder
+              </pdf:Para>
+              <pdf:Para  >
+                A PlaceHolder with the content text bound to a specific declared item in the Items collection.<pdf:Br/>
+                Before the PlaceHolder <pdf:PlaceHolder id="ItemPlaceHolder" contents="{item:PlaceHolderContent}" />After the PlaceHolder
+              </pdf:Para>
+              <pdf:Para >
+                A PlaceHolder with the content text bound to an item in the Items collection that is set from the code behind.<pdf:Br/>
+                Before the PlaceHolder <pdf:PlaceHolder id="CodedItemPlaceHolder" contents="{item:MyCustomContent}" />After the PlaceHolder
+              </pdf:Para>
+              <pdf:Para >
+                A PlaceHolder with the content text set from the code behind looking up by it's ID.<pdf:Br/>
+                Before the PlaceHolder <pdf:PlaceHolder id="CodedParsableContentPlaceHolder" />After the PlaceHolder
+              </pdf:Para>
+              <pdf:Para >
+                A PlaceHolder with the content COMPONENTS set from the code behind looking up by it's ID.<pdf:Br/>
+                Before the PlaceHolder <pdf:PlaceHolder id="CodedContentPlaceHolder" />After the PlaceHolder
+              </pdf:Para>
+            </pdf:Div>
+
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="PlaceHolder Complex Content" outline-title="PlaceHolder Complex Content"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                The place holder is not limited to textual content. Any component can be added to the PlaceHolder, and it will
+                be treated as if it was just part of the content.<pdf:Br/>
+                
+                Before the PlaceHolder <pdf:PlaceHolder id="ComplexPlaceHolder" contents="{item:ComplexPlaceHolderContent}" />After the PlaceHolder
+              </pdf:Para>
+              
+
+            </pdf:Div>
+            
+           <pdf:Div style:class="wide" >
+              <pdf:H4 text="PlaceHolder Namespaces" outline-title="PlaceHolder Namespaces"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                If the namespaces on the parsed content do not match (or might not match) the actual content that is to be parsed,
+                Then those namespaces must be declared. Just so the parser can actually identify the types to use.<pdf:Br/>
+                
+                Before the PlaceHolder <pdf:PlaceHolder id="NamesPlaceHolder"
+                            contents="&lt;a:I&gt;This is some &lt;a:Span s:class='ph-coloured' &gt;inline content&lt;/a:Span&gt; in the place holder under independant namespaces. &lt;/a:I&gt;" >
+                        <Namespaces>
+                          <data:Xmlns prefix="a" namespace="Scryber.Components, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe" />
+                          <data:Xmlns prefix="s" namespace="Scryber.Styles, Scryber.Styles, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe" />
+                        </Namespaces>
+                      </pdf:PlaceHolder>After the PlaceHolder
+              </pdf:Para>
+            </pdf:Div>
+          
+          </Content>
+        </pdf:Section>
+        
+        <pdf:PlaceHolder id="PageLevelPlaceHolder" />
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

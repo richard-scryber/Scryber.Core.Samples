@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true">
+   <Render-Options compression-type="None" />
+  <Info>
+    <Title></Title>
+  </Info>
+  <Items>
+    <pdf:String-Item key="Title" value="Scryber init file" ></pdf:String-Item>
+  </Items>
+  <Styles>
+    <style:Style applied-type="pdf:Para" >
+      <style:Border style="Solid" width="1" color="aqua"/>
+      <style:Margins all="0" top="0"/>
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:Page style:font-family="Helvetica"  style:font-size="12" style:padding="20pt" >
+      <Content>
+        <pdf:Form id="MyForm" >
+          <pdf:Div style:padding="20pt" style:bg-color="#FAFAFA" >
+          <pdf:Input type="Text" options="Required"
+                     value="Enter text here" style:bg-color="#AAAAAA" style:margins="10pt" style:padding="10pt"
+                     style:font-size="36" ></pdf:Input>
+          <pdf:Para>Just some text, why</pdf:Para>
+          </pdf:Div>
+          <!--<pdf:Input type="Text" options="MultiLine" style:height="100pt" style:overflow-action="Clip" style:full-width="true"  value="This is some text that is very long and would normally flow onto multiple lines" style:margins="15" ></pdf:Input>-->
+        </pdf:Form>
+        <pdf:Para>Just some text after the input</pdf:Para>
+      </Content>
+    </pdf:Page>
+    
+  </Pages>
+</pdf:Document>

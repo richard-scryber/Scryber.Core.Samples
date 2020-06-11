@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='true' parser-log='true' log-level='Verbose' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="Relative Positioning"/>
+  <Render-Options img-cache-mins="20"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Text Styles"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="ImageSupport" style:column-count="{item:SectionTitle.Length}" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Image Support" />
+        <pdf:Date-Param id="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+
+        <pdf:Section id="ImageLayout" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Image Layout" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              File based images are included with the &lt;pdf:Image&gt; tag, and specifying a source that is relative to the current file where it is included.<pdf:Br/>
+              The library can layout the images with specific widths, heights or both, and they will by default appear on their own line in a page.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Images as part of the content" outline-title="Images as part of the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="2" >
+                <pdf:Para>
+                  Images without any dimensions will be laid out at the natural size of the image - in this case 175pt x 175pt (2.43 inches)
+                  <pdf:Image src="./images/imagetypes/colortest_24bpp.jpg" />
+                </pdf:Para>
+                <pdf:ColumnBreak/>
+                <pdf:Para>
+                  If the available width is smaller than the natural size, then the image will be
+                  scaled proportionally to best fit the available width in this case the container is 100 pt with 10pt padding.
+                  <pdf:Div style:width="100" style:border-color="aqua" style:margins="10pt" style:padding="10pt" >
+                    <pdf:Image src="./images/imagetypes/colortest_24bpp.jpg" />
+                  </pdf:Div>
+                  <pdf:Label style:fill-color="red" >If based on the natural or available width, the image does not fit in the available height, then it will be attempted to overlow (unless the container is set to clipping mode).</pdf:Label>
+                </pdf:Para>
+              </pdf:Div>
+
+
+
+              <pdf:H4 text="Images inline with the content" outline-title="Images inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Images that have a position mode of inline will appear as part of the text. They will still honour the background, margins, padding etc. But inline content will
+              continue to flow on afterwards on the same line.
+              <pdf:Para style:font-family="Arial" >
+                This line of text has an image
+                <pdf:Image src="./images/imagetypes/colortest_24bpp.jpg" style:width="15pt" style:position-mode="Inline"></pdf:Image>
+                in it. And these 2 images are also inline but with margins, padding and a border.
+                <pdf:Image src="./images/imagetypes/colortest_24bpp.jpg" style:width="10pt" style:padding="2.5pt" style:margins="2pt" style:border-color="black" style:position-mode="Inline"></pdf:Image>
+                <pdf:Image src="./images/imagetypes/colortest_24bpp.jpg" style:width="10pt" style:padding="2.5pt" style:margins="2pt" style:border-color="black" style:position-mode="Inline"></pdf:Image>
+                And this text follows on from the images.
+              </pdf:Para>
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="SupportedImageTypes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Supported Image Types" />
+            <pdf:String-Param id="ImageData" >zzz</pdf:String-Param>
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" name="SupportedImageTypes" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Scryber Supports a wide variety of image types - 8bpp gif images, 24bpp JPEG image, 32bpp PNG images and CMYK TIFF images.<pdf:Br/>
+              There is no special configuration to include these images in scryber, simply reference by file path and they will be parsed and included.
+            </pdf:Para>
+
+            <data:XMLDataSource id="SampleImages" >
+              <Data>
+                <images xmlns="">
+                  <imagerow group="8 bits per pixel indexed images">
+                    <image name="Bitmap image" src="./images/imagetypes/colortest_8bpp_indexed.bmp" />
+                    <image name="GIF image" src="./images/imagetypes/colortest_8bpp_indexed.gif" />
+                    <image name="PNG image" src="./images/imagetypes/colortest_8bpp_indexed.png" />
+                    <image name="TIFF image" src="./images/imagetypes/colortest_8bpp_indexed.tif" />
+                  </imagerow>
+                  <imagerow group="8 bits per pixel images with transparent colour">
+                    <image />
+                    <image name="GIF image (not supported)" src="./images/imagetypes/colortest_8bpp_indexed_alpha.gif" />
+                    <image name="PNG image" src="./images/imagetypes/colortest_8bpp_indexed_alpha.png" />
+                    <image  />
+                  </imagerow>
+                  <imagerow group="24 bits per pixel images" >
+                    <image name="Bitmap image" src="./images/imagetypes/colortest_24bpp.bmp" />
+                    <image name="JPEG image" src="./images/imagetypes/colortest_24bpp.jpg" />
+                    <image name="PNG image" src="./images/imagetypes/colortest_24bpp.png" />
+                    <image name="TIFF image" src="./images/imagetypes/colortest_24bpp.tif" />
+                  </imagerow>
+                  <imagerow group="32 bits per pixel images with soft mask" >
+                    <image  />
+                    <image />
+                    <image name="PNG image" src="./images/imagetypes/colortest_32bpp.png" />
+                    <image id="ct32tiff" name="TIFF image" src="./images/imagetypes/colortest_32bpp.tif" />
+                  </imagerow>
+                  <imagerow group="CMYK Images" >
+                    <image  />
+                    <image name="JPEG image (not supported)" src="./images/imagetypes/colortestCMYK.jpg" />
+                    <image />
+                    <image id="Tiff Image" name="TIFF image" src="./images/imagetypes/colortestCMYK_interleaved.tif" />
+                  </imagerow>
+                  <imagerow group="Metafile Images" >
+                    <image/>
+                    <image/>
+                    <image name="WMF Image (converted to PNG)" src="./images/imagetypes/ColorTest_MetaImage.wmf" />
+                    <image/>
+                  </imagerow>
+                </images>
+              </Data>
+            </data:XMLDataSource>
+
+            <pdf:Table style:class="wide">
+              <data:ForEach datasource-id="SampleImages" select="/images/imagerow" >
+                <Template>
+                  <pdf:Row>
+                  <!-- {xpath:count(image)} -->
+                    <pdf:Header-Cell style:column-span="{xpath:count(image)}" style:class="group-heading" >
+                      <pdf:H4 text="{xpath:concat(position(),'. ',@group)}" outline-title="{xpath:@group}"/>
+                    </pdf:Header-Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <data:ForEach select="image" >
+                      <Template>
+                        <pdf:Cell style:class="contact-sheet" style:fill-color="gray" style:font-size="9pt" style:font-italic="true"
+                                  style:margins="5" style:padding="5" style:bg-color="#DDD" >
+                          <pdf:Image id="{xpath:@id}" src="{xpath:@src}"  />
+                          <pdf:Text value="{xpath:concat(position(),'. ',@name)}" />
+                        </pdf:Cell>
+                      </Template>
+                    </data:ForEach>
+                  </pdf:Row>
+                </Template>
+              </data:ForEach>
+            </pdf:Table>
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="ImagePaths" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle"  value="Image Path References" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Images are easy to add from files, they can be relative to the parsed file,
+              or to the executing application or virtual directory with the tilde (~), or absolute file paths,
+              or absolute web URI's
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Relative to the parsed file" outline-title="Relative to the parsed file" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              File based images can be referenced relative to the current file
+              <pdf:Para style:column-count="3" style:font-size="8pt" >
+                images/scryber_logo_380.png
+                <pdf:Image src="images/scryber_logo_380.png" style:margins="4pt" />
+                <pdf:ColumnBreak/>
+                ./images/scryber_logo_380.png
+                <pdf:Image src="./images/scryber_logo_380.png" style:margins="4pt" />
+                <pdf:ColumnBreak/>
+                Inner component with a reference to the image relative to that component
+                <pdf:Component-Ref source="./images/RelativeImageRef.pcfx"/>
+              </pdf:Para>
+            </pdf:Div>
+
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Relative to the execution directory" outline-title="Relative to the execution directory" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Using the tilde (~) will enforce the use of the path relative to the current working directory (usually where the application is running from), or the virtual directory / web app root.
+              <pdf:Para style:font-size="8pt" >
+                ~/../../samples/images/scryber_logo_380.png
+                <pdf:Image src="~/../../samples/images/scryber_logo_380.png" style:margins="4pt" />
+              </pdf:Para>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Full web Uri's" outline-title="Full web Uri's" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Images can be downloaded from a remote source by specifiying the full web url.
+              <pdf:Para style:font-size="8pt" >
+                http://www.scryber.co.uk/Portals/2/Images/scryber_logo_flat_350.png
+                <pdf:Image src="http://www.scryber.co.uk/Portals/2/Images/scryber_logo_flat_350.png" style:margins="4pt" />
+              </pdf:Para>
+            </pdf:Div>
+
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Missing Images" outline-title="Missing Images" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              If the image does not exist, then provided the configuration is set to allow missing images, a placeholder will be used and the details logged.
+              <pdf:Para style:font-size="8pt" >
+                Images/doesnotexist.png
+                <pdf:Image src="./images/doesnotexist.png" style:margins="4pt" style:width="200pt" style:height="70pt" />
+              </pdf:Para>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="DynamicImages" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle"  value="Dynamic Images" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Images that do not reside on the file system, but are dynamically loaded at run time can be resolved in different ways.<pdf:Br/>
+              Three of these methods are shown below.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Direct Assignment of the Data" outline-title="Direct Assignment of the Data" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Before the document is processed the image component is found based on ID and the image data assigned directly in the code.
+              <pdf:Image id="MyDirectAssigment" style:margins="4pt" style:width="150pt" />
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Binding to the items collection" outline-title="Binding to the items" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The image data can be added to the documents Items collection before processing, and then bound to the Image component on databind.
+              <pdf:Image id="MyItemAssigment" img-data="{item:MyCustomBitmap}" style:margins="4pt" style:width="150pt"/>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Configured image factory" outline-title="Configured Image factory" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The image data can be generated dynamically based on an image factory configured to match a specific path pattern. 
+              Here a custom image factory is mapped to the extension *.dynamic and will use the file name for the text in the image.
+              <pdf:Para style:column-count="2" style:font-size="8pt">
+                Ignored/My%20Configured%20Image.dynamic
+                <pdf:Image id="MyItemAssigment" src="My%20Configured%20Image.dynamic" style:margins="4pt" style:width="150pt" />
+                <pdf:ColumnBreak/>
+                My%20Other%20Image.dynamic
+                <pdf:Image id="MyItemAssigment" src="Ignored/My%20Other%20Image.dynamic" style:margins="4pt" style:width="150pt" />
+              </pdf:Para>
+              
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="ImageFillsInShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Image fills and backgrounds" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              All graphical elements support using images as fills or backgrounds, and these can either be specified inline with the component, or through the styles.
+              
+            </pdf:Para>
+            <pdf:Div style:class="wide" outline-title="Panel Background" >
+              <pdf:H4 text="Panel Backgrounds" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              In the simplest form, specifying a background image on a panel will show the repeating image at it's natural size, clipped to the container bounds.
+              <pdf:Div style:bg-image="./images/gradient2.png" style:margins="10pt" >This is the content of the panel with a background image</pdf:Div>
+              No matter what the size of the image, it will always fill and repeat to fill the bounds.
+              <pdf:Div style:bg-image="./images/gradient2.png" style:margins="10pt" style:height="80pt" >This is the content of the panel with a background image and height of 50pt</pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Panel Background" >
+              <pdf:H4 text="Panel Backgrounds" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              In the simplest form, specifying a background image on a panel will show the repeating image at it's natural size, clipped to the container bounds.
+              <pdf:Div style:bg-image="./images/gradient2.png" style:border-color="aqua" style:border-width="2" style:margins="10pt" style:full-width="false" >This is the content of the panel with a background image<pdf:Br/>
+              That will fill the component bounds</pdf:Div>
+              No matter what the size of the image, by default it will always repeat to fill the container bounds.
+              <pdf:Div style:bg-image="./images/gradient2.png" style:border-color="aqua" style:border-width="2" style:margins="10pt" style:height="80pt" >This is the content of the panel with a background image and height of 50pt</pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Image as a Fill" >
+              <pdf:H4 text="Image as a fill" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              Repeating images can also be specified as a fill rather than a background
+              <pdf:Div style:fill-image="./images/gradient2.png"  style:border-color="aqua" style:border-width="2" style:font-size="40pt" style:font-bold="true" style:margins="10pt" style:full-width="false" >
+                This is the content of the panel with an image to fill the text<pdf:Br/>
+                That will be used on multiple lines<pdf:Br/>
+              </pdf:Div>
+             
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Standard Shapes" >
+              <pdf:H4 text="Image background and fills on standard shapes" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              <pdf:Div style:column-count="4" >
+                <pdf:Rect style:width="80" style:height="80" style:fill-image="./images/gradient.png" style:bg-image="./images/gradient2.png"
+                          style:margins="10pt" style:border-color="aqua" style:border-width="2" style:border-corner-radius="5"
+                          style:padding="10pt" style:stroke-color="lime" style:stroke-width="2" />
+                <pdf:ColumnBreak/>
+                <pdf:Triangle style:width="80" style:height="80" style:fill-image="./images/gradient.png" style:bg-image="./images/gradient2.png"
+                          style:margins="10pt" style:border-color="aqua" style:border-width="2" style:border-corner-radius="5"
+                          style:padding="10pt" style:stroke-color="lime" style:stroke-width="2" />
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:vertex-count="6" style:width="80" style:height="80" style:fill-image="./images/gradient.png" style:bg-image="./images/gradient2.png"
+                          style:margins="10pt" style:border-color="aqua" style:border-width="2" style:border-corner-radius="5"
+                          style:padding="10pt" style:stroke-color="lime" style:stroke-width="2" />
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:vertex-count="6" style:vertex-step="2" style:width="80" style:height="80" style:fill-image="./images/gradient.png" style:bg-image="./images/gradient2.png"
+                          style:margins="10pt" style:border-color="aqua" style:border-width="2" style:border-corner-radius="5"
+                          style:padding="10pt" style:stroke-color="lime" style:stroke-width="2" />
+
+              </pdf:Div>
+            </pdf:Div>
+
+
+            <pdf:Div style:class="wide" outline-title="Complex Paths" >
+              <pdf:H4 text="Or complex paths" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+
+              <pdf:Path d="M0 80 L50 50 a 60 20 0 1 1 100 20 l100 100 q 50 100 100 0 Z" style:fill-image="./images/gradient.png" style:bg-image="./images/gradient2.png"
+                        style:margins="10pt" style:border-color="aqua" style:border-width="2" style:border-corner-radius="5"
+                        style:padding="10pt" style:stroke-color="lime" style:stroke-width="2" />
+            </pdf:Div>
+            <pdf:PageBreak/>
+            <pdf:H2 style:class="section-heading" text="Repeating image options"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Images used as backgrounds or fills can have different repeating options set to alter the size and spacing.
+              Specifying the repeat type, along with the finer grained Size, Step and Position give full control of the background or fill style.
+            </pdf:Para>
+            <pdf:Div style:class="wide" outline-title="Background Image Repeat" >
+              <pdf:H4 text="Standard Background Image Repeat" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              By default background images will repeat at their native width in both the x and y directions.
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >On Top of the background image</pdf:Div>
+            </pdf:Div>
+            <pdf:Div style:class="wide" outline-title="Background Image Repeat X Only" >
+              <pdf:H4 text="Background Image Repeat X Only" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              If the background repeat style is set to X only, a single row of images at their ntive height will be rendered as the background.
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:bg-repeat="RepeatX" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >On Top of the background image</pdf:Div>
+            </pdf:Div>
+            <pdf:Div style:class="wide" outline-title="Background Image Repeat X Only" >
+              <pdf:H4 text="Background Image Repeat X Only" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              If the background repeat style is set to Y only, a single column of images at their native width will be rendered as the background.
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:bg-repeat="RepeatY" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >On Top of the background image</pdf:Div>
+            </pdf:Div>
+            <pdf:Div style:class="wide" outline-title="Background Image No Repeat" >
+              <pdf:H4 text="Background Image No Repeat" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              If the background repeat style is set to not repeat, only a single rendition of the image will be generated at the native size.
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:bg-repeat="None" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >On Top of the background image</pdf:Div>
+            </pdf:Div>
+            <pdf:Div style:class="wide" outline-title="Background Image Fill" >
+              <pdf:H4 text="Background Image Fill" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              If the background repeat style is set to Fill, only a single rendition of the image will be generated that will maintain proporions but fill the content completely.
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:bg-repeat="Fill" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >On Top of the background image</pdf:Div>
+            </pdf:Div>
+
+            <pdf:H2 style:class="section-heading" text="Repeating Background image spacing"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Background images also support step sizes and explicit widths. These options are only available within the Style element or as a style class definition
+            </pdf:Para>
+            <pdf:Div style:class="wide" outline-title="Explicit X-Step and Y-Step" >
+              <pdf:H4 text="Explicit X-Step and Y-Step" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              By specifying an X-Step and /or Y-Step value the native size of the image will still be honoured but the repeating offest will be adjusted (these can either be more or less than the native image size)
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >
+                <Style>
+                  <style:Background x-step="40pt" y-step="40pt"/>
+                </Style>
+                On Top of the background image
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Explicit X-Size and Y-Size" >
+              <pdf:H4 text="Explicit X-Size and Y-Size" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              By specifying an X-Size and / or Y-Size value the size of the image will be adjusted but the repeating step will match these size so there will be no breaks in the pattern (these can either be more or less than the native image size)
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >
+                <Style>
+                  <style:Background x-size="10pt" y-size="75pt"/>
+                </Style>
+                On Top of the background image
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Combining Size and Step" >
+              <pdf:H4 text="Combining Size and Step" style:class="group-heading" style:margins="0 0 10 0" ></pdf:H4>
+              By specifying both Size and Step value the size of the image will be adjusted and the pattern will repeat at the required intervals (these can either be more or less than the native image size)
+              <pdf:Div style:width="300pt" style:height="150pt" style:bg-image="./images/gradient.png" style:border-color="red" style:border-width="1pt" style:fill-color="white" style:padding="10pt" style:font-size="30pt" style:margins="10pt" >
+                <Style>
+                  <style:Background x-size="10pt" y-size="70pt" x-step="15pt" y-step="75" />
+                </Style>
+                On Top of the background image
+              </pdf:Div>
+            </pdf:Div>
+
+          </Content>
+
+        </pdf:Section>
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

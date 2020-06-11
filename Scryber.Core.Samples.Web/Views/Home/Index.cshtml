@@ -1,8 +1,16 @@
-﻿@{
+﻿@model Scryber.Core.Samples.Web.Models.DocumentReference[]
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Test Generation <a href="@Url.Action("Generate","Home")" target="_blank">here</a>.</p>
+<div>
+    <h1 class="display-4">Available Samples</h1>
+    <ul>
+        @foreach (var dref in Model)
+        {
+            <li><a href="@Url.Action("Generate","Home", new { name = dref.Name })" target="_blank">@dref.Name</a></li>
+        }
+        
+    </ul>
+    
 </div>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              id="ArabixTextTest">
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style id="MyStyle" applied-class="dynamic" />
+    <style:Style id="OtherStyle" />
+
+    
+  </Styles>
+  <Pages>
+    <pdf:Page id="ArabicPage" >
+      <Content>
+        <pdf:H2  style:class='section-heading' >Arabic (or right to left reading) - Beta</pdf:H2>
+        <pdf:Div style:class='wide' outline-title='Text Direction' >
+
+          <pdf:H4  style:class='group-heading' outline-title='Arabic Text'>Simple Arabic text</pdf:H4>
+          
+          <pdf:Para id="ArabicText" style:class="arabic" >
+            أنا إسمي فاطمة, أعيش في مصر, أبلغ من العمر عشرون سنة, أدرس بجامعة القاهرة
+            , أحب بلدي كثيرا, أذهب مع أصدقائي لزيارة الأهرامات مرة في الشهر, أحب أيضا المشي بجانب نهر النيل حيث النسيم المنعش و المنظر الخلاب.
+            أحب السفر و زيارة الدول الأخرى, زرت مرة المغرب و أعجبني كثيرا, الناس هناك كرماء و لطفاء, إستمتعت بالأكلات المغربية مثل الكسكس و غيرها
+            . أيضا زرت الأردن, بلد رائع حقا! أمضيت يوما كاملا أستمتع بمناظر البتراء, منازل منحوثة على الصخر 
+            ... زيارتي المقبلة سوف تكون للإسبانيا, حيث أرغب بزيارة ساحة الحمراء بالأندلس, بنقوشها الفنية الجميلة, أنا مشتاقة حقا لتلك الرحلة.
+          </pdf:Para>
+
+          <pdf:H4  style:class='group-heading' outline-title='And the translation'>The translation</pdf:H4>
+          <pdf:Para style:class='western'>
+            My name is Fatimah, I live in Egypt, I’m twenty years old, I study in Cairo university, I love my country a lot, I go with my friends and visit the pyramids once a month
+            , I also enjoy walking by the Nile river where the fresh breeze and the awesome sight.
+            I love traveling and visiting other countries, I visited Morocco once and I liked it a lot, people there are generous and kind, 
+            I enjoyed Moroccan dishes like Couscous and others. Also I visited Jordan, a wonderful country indeed! I spend a whole day enjoying the 
+            scenery of Petra, houses carved from rocks… My next visit will be to Spain, where I want to visit the Alhambra in Andalusia, with its beautiful artistic arabesque. I’m excited about that trip.
+          </pdf:Para>
+
+          <pdf:H4  style:class='group-heading' outline-title='Arabic Text, justified'>Simple Arabic text, justified</pdf:H4>
+
+          <pdf:Para id="ArabicJustifiedText" style:class="arabic" style:h-align="Justified" >
+            أنا إسمي فاطمة, أعيش في مصر, أبلغ من العمرعشرون سنة, أدرس بجامعة القاهرة
+            , أحب بلدي كثيرا, أذهب مع أصدقائي لزيارة الأهرامات مرة في الشهر, أحب أيضا المشي بجانب نهر النيل حيث النسيم المنعش و المنظر الخلاب.
+            أحب السفر و زيارة الدول الأخرى, زرت مرة المغرب و أعجبني كثيرا, الناس هناك كرماء و لطفاء, إستمتعت بالأكلات المغربية مثل الكسكس و غيرها
+            . أيضا زرت الأردن, بلد رائع حقا! أمضيت يوما كاملا أستمتع بمناظر البتراء, منازل منحوثة على الصخر
+            ... زيارتي المقبلة سوف تكون للإسبانيا, حيث أرغب بزيارة ساحة الحمراء بالأندلس, بنقوشها الفنية الجميلة, أنا مشتاقة حقا لتلك الرحلة.
+          </pdf:Para>
+
+          <pdf:H4  style:class='group-heading' outline-title='Arabic within western text'>Arabic within western text</pdf:H4>
+
+          <pdf:Para id="ArabicText"  style:h-align="Justified" >
+            My name is Fatimah, I live in Egypt, I’m <pdf:Span style:class="arabic">عشرون</pdf:Span> years old, I study in Cairo university, I love my country a lot, I go with my friends and visit the pyramids once a month
+            , I also enjoy walking by the Nile river where the fresh breeze and the awesome sight.
+            I love traveling and visiting other countries, I visited Morocco once and I liked it a lot, people there are generous and kind,
+            I enjoyed Moroccan dishes like Couscous and others. Also I visited Jordan, a wonderful country indeed! I spend a whole day enjoying the
+            scenery of Petra, houses carved from rocks… My next visit will be to Spain, where I want to visit the Alhambra in Andalusia, with its beautiful artistic arabesque. I’m excited about that trip.
+          </pdf:Para>
+
+          <pdf:H4  style:class='group-heading' outline-title='Arabic Text'>Simple Arabic text with a number</pdf:H4>
+
+          <pdf:Para id="ArabicText" style:class="arabic" >
+            أنا إسمي فاطمة, أعيش في مصر, أبلغ من العمر 20 سنة, أدرس بجامعة القاهرة
+            , أحب بلدي كثيرا, أذهب مع أصدقائي لزيارة الأهرامات مرة في الشهر, أحب أيضا المشي بجانب نهر النيل حيث النسيم المنعش و المنظر الخلاب.
+            أحب السفر و زيارة الدول الأخرى, زرت مرة المغرب و أعجبني كثيرا, الناس هناك كرماء و لطفاء, إستمتعت بالأكلات المغربية مثل الكسكس و غيرها
+            . أيضا زرت الأردن, بلد رائع حقا! أمضيت يوما كاملا أستمتع بمناظر البتراء, منازل منحوثة على الصخر
+            ... زيارتي المقبلة سوف تكون للإسبانيا, حيث أرغب بزيارة ساحة الحمراء بالأندلس, بنقوشها الفنية الجميلة, أنا مشتاقة حقا لتلك الرحلة.
+          </pdf:Para>
+
+          <pdf:H4  style:class='group-heading' outline-title='Arabic Text'>Simple Arabic text with a number in a western span</pdf:H4>
+
+          <pdf:Para id="ArabicText" style:class="arabic" >
+            أنا إسمي فاطمة, أعيش في مصر, أبلغ من العمر <pdf:Span style:class="western">20</pdf:Span> سنة, أدرس بجامعة القاهرة
+            , أحب بلدي كثيرا, أذهب مع أصدقائي لزيارة الأهرامات مرة في الشهر, أحب أيضا المشي بجانب نهر النيل حيث النسيم المنعش و المنظر الخلاب.
+            أحب السفر و زيارة الدول الأخرى, زرت مرة المغرب و أعجبني كثيرا, الناس هناك كرماء و لطفاء, إستمتعت بالأكلات المغربية مثل الكسكس و غيرها
+            . أيضا زرت الأردن, بلد رائع حقا! أمضيت يوما كاملا أستمتع بمناظر البتراء, منازل منحوثة على الصخر
+            ... زيارتي المقبلة سوف تكون للإسبانيا, حيث أرغب بزيارة ساحة الحمراء بالأندلس, بنقوشها الفنية الجميلة, أنا مشتاقة حقا لتلك الرحلة.
+          </pdf:Para>
+          
+        </pdf:Div>
+      </Content>
+    </pdf:Page>
+  </Pages>
+</pdf:Document>

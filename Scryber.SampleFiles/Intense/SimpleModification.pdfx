@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber parser-mode='Lax' parser-log='false' append-log='true' log-level='Verbose' ?>
+<mod:Document xmlns:comp="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:mod="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Modifications.xsd"
+              id="SimpleModifications" auto-bind="true"
+              mod:orig-path="./Source.pdf">
+  <Viewer page-display="Thumbnails"/>
+<Render-Options>
+</Render-Options>
+  <Styles>
+
+    <style:Style applied-type="comp:Page" >
+      <style:Font family="Helvetica" size="18pt" />
+      <style:Margins all="20pt" />
+      <style:Text leading="20pt" />
+    </style:Style>
+
+
+  </Styles>
+
+  <Pages>
+
+    <mod:Insert mod:src-page-index="0" >
+      <Content>
+        This page is inserted at the front
+        <comp:Br/>
+        Page <comp:PageNumber />
+      </Content>
+    </mod:Insert>
+
+    <mod:Delete mod:src-page-index="2" mod:src-page-count="2"/>
+
+    <mod:Update mod:src-page-index="5" mod:content-action="OnTop" style:fill-opacity="0.5" style:fill-color="blue"
+                style:font-size="40" style:font-bold="true" >
+      <Content>
+        This is over the top
+        <comp:PageBreak/>
+        <comp:Div>
+          This is over the top on the next page
+        </comp:Div>
+        <comp:Br/>
+        Page <comp:PageNumber />
+      </Content>
+    </mod:Update>
+
+    <mod:Insert mod:src-page-index="7" >
+      <Content>
+        This page is inserted in the document between the original pages 6 and 7 (zero based)
+        <comp:Br/>
+        Page <comp:PageNumber />
+      </Content>
+    </mod:Insert>
+
+
+
+    <mod:Update mod:content-action="Replace" mod:src-page-index="0" >
+      <Content>
+        This replaces the content on the page. But as it does not have a src-page-index it is treated as zero.
+        <comp:Br/>
+        Page <comp:PageNumber />
+      </Content>
+    </mod:Update>
+
+    <mod:Update mod:content-action="Replace" mod:src-page-index="10" >
+      <Content>
+        This replaces the content on the page 12 of the orginal document - which was actually deleted.
+        <comp:Br/>
+        Page <comp:PageNumber />
+      </Content>
+    </mod:Update>
+
+    <mod:Append>
+      <Content>
+        This will always be at the end of the document
+        <comp:Br/>
+        Page <comp:PageNumber />
+        <comp:PageBreak/>
+        <comp:Div>
+          This is on the next page
+        </comp:Div>
+        <comp:Br/>
+        Page <comp:PageNumber />
+      </Content>
+    </mod:Append>
+
+  </Pages>
+</mod:Document>

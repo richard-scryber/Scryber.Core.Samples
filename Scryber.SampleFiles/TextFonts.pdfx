@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true">
+  <Render-Options compression-type="None" string-output="Hex"/>
+  <Outline title="All System Tests"/>
+  <Params>
+    <pdf:String-Param id="Title" value="All Text Options"/>
+  </Params>
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+    
+    <style:Style applied-type="pdf:Panel" >
+      <style:Position h-align="Left"/>
+    </style:Style>
+
+    <style:Style applied-type="pdf:Para" >
+      <style:Position h-align="Justified"/>
+    </style:Style>
+    
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="UsingFonts" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Use of Fonts" />
+        <pdf:Date-Param id="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+
+        <pdf:Section id="BuiltInFonts" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Built in fonts" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Scryber supports the 14 standard fonts that do not need embedding within a PDF file.<pdf:Br/>
+              These are Helvetica, Times, Courier in the Regular, Bold, Italic and Bold Italic variants.
+              Along with this are the Zapf Dingbats and Symbol fonts available in Regular only.
+            </pdf:Para>
+
+            <!-- 
+              Helvetica Built in font
+            -->
+
+            <pdf:Div style:class="narrow">
+
+              <pdf:Div outline-title="Helvetica font family" >
+                <pdf:H4 text="Helvetica font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Helvetica" >Helvetica Regular</pdf:Para>
+                <pdf:Para style:font-family="Helvetica" style:font-bold="true" >Helvetica Bold</pdf:Para>
+                <pdf:Para style:font-family="Helvetica" style:font-italic="true" >Helvetica Italic</pdf:Para>
+                <pdf:Para style:font-family="Helvetica" style:font-bold="true" style:font-italic="true" >Helvetica Bold Italic</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Helvetica styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Helvetica">This is a paragraph of un-styled text in Helvetica.</pdf:Para>
+                <pdf:Para style:font-family="Helvetica">This is a paragraph of un-styled text in Helvetica that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Helvetica">
+
+                  This is a paragraph of un-styled text in Helvetica that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Helvetica" style:font-bold="true">This is a paragraph of text in Helvetica bold explicity applied to the paragraph style.</pdf:Para>
+                <pdf:Para style:font-family="Helvetica" >
+                  This is a paragraph of text in Helvetica with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should not continue after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Helvetica" style:font-italic="true" >
+                  This is a paragraph of italic text in Helvetica with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Helvetica" style:font-italic="true" >
+                  This is a paragraph of italic text in Helvetica with <pdf:Span style:font-italic="false" >the italic explicitly removed to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Helvetica" style:font-italic="true" >
+                  This is a paragraph of italic text in Helvetica with <pdf:Span style:font-italic="false" style:font-bold="true" >the italic explicitly removed along with the bold explicitly applied to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Helvetica" id="Breaking"  >
+                   This is a paragraph of italic text in Helvetica with a <pdf:B id="BreakingBold">
+                    bold span and then <pdf:I >an italic span</pdf:I> applied to
+                  </pdf:B> part of the paragraph. But should revert to regular after the application.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:ColumnBreak />
+              <!-- 
+              Times built in font
+              -->
+
+              <pdf:Div outline-title="Times font family" >
+                <pdf:H4 text="Times font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Times" >Times Regular</pdf:Para>
+                <pdf:Para style:font-family="Times" style:font-bold="true" >Times Bold</pdf:Para>
+                <pdf:Para style:font-family="Times" style:font-italic="true" >Times Italic</pdf:Para>
+                <pdf:Para style:font-family="Times" style:font-bold="true" style:font-italic="true" >Times Bold Italic</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Times styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Times">This is a paragraph of un-styled text in Times.</pdf:Para>
+                <pdf:Para style:font-family="Times">This is a paragraph of un-styled text in Times that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Times">
+
+                  This is a paragraph of un-styled text in Times that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Times" style:font-bold="true">This is a paragraph of text in Times bold explicity applied to the paragraph style.</pdf:Para>
+                <pdf:Para style:font-family="Times" >
+                  This is a paragraph of text in Times with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should not continue after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Times" style:font-italic="true" >
+                  This is a paragraph of italic text in Times with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Times" style:font-italic="true" >
+                  This is a paragraph of italic text in Times with <pdf:Span style:font-italic="false" >the italic explicitly removed to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Times" style:font-italic="true" >
+                  This is a paragraph of italic text in Times with <pdf:Span style:font-italic="false" style:font-bold="true" >the italic explicitly removed along with the bold explicitly applied to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Times"  >
+                  This is a paragraph of italic text in Times with a <pdf:B>
+                    bold span and then <pdf:I >an italic span</pdf:I> applied to
+                  </pdf:B> part of the paragraph. But should revert to regular after the application.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:ColumnBreak />
+
+              <!-- 
+              Courier built in font
+              -->
+
+              <pdf:Div outline-title="Courier font family" >
+                <pdf:H4 text="Courier font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Courier" >Courier Regular</pdf:Para>
+                <pdf:Para style:font-family="Courier" style:font-bold="true" >Courier Bold</pdf:Para>
+                <pdf:Para style:font-family="Courier" style:font-italic="true" >Courier Italic</pdf:Para>
+                <pdf:Para style:font-family="Courier" style:font-bold="true" style:font-italic="true" >Courier Bold Italic</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Courier styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Courier">This is a paragraph of un-styled text in Courier.</pdf:Para>
+                <pdf:Para style:font-family="Courier">This is a paragraph of un-styled text in Courier that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Courier">
+
+                  This is a paragraph of un-styled text in Courier that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Courier" style:font-bold="true">This is a paragraph of text in Courier bold explicity applied to the paragraph style.</pdf:Para>
+                <pdf:Para style:font-family="Courier" >
+                  This is a paragraph of text in Courier with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should not continue after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Courier" style:font-italic="true" >
+                  This is a paragraph of italic text in Courier with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Courier" style:font-italic="true" >
+                  This is a paragraph of italic text in Courier with <pdf:Span style:font-italic="false" >the italic explicitly removed to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Courier" style:font-italic="true" >
+                  This is a paragraph of italic text in Courier with <pdf:Span style:font-italic="false" style:font-bold="true" >the italic explicitly removed along with the bold explicitly applied to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Courier"  >
+                  This is a paragraph of italic text in Courier with a <pdf:B>
+                    bold span and then <pdf:I >an italic span</pdf:I> applied to
+                  </pdf:B> part of the paragraph. But should revert to regular after the application.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:ColumnBreak/>
+              <!-- 
+              Symbol built in font
+              -->
+
+              <pdf:Div outline-title="Symbol font family" >
+                <pdf:H4 text="Symbol font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Symbol" >Symbol Regular</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Symbol styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Symbol">This is a paragraph of un-styled text in Symbol.</pdf:Para>
+                <pdf:Para style:font-family="Symbol">This is a paragraph of un-styled text in Symbol that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+
+              </pdf:Div>
+
+              <!-- 
+              Zapf Dingbats built in font
+              -->
+
+              <pdf:Div outline-title="Zapf Dingbats font family" >
+                <pdf:H4 text="Zapf Dingbats font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Zapf Dingbats" >Zapf Dingbats Regular</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div>
+                <pdf:H4 text="Applied Symbol styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Zapf Dingbats">This is a paragraph of un-styled text in Zapf Dingbats.</pdf:Para>
+                <pdf:Para style:font-family="Zapf Dingbats">This is a paragraph of un-styled text in Zapf Dingbats that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+
+              </pdf:Div>
+
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <!-- 
+          System Open Type fonts
+        -->
+        <pdf:Section id="SystemFonts" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="System Open Type fonts"/>
+          </Items>
+          <Content>
+
+            <!-- Arial system font -->
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              System Fonts can simply be named by their postscript name and as long as the file (including variant) exist in the system font directory, then that font will be used.<pdf:Br/>
+              In this example the Arial and Bodoni MT Condensed fonts exist in the system fonts directory with full variants available.
+            </pdf:Para>
+            <pdf:Div style:class="narrow">
+              <pdf:Div outline-title="Arial font family" >
+                <pdf:H4 text="Arial font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Arial" >Arial Regular</pdf:Para>
+                <pdf:Para style:font-family="Arial" style:font-bold="true" >Arial Bold</pdf:Para>
+                <pdf:Para style:font-family="Arial" style:font-italic="true" >Arial Italic</pdf:Para>
+                <pdf:Para style:font-family="Arial" style:font-bold="true" style:font-italic="true" >Arial Bold Italic</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Arial styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Arial">This is a paragraph of un-styled text in Arial.</pdf:Para>
+                <pdf:Para style:font-family="Arial">This is a paragraph of un-styled text in Arial that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Arial">
+
+                  This is a paragraph of un-styled text in Arial that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Arial" style:font-bold="true">This is a paragraph of text in Arial bold explicity applied to the paragraph style.</pdf:Para>
+                <pdf:Para style:font-family="Arial" >
+                  This is a paragraph of text in Arial with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should not continue after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Arial" style:font-italic="true" >
+                  This is a paragraph of italic text in Arial with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Arial" style:font-italic="true" >
+                  This is a paragraph of italic text in Arial with <pdf:Span style:font-italic="false" >the italic explicitly removed to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Arial" style:font-italic="true" >
+                  This is a paragraph of italic text in Arial with <pdf:Span style:font-italic="false" style:font-bold="true" >the italic explicitly removed along with the bold explicitly applied to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Arial"  >
+                  This is a paragraph of regular text in Arial with a <pdf:B>
+                    bold span and then <pdf:I >an italic span</pdf:I> applied to
+                  </pdf:B> part of the paragraph. But should revert to regular after the application.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:ColumnBreak/>
+
+              <!-- Bodoni MT Condensed -->
+              <pdf:Div outline-title="Bodoni MT Condensed font family" >
+                <pdf:H4 text="Bodoni MT Condensed font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Bodoni MT Condensed" >Bodoni MT Condensed Regular</pdf:Para>
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-bold="true" >Bodoni MT Condensed Bold</pdf:Para>
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-italic="true" >Bodoni MT Condensed Italic</pdf:Para>
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-bold="true" style:font-italic="true" >Bodoni MT Condensed Bold Italic</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Bodoni MT Condensed styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Bodoni MT Condensed">This is a paragraph of un-styled text in Bodoni MT Condensed.</pdf:Para>
+                <pdf:Para style:font-family="Bodoni MT Condensed">This is a paragraph of un-styled text in Bodoni MT Condensed that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Bodoni MT Condensed">
+
+                  This is a paragraph of un-styled text in Bodoni MT Condensed that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-bold="true">This is a paragraph of text in Bodoni MT Condensed bold explicity applied to the paragraph style.</pdf:Para>
+                <pdf:Para style:font-family="Bodoni MT Condensed" >
+                  This is a paragraph of text in Bodoni MT Condensed with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should not continue after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-italic="true" >
+                  This is a paragraph of italic text in Bodoni MT Condensed with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-italic="true" >
+                  This is a paragraph of italic text in Bodoni MT Condensed with <pdf:Span style:font-italic="false" >the italic explicitly removed to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Bodoni MT Condensed" style:font-italic="true" >
+                  This is a paragraph of italic text in Bodoni MT Condensed with <pdf:Span style:font-italic="false" style:font-bold="true" >the italic explicitly removed along with the bold explicitly applied to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Bodoni MT Condensed"  >
+                  This is a paragraph of italic text in Bodoni MT Condensed with a <pdf:B>
+                    bold span and then <pdf:I >an italic span</pdf:I> applied to
+                  </pdf:B> part of the paragraph. But should revert to regular after the application.
+                </pdf:Para>
+
+              </pdf:Div>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <!-- 
+          Explict inclusions and resource fonts
+        -->
+        
+        <pdf:Section id="ExplicitFonts" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Explicit font inclusion via Config file"/>
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Fonts can be explicitly named in the configuration file with a reference to the file itself, or as an embedded resource within an assembly<pdf:Br/>
+              In this example the Blackadder font is a TTF file (ITCBLKAD.TTF) in the resources directory, and the Motorwerk Online has been embedded in the application assembly itself
+              so normal users cannot utilise the file for their own use.
+            </pdf:Para>
+            <pdf:Div style:class="narrow">
+              <pdf:Div outline-title="Blackadder font family" >
+                <pdf:H4 text="Blackadder font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Blackadder" >Blackadder Regular</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div>
+                <pdf:H4 text="Applied Blackadder styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Blackadder">This is a paragraph of un-styled text in Blackadder.</pdf:Para>
+                <pdf:Para style:font-family="Blackadder">This is a paragraph of un-styled text in Blackadder that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Blackadder">
+
+                  This is a paragraph of un-styled text in Blackadder that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:ColumnBreak/>
+
+              <pdf:Div outline-title="Motorwerk Oblique font family" >
+                <pdf:H4 text="Motorwerk Oblique font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Motorwerk Oblique" >Motorwerk Oblique Regular</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div>
+                <pdf:H4 text="Applied Motorwerk Oblique styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Motorwerk Oblique">This is a paragraph of un-styled text in Motorwerk Oblique.</pdf:Para>
+                <pdf:Para style:font-family="Motorwerk Oblique">This is a paragraph of un-styled text in Motorwerk Oblique that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Motorwerk Oblique">
+
+                  This is a paragraph of un-styled text in Motorwerk Oblique that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+              </pdf:Div>
+
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <!--
+          Fonts loaded from other location
+        -->
+        <pdf:Section id="NonSystemFonts" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Non-Installed Fonts"/>
+          </Items>
+          <Content>
+
+            <!-- Book Antiqua system font -->
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+             Fonts can be referenced in a separate directory, that are not installed on the server / system by specifying the @default-directory in the Fonts section of the configuration file. Any fonts in this directory will be loaded
+             dynamically and available for use in any PDF. In this example the Book Antiqua family reside in a separate folder that is referenced and can be used.
+            </pdf:Para>
+            <pdf:Div style:class="narrow">
+              <pdf:Div outline-title="Book Antiqua font family" >
+                <pdf:H4 text="Book Antiqua font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Book Antiqua" >Book Antiqua Regular</pdf:Para>
+                <pdf:Para style:font-family="Book Antiqua" style:font-bold="true" >Book Antiqua Bold</pdf:Para>
+                <pdf:Para style:font-family="Book Antiqua" style:font-italic="true" >Book Antiqua Italic</pdf:Para>
+                <pdf:Para style:font-family="Book Antiqua" style:font-bold="true" style:font-italic="true" >Book Antiqua Bold Italic</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div >
+                <pdf:H4 text="Applied Book Antiqua styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Book Antiqua">This is a paragraph of un-styled text in Book Antiqua.</pdf:Para>
+                <pdf:Para style:font-family="Book Antiqua">This is a paragraph of un-styled text in Book Antiqua that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Book Antiqua">
+
+                  This is a paragraph of un-styled text in Book Antiqua that should flow over 2 or more
+
+                  lines with white space inside, before and after, that should be ignored.
+
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Book Antiqua" style:font-bold="true">This is a paragraph of text in Book Antiqua bold explicity applied to the paragraph style.</pdf:Para>
+                <pdf:Para style:font-family="Book Antiqua" >
+                  This is a paragraph of text in Book Antiqua with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should not continue after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Book Antiqua" style:font-italic="true" >
+                  This is a paragraph of italic text in Book Antiqua with a <pdf:B>bold span applied to</pdf:B> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Book Antiqua" style:font-italic="true" >
+                  This is a paragraph of italic text in Book Antiqua with <pdf:Span style:font-italic="false" >the italic explicitly removed to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Book Antiqua" style:font-italic="true" >
+                  This is a paragraph of italic text in Book Antiqua with <pdf:Span style:font-italic="false" style:font-bold="true" >the italic explicitly removed along with the bold explicitly applied to</pdf:Span> part of the paragraph. But should revert to italic after the application.
+                </pdf:Para>
+
+                <pdf:Para style:font-family="Book Antiqua"  >
+                  This is a paragraph of italic text in Book Antiqua with a <pdf:B>
+                    bold span and then <pdf:I >an italic span</pdf:I> applied to
+                  </pdf:B> part of the paragraph. But should revert to regular after the application.
+                </pdf:Para>
+
+              </pdf:Div>
+
+              
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <!-- 
+          Font fallback and non-existant fonts
+        -->
+        <pdf:Section id="FontFallback" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Font variant and family fallback"/>
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes">
+              For font variants that do not exist, the library should fall back to the regular variant and use that instead.
+              If the font family does not exist then it should fall back to the default font of Courier.
+            </pdf:Para>
+            <pdf:Div style:class="narrow">
+              <pdf:Div outline-title="Algerian Bold font family" >
+                <pdf:H4 text="Algerian font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Algerian" >Algerian Regular</pdf:Para>
+                <pdf:Para style:font-family="Algerian" style:font-bold="true" >Algerian Bold (Does not exist)</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div>
+                <pdf:H4 text="Applied Algerian styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Algerian">This is a paragraph of un-styled text in Algerian.</pdf:Para>
+                <pdf:Para style:font-family="Algerian">This is a paragraph of bold text in Algerian that should fallback to regular.</pdf:Para>
+                <pdf:Para style:font-family="Algerian" style:font-bold="true">
+
+                  This is a paragraph of un-styled text in Algerian that <pdf:B>has a bold section but will fall back to the</pdf:B>
+                  regular variant as Bold does not exist.
+
+                </pdf:Para>
+
+              </pdf:Div>
+
+              <pdf:ColumnBreak/>
+
+              <pdf:Div outline-title="Non-Existant font family" >
+                <pdf:H4 text="Non-Existant font family" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Non-Existant" >Non-Existant (Fall back to Courier)</pdf:Para>
+              </pdf:Div>
+
+              <pdf:Div>
+                <pdf:H4 text="Applied Non-Existant styles" style:class="group-heading"></pdf:H4>
+                <pdf:Para style:font-family="Non-Existant">This is a paragraph of un-styled text in Non-Existant.</pdf:Para>
+                <pdf:Para style:font-family="Non-Existant">This is a paragraph of un-styled text in Non-Existant Bold that should flow over 2 or more lines because we are in a narrow column on the page.</pdf:Para>
+                <pdf:Para style:font-family="Non-Existant">
+
+                  This is a paragraph of un-styled text in Non-Existant that <pdf:B>has a bold section but will fall back to the</pdf:B>
+                 default Courier font as no variants exist.
+
+              </pdf:Para>
+
+              </pdf:Div>
+
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

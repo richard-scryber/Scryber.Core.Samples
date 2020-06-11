@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber parser-mode='Strict' parser-log='false' append-log='false' log-level='Warnings' ?>
+<pdf:Page  id="Report1"
+              xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd">
+
+  <Header>
+    Date: <pdf:Date />
+  </Header>
+  
+  <Content>
+    Hello World Frpm Report 2
+  </Content>
+  
+</pdf:Page>

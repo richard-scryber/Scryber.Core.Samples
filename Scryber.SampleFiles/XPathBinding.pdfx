@@ -1,0 +1,1105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='false' parser-log='true' parser-mode='Lax' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:bind="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Binding.Components.xsd"
+              auto-bind="true" >
+  <Info >
+    <Title>{item:Title}</Title>
+  </Info>
+  <Outline title="{item:Title}"/>
+  <Render-Options img-cache-mins="20" compression-type="None"/>
+  <Params>
+    <pdf:String-Param id="Title" value="XPath Binding Document"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage" fit-window="true" hide-windowUI="false" hide-menubar="true" hide-toolbar="true"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="XPathBindingGroup" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="XPath Data Binding" />
+        <pdf:Date-Param id="ReportDate"/>
+      </Items>
+
+      <Pages>
+
+        <pdf:Section id="XMLFileDataSource" style:class="system-test-page" outline-title="XML Files" >
+          <Items>
+            <pdf:Int-Item value="2000" key="MinReportYear" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="XPath - XML Data Binding"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The XMLDataSource has native support for explicitly setting the XML Data. These can be provided in a number of ways
+              <pdf:Dl style:number-inset="100pt">
+                <pdf:Di style:item-label="Xml File">By specifying the source path attribute to the location of an xml file</pdf:Di>
+                <pdf:Di style:item-label="Xml Node Data">By specifying a binding expression to the xml-node-data to some Xml Data - either from an item, or as part of a nested databinding operation</pdf:Di>
+                <pdf:Di style:item-label="XPath Data" >By specifying and setting the data to an XPathNavigator instance.</pdf:Di>
+              </pdf:Dl>
+
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="XML File - all items" outline-title="XML File - all items"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Simple binding to an Xml file into a list without namespaces.
+              </pdf:Para>
+
+              <data:XMLDataSource id="BooksSource" source-path="..\Resources\Books.xml" />
+
+              <pdf:Ol>
+                <data:ForEach select="catalog/book" datasource-id="BooksSource" >
+                  <Template>
+                    <pdf:Li >
+                      <pdf:Text value="{xpath:concat(title, ' - ', author)}" />
+                    </pdf:Li>
+                  </Template>
+                </data:ForEach>
+              </pdf:Ol>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+
+              <pdf:H4 text="XML File - every other item" outline-title="XML File - every other item"
+                        style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Looping over every other item
+              </pdf:Para>
+
+              <pdf:Ol>
+                <data:ForEach select="catalog/book" datasource-id="BooksSource" step="2" >
+                  <Template>
+                    <pdf:Li >
+                      <pdf:Text value="{xpath:concat(title, ' - ', author)}" />
+                    </pdf:Li>
+                  </Template>
+                </data:ForEach>
+              </pdf:Ol>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+
+              <pdf:H4 text="XML File - index = 5 and count = 5" outline-title="XML File - index = 5 and count = 5"
+                        style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                A start index of 5 (zero based) and a count of 5
+              </pdf:Para>
+
+              <pdf:Ol>
+                <data:ForEach select="catalog/book" datasource-id="BooksSource" start-index="5" count="5" >
+                  <Template>
+                    <pdf:Li >
+                      <pdf:Text value="{xpath:concat(title, ' - ', author)}" />
+                    </pdf:Li>
+                  </Template>
+                </data:ForEach>
+              </pdf:Ol>
+
+            </pdf:Div>
+            <pdf:PageBreak/>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="XML Namespace File" outline-title="XML Namespace File"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                The datasource has a single file with multiple declared namespaces. We declare the prefix for each
+                namespace and split the nested loop.
+              </pdf:Para>
+
+              <data:XMLDataSource id="OrdersSource" source-path="..\Resources\ConsolidatedPurchaseOrders.xml" >
+                <Namespaces>
+                  <data:Xmlns prefix="c" namespace="www.contoso.com"/>
+                  <data:Xmlns prefix="aw" namespace="http://www.adventure-works.com"/>
+                </Namespaces>
+              </data:XMLDataSource>
+              <pdf:Br/>
+
+              <pdf:H4 text="Purchase Orders" ></pdf:H4>
+
+              <data:ForEach select="c:PurchaseOrders" datasource-id="OrdersSource" >
+                <Template>
+                  <!-- Consoto orders -->
+                  <data:ForEach select="c:PurchaseOrder" >
+                    <Template>
+                      <pdf:Div style:padding="5" style:margins="5" style:border-color="#CFC" style:overflow-split="Never" >
+                        <pdf:H6 >
+                          Contoso Purchase Order <pdf:Text value="{xpath:@PurchaseOrderNumber}" /> - <pdf:Date style:date-format="dd MMMM yyyy" value="{xpath:@OrderDate}" />
+                        </pdf:H6>
+                        <pdf:Div style:class="wide" style:margins="10" >
+                          <!-- loop through each address and spit out each element that is part of that address -->
+                          <data:ForEach select="c:Address" >
+                            <Template>
+                              <pdf:B>
+                                <pdf:Text value="{xpath:concat(@Type, ' Address: ')}" />
+                              </pdf:B>
+                              <data:ForEach select="*" >
+                                <Template>
+                                  <pdf:Text value="{xpath:concat(text(), ' ')}" />
+                                </Template>
+                              </data:ForEach>
+                              <pdf:Br/>
+                            </Template>
+                          </data:ForEach>
+                        </pdf:Div>
+                        <!-- order items -->
+                        <pdf:Table style:full-width="true" style:margins="5pt" >
+                          <pdf:Header-Row>
+                            <pdf:Header-Cell style:width="100pt" style:border-color="#CCC" style:padding="4">Part.</pdf:Header-Cell>
+                            <pdf:Header-Cell style:border-color="#CCC" style:padding="4">Name</pdf:Header-Cell>
+                            <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Qty.</pdf:Header-Cell>
+                            <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Price $</pdf:Header-Cell>
+                          </pdf:Header-Row>
+                          <data:ForEach select="c:Items/c:Item" >
+                            <Template>
+                              <pdf:Row>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4">
+                                  <pdf:Text value="{xpath:@PartNumber}" />
+                                </pdf:Cell>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4">
+                                  <pdf:Text value="{xpath:c:ProductName}" />
+                                </pdf:Cell>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                                  <pdf:Text value="{xpath:c:Quantity}" />
+                                </pdf:Cell>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                                  <pdf:Text value="{xpath:c:USPrice}" />
+                                </pdf:Cell>
+                              </pdf:Row>
+                            </Template>
+                          </data:ForEach>
+                        </pdf:Table>
+                        <pdf:Div style:class="wide" style:margins="10" style:font-italic="true" >
+                          Delivery Notes: <pdf:Text value="{xpath:c:DeliveryNotes}" />
+                        </pdf:Div>
+                      </pdf:Div>
+                    </Template>
+                  </data:ForEach>
+
+                  <!-- Adventure Works - has a slightly different schema -->
+                  <data:ForEach select="aw:PurchaseOrder" >
+                    <Template>
+                      <pdf:Div style:padding="5" style:margins="5" style:border-color="#CCF" style:overflow-split="Never" >
+                        <pdf:H6 >
+                          Adventure Works Purchase Order <pdf:Text value="{xpath:@PONumber}" /> - <pdf:Date style:date-format="dd MMMM yyyy" value="{xpath:@Date}" />
+                        </pdf:H6>
+                        <pdf:Div style:class="wide" style:margins="10" >
+                          <!-- loop through each address and spit out each element that is part of that address -->
+                          <data:ForEach select="aw:ShippingAddress" >
+                            <Template>
+                              <pdf:B>
+                                <pdf:Text value="Shipping Address" />
+                              </pdf:B>
+                              <data:ForEach select="*" >
+                                <Template>
+                                  <pdf:Text value="{xpath:concat(text(), ' ')}" />
+                                </Template>
+                              </data:ForEach>
+                              <pdf:Br/>
+                            </Template>
+                          </data:ForEach>
+                        </pdf:Div>
+                        <!-- order items -->
+                        <pdf:Table style:full-width="true" style:margins="5pt" >
+                          <pdf:Header-Row>
+                            <pdf:Header-Cell style:width="100pt" style:border-color="#CCC" style:padding="4">Part.</pdf:Header-Cell>
+                            <pdf:Header-Cell style:border-color="#CCC" style:padding="4">Name</pdf:Header-Cell>
+                            <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Qty.</pdf:Header-Cell>
+                            <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Price $</pdf:Header-Cell>
+                          </pdf:Header-Row>
+                          <data:ForEach select="aw:Item" >
+                            <Template>
+                              <pdf:Row>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4">
+                                  <pdf:Text value="{xpath:@PartNum}" />
+                                </pdf:Cell>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4">
+                                  <pdf:Text value="{xpath:aw:ProductID}" />
+                                </pdf:Cell>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                                  <pdf:Text value="{xpath:aw:Qty}" />
+                                </pdf:Cell>
+                                <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                                  <pdf:Text value="{xpath:aw:Price}" />
+                                </pdf:Cell>
+                              </pdf:Row>
+                            </Template>
+                          </data:ForEach>
+                        </pdf:Table>
+                        <pdf:Div style:class="wide" style:margins="10" style:font-italic="true" >
+                          Delivery Notes: <pdf:Text value="{xpath:aw:DeliveryInstructions}" />
+                        </pdf:Div>
+                      </pdf:Div>
+                    </Template>
+                  </data:ForEach>
+                </Template>
+              </data:ForEach>
+            </pdf:Div>
+            <pdf:PageBreak/>
+
+            <!-- Adding a transformation file -->
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="XML Transformed File" outline-title="XML Transformed File"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                By using an intermediary transformation xslt file, not only can we simplify the output, but we
+                can also abstract the input format from the binding templates and add extra data. Allowing us to easily adapt to changing schema
+                later on.
+              </pdf:Para>
+
+              <data:XMLDataSource id="TransformedSource" source-path="../Resources/ConsolidatedPurchaseOrders.xml" >
+                <Transform path="../Resources/NormalisePurchaseOrders.xslt"></Transform>
+                <Namespaces>
+                  <data:Xmlns prefix="po" namespace="http://derrivedoutput.scryber.co.uk/purchase-orders"/>
+                </Namespaces>
+              </data:XMLDataSource>
+              <pdf:Br/>
+              <pdf:H4 text="Transformed Purchase Orders" ></pdf:H4>
+              <data:ForEach select="po:PurchaseOrders/po:PurchaseOrder" datasource-id="TransformedSource" >
+                <Template>
+                  <pdf:Div style:padding="5" style:margins="5" style:border-color="#CFC" style:overflow-split="Never" >
+                    <pdf:H6 >
+                      Purchase Order <pdf:Text value="{xpath:@po-num}" /> - <pdf:Date style:date-format="dd MMMM yyyy" value="{xpath:@order-date}" />
+                    </pdf:H6>
+                    <pdf:Div style:class="wide" style:margins="5" >
+                      <!-- loop through each address and spit out each element that is part of that address -->
+                      <data:ForEach select="po:Addresses/po:Address" >
+                        <Template>
+                          <pdf:B>
+                            <pdf:Text value="{xpath:concat(@type, ' Address: ')}" />
+                          </pdf:B>
+                          <data:ForEach select="*" >
+                            <Template>
+                              <pdf:Text value="{xpath:concat(text(), ' ')}" />
+                            </Template>
+                          </data:ForEach>
+                          <pdf:Br/>
+                        </Template>
+                      </data:ForEach>
+                    </pdf:Div>
+
+                    <!-- order items -->
+                    <pdf:Table style:full-width="true" style:margins="5pt" >
+                      <pdf:Header-Row>
+                        <pdf:Header-Cell style:width="100pt" style:border-color="#CCC" style:padding="4">Part.</pdf:Header-Cell>
+                        <pdf:Header-Cell style:border-color="#CCC" style:padding="4">Name</pdf:Header-Cell>
+                        <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Qty.</pdf:Header-Cell>
+                        <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Unit Price $</pdf:Header-Cell>
+                        <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Total Price $</pdf:Header-Cell>
+                      </pdf:Header-Row>
+                      <data:ForEach select="po:PurchaseItems/po:Item" >
+                        <Template>
+                          <pdf:Row>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4">
+                              <pdf:Text value="{xpath:@num}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4">
+                              <pdf:Text value="{xpath:po:Name}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                              <pdf:Text value="{xpath:po:Quantity}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                              <pdf:Text value="{xpath:po:UnitPrice}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right" style:font-bold="true">
+                              <pdf:Text value="{xpath:po:TotalPrice}" />
+                            </pdf:Cell>
+                          </pdf:Row>
+                        </Template>
+                      </data:ForEach>
+                    </pdf:Table>
+                    <pdf:Div style:class="wide" style:margins="10" style:font-italic="true" >
+                      Delivery Notes: <pdf:Text value="{xpath:po:Notes}" />
+                    </pdf:Div>
+
+                  </pdf:Div>
+                </Template>
+              </data:ForEach>
+            </pdf:Div>
+            <pdf:PageBreak />
+
+            <!-- Addingan XSLT argument to the transformation file -->
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="XML Transformed File with Arguments" outline-title="XML Transformed File with Arguments"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Arguments can be passed and applied to the transformation using either the generic XsltArgument element (which can be databound), or the explicit
+                XsltItemArgument or XsltQSArgument.
+              </pdf:Para>
+
+              <data:XMLDataSource id="TransformedWithArgs" source-path="../Resources/ConsolidatedPurchaseOrders.xml" >
+                <Transform path="../Resources/NormalisePurchaseOrders.xslt">
+                  <!-- value is set on the items collection of the section for convenience -->
+                  <data:XsltArgument name="Min-Year" value="{item:MinReportYear}" />
+                </Transform>
+                <Namespaces>
+                  <data:Xmlns prefix="po" namespace="http://derrivedoutput.scryber.co.uk/purchase-orders"/>
+                </Namespaces>
+              </data:XMLDataSource>
+              <pdf:Br/>
+              <pdf:H4 >
+                Transformed Purchase Orders from year <pdf:Text value="{item:MinReportYear}" />
+              </pdf:H4>
+              <data:ForEach select="po:PurchaseOrders/po:PurchaseOrder" datasource-id="TransformedWithArgs" >
+                <Template>
+                  <pdf:Div style:padding="5" style:margins="5" style:border-color="#CFC" style:overflow-split="Never" >
+                    <pdf:H6 >
+                      Purchase Order <pdf:Text value="{xpath:@po-num}" /> - <pdf:Date style:date-format="dd MMMM yyyy" value="{xpath:@order-date}" />
+                    </pdf:H6>
+                    <pdf:Div style:class="wide" style:margins="5" >
+                      <!-- loop through each address and spit out each element that is part of that address -->
+                      <data:ForEach select="po:Addresses/po:Address" >
+                        <Template>
+                          <pdf:B>
+                            <pdf:Text value="{xpath:concat(@type, ' Address: ')}" />
+                          </pdf:B>
+                          <data:ForEach select="*" >
+                            <Template>
+                              <pdf:Text value="{xpath:concat(text(), ' ')}" />
+                            </Template>
+                          </data:ForEach>
+                          <pdf:Br/>
+                        </Template>
+                      </data:ForEach>
+                    </pdf:Div>
+
+                    <!-- order items -->
+                    <pdf:Table style:full-width="true" style:margins="5pt" >
+                      <pdf:Header-Row>
+                        <pdf:Header-Cell style:width="100pt" style:border-color="#CCC" style:padding="4">Part.</pdf:Header-Cell>
+                        <pdf:Header-Cell style:border-color="#CCC" style:padding="4">Name</pdf:Header-Cell>
+                        <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Qty.</pdf:Header-Cell>
+                        <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Unit Price $</pdf:Header-Cell>
+                        <pdf:Header-Cell style:width="60pt" style:border-color="#CCC" style:padding="4" style:h-align="Right">Total Price $</pdf:Header-Cell>
+                      </pdf:Header-Row>
+                      <data:ForEach select="po:PurchaseItems/po:Item" >
+                        <Template>
+                          <pdf:Row>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4">
+                              <pdf:Text value="{xpath:@num}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4">
+                              <pdf:Text value="{xpath:po:Name}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                              <pdf:Text value="{xpath:po:Quantity}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right">
+                              <pdf:Text value="{xpath:po:UnitPrice}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:border-color="#CCC" style:padding="4" style:h-align="Right" style:font-bold="true">
+                              <pdf:Text value="{xpath:po:TotalPrice}" />
+                            </pdf:Cell>
+                          </pdf:Row>
+                        </Template>
+                      </data:ForEach>
+                    </pdf:Table>
+                    <pdf:Div style:class="wide" style:margins="10" style:font-italic="true" >
+                      Delivery Notes: <pdf:Text value="{xpath:po:Notes}" />
+                    </pdf:Div>
+
+                  </pdf:Div>
+                </Template>
+              </data:ForEach>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="XMLItemDataSource" outline-title="Dynamic XML" >
+          <Items>
+            <pdf:Xml-Param id="DeclarativeXml">
+              <!-- Declarative XML Item that can be picked up by the databound source -->
+              <catalog xmlns="http://samples.scryber.co.uk/doesnot/exist">
+                <book id="bk101">
+                  <author>Gambardella, Matthew</author>
+                  <title>XML Developer's Guide</title>
+                  <genre>Computer</genre>
+                  <price>44.95</price>
+                  <publish_date>2000-10-01</publish_date>
+                  <description>
+                    An in-depth look at creating applications
+                    with XML.
+                  </description>
+                </book>
+                <book id="bk102">
+                  <author>Ralls, Kim</author>
+                  <title>Midnight Rain</title>
+                  <genre>Fantasy</genre>
+                  <price>5.95</price>
+                  <publish_date>2000-12-16</publish_date>
+                  <description>
+                    A former architect battles corporate zombies,
+                    an evil sorceress, and her own childhood to become queen
+                    of the world.
+                  </description>
+                </book>
+                <book id="bk103">
+                  <author>Corets, Eva</author>
+                  <title>Maeve Ascendant</title>
+                  <genre>Fantasy</genre>
+                  <price>5.95</price>
+                  <publish_date>2000-11-17</publish_date>
+                  <description>
+                    After the collapse of a nanotechnology
+                    society in England, the young survivors lay the
+                    foundation for a new society.
+                  </description>
+                </book>
+              </catalog>
+            </pdf:Xml-Param>
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="XPath - Dynamic XML"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Along with using a file as the source of the XML data, the XMLDataSource can use data set on the items collection
+              either as part of the declarative content, or from the code that is invoking the document.
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+
+              <pdf:H4 text="Declarative Xml content in the items collection" outline-title="Declarative Xml Content"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                The Xml node data is assigned to the 'DeclarativeXml' item in this section Items collection in the actual file itself.
+              </pdf:Para>
+              <data:XMLDataSource id="ItemsBooksSource" xml-node-data="{item:DeclarativeXml}" >
+                <Namespaces>
+                  <data:Xmlns prefix="dn" namespace="http://samples.scryber.co.uk/doesnot/exist"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+              <pdf:Ol>
+                <data:ForEach select="/dn:catalog/dn:book" datasource-id="ItemsBooksSource" >
+                  <Template>
+                    <pdf:Li >
+                      <pdf:Text value="{xpath:concat(dn:title, ' - ', dn:author)}" />
+                    </pdf:Li>
+                  </Template>
+                </data:ForEach>
+              </pdf:Ol>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+
+              <pdf:H4 text="XPath content set in code" outline-title="XPath content set in code."
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                The XPath data is assigned to the 'MyXPathContent' item for this document in the code that generates the document
+              </pdf:Para>
+
+              <data:XMLDataSource id="CodeAssignedBooksSource" xpath-data="{item:MyXPathContent}" >
+                <Namespaces>
+                  <data:Xmlns prefix="dn" namespace="http://schemas.scryber.co.uk/TopBookList"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+              <pdf:Ol>
+                <data:ForEach select="/dn:Books/dn:Book" datasource-id="CodeAssignedBooksSource" >
+                  <Template>
+                    <pdf:Li >
+                      <pdf:Text value="{xpath:concat(dn:Title, ' - ', dn:Author/dn:FullName)}" />
+                    </pdf:Li>
+                  </Template>
+                </data:ForEach>
+              </pdf:Ol>
+
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+<!-- 
+        <pdf:PageGroup outline-title="Binding at Page Level">
+          
+          <Pages>
+            <data:XMLDataSource id="PerPageTransformedSource" source-path="../Resources/ConsolidatedPurchaseOrders.xml" >
+              <Transform path="../Resources/NormalisePurchaseOrders.xslt"></Transform>
+              <Namespaces>
+                <data:Xmlns prefix="po" namespace="http://derrivedoutput.scryber.co.uk/purchase-orders"/>
+              </Namespaces>
+            </data:XMLDataSource>
+
+            <data:ForEach datasource-id="PerPageTransformedSource" select="po:PurchaseOrders/po:PurchaseOrder" count="4" >
+              <Template>
+                <pdf:Page outline-title="{xpath:concat('PO#',@po-num)}">
+                  <Header>
+                    <pdf:Div style:padding="10" style:full-width="true" style:bg-color="red" style:fill-color="white">
+                      This page is the content of a ForEach template at the page level. As the data is enumberated a new page is generated each time.<pdf:Br/>
+                      The standard document header has been overwitten, but styles will still flow down onto these pages.
+                    </pdf:Div>
+                  </Header>
+                  <Content>
+                    <pdf:H2 style:class="section-heading" text="{xpath:concat('Purchase Order #',@po-num)}"></pdf:H2>
+                    <pdf:Div style:class="wide" style:column-count="{xpath:count(po:Addresses/po:Address)}" >
+                      <data:ForEach select="po:Addresses/po:Address">
+                        <Template>
+                          <pdf:H4 style:class="group-heading" text="{xpath:concat(@type,' Address')}" />
+                          <pdf:Div style:padding="5">
+                            <pdf:B>Name: <pdf:Text value="{xpath:po:Name}" /><pdf:Br/></pdf:B>
+                            Street: <pdf:Text value="{xpath:po:Street}" /><pdf:Br/>
+                            City: <pdf:Text value="{xpath:po:City}" /><pdf:Br/>
+                            State: <pdf:Text value="{xpath:po:State}" /><pdf:Br/>
+                            Zip: <pdf:Text value="{xpath:po:Zip}" /><pdf:Br/>
+                            Country: <pdf:Text value="{xpath:po:Country}" />
+                          </pdf:Div>
+                          
+                          <data:If test="position() &lt; count(../../po:Addresses/po:Address)" >
+                            <Template>
+                              <pdf:ColumnBreak/>
+                            </Template>
+                          </data:If>
+                        </Template>
+                      </data:ForEach>
+                    </pdf:Div>
+                    <pdf:Div style:class="wide" >
+                      <pdf:H4 style:class="group-heading" text="Purchase Items" outline-title="{xpath:concat('Items for #',@po-num)}" />
+                      <pdf:Table style:full-width="true" style:margins="10 0 10 0" >
+                        <pdf:Header-Row style:border-color="#555" style:border-sides="Bottom" >
+                          <pdf:Header-Cell style:padding="2" style:width="60pt">Item</pdf:Header-Cell>
+                          <pdf:Header-Cell>Name</pdf:Header-Cell>
+                          <pdf:Header-Cell style:padding="2" style:width="100pt" style:h-align="Right" >Unit Price</pdf:Header-Cell>
+                          <pdf:Header-Cell style:padding="2" style:width="100pt" style:h-align="Right" >Quantity</pdf:Header-Cell>
+                          <pdf:Header-Cell style:padding="2" style:width="100pt" style:h-align="Right" >Total Price</pdf:Header-Cell>
+                        </pdf:Header-Row>
+                        <data:ForEach select="po:PurchaseItems/po:Item" >
+                          <Template>
+                            <pdf:Row style:border-color="#CCC" style:border-sides="Bottom">
+                              <pdf:Cell style:padding="2" >
+                                <pdf:Text value="{xpath:@num}" />
+                              </pdf:Cell>
+                              <pdf:Cell style:padding="2" >
+                                <pdf:Text value="{xpath:po:Name}" />
+                              </pdf:Cell>
+                              <pdf:Cell style:padding="2" style:h-align="Right" >
+                                <pdf:Text value="{xpath:concat('$',po:UnitPrice)}" />
+                              </pdf:Cell>
+                              <pdf:Cell style:padding="2" style:h-align="Right" >
+                                <pdf:Text value="{xpath:po:Quantity}" />
+                              </pdf:Cell>
+                              <pdf:Cell style:padding="2" style:h-align="Right" >
+                                <pdf:Text value="{xpath:concat('$',po:TotalPrice)}" />
+                              </pdf:Cell>
+                            </pdf:Row>
+                          </Template>
+                        </data:ForEach>
+                      </pdf:Table>
+                    </pdf:Div>
+                    <pdf:Div style:class="wide" >
+                      <pdf:H4 style:class="group-heading" text="Delivery Notes" />
+                      <pdf:Div style:padding="10 0 0 0" >
+                        <pdf:Text value="{xpath:po:Notes}" />
+                      </pdf:Div>
+                    </pdf:Div>
+                  </Content>
+                </pdf:Page>
+              </Template>
+            </data:ForEach>
+
+          </Pages>
+        </pdf:PageGroup>
+
+        <pdf:Section id="SqlDataCommand" outline-title="SQL Data Commands" >
+          <Items>
+            
+            <pdf:Double-Param id="ReportBreakPoint" value="10000.00" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="SQL Data Commands"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The XMLDataSource also includes support for commands that can dyamically load XPath data from a SQL command provider.<pdf:Br/>
+              If commands are declared, then they will be used in preference to any xml-node-data or source-file. 
+              To identify the command to actually use then specify the id in the  @execute attrbute of the command. Otherwise the first command will be used.
+            </pdf:Para>
+            
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Simple SQL Command" outline-title="Simple SQL Command"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Simple binding to a SQL command to return a list of customers from the Nothwind database. Can use either explicit connection string and provider values (as in this case) or a configured connection name.
+              </pdf:Para>
+
+              <data:XMLDataSource id="SQLCustomers">
+                <Commands>
+                  <data:SqlCommand id="Customer" connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" connection-provider="System.Data.SQLite" >
+                    <Statement>SELECT * FROM Customers</Statement>
+                    
+                  </data:SqlCommand>
+                </Commands>
+              </data:XMLDataSource>
+
+              <pdf:Div style:column-count="3" style:height="380pt" >
+                <pdf:Ol>
+                  <data:ForEach datasource-id="SQLCustomers" select="SQLCustomers/Customer" >
+                    <Template>
+                      <pdf:Li>
+                        <pdf:Text value="{xpath:CompanyName}" />
+                      </pdf:Li>
+                    </Template>
+                  </data:ForEach>
+                </pdf:Ol>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:PageBreak/>
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="SQL Command with Namespaces" outline-title="SQL Command with Namespaces"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                By default the resultant XML from a SQL command will have a top level element of the data source id 
+                and child elements of the command id.<pdf:Br/>
+                <pdf:Span style:fill-color="red"  >(Results truncated to 10 items in the ForEach).</pdf:Span>
+            </pdf:Para>
+
+              <data:XMLDataSource id="SQLCustomersWithNamespace" execute="Customer" >
+                <Commands>
+                  <data:SqlCommand id="Customer" element-name="ACustomer" element-namespace="http://samples.scryber.co.uk/doesnot/exist"
+                                   connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" connection-provider="System.Data.SQLite" >
+                    <Statement>
+                      SELECT CustomerID, CompanyName, ContactName, ContactTitle,
+                      Address || IFNULL(', '|| City,'') || IFNULL(', ' || Region,'')  || IFNULL(', ' || PostalCode,'')  || IFNULL(', ' || Country,'') AS FullAddress
+                      FROM Customers</Statement>
+                  </data:SqlCommand>
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns prefix="c" namespace="http://samples.scryber.co.uk/doesnot/exist"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+              <pdf:Table style:margins="10" style:full-width="true" >
+                <pdf:Header-Row style:border-color="#666" style:border-sides="Bottom">
+                  <pdf:Header-Cell style:padding="4" style:width="50pt">ID</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4" style:width="100pt">Company Name</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4" style:width="100pt">Contact</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4" style:width="100pt">Title</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4">Address</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <data:ForEach datasource-id="SQLCustomersWithNamespace" select="c:SQLCustomersWithNamespace/c:ACustomer" count="10" >
+                  <Template>
+                    <pdf:Row style:border-color="#CCC" style:border-sides="Bottom" >
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:CustomerID}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:CompanyName}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:ContactName}" />
+                      </pdf:Cell> 
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:ContactTitle}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:FullAddress}" />
+                      </pdf:Cell>
+                     
+                    </pdf:Row>
+                  </Template>
+                </data:ForEach>
+              </pdf:Table>
+            </pdf:Div>
+
+            <pdf:PageBreak/>
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Nested SQL Command" outline-title="Nested SQL Command"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                One SQL Command can include a nested relationship to one or more other commands in the same source. The commands resultant
+                data will then be combined based on the relationship and output into the XPath source.<pdf:Br/>
+                This is more efficient but maybe slightly less flexible than an inner XMLDataSource.<pdf:Br/>
+                <pdf:Span style:fill-color="red"  >(Results truncated to 10 items in the ForEach).</pdf:Span>
+              </pdf:Para>
+
+              <data:XMLDataSource id="NestedSQLCustomer" execute="Customer" >
+                <Commands>
+                  
+                  <data:SqlCommand id="Customer" element-name="ACustomer" element-namespace="http://samples.scryber.co.uk/doesnot/exist"
+                                   connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" connection-provider="System.Data.SQLite" >
+                    <Statement>
+                      SELECT C.CustomerID, CompanyName, ContactName, ContactTitle,
+
+                      SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) AS GrandTotal
+                      FROM Customers AS C
+                      INNER JOIN Orders AS O ON C.CustomerID = O.CustomerID
+                      INNER JOIN [OrderDetails] AS OD ON O.OrderID = OD.OrderID
+                      GROUP BY C.CustomerID, CompanyName, ContactName, ContactTitle
+                    </Statement>
+                    <Relations>
+                      
+                      <data:Nested command="Orders" >
+                        <data:Match child="CustomerID" parent="CustomerID"/>
+                      </data:Nested>
+                    </Relations>
+                  </data:SqlCommand>
+
+                  
+                  <data:SqlCommand id="Orders" element-name="AnOrder" >
+                    <Statement>
+                      SELECT O.CustomerID, O.OrderID, O.OrderDate, O.RequiredDate, O.ShippedDate,
+                      SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) AS OrderTotal
+                      FROM Orders AS O
+                      INNER JOIN [OrderDetails] AS OD ON O.OrderID = OD.OrderID
+                      GROUP BY O.CustomerID, O.OrderID, O.OrderDate, O.RequiredDate, O.ShippedDate
+                    </Statement>
+                  </data:SqlCommand>
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns prefix="c" namespace="http://samples.scryber.co.uk/doesnot/exist"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+             
+              <data:ForEach select="c:NestedSQLCustomer/c:ACustomer" datasource-id="NestedSQLCustomer" count="10" >
+                <Template>
+
+                  <pdf:Div>
+                    <pdf:H4 style:class="group-heading" style:font-size="14" text="{xpath:c:CompanyName}" />
+
+                    <pdf:Table>
+                      <pdf:Header-Row style:border-color="#666" style:border-sides="Bottom">
+                        <pdf:Header-Cell style:padding="4" style:width="100pt">Order ID</pdf:Header-Cell>
+                        <pdf:Header-Cell style:padding="4" style:width="100pt">Order Date</pdf:Header-Cell>
+                        <pdf:Header-Cell style:padding="4" style:width="100pt">Required Date</pdf:Header-Cell>
+                        <pdf:Header-Cell style:padding="4" style:width="100pt">Shipped Date</pdf:Header-Cell>
+                        <pdf:Header-Cell style:padding="4" style:width="100pt" style:h-align="Right">Order Total</pdf:Header-Cell>
+                      </pdf:Header-Row>
+
+                      
+                      <data:ForEach select="c:AnOrder" >
+                        <Template>
+                          <pdf:Row style:border-color="#CCC" style:border-sides="Bottom">
+                            <pdf:Cell style:padding="4">
+                              <pdf:Text value="{xpath:c:OrderID}" />
+                            </pdf:Cell>
+                            <pdf:Cell style:padding="4">
+                              <pdf:Date value="{xpath:c:OrderDate}" style:date-format="dd MMM yyyy" />
+                            </pdf:Cell>
+                            <pdf:Cell style:padding="4">
+                              <pdf:Date value="{xpath:c:RequiredDate}" style:date-format="dd MMM yyyy" />
+                            </pdf:Cell>
+                            <pdf:Cell style:padding="4">
+                              <pdf:Date value="{xpath:c:ShippedDate}" style:date-format="dd MMM yyyy" />
+                            </pdf:Cell>
+                            <pdf:Cell style:padding="4" style:width="100pt" style:h-align="Right">
+                              <pdf:Number value="{xpath:c:OrderTotal}" style:number-format="$#0.00" />
+                            </pdf:Cell>
+                          </pdf:Row>
+                        </Template>
+                      </data:ForEach>
+
+                      
+                      <pdf:Footer-Row>
+                        <pdf:Footer-Cell style:padding="4" ></pdf:Footer-Cell>
+                        <pdf:Footer-Cell style:padding="4" ></pdf:Footer-Cell>
+                        <pdf:Footer-Cell style:padding="4" ></pdf:Footer-Cell>
+                        <pdf:Footer-Cell style:padding="4" ></pdf:Footer-Cell>
+                        <pdf:Footer-Cell style:font-bold="true" style:padding="4" style:width="100pt" style:h-align="Right">
+                          <pdf:Number value="{xpath:c:GrandTotal}" style:number-format="$#0.00" />
+                        </pdf:Footer-Cell>
+                      </pdf:Footer-Row>
+                    </pdf:Table>
+                  </pdf:Div>
+
+                </Template>
+              </data:ForEach>
+              
+            </pdf:Div>
+
+            <pdf:PageBreak/>
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="SQL Command with Parameters" outline-title="SQL Command with Parameters"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Parameters can be added to the commands, the values of which can be databound to any required value.<pdf:Br/>
+              </pdf:Para>
+
+              <data:XMLDataSource id="BreakPointSQLCustomer" execute="Customer" >
+                <Commands>
+                  <data:SqlCommand id="Customer" element-name="ACustomer" element-namespace="http://samples.scryber.co.uk/doesnot/exist"
+                                   connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" connection-provider="System.Data.SQLite" >
+                    <Statement>
+                      SELECT C.CustomerID, CompanyName, ContactName, ContactTitle,
+                      SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) AS GrandTotal
+                      FROM Customers AS C
+                      INNER JOIN Orders AS O ON C.CustomerID = O.CustomerID
+                      INNER JOIN [OrderDetails] AS OD ON O.OrderID = OD.OrderID
+                      GROUP BY C.CustomerID, CompanyName, ContactName, ContactTitle
+                      HAVING SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) &gt; @breakpoint
+                      ORDER BY SUM((OD.UnitPrice * OD.Quantity) * (1- OD.Discount)) DESC
+                    </Statement>
+                    <Parameters>
+                      <data:Parameter name="@breakpoint" type="Double" value="{item:ReportBreakPoint}" default-value="5000.00"/>
+                    </Parameters>
+                  </data:SqlCommand>
+
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns prefix="c" namespace="http://samples.scryber.co.uk/doesnot/exist"/>
+                </Namespaces>
+              </data:XMLDataSource>
+              
+              <pdf:H4 style:class="group-heading" >
+                Customers with orders over <pdf:Number value="{item:ReportBreakPoint}"  style:number-format="$#,##0.00" />
+              </pdf:H4>
+              <pdf:Table style:full-width="true">
+                <pdf:Header-Row style:border-color="#666" style:border-sides="Bottom">
+                  <pdf:Header-Cell style:padding="4" style:width="100pt">Customer ID</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4" >Company Name</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4" >Contact</pdf:Header-Cell>
+                  <pdf:Header-Cell style:padding="4" style:width="100pt" style:h-align="Right">Total</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <data:ForEach select="c:BreakPointSQLCustomer/c:ACustomer" datasource-id="BreakPointSQLCustomer" >
+                  <Template>
+                    <pdf:Row style:border-color="#CCC" style:border-sides="Bottom">
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:CustomerID}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:CompanyName}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:c:ContactName}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4" style:width="100pt" style:h-align="Right">
+                        <pdf:Number value="{xpath:c:GrandTotal}" style:number-format="$#,##0.00" />
+                      </pdf:Cell>
+                    </pdf:Row>
+                  </Template>
+                </data:ForEach>
+              </pdf:Table>
+              
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="ObjectDataCommand" outline-title="Object Data Command" >
+          <Items>
+            <pdf:String-Param id="AuthorLastName" value="Dickens" />
+            <pdf:Int-Param id="MaxItemID" value="40" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="Object Data Commands"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The XMLDataSource supports commands that can dyamically load XPath data from a .NET method.<pdf:Br/>
+              The methods name and type must be declared, but parameters are supported and the method can be a static (shared)
+              method, or an instance method (as long as there is a Parameterless constructor).
+            </pdf:Para>
+
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Simple Object Command" outline-title="Simple Object Command"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Simple binding to a method on the CustomBindings class that returns the top 50 books (truncated from 150 from the source) as an XPathNavigator
+              </pdf:Para>
+
+              <data:XMLDataSource id="AllBooks" >
+                <Commands>
+                  <data:ObjectCommand method="GetAll" type="Scryber.SystemTests.vs13.CustomBindings, Scryber.SystemTests.vs13" />
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns namespace="http://schemas.scryber.co.uk/TopBookList" prefix="tb"/>
+                </Namespaces>
+              </data:XMLDataSource>
+              
+              <pdf:Table style:full-width="true" >
+                <data:ForEach datasource-id="AllBooks" select="tb:Books/tb:Book" count="50" >
+                  <Template>
+                    <pdf:Row style:border-color="#CCC" style:border-sides="Bottom" >
+                      <pdf:Cell style:padding="4" style:width="60pt">
+                        <pdf:Text value="{xpath:@id}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Title}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Author/tb:FullName}" />
+                      </pdf:Cell>
+                    </pdf:Row>
+                  </Template>
+                </data:ForEach>
+              </pdf:Table>
+            </pdf:Div>
+
+            <pdf:PageBreak/>
+
+           
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Object Command with Parameters" outline-title="Object Command with Parameters"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Binding to a static (shared) method on the CustomBindings class that returns books based on last name, as an XPathNavigator
+              </pdf:Para>
+
+              <data:XMLDataSource id="BooksByAuthorName" >
+                <Commands>
+                  <data:ObjectCommand method="GetByLastNameStatic" type="Scryber.SystemTests.vs13.CustomBindings, Scryber.SystemTests.vs13" >
+                    <Parameters>
+                      <data:ObjectParameter name="lastname" type="String" value="{item:AuthorLastName}"/>
+                    </Parameters>
+                  </data:ObjectCommand>
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns namespace="http://schemas.scryber.co.uk/TopBookList" prefix="tb"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+              <pdf:Table style:full-width="true" >
+                <data:ForEach datasource-id="BooksByAuthorName" select="tb:Books/tb:Book" >
+                  <Template>
+                    <pdf:Row style:border-color="#CCC" style:border-sides="Bottom" >
+                      <pdf:Cell style:padding="4" style:width="60pt">
+                        <pdf:Text value="{xpath:@id}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Title}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Author/tb:FullName}" />
+                      </pdf:Cell>
+                    </pdf:Row>
+                  </Template>
+                </data:ForEach>
+              </pdf:Table>
+            </pdf:Div>
+            
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Object Command with multiple parameters" outline-title="Object Command with multiple parameters"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                Binding to a method on the CustomBindings class that returns books based on last name, as an XmlDocument<pdf:Br/>
+                The parameters have default values that will be used if there is no actual value having been set (in this case MinItemID is not).
+              </pdf:Para>
+
+              <data:XMLDataSource id="BooksWithRange" >
+                <Commands>
+                  <data:ObjectCommand method="GetBetweenIDs" type="Scryber.SystemTests.vs13.CustomBindings, Scryber.SystemTests.vs13" >
+                    <Parameters>
+                      <data:ObjectParameter name="min" type="Int32" value="{item:MinItemID}" default-value="0"/>
+                      <data:ObjectParameter name="max" type="Int32" value="{item:MaxItemID}" default-value="1000"/>
+                      <data:ObjectParameter name="inclusive" type="Boolean" value="True"/>
+                    </Parameters>
+                  </data:ObjectCommand>
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns namespace="http://schemas.scryber.co.uk/TopBookList" prefix="tb"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+              <pdf:Table style:full-width="true" >
+                <data:ForEach datasource-id="BooksWithRange" select="tb:Books/tb:Book" >
+                  <Template>
+                    <pdf:Row style:border-color="#CCC" style:border-sides="Bottom" >
+                      <pdf:Cell style:padding="4" style:width="60pt">
+                        <pdf:Text value="{xpath:@id}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Title}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Author/tb:FullName}" />
+                      </pdf:Cell>
+                    </pdf:Row>
+                  </Template>
+                </data:ForEach>
+              </pdf:Table>
+            </pdf:Div>
+
+            <pdf:PageBreak />
+            
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Object Command returns native type" outline-title="Object Command returns native type"
+                      style:class="group-heading" style:margins="0 0 10 0" />
+              <pdf:Para>
+                The object command can return any type of object, as long as it can be converted to XML using the
+                .NET XMLSerializer.<pdf:Br/>
+                Here we return all books stating with the word 'The' as a BookList object
+              </pdf:Para>
+
+              <data:XMLDataSource id="BooksMatchingTitle" >
+                <Commands>
+                  <data:ObjectCommand method="MatchWithTitleRegEx" type="Scryber.SystemTests.vs13.CustomBindings, Scryber.SystemTests.vs13" >
+                    <Parameters>
+                      <data:ObjectParameter name="regex" type="String" value="The\s.*" />
+                    </Parameters>
+                  </data:ObjectCommand>
+                </Commands>
+                <Namespaces>
+                  <data:Xmlns namespace="http://schemas.scryber.co.uk/TopBookList" prefix="tb"/>
+                </Namespaces>
+              </data:XMLDataSource>
+
+              <pdf:Table style:full-width="true" >
+                <data:ForEach datasource-id="BooksMatchingTitle" select="tb:Books/tb:Book" >
+                  <Template>
+                    <pdf:Row style:border-color="#CCC" style:border-sides="Bottom" >
+                      <pdf:Cell style:padding="4" style:width="60pt">
+                        <pdf:Text value="{xpath:@id}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Title}" />
+                      </pdf:Cell>
+                      <pdf:Cell style:padding="4">
+                        <pdf:Text value="{xpath:tb:Author/tb:FullName}" />
+                      </pdf:Cell>
+                    </pdf:Row>
+                  </Template>
+                </data:ForEach>
+              </pdf:Table>
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="DataGrid" outline-title="Data Grid" >
+          <Content>
+            <data:XMLDataSource id="SQLCustomersInGrid">
+              <Commands>
+                <data:SqlCommand id="Customer" connection-string="Data Source=../../Resources/SQLiteNorthwindCut.sqlite" 
+                                 connection-provider="System.Data.SQLite" >
+                  <Statement>SELECT * FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID</Statement>
+                </data:SqlCommand>
+              </Commands>
+            </data:XMLDataSource>
+
+            <bind:DataGrid datasource-id="SQLCustomersInGrid" select="SQLCustomersInGrid/Customer" style:margins="10" style:border-color="aqua" style:border-width="1" >
+              <AlternatingItemStyle>
+                <style:Background color="#FFFFDD"/>
+              </AlternatingItemStyle>
+              <ItemStyle>
+                <style:Background color="#DDFFFF"/>
+              </ItemStyle>
+              <Columns>
+                <bind:NumberColumn style:padding="4" header-text="Order ID" value="{xpath:OrderID}" style:number-format="0000000" data:style-identifier="grid_orderid" />
+                <bind:TextColumn style:padding="4" header-text="Customer ID" visible="true" text="{xpath:CustomerID}" data:style-identifier="grid_custid" />
+                <bind:TextColumn style:padding="4" style:width="250pt" header-text="Company Name" visible="true" text="{xpath:CompanyName}" data:style-identifier="grid_compname" />
+                <bind:DateColumn style:padding="4" header-text="Order Date" style:date-format="D" value="{xpath:OrderDate}" data:style-identifier="grid_orderdate" />
+                <bind:TemplateColumn style:border-color="blue" style:padding="4" header-text="Ship To">
+                  <ItemTemplate>
+                    <pdf:Label id="BindLabel" text="{xpath:ShipName}" style:font-size="10pt" style:font-italic="true" data:style-identifier="grid_orderaddress" />
+                    <pdf:Br/>
+                    <pdf:Label text="With this" style:font-size="10pt" style:font-italic="true" data:style-identifier="grid_orderaddress" />
+                  </ItemTemplate>
+                </bind:TemplateColumn>
+              </Columns>
+            </bind:DataGrid>
+
+
+          </Content>
+
+        </pdf:Section>-->
+      </Pages>
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber parser-mode='Lax' parser-log='True' log-level='Messages' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true">
+  <Render-Options component-names="All" output-compliance="None" >
+    <pdf:Writer pooled="true" pdf-version="1.4"  />
+  </Render-Options>
+  <Outline title="Page Number Tests"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Page Numbers"/>
+  </Params>
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    <pdf:PageGroup id="AllPageNumbers" style:class="system-test-page" outline-title="{item:SectionTitle}"
+                 style:page-number-style="UppercaseRoman" style:page-number-prefix="# " >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Page Numbering" />
+      </Items>
+      <Pages>
+        <pdf:Section id="PageNumbers" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Using Page Numbers" />
+          </Items>
+          <Content>
+
+            <pdf:H2 id="UsingPageNumbers" style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Scryber supports rendering of the current page numbering on both the thumbnails view of the reader and as part of the content of pages.
+              The style of these page numbers can be any of Arabic (Decimal), Roman (upper or lower), Alphabetical (again upper or lower), or None with
+              a page number prefix and / or an explicit starting index. The styles can be applied to groups of pages, sections, or individual pages.
+            </pdf:Para>
+
+
+            <pdf:Div style:class="wide" outline-title="Page Number Formatting">
+              <pdf:H4 text="Page Number formatting" style:class="group-heading"></pdf:H4>
+              <pdf:Para>
+                The current pages are upper case roman with a prefix of '# '. The &lt;pdf:PageNum /&gt; component supports 6 formatting options
+                for showing this current page.
+              </pdf:Para>
+              <pdf:Table style:full-width="true" style:class="num-format" >
+                <pdf:Header-Row>
+                  <pdf:Header-Cell style:width="100pt" style:class="num-format">Format</pdf:Header-Cell>
+                  <pdf:Header-Cell style:width="100pt" style:class="num-format">Output</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="num-format">Description</pdf:Header-Cell>
+                </pdf:Header-Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format"></pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageNumber />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">The default with no format simply shows the current page number, of the current page group, in the current style.</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{0}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageNumber style:display-format="{0}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">Again simply shows the current page number, of the current page group, in the current style</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{0} of {1}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageNumber style:display-format="{0} of {1}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">Shows the current page number, of the current page group, along with the total number of pages in the current group, all in the current style</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{2} of {3}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageNumber style:display-format="{2} of {3}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">Shows the global current page number, along with the total number of pages in complete document, always as decimals</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{4} of {5}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageNumber style:display-format="{4} of {5}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    Shows the current page number, of the current page group, along with the total number of pages in the current group, <pdf:B>all in decimals</pdf:B>
+                  </pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{0} of {1} ({4} of {5})</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    Text before <pdf:PageNumber style:display-format="{0} of {1} ({4} of {5})" />. Text after
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    The numbers can be combined in any format and any order
+                    and can even include the number formatting options for parameters 2 to 5 inclusive.<pdf:Br/>
+                    But they will not be split onto multiple lines and always try and keep together.
+                  </pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+            </pdf:Div>
+            <pdf:Div style:class="wide" outline-title="Page Count Hints">
+              <pdf:H4 text="Page Count Hints" style:class="group-heading"></pdf:H4>
+              <pdf:Para>
+                Measuring of the strings within page numbers is done at layout time, when we don't know total number of document pages
+                or even the number in the current group. E.g. If we encounter a page number component on page 2, the current total number of pages
+                will be 2, even if the final document has over 100.<pdf:Br/>
+                To support this the page numbers have a group and total page count hint. These will be used as a substitute during layout, with the final
+                values being used at render time.<pdf:Br/>
+                <pdf:B>The default values are 10 for a group and 99 for the total.</pdf:B>
+              </pdf:Para>
+
+              <pdf:Table style:full-width="true" style:class="num-format" >
+                <pdf:Header-Row>
+                  <pdf:Header-Cell style:width="100pt" style:class="num-format">
+                    Format<pdf:Br/>
+                    Group Hint<pdf:Br/>
+                    Total Hint
+                  </pdf:Header-Cell>
+
+                  <pdf:Header-Cell style:width="100pt" style:class="num-format">Output</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="num-format">Description</pdf:Header-Cell>
+                </pdf:Header-Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{4}/{5} ({2}/{3})</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:Span style:fill-color="red">&gt;|</pdf:Span>
+                    <pdf:PageNumber style:display-format="{4}/{5} ({2}/{3})" />
+                    <pdf:Span style:fill-color="red">|&lt;</pdf:Span>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">The default with no hints uses 10 and 99 for group and total counts</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">
+                    {4}/{5} ({2}/{3}) <pdf:Br/>
+                    3<pdf:Br/>
+                    81
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:Span style:fill-color="red">&gt;|</pdf:Span>
+                    <pdf:PageNumber style:display-format="{4}/{5} ({2}/{3})" style:group-count-hint="3" style:total-count-hint="81"/>
+                    <pdf:Span style:fill-color="red">|&lt;</pdf:Span>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">With 3 and 81 we get about the right sizing for the full document.</pdf:Cell>
+                </pdf:Row>
+
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">
+                    {4}/{5} ({2}/{3}) <pdf:Br/>
+                    1000<pdf:Br/>
+                    9000
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:Span style:fill-color="red">&gt;|</pdf:Span>
+                    <pdf:PageNumber style:display-format="{4}/{5} ({2}/{3})" style:group-count-hint="1000" style:total-count-hint="9000"/>
+                    <pdf:Span style:fill-color="red">|&lt;</pdf:Span>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">With 1000 and 9000 any following text is pushed out beyond the required space.</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+
+
+            </pdf:Div>
+
+
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="PageOf" style:class="system-test-page" outline-title="{item:SectionTitle}">
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Using Page Of" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The page of component shows the page number of another different component. This can either be based on
+              the id of the component (preceding with a #) or the name of the component.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" outline-title="Component Referencing">
+              <pdf:H4 text="Component Referencing" style:class="group-heading"></pdf:H4>
+              <pdf:Para>
+                The components are searched for by either name or ID. And the output is formatted using the actual formatting of the page the referenced
+                component is on.
+              </pdf:Para>
+              <pdf:Para>
+                Page number of component with id "#UsingPageNumbers": <pdf:PageOf component="#UsingPageNumbers" not-found-replacement="[None]" /><pdf:Br/>
+                Page number of component with id "#ImageLayout": <pdf:PageOf component="#ImageLayout" not-found-replacement="[None]" /><pdf:Br/>
+                Page number of component with name "SupportedImageTypes": <pdf:PageOf component="SupportedImageTypes" not-found-replacement="[None]" /><pdf:Br/>
+              </pdf:Para>
+            </pdf:Div>
+            <pdf:Div style:class="wide" outline-title="Page Number Formatting">
+              <pdf:H4 text="Not Found Components" style:class="group-heading"></pdf:H4>
+              <pdf:Para>
+                If the components referenced cannot be found, then the optional not-found-replacement text will be used.
+                If this is not set, then if the current conformance mode is Lax, an error will be logged to the trace log and the value
+                will be the default '??', or if we are Strict, then an exception will be raised.
+              </pdf:Para>
+              <pdf:Para>
+                Page number of non-existant component with id "#DoesNotExist": <pdf:PageOf component="#DoesNotExist" /><pdf:Br/>
+                Page number of non-existant component with name "DoesNotExist" with replacement text: <pdf:PageOf component="DoesNotExist" not-found-replacement="[None]" /><pdf:Br/>
+              </pdf:Para>
+            </pdf:Div>
+          
+            <pdf:Div style:class="wide" outline-title="Page Of Formatting" >
+               <pdf:H4 text="Page Of Formatting" style:class="group-heading"></pdf:H4>
+              <pdf:Para>
+                The PageOf component supports the same display-formatting style options as the PageNumber component.
+              </pdf:Para>
+            <pdf:Table style:full-width="true" style:class="num-format" >
+                <pdf:Header-Row>
+                  <pdf:Header-Cell style:width="100pt" style:class="num-format">Format</pdf:Header-Cell>
+                  <pdf:Header-Cell style:width="100pt" style:class="num-format">Output</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="num-format">Description</pdf:Header-Cell>
+                </pdf:Header-Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format"></pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageOf component="#ImageLayout" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">The default with no format simply shows the current page number, of the current page group, in the current style.</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{0}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageOf component="#ImageLayout" style:display-format="{0}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">Again simply shows the current page number, of the current page group, in the current style</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{0} of {1}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageOf component="#ImageLayout" style:display-format="{0} of {1}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">Shows the current page number, of the current page group, along with the total number of pages in the current group, all in the current style</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{2} of {3}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageOf component="#ImageLayout" style:display-format="{2} of {3}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">Shows the global current page number, along with the total number of pages in complete document, always as decimals</pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{4} of {5}</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    <pdf:PageOf component="#ImageLayout" style:display-format="{4} of {5}" />
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    Shows the current page number, of the current page group, along with the total number of pages in the current group, <pdf:B>all in decimals</pdf:B>
+                  </pdf:Cell>
+                </pdf:Row>
+
+                <pdf:Row>
+                  <pdf:Cell style:class="num-format">{0} of {1} ({4} of {5})</pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    Text before <pdf:PageOf component="#ImageLayout" style:group-count-hint="99" style:total-count-hint="999" style:display-format="{0} of {1} ({4} of {5})" />. Text after
+                  </pdf:Cell>
+                  <pdf:Cell style:class="num-format">
+                    The numbers can be combined in any format and any order
+                    and can even include the number formatting options for parameters 2 to 5 inclusive.<pdf:Br/>
+                    But they will not be split onto multiple lines and always try and keep together.
+                  </pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+    </pdf:PageGroup>
+
+
+  </Pages>
+</pdf:Document>

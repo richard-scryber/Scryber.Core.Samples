@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="Relative Positioning"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Text Styles"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="SimpleShapes" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Simple Shapes" />
+        <pdf:Date-Param id="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+
+        <pdf:Section id="LineShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Line Shapes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Lines are specified with the &lt;pdf:Line /&gt; component. They will be by default be a full width horizontal.<pdf:Br/>
+              Specifying a width will limit horizontally, Specifying a height alone will make the line vertical for that height, and specifying both
+              will make a line from 0,0 with the required width and height.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Lines as part of the content" outline-title="Lines as part of the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:column-count="3" >
+                This line has a width of 80 pts (5pt Margins).
+                <pdf:Line style:stroke-color="aqua" style:stroke-width="3" style:margins="5" style:width="80pt" />
+                After the line
+                <pdf:ColumnBreak/>
+                This line has a height of 80 pts.
+                <pdf:Line style:stroke-color="aqua" style:stroke-width="3" style:margins="5" style:height="80pt" />
+                After the line
+                <pdf:ColumnBreak />
+                This line has a width AND height of 80pts.
+                <pdf:Line style:stroke-color="aqua" style:stroke-width="3" style:margins="5" style:width="80pt" style:height="80pt" />
+                After the line
+              </pdf:Div>
+              <pdf:H4 text="Lines inline with the content" outline-title="Lines inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Line has an explicit width and height of 20pt's and is part of the text.
+              <pdf:Line style:stroke-color="fuchsia" style:stroke-width="3" style:margins="5" style:height="20pt" style:width="20pt" style:position-mode="Inline"/>
+              Following on from the last line this has only a width
+              <pdf:Line style:stroke-color="maroon" style:stroke-width="3" style:margins="5" style:width="20pt" style:position-mode="Inline"/>
+              and this only a height.
+              <pdf:Line style:stroke-color="aqua" style:stroke-width="3" style:margins="5" style:height="20pt" style:position-mode="Inline"/>
+
+              <pdf:H4 text="Lines that stretch" outline-title="Lines that stretch" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This is a line with no attributes and will be full width black 1pt thick.
+              <pdf:Line/>
+              This line has padding, border, stroke and margins applied, but still no dimensions, so still full width horizontal
+              <pdf:Line style:padding="10" style:border-color="lime" style:stroke-color="aqua" style:stroke-width="3" style:margins="10" />
+              And this is an inline dashed with no dimensions to fill the remaining space.
+              <pdf:Line id="DashedLine" style:stroke-color="black" style:border-width="0" style:stroke-width="1" style:stroke-dash="[2 3] 5" style:margins="8 0 0 0" style:position-mode="Inline"/>
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="RectangleShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Rectangle Shapes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Rectangles are specified with the &lt;pdf:Rect /&gt; component. They will be by default on their own line within
+              the layout with content above and below unless the position-mode is set to inline.
+              If no width or height is specified, then they will fill the
+              available space on any unspecified dimension.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Rectangles as part of the content" outline-title="Rectangles as part of the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following rectangle has an explicit width and height of 100pt's.
+              <pdf:Rect style:stroke-color="aqua" style:fill-color="aqua"
+                        style:fill-opacity="0.1" style:width="100" style:height="100" />
+              The following rectangle has an explicit width and height of 80pt's, but has 10pt padding and margins
+              along with a border and background.
+              <pdf:Rect style:stroke-color="aqua" style:fill-color="aqua" style:padding="10pt" style:margins="10pt"
+                        style:fill-opacity="0.5" style:width="80" style:height="80"
+                        style:bg-color="lime" style:bg-opacity="0.5" style:border-color="lime"/>
+
+              <pdf:H4 text="Rectangles inline with the content" outline-title="Rectangles inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Rectangle has an explicit width and height of 20pt's and is part of the text
+              <pdf:Rect style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                            style:fill-opacity="0.1" style:width="20" style:height="20" />.
+              Following on from the Rectangle. This rectangle is only 10x10 pts, but has padding, border and margins
+              <pdf:Rect style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                          style:fill-opacity="0.1" style:width="10" style:height="10" style:padding="5" style:border-color="lime" style:margins="5" />.
+
+              <pdf:H4 text="Rectangles that stretch" outline-title="Rectangles that stretch" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following rectangle has an explicit height of 50pt but no width - so should fill the available horizontal space.
+              <pdf:Rect style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:height="50" />
+              The following rectangle has no explicit size although it does have padding, border and margins so will fill all the remaining avilable space (without causing overflow).
+              <pdf:Rect style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:padding="10" style:border-color="lime" style:margins="10"/>
+            </pdf:Div>
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="EllipseShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Ellipse Shapes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Ellipses are specified with the &lt;pdf:Ellipse /&gt; component. They will be by default on their own line within
+              the layout with content above and below unless the position-mode is set to inline.
+              If no width or height is specified, then they will fill the
+              available space on any unspecified dimension.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Ellipses as part of the content" outline-title="Ellipses as part of the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Ellipse has an explicit width and height of 100pt's.
+              <pdf:Ellipse style:stroke-color="aqua" style:fill-color="aqua"
+                        style:fill-opacity="0.1" style:width="100" style:height="100" />
+              The following Ellipse has an explicit width and height of 80pt's, but has 10pt padding and margins
+              along with a border and background.
+              <pdf:Ellipse style:stroke-color="aqua" style:fill-color="aqua" style:padding="10pt" style:margins="10pt"
+                        style:fill-opacity="0.5" style:width="80" style:height="80"
+                        style:bg-color="lime" style:bg-opacity="0.5" style:border-color="lime"/>
+
+              <pdf:H4 text="Ellipses inline with the content" outline-title="Ellipses inline with the content"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Ellipse has an explicit width and height of 20pt's and is part of the text
+              <pdf:Ellipse style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                            style:fill-opacity="0.1" style:width="20" style:height="20" />.
+              Following on from the Ellipse. This Ellipse is only 10x10 pts, but has padding, border and margins
+              <pdf:Ellipse style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                          style:fill-opacity="0.1" style:width="10" style:height="10" style:padding="5" style:border-color="lime" style:margins="5" />.
+
+              <pdf:H4 text="Ellipses that stretch" outline-title="Ellipses that stretch" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Ellipse has an explicit height of 50pt but no width - so should fill the available horizontal space.
+              <pdf:Ellipse style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:height="50" />
+              The following Ellipse has no explicit size although it does have padding, border and margins so will fill all the remaining avilable space (without causing overflow).
+              <pdf:Ellipse style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:padding="10" style:border-color="lime" style:margins="10"/>
+            </pdf:Div>
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="TriangleShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Triangle Shapes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Triangles are specified with the &lt;pdf:Triangle /&gt; component. They are actually polygons with a pre-defined
+              point count of 3. The positioning can be provided explictly in the @points attribute, otherewise they will dynamically be
+              calculated based on the space to be an equilateral triangle as big as the space will allow for the containing elipse used to
+              calculate the points.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Triangles as part of the content" outline-title="Triangles as part of the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Triangle has an explicit width and height of 80pt's.
+              <pdf:Triangle style:stroke-color="aqua" style:fill-color="aqua" style:rotate="0"
+                      style:fill-opacity="0.1" style:width="80" style:height="80" >
+              </pdf:Triangle>
+              The following Triangle has an explicit width and height of 60pt's, but has 5pt padding and margins
+              along with a border and background.
+              <pdf:Triangle style:stroke-color="aqua" style:fill-color="aqua" style:padding="5pt" style:margins="5pt"
+                        style:fill-opacity="0.5" style:width="60" style:height="60"
+                        style:bg-color="lime" style:bg-opacity="0.5" style:border-color="lime"/>
+
+              <pdf:H4 text="Triangles inline with the content" outline-title="Triangles inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Triangle has an explicit width and height of 20pt's and is part of the text
+              <pdf:Triangle style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                            style:fill-opacity="0.1" style:width="20" style:height="20" />.
+              Following on from the Triangle. This Triangle is only 10x10 pts, but has padding, border and margins
+              <pdf:Triangle style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                          style:fill-opacity="0.1" style:width="10" style:height="10" style:padding="5" style:border-color="lime" style:margins="5" />.
+
+              <pdf:H4 text="Triangles with explicit point data" outline-title="Triangles with explicit point data" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Triangle has specified coordinates for it's points
+              <pdf:Triangle style:stroke-color="aqua" style:fill-color="aqua"
+                            style:fill-opacity="0.1" points="5,0 30,20 0,20" />
+              This Triangle has explicit points, but is is inline with the text
+              <pdf:Triangle style:position-mode="Inline" style:stroke-color="aqua" style:fill-color="aqua"
+                          style:fill-opacity="0.1" points="5,0 30,20 0,20" style:padding="5" style:border-color="lime" style:margins="5" />
+              and has padding, border and margins
+
+              <pdf:H4 text="Triangles that stretch" outline-title="Triangles that stretch" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following Triangle has an explicit height of 50pt but no width - so should fill the available horizontal space.
+              <pdf:Triangle style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:height="50" />
+              The following Triangle has no explicit size although it does have padding,
+              border and margins so will fill all the remaining avilable space (without causing overflow).
+              <pdf:I>The ellipse is also shown to indicate how the points were calculated.</pdf:I>
+              <pdf:Div>
+                <pdf:Triangle style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:padding="10" style:border-color="lime" style:margins="10"/>
+                <pdf:Ellipse style:stroke-color="gray" style:stroke-dash="[1 1] 2" style:x="0" style:y="0" style:padding="10" style:margins="10" style:fill-style="None" />
+              </pdf:Div>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="PolygonShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Polygon Shapes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Poylgons are specified with the &lt;pdf:Poly /&gt; component. The positioning  they will dynamically be
+              calculated based on the space to be an regular polygon with the specified number of vertices (@vertex-count) as big as the space will allow
+              for the containing elipse used to calculate the points. (If the number of vertices is not specified, then 4 is used creating a diamond shape).
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" outline-title="Polygons with explicit width and height" >
+              <pdf:H4 text="Polygons with explicit width and height" outline-title="Polygons with explicit width and height" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following regular polygons have an explicit width and height of 100pt's but defaulting to 4 in the first instance, then explictly 3, 5, 7 and 9 vertices
+              <pdf:Div style:column-count="5" >
+                <pdf:Poly style:width="80" style:height="80"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="3"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="5"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="7"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="9"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              </pdf:Div>
+              The following regular polygons all have an explicit width and height of 80pt's and a vertex count of 4, 6, 8, 10, 12. They also have border, padding and margins applied.
+              <pdf:Div style:column-count="5" >
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="4" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="6" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="8" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="10" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="12" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Polygons inline with the content" >
+              <pdf:H4 text="Polygons inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              The following polygon has an explicit width and height of 20pt's and a vertex count of 5
+              <pdf:Poly style:position-mode="Inline" style:width="20" style:height="20" style:vertex-count="5"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              And this one is 7 sided 20 x 10 pt with a padding and margin.
+              <pdf:Poly style:position-mode="Inline" style:width="20" style:height="10" style:vertex-count="7"
+                       style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:padding="5" style:border-color="lime" style:margins="5"/>
+              After the 7 sided polygon.
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Polygons that stretch" >
+              <pdf:H4 text="Polygons that stretch" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following 6 vertex polygon has an explicit height of 50pt's.
+              <pdf:Poly style:height="50" style:vertex-count="6"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              The following polygon is 7 sides and will fill the available space as no width or height are specified, with padding and margins (without overflowing).
+              <pdf:Poly  style:vertex-count="7" style:padding="5" style:margins="5" style:border-color="lime"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="PolygramShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Polygram Shapes" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Poylgrams are specified with the same &lt;pdf:Poly /&gt; component but they have a @vertex-step greater than the default value of 1. The positioning will dynamically be
+              calculated based on the space to be an regular polygram with the specified number of vertices (@vertex-count) as big as the space will allow
+              for the containing elipse used to calculate the points. (If the number of vertices is not specified, then 4 is used creating a diamond shape).
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" outline-title="Polygrams with explicit width and height" >
+              <pdf:H4 text="Polygrams with explicit width and height" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following regular polygrams have an explicit width and height of 80pt's and a vertex count of explictly 5, 6, 7, 8 and 9 vertices.
+              The vertex step in each case it 2, 2, 3, 3, 4
+              <pdf:Div style:column-count="5" >
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="5" style:vertex-step="2"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="6" style:vertex-step="2"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="7" style:vertex-step="3"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="8" style:vertex-step="3"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="9" style:vertex-step="3"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              </pdf:Div>
+              The following regular polygons all have an explicit width and height of 80pt's and a vertex count of 6, 8, 10, 12, 14 with a vertex-step of 3, 3, 4, 5, 6.
+              They also have border, padding and margins applied.
+              <pdf:Div style:column-count="5" >
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="6" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt" style:vertex-step="3"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="8" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt" style:vertex-step="3"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="10" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt" style:vertex-step="4"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="12" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt" style:vertex-step="5"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+                <pdf:ColumnBreak/>
+                <pdf:Poly style:width="80" style:height="80" style:vertex-count="14" style:padding="10pt"
+                         style:border-color="lime" style:margins="5pt" style:vertex-step="6"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Polygrams inline with the content" >
+              <pdf:H4 text="Polygrams inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              The following polygram has an explicit width and height of 20pt's, a vertex count of 5 and a vertex step of 2
+              <pdf:Poly style:position-mode="Inline" style:width="20" style:height="20" style:vertex-count="5" style:vertex-step="2"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              And this one is 7 sided, step 3, at 20 x 10 pt with a padding and margin.
+              <pdf:Poly style:position-mode="Inline" style:width="20" style:height="20" style:vertex-count="7" style:vertex-step="2"
+                       style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1" style:border-color="lime" />
+              After the 7 sided polygon.
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Polygrams that stretch" >
+              <pdf:H4 text="Polygrams that stretch" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The following 6 vertex, 2 step polygram has an explicit height of 50pt's.
+              <pdf:Poly style:height="50" style:vertex-count="6" style:vertex-step="2"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+              The following polygram is 7 sides, 3 step and will fill the available space as no width or height are specified, with padding and margins (without overflowing).
+              <pdf:Poly  style:vertex-count="7" style:vertex-step="3" style:padding="5" style:margins="5" style:border-color="lime"
+                         style:stroke-color="aqua" style:fill-color="aqua" style:fill-opacity="0.1"/>
+
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="PathShapes" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Paths" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Paths are open or closed graphic shapes defined in the same way as SVG Paths with a single @d attribute for the instructions.<pdf:Br/>
+              The operations include Move (M, m); Line To (L, l); Horizontal line to (H, h); Vertical line to (V, v); Curve to (C, c); Smooth
+              curve to (S, s); Quadratic curve to (Q, q); Smooth Quadratic curve to (T, t); Eliptical arc to (A,a); Close Path (Z).
+              <pdf:Br/>Any combination of these can be included in a single path, but only one style (colour, fill, etc) can be included in the path.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" outline-title="Simple path shapes" >
+              <pdf:H4 text="Simple path shapes" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:column-count="4" >
+                M50 0 L100 100 L0 100 Z
+                <pdf:Path d=" M50 0 L100 100 L0 100 Z" />
+                <pdf:ColumnBreak/>
+                M 0 150 q 150 -100 100 0
+                <pdf:Path d="M 0 100 q 50 -100 100 0" style:stroke-color="aqua" style:stroke-width="2" style:x="0" style:y="0" style:fill-style="None" />
+                <pdf:ColumnBreak/>
+                M 0 50 a 60 20 0 0 0 100 20
+                <pdf:Path d=" M 0 50 a 60 20 0 0 0 100 20" style:fill-style="None" style:stroke-color="lime" style:stroke-width="2" />
+                <pdf:ColumnBreak/>
+                M 0 50 a 60 20 0 1 1 100 20
+                <pdf:Path d="M 0 50 a 60 20 0 1 1 100 20" style:fill-style="None" style:stroke-color="lime" style:stroke-width="2" />
+              </pdf:Div>
+              <pdf:Div style:column-count="4" style:margins="10 0 0 0" >
+                M0 10 v 100 h 100 v -100
+                <pdf:Path d=" M0 10 v 100 h 100 v -100"  style:fill-style="Solid" style:fill-color="lime" 
+                          style:fill-opacity="0.2" style:stroke-color="lime" style:stroke-width="2"  />
+                <pdf:ColumnBreak/>
+                M0 0 c50 0 0 50 50 50 s50 50 0 50 S0 75 50 75
+                <pdf:Path d="M0 0 c50 0 0 50 50 50 s50 50 0 50 S0 75 50 75" style:stroke-color="aqua" style:stroke-width="2" style:fill-style="None" />
+                <pdf:ColumnBreak/>
+                M50 0 q 100 12.5 0 25 t0 25 T50 75
+                <pdf:Path d="M50 0 q 100 12.5 0 25 t0 25 T50 75" style:fill-style="None" style:stroke-color="lime" style:stroke-width="2" />
+                <pdf:ColumnBreak/>
+               M50 0 q 100 12.5 0 25 t0 25 T50 75 s50 50 0 50 S0 75 50 75
+                <pdf:Path d="M50 0 q 100 12.5 0 25 t0 25 T50 75 s50 50 0 50 S0 75 50 75" style:fill-style="None" style:stroke-color="lime" style:stroke-width="2" />
+              </pdf:Div>
+
+
+            </pdf:Div>
+
+            <pdf:Div id="PathInline" style:class="wide" outline-title="Paths inline with the content" >
+              <pdf:H4 text="Paths inline with the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              The following path is inline with the text
+              <pdf:Path style:position-mode="Inline" d="M 0 10 q 10 -15 15 0" style:stroke-color="aqua" style:stroke-width="1" style:fill-style="None" />.
+              And text after the path
+
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" outline-title="Combining Paths" >
+              <pdf:H4 text="Combining paths" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Paths can be combined to create complex shapes and structures
+              <pdf:Canvas style:width="300" style:margins="10" style:height="150" >
+                <Style>
+                  <style:Clipping all="5" />
+                </Style>
+                <pdf:Path d="M0,0 v150 h300 v-150 z" style:fill-color="#00247d" />
+                <pdf:Path d="M0,0 L300,150 M300,0 L0,150" style:stroke-color="#fff" style:stroke-width="30" />
+                <pdf:Path d="M0,7 L300,157 M310,0 L10,150" style:stroke-color="#cf142b" style:stroke-width="10" />
+                <pdf:Path d="M150,0 v150 M0,75 h300" style:stroke-color="#fff" style:stroke-width="50" />
+                <pdf:Path d="M150,0 v150 M0,75 h300" style:stroke-color="#cf142b" style:stroke-width="30"/>
+                <!--<pdf:Path d="M0,0 h305 v160 h-305 v-170" style:stroke-color="white" style:fill-style="None" style:stroke-width="20"  />-->
+              </pdf:Canvas>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

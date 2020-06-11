@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='false' log-level='Messages' parser-mode="Lax" parser-log='true' ?>
+<!-- TODO: Complete the transformations options. -->
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+
+  <Render-Options compression-type="None" string-output="Hex" >
+    <pdf:Writer pdf-version="1.4" pooled="true"  />
+  </Render-Options>
+  <Viewer fit-window="true" page-display="Thumbnails" page-layout="SinglePage"/>
+  <Params>
+    <pdf:Bool-Param id="IsVisible" value="false" />
+    <pdf:Bool-Param id="ShowCountry" value="false" />
+    <pdf:Template-Param id="Empty" >
+      <pdf:Div style:border-color="#CCC" style:bg-color="#EEE" style:padding="4" >
+        No items were found in '<pdf:Text value="{xpath:@name}" />'
+      </pdf:Div>
+    </pdf:Template-Param>
+    <pdf:Xml-Param id="Loop" >
+      <Transforms>
+        <Skews>
+          <a>0</a>
+          <a>0.15</a>
+          <a>0.30</a>
+          <a>0.45</a>
+          <a>0.60</a>
+          <a>0.75</a>
+          <a>0.90</a>
+        </Skews>
+        <Angles>
+          <a>0</a>
+          <a>15</a>
+          <a>30</a>
+          <a>45</a>
+          <a>60</a>
+          <a>75</a>
+          <a>90</a>
+          <a>105</a>
+          <a>120</a>
+          <a>135</a>
+          <a>150</a>
+          <a>165</a>
+          <a>180</a>
+          <a>195</a>
+          <a>210</a>
+          <a>225</a>
+          <a>240</a>
+          <a>255</a>
+          <a>270</a>
+          <a>285</a>
+          <a>300</a>
+          <a>315</a>
+          <a>330</a>
+          <a>345</a>
+        </Angles>
+      </Transforms>
+    </pdf:Xml-Param>
+  </Params>
+  <Styles>
+
+    <style:Styles-Ref source="BaseStyles.psfx" />
+   
+  </Styles>
+  <Pages>
+
+    <pdf:Page id="BackgroundTextRuns" style:padding="20" >
+      <Content>
+        
+        <pdf:Div>
+          
+        <data:XMLDataSource xml-node-data="{item:Loop}" id="Looping" >
+        </data:XMLDataSource>
+        
+        <!--<data:ForEach datasource-id="Looping" select="//Transforms/Skews/a" >
+          <Template>
+            <pdf:Div style:width="200" style:border-color="maroon" style:h-align="Right" >
+              <Style>
+                <style:Transform skew-x="{xpath:text()}" />
+              </Style>
+              <pdf:Rect style:x="0" style:y="0" style:width="100" style:height="100" style:fill-color="lime" style:border-color="green" style:fill-opacity="0.4" >
+              </pdf:Rect>
+              Hello World
+            </pdf:Div>
+            Below the div
+          </Template>
+        </data:ForEach>-->
+        </pdf:Div>
+        Before the div
+        <pdf:Div id="OuterContainer" style:border-color="green" style:margins="10pt" style:full-width="false" >
+          <Style>
+            <style:Overlay-Grid show="true" spacing="10"/>
+          </Style>
+          Before the transformed Div<pdf:Br/>
+          <pdf:Div id="Rotated" style:border-color="blue" style:margins="10pt" style:padding="10pt" style:width="100" style:height="100" style:x="40" style:y="40" >
+            <Style>
+              <style:Transform rotate="90" scale-x="1" scale-y="2" skew-x="0.5" ></style:Transform>
+            </Style>
+            Rotated around the middle
+          </pdf:Div>
+          After the transformed div
+        </pdf:Div>
+        <!-- <pdf:Div id="OuterContainer2" style:border-color="green" style:margins="10pt" style:full-width="false" >
+          <pdf:Div id="Rotated" style:border-color="blue" style:margins="10pt" style:padding="0pt" style:full-width="false"  >
+            <Style>
+              <style:Transform rotate="0" skew-x="0.5" ></style:Transform>
+            </Style>
+            <pdf:Image src="./Images/scryber_logo_380.png" ></pdf:Image>
+          </pdf:Div>
+        </pdf:Div>
+        <pdf:Div id="OuterContainer2" style:border-color="green" style:margins="10pt" style:full-width="false" >
+          <pdf:Div id="Rotated" style:border-color="blue" style:margins="0pt" style:padding="10pt" style:width="80" style:height="80" >
+            <Style>
+              <style:Transform rotate="0" skew-x="0.5" scale-x="2" origin="TopLeft" ></style:Transform>
+            </Style>
+            Rotated around the Top Left
+          </pdf:Div>
+        </pdf:Div>
+        <pdf:Div id="OuterContainer2" style:border-color="green" style:margins="10pt" style:full-width="false" >
+          <pdf:Div id="Rotated" style:border-color="blue" style:margins="0pt" style:padding="10pt" style:width="80" style:height="80" >
+            <Style>
+              <style:Transform rotate="45" origin="TopRight" ></style:Transform>
+            </Style>
+            Rotated around the Top Right
+          </pdf:Div>
+        </pdf:Div>
+        <pdf:Div id="OuterContainer2" style:border-color="green" style:margins="10pt" style:full-width="false" >
+          <pdf:Div id="Rotated" style:border-color="blue" style:margins="0pt" style:padding="10pt" style:width="80" style:height="80" >
+            <Style>
+              <style:Transform rotate="45" origin="BottomRight" ></style:Transform>
+            </Style>
+            Rotated around the Bottom Right
+          </pdf:Div>
+        </pdf:Div>-->
+        <pdf:Div >
+          <Style>
+            <style:Text text-direction="LTR" />
+          </Style>
+          After the rotated div<pdf:Br/>
+          And some more text
+        </pdf:Div>
+      </Content>
+    </pdf:Page>
+
+    <pdf:Page visible="true" style:margins="20" outline-title="HTML Source Page" style:page-angle="270">
+      <Style>
+        <style:Transform rotate="5"/>
+      </Style>
+      <Content>
+        <pdf:H2 text="My Heading" />
+        <pdf:Div>
+          Long blocks of text should flow witin the container and move to the next region, and page as available. <pdf:B>
+                This block has a light background colour
+                so we can see the flow of this content.
+              </pdf:B>
+              <pdf:Br/>
+              <pdf:Br/>
+              Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+              <pdf:Br/>
+              Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+              <pdf:Br/>
+              Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+              <pdf:Br/>
+              <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+              <pdf:Image src="./images/scryber_logo_380.png" />
+              Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+              <pdf:Br/>
+              Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+              <pdf:Br/>
+              Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              <pdf:Br/>
+              Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+              <pdf:Br/>
+              An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+              <pdf:Br/>
+              Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+              <pdf:Br/>
+              Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+              <pdf:Br/>
+              Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+              <pdf:Br/>
+              Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+              <pdf:Br/>
+              Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+              <pdf:Br/>
+              Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+              <pdf:Br/>
+              An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+              <pdf:Br/>
+              Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+              <pdf:Br/>
+              Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+              <pdf:Br/>
+              Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+              <pdf:Br/>
+              Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+              <pdf:Br/>
+              Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+              <pdf:Br/>
+              Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+              <pdf:Br/>
+              Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+              <pdf:Br/>
+              Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+              
+        </pdf:Div>
+      </Content>
+    </pdf:Page>
+    
+<!--
+    <pdf:Page visible="false">
+      <Content>
+        <pdf:Div id="MixedSpacing" style:class="wide" style:font-family="Arial" >
+
+          <pdf:Para style:border-color="black" style:font-family="Calibri" style:text-word-spacing="10pt"  style:h-align="Right" >
+            <Style>
+              <style:Overlay-Grid color="aqua" show="false" spacing="10pt"/>
+            </Style>
+              Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. 
+              Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêtnominavi elèctram, pro case delënit îd.<pdf:Span>
+              Quœt blàndit gubergren êum nê. Eum et omnium fuissêt.<pdf:Br/>
+                Superscript&#x00B2;&#x2074;<pdf:Br/>
+                Subscript&#x2080;&#x2084;<pdf:Br/>
+              Et mêl nôstrum œmittam ocurreret.<pdf:Br/>
+              Obliqûe pârtiéndo réfôrmidàns vîm id.</pdf:Span> At sit dîctàs pértïnàx quaêrendum.<pdf:Image src="images/scryber_logo_380.png" style:position-mode="Inline" style:height="10pt"  />Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+          </pdf:Para>
+          <pdf:Para style:font-family="Andalus" style:font-size="30pt" style:border-color="black" style:text-direction="RTL" >
+            هذه هي بعض النص باللغة العربية هذه هي بعض النص باللغة العربية<pdf:Br/><pdf:Br/>
+            هذه هي بعض النص باللغة العربية هذه هي بعض النص باللغة العربية هذه
+          </pdf:Para>
+          <pdf:Para style:font-family="Andalus" style:font-size="30pt" style:text-direction="RTL" style:text-word-spacing="10pt" >
+            النص باللغة العربية هذه هي بعض
+          </pdf:Para>
+        </pdf:Div>
+      </Content>
+    </pdf:Page>
+   
+
+   <pdf:Section id="NonSystemFonts" outline-title="{item:SectionTitle}" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Non-Installed Fonts"/>
+      </Items>
+      <Content>
+
+        <data:XMLDataSource id="JustATest" xml-node-data="{item:TestXmlData}" >
+        </data:XMLDataSource>
+
+        <data:ForEach datasource-id="JustATest" select="//AllItems" >
+          <Template>
+            <pdf:Div >
+              <bind:DataGrid visible="true" select="PriceListItem" empty-template="{item:Empty}" >
+                <Columns>
+
+                  <bind:TextColumn style:padding="4" style:border-color="black"
+                                   header-text="Product Description" visible="true" text="{xpath:ProductDescription}"  >
+                    <AlternatingItemStyle>
+                      <style:Background color="#DDD"/>
+                    </AlternatingItemStyle>
+                  </bind:TextColumn>
+
+                  
+                  <bind:TextColumn style:padding="4" style:border-color="black"
+                                   bind:header-class="grid-head"
+                                   header-text="Country of Origin"
+                                   visible="{xpath:CategoryIsVisible}"
+                                   text="{xpath:CountryOfOrigin}" >
+                    <ItemStyle>
+                      <style:Background color="{xpath:CategoryIsVisible/@color}"/>
+                    </ItemStyle>
+                    <AlternatingItemStyle>
+                      <style:Background color="{xpath:CategoryIsVisible/@altcolor}"/>
+                    </AlternatingItemStyle>
+                    <HeaderStyle>
+                      <style:Fill color="{xpath:@color}"/>
+                    </HeaderStyle>
+                  </bind:TextColumn>
+                  
+                  <bind:TextColumn style:padding="4" style:border-color="black"
+                                   header-text="Category Is Visible"
+                                   visible="true"
+                                   text="{xpath:CategoryIsVisible}">
+                  </bind:TextColumn>
+                </Columns>
+              </bind:DataGrid>
+
+
+              <bind:DataList id="AsAList" select="PriceListItem" >
+                <AlternatingItemStyle>
+                  
+                </AlternatingItemStyle>
+                <ItemTemplate>
+                  <pdf:Text value="{xpath:ProductDescription}" />
+                  <pdf:Br/>
+                </ItemTemplate>
+              </bind:DataList>
+            </pdf:Div>
+          </Template>
+        </data:ForEach>
+        <pdf:Para style:class="extra-space">This is some content with a bit of stretch</pdf:Para>
+
+      </Content>
+    </pdf:Section>-->
+
+
+
+  </Pages>
+</pdf:Document>

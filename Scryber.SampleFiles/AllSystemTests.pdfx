@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber parser-mode='Lax' parser-log='true' append-log='true' controller='' log-level='Messages' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Render-Options compression-type="FlateDecode" string-output="Hex" >
+    <pdf:Writer pdf-version="1.7" pooled="true"/>
+  </Render-Options>
+  <Additions>
+  </Additions>
+  <Outline title="All System Tests" style:bold="true" style:italic="true" style:open="true" style:color="aqua"/>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Info>
+    <Title>All System Test </Title>
+  </Info>
+  <Params>
+    <pdf:String-Param id="Title" value="Scryber testing generation file" />
+    <pdf:String-Param id="SectionTitle" value=""/>
+    <pdf:String-Param id="AssmVersion" value="0.9.0.0" />
+    <pdf:String-Param id="FileVersion" value="0.9.0.0" /> 
+  </Params>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style applied-type="pdf:Panel" >
+      <!--<style:Position h-align="Justified" />-->
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:Page-Ref source="TitlePage.pdfx" select="//pdf:Page[@id='TitlePage']" pdf:test="pdf:Page-Ref"/>
+    <pdf:PageGroup >
+      <Header>
+        <pdf:Table  style:class="pg-header-table" >
+          <pdf:Row>
+            <pdf:Cell style:class="pg-header-left" >
+              <pdf:Label text="{item:SectionTitle}" />
+            </pdf:Cell>
+            <pdf:Cell style:class="pg-header-mid" >
+              <pdf:Label text="{item:Title}" />
+            </pdf:Cell>
+            <pdf:Cell style:class="pg-header-right">
+              <pdf:Date style:date-format="D" value="{item:ReportDate}"  />
+            </pdf:Cell>
+          </pdf:Row>
+          <pdf:Row>
+            <pdf:Cell id="bottombannerimgcell" style:class="pg-header-bottom" >
+              <pdf:Image src="./images/banner_image.png" />
+            </pdf:Cell>
+          </pdf:Row>
+        </pdf:Table>
+      </Header>
+
+      <Footer>
+        <pdf:Div style:class="pg-footer" >
+          <pdf:Image src="./images/banner_image.png" style:x="0" style:y="-10" />
+          <pdf:Br/>
+          <pdf:PageNumber style:display-format="Page {0} of {1} ({2} or {3})" />
+        </pdf:Div>
+      </Footer>
+
+      <Pages>
+        <pdf:Page-Ref source="TextLayout.pdfx" select="//pdf:PageGroup[@id='TextLayout']"/>
+
+        <pdf:Page-Ref source="TextFonts.pdfx" select="//pdf:PageGroup[@id='UsingFonts']"/>
+
+        <pdf:Page-Ref source="TextStyles.pdfx" select="//pdf:PageGroup[@id='TextStyles']"/>
+
+        <pdf:Page-Ref source="TextPageColumns.pdfx" select="//pdf:PageGroup[@id='ColumnPageLayout']"/>
+
+        <pdf:Page-Ref source="TextBlockColumns.pdfx" select="//pdf:PageGroup[@id='ColumnBlockLayout']"/>
+
+        <pdf:Page-Ref source="TextBlockVariableColumns.pdfx" select="//pdf:PageGroup[@id='ColumnBlockLayout']"/>
+
+        <pdf:Page-Ref source="ArabicText.pdfx" select="//pdf:Page[@id='ArabicPage']"/>
+
+        <pdf:Page-Ref source="ContainerComponents.pdfx" select="//pdf:PageGroup[@id='ContainerComponents']"/>
+
+        <pdf:Page-Ref source="SimpleShapes.pdfx" select="//pdf:PageGroup[@id='SimpleShapes']"/>
+
+        <pdf:Page-Ref source="Images.pdfx" select="//pdf:PageGroup[@id='ImageSupport']"/>
+
+        <pdf:Page-Ref source="Tables.pdfx" select="//pdf:PageGroup[@id='Tables']"/>
+
+        <pdf:Page-Ref source="Lists.pdfx" select="//pdf:PageGroup[@id='ListSupport']"/>
+        <pdf:Page-Ref source="Links.pdfx" select="//pdf:PageGroup[@id='Links']"/>
+
+        <pdf:Page-Ref source="PageNumbers.pdfx" select="//pdf:PageGroup[@id='AllPageNumbers']"/>
+
+        <pdf:Page-Ref source="PlaceHolder.pdfx" select="//pdf:PageGroup[@id='PlaceHolder']"/>
+
+        
+        <!--<pdf:Page-Ref source="Attachments.pdfx" select="//pdf:Page[@id='AttachmentPage']"/>-->
+
+        <pdf:Page-Ref source="XPathBinding.pdfx" select="//pdf:PageGroup[@id='XPathBindingGroup']"/>
+
+        <pdf:Page-Ref source="CodeController.pdfx" select="//pdf:PageGroup[@id='ControllerPages']"/>
+      </Pages>
+    </pdf:PageGroup>
+
+    
+    
+
+  </Pages>
+</pdf:Document>

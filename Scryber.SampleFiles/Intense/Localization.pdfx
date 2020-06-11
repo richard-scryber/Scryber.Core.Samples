@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="Scryber.Components, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:data="Scryber.Data, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:style="Scryber.Styles, Scryber.Styles, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:attach="Scryber.Attachments.Components, Scryber.Attachments, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f88ebab663f8ed8"
+              xmlns:chart="Scryber.Charts.Components, Scryber.Charts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f88ebab663f8ed8"
+              auto-bind="true">
+  <Render-Options compression-type="None" />
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Additions>
+    <attach:Attachment id="MyAttachment" src="../images/gradient.png" desc="Just an image attachment" />
+    <attach:Attachment id="MyOtherAttach" src="http://www.scryber.co.uk/Portals/2/Images/scryber_logo_flat_350.png" desc="This is a remote url attachment" />
+  </Additions>
+  <Items>
+    <pdf:String-Item key="ChartLabel" value="This is the chart" />
+  </Items>
+  <Styles>
+    <style:Styles-Ref source="../BaseStyles.psfx"/>
+
+    <style:Style applied-type="pdf:Page" >
+      <style:Page width="560" height="800"/>
+    </style:Style>
+
+    <style:Style applied-type="chart:ChartHeader" >
+      <style:Margins bottom="0pt"/>
+      <style:Size full-width="true" height="20pt"/>
+      <style:Position h-align="Center" />
+      <style:Text number-format="C" />
+    </style:Style>
+
+    <style:Style applied-type="chart:Axis" >
+      <chart:AxisStyle  grid-infront="false" tick-marks="None" sides="Bottom" />
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:Section id="AttachmentPage" outline-title="Attachment Page"
+              style:margins="20pt" >
+      <Style>
+        <style:Overlay-Grid color="aqua" spacing="20" show="false"/>
+      </Style>
+      <Content>
+        <pdf:Div style:border-color="aqua" >
+          <pdf:Label text="{rsrc:local.HelloWorld}" />
+        </pdf:Div>
+        
+        
+        <pdf:Div id="container" style:border-color="green" style:margins="0pt" style:height="300" style:padding="20pt" >
+          This is some text
+          <pdf:Image src="../images/scryber_logo_only.png" />
+          Dot
+          <pdf:Line style:stroke-dash="dot" />
+
+          Sparse Dot
+          <pdf:Line style:stroke-dash="sparse-dot" />
+          
+          Dash
+          <pdf:Line style:stroke-dash="dash" />
+        
+          Long Dash
+          <pdf:Line style:stroke-dash="long-dash" />
+        
+          Long Dash Dot
+          <pdf:Line style:stroke-dash="long-dash-dot" />
+        
+          Long Dash Dot Dot
+          <pdf:Line style:stroke-dash="long-dash-dot-dot" />
+        </pdf:Div>
+
+      </Content>
+    </pdf:Section>
+  </Pages>
+</pdf:Document>

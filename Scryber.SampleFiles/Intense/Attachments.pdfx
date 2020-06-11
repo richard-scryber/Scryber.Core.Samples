@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:attach="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Attachments.xsd"
+              auto-bind="true">
+  
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Additions>
+    <attach:Attachment id="MyAttachment" src="GhostscriptSource.pdf" desc="Just an image attachment" />
+    <attach:Attachment id="MyOtherAttach" src="http://www.scryber.co.uk/Portals/2/Images/scryber_logo_flat_350.png" desc="This is a remote url attachment" />
+  </Additions>
+  <Styles>
+    <style:Styles-Ref source="../BaseStyles.psfx"/>
+  </Styles>
+  <Pages>
+    <pdf:Page id="AttachmentPage" outline-title="Attachment Page" style:margins="20pt" >
+      <Content>
+        Here we add an attachment for the Banner_image.png
+        <attach:IconAttachment id="MyInlineAttach" visible="true"
+                           style:position-mode="Inline"
+                           src="../Images/scryber_logo_380.png" 
+                           desc="This is an inline attachment" /> inline with the text
+      </Content>
+    </pdf:Page>
+  </Pages>
+</pdf:Document>

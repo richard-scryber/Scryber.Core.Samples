@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber append-log='false' log-level='Messages' parser-mode="Lax" parser-log='true' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:html="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Html.xsd"
+              auto-bind="true" >
+  <Render-Options compression-type="FlateDecode"></Render-Options>
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+
+  <Pages>
+
+    <html:Page style:padding="20pt" style:border-color="blue" style:bg-color="#ccc" style:border-width="1pt" >
+      <Header>
+        <html:Fragment style:border-color="red" style:border-width="1pt" style:padding="5pt" >
+          <div xmlns="http://www.w3.org/1999/xhtml" class='header' style='padding:10px' >This is the header</div>
+        </html:Fragment>
+      </Header>
+      <Content>
+        <body xmlns="http://www.w3.org/1999/xhtml" >
+          <div class="my-class" >
+            This is the content. <b>And this is bold</b>
+          </div>
+          <div style="margin:10px;border:solid 1px red;padding:5px; color:green;page-break-before:true;">Content in padding</div>
+        </body>
+      </Content>
+    </html:Page>
+    
+    
+    <pdf:Section id="MyFirstPage" style:padding="20pt" style:bg-color="#ccc" >
+      <Content>
+        <!--<html:Fragment style:border-color="red" style:border-width="1pt" style:padding="5pt" >
+          <div xmlns="http://www.w3.org/1999/xhtml" class='header' style='padding:10px' >This is the header</div>
+        </html:Fragment>-->
+        Hello World
+        <pdf:Div id="MyDiv" style:height="70pt" style:border-color="black">Content in the div</pdf:Div>
+        <pdf:Div style:padding="30pt">
+          <pdf:Link destination="#NextPage" style:fill-color="blue">
+            <pdf:Span>THis is the link</pdf:Span>
+        </pdf:Link>
+        </pdf:Div>
+        
+      </Content>
+    </pdf:Section>
+    <pdf:Page id="NextPage">
+      <Content>
+        Next Page
+      </Content>
+    </pdf:Page>
+  </Pages>
+</pdf:Document>

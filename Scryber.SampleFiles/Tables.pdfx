@@ -1,0 +1,1625 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="{item:Title}"/>
+  <Render-Options img-cache-mins="20"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Tables System Tests"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style applied-id="OverflowSpacerForPages" >
+      <style:Position height="180pt"/>
+    </style:Style>
+
+    <style:Style applied-id="OverflowSpacerForMultiColumn" >
+      <style:Position height="580pt"/>
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="Tables" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Tables" />
+      </Items>
+      <Pages>
+
+        <pdf:Section id="SimpleTable" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Simple tables" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Tables are blocks of rows and cells that can contain any form of content. They are laid out in a grid structure, with the rows
+              and cells supporting the standard style based attibutes.
+            </pdf:Para>
+
+            <!-- 
+              Unstyled Table
+            -->
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Unstyled 3x3 Table" outline-title="Unstyled 3x3 table" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the Table
+              <pdf:Table>
+                <pdf:Row>
+                  <pdf:Cell>Cell 1.1</pdf:Cell>
+                  <pdf:Cell>Cell 1.2</pdf:Cell>
+                  <pdf:Cell>Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell>Cell 2.1</pdf:Cell>
+                  <pdf:Cell>Cell 2.2</pdf:Cell>
+                  <pdf:Cell>Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell>Cell 3.1</pdf:Cell>
+                  <pdf:Cell>Cell 3.2</pdf:Cell>
+                  <pdf:Cell>Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              After the Table
+            </pdf:Div>
+
+            <!-- 
+              Styled Table
+            -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Styled 3x3 Table" outline-title="Styled 3x3 table" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Adding padding and a thin gray border to the cells with margins and a border on the table itself
+              <pdf:Table style:class="padborder keep-together">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              Explicit colours, fonts, background images, etc. on cells and rows
+              <pdf:Table style:class="padborder keep-together" style:bg-color="#FAA">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row style:bg-image="./images/gradient.png" >
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:bg-image="./images/gradient2.png" style:class="padborder" style:margins="4">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime" >Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row style:bg-color="#AAF" style:font-bold="true">
+                  <pdf:Cell style:class="padborder" style:margins="4">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:margins="4">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              After the Table
+            </pdf:Div>
+
+            <!-- 
+              Sized Table
+            -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Sized 3x3 Table" outline-title="Sized 3x3 table" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Explicit sizing of cell widths will force the cell to be that width. If there is a conflict between values the maximum will be chosen
+              but the content in the limited to the requested size.
+              <pdf:Table style:class="padborder keep-together" >
+                <pdf:Row>
+                  <pdf:Cell style:width="40pt" style:class="padborder" style:bg-color="#AAF">Cell 1.1 - 40x*</pdf:Cell>
+                  <pdf:Cell style:width="300pt" style:class="padborder">Cell 1.2 - 200x*</pdf:Cell>
+                  <pdf:Cell style:width="100pt" style:class="padborder">Cell 1.3 - 100x*</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:width="80pt" style:class="padborder">Cell 2.1 - 80x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2 - *x*</pdf:Cell>
+                  <pdf:Cell style:width="40pt" style:class="padborder">Cell 2.3 - 40x*</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1 - *x*</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - *x* And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3 - *x*</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+              Explicit sizing of cell heights will force the cell to be thatheight. If there is a conflict between values the maximum will be chosen
+              but the content in the limited to the requested size. (1.3 cannot fit any content in as the height is set to 10pt)
+              <pdf:Table id="SecondSized3x3Table" style:class="padborder" >
+                <pdf:Row>
+                  <pdf:Cell style:height="40pt" style:class="padborder" style:bg-color="#AAF">Cell 1.1 - *x30</pdf:Cell>
+                  <pdf:Cell style:height="50pt" style:class="padborder">Cell 1.2 - *x40</pdf:Cell>
+                  <pdf:Cell style:height="10pt" style:class="padborder">Cell 1.3 - *x10</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:width="80pt" style:class="padborder">Cell 2.1 - 80x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2 - *x*</pdf:Cell>
+                  <pdf:Cell style:height="20pt" style:class="padborder">Cell 2.3 - *x40</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1 - *x*</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - *x* And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3 - *x*</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+            <!-- 
+              Full width Tables
+            -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Full Width Tables" outline-title="Full width tables" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              A full width table with no explicit sizing on the cells will split the widths evenly (in this case 1/3rds) across the available space.
+              <pdf:Table id="fullwidthone" style:class="padborder" style:full-width="true">
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row id="thirdfullwidth">
+                  <pdf:Cell id="threeonecell" style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell id="threetwocell" style:bg-color="#AFF" style:class="padborder">Cell 3.2 - </pdf:Cell>
+                  <pdf:Cell id="threethreecell" style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              If one or more cells have a width, then the available space will be divided up evenly with the remainder cells
+              <pdf:Table style:class="padborder keep-together" style:full-width="true">
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="100pt" style:class="padborder">Cell 1.1 - 100x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              If all but one columns have a width, then the available space will be taken up entirely by the remaining cell
+              <pdf:Table style:class="padborder keep-together" style:full-width="true">
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="100pt" style:class="padborder">Cell 1.1 - 100x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:width="100pt" style:class="padborder">Cell 1.3 - 100x*</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              If EVERY column has a width, then the full width option will be ignored (as we are forced to an explicit width table)
+              <pdf:Table style:class="padborder keep-together" style:full-width="true">
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="100pt" style:class="padborder">Cell 1.1 - 100x*</pdf:Cell>
+                  <pdf:Cell style:width="100pt" style:class="padborder">Cell 1.2 - 100x*</pdf:Cell>
+                  <pdf:Cell style:width="100pt" style:class="padborder">Cell 1.3 - 100x*</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+            </pdf:Div>
+
+            <!-- 
+              Flowing width Table
+            -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Flowing width Tables" outline-title="Flowing width Tables" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              If there are no widths specified, then a cell will be given an avavilable space equal across the each of the columns.
+              <pdf:Table style:class="padborder keep-together" >
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:class="padborder">Cell 1.1 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              If a cell does not use that width, then the overall width of the table will be reduced to fit the content.
+              <pdf:Table style:class="padborder keep-together" >
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              If a cell has an explicit width, then the remainder is known and more can be given to each of the unspecified columns
+              <pdf:Table style:class="padborder keep-together" >
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="40" style:class="padborder">Cell 1.1 - 40x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <!-- 
+              Spanning cells
+        -->
+
+        <pdf:Section id="SpanningCellsSection" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Spanning Cells" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The scryber library supports column spans (only). Any cell can be given a particular column-span value and cells
+              will adjust their size to accomodate these spans.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Simple Spanning Cells" outline-title="Simple Spanning Cells" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              If there are no widths specified, then a cell will be given an avavilable space equal across the each of the columns.
+              <pdf:Table style:class="padborder keep-together" >
+                <pdf:Row>
+                  <pdf:Cell style:column-span="2" style:bg-color="#AAF" style:class="padborder">Cell 1.1 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:column-span="2" style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+              If a cell does not use that width, then the overall width of the table will be reduced to fit the content. Taking into account the required width of the spanned cells
+              <pdf:Table style:class="padborder keep-together" >
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:column-span="3" style:class="padborder">Cell 2.1- And the content of the cell will flow automatically within the available width</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+              If a row has more cells on it, than other rows, then empty cells with no style will be added to the blanks,
+              but the same rules apply, where content width will be reduced when widths are not specified.
+              <pdf:Table  style:class="padborder keep-together">
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="40" style:class="padborder">Cell 1.1 - 40x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:column-span="3" style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Full width with Spanning Cells" outline-title="Full width with Spanning Cells" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Full width tables follow the same layout rules filling the avialable space with the content
+              <pdf:Table id="FullWidthWithSpanningCells" style:class="padborder  keep-together" style:full-width="true" >
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="40" style:class="padborder">Cell 1.1 - 40x*</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:column-span="2" style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:column-span="3" style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+              Widths can be specified on spaned cells and the maximum values will be used, pushing the last column widest,
+              but retaining the width for inner content
+              <pdf:Table style:class="padborder keep-together" style:full-width="true" >
+                <pdf:Row>
+                  <pdf:Cell style:bg-color="#AAF" style:width="140" style:class="padborder">Cell 1.1 - 140x*</pdf:Cell>
+                  <pdf:Cell style:width="140" style:height="40" style:class="padborder">Cell 1.2 - 140x40</pdf:Cell>
+                  <pdf:Cell style:width="140" style:class="padborder">Cell 1.3 - 140x* (actual 180x* based on spanned cell)</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:column-span="3" style:width="460" style:class="padborder">Cell 2.1 - @460x*</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:class="padborder">Cell 3.2 - And the content of the cell will flow automatically within the available width</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <!--
+          Headers and footers
+        -->
+
+        <pdf:Section id="HeadFootTable" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Headers and Footers" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Headers and footers allow for separating the styles. They can be combined and do not nead to actualy be at the top or the bottom.
+              They also by default will repeat on overflowing grids (see <pdf:Link destination="#OverflowingTable" destination-fit="FullPage" >Overflowing Tables</pdf:Link>).
+            </pdf:Para>
+
+            <pdf:Div style:class="wide">
+              <pdf:H4 text="Simple Header and Footer cells" outline-title="Simple Header and Footer cells" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Table style:class="padborder">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Head 1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+
+              <pdf:H4 text="Muliple Headers and footers" outline-title="Multiple Headers and footers" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Multiple header and footer rows can be added to a single table
+              <pdf:Table style:class="padborder">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Head 1.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 1.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 1.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+              They can even have column spans on the cells
+              <pdf:Table style:class="padborder">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:column-span="3" style:class="padborder" >Head 1.1</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+              And the rows do not actually have to be at the top or the bottom
+              <pdf:Table style:class="padborder" style:overflow-split="Never">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+
+              <pdf:H4 text="Full width headers and footers" outline-title="Full width headers and footers" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Headers and footers should honour the full width properties of tables.
+              <pdf:Table style:class="padborder" style:full-width="true">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:column-span="3" style:class="padborder" >Head 1.1</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+              Along with the explicit widths of cells
+              <pdf:Table style:class="padborder" style:full-width="true">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:column-span="3" style:class="padborder" >Head 1.1</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:width="300pt" style:class="padborder" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:width="150pt" style:class="padborder" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+              Content within the header and footer cells should also flow as it would in any cell
+              <pdf:Table style:class="padborder" style:full-width="true">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:column-span="3" style:class="padborder" >Head 1.1</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:width="300pt" style:class="padborder" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.2 - With flowing content in the cell</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Link id="NonOverflowedLink" destination="#LastTableInTheSet" action="Destination" destination-fit="FullPage" style:fill-color="blue" >Linked Cell 1.1</pdf:Link></pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Link id="MyOverflowedLinkInCell" destination="#LastTableInTheSet" action="Destination" destination-fit="FullPage" style:fill-color="blue" >Linked Cell 3.1</pdf:Link>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:width="150pt" style:class="padborder" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >Footer 2.3 - with flowing content in the cell</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+
+              <pdf:H4 text="Styled headers and footers" outline-title="Styled headers and footers" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Because header and footer cells inherit from the base table cell, they should get the same style information,
+              <pdf:Table style:class="padborder" style:full-width="true">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:column-span="3" style:class="padborder lime" >Head 1.1</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder lime" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder lime" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder lime" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder lime">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder lime">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder lime">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder lime">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder lime" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder lime" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder lime" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder lime" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder lime" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+              but can then have their own explict styles applied based on their type.
+              <pdf:Table style:class="padborder hf-styles" style:full-width="true">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:column-span="3" style:class="padborder hf-styles" >Head 1.1</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder hf-styles" >Head 2.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder hf-styles" >Head 2.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder hf-styles" >Head 2.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder hf-styles">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder hf-styles" >Footer 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder hf-styles" >Footer 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder hf-styles" >Footer 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:column-span="2" style:class="padborder hf-styles" >Footer 2.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder hf-styles" >Footer 2.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <!-- 
+          Mixed Content
+        -->
+
+        <pdf:Section id="MixedContentTable" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Mixed Cell Content" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The cells of a table do not enforce only textual content, but can contain other components (or collections of components).<pdf:Br/>
+              They can even contain other nested tables (rows cannot by default be split, so the nested table will always be
+              part of a row and be kept together).
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Mixed content table" outline-title="Mixed content table" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Table style:class="padborder">
+                <pdf:Header-Row >
+                  <pdf:Header-Cell style:class="padborder" >Cell header text</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >
+                    <pdf:Image src="./images/scryber_logo_380.png" />
+                  </pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder" >
+                    <pdf:H4 style:class="group-heading" text="Heading Level 4" />
+                    <pdf:Label text="Label text underneath with an image referenced below the label" />
+                    <pdf:Image src="./images/scryber_logo_380.png" />
+                  </pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:column-span="2" style:class="padborder">
+                    <pdf:Table style:border-color="lime" style:full-width="true">
+                      <pdf:Row>
+                        <pdf:Cell style:class="padborder">Inner Cell 1.1</pdf:Cell>
+                        <pdf:Cell style:class="padborder">Inner Cell 1.2</pdf:Cell>
+                        <pdf:Cell style:class="padborder">Inner Cell 1.3</pdf:Cell>
+                      </pdf:Row>
+                      <pdf:Row>
+                        <pdf:Cell style:class="padborder">Inner Cell 2.1</pdf:Cell>
+                        <pdf:Cell style:class="padborder">Inner Cell 2.2</pdf:Cell>
+                        <pdf:Cell style:class="padborder">Inner Cell 2.3</pdf:Cell>
+                      </pdf:Row>
+                    </pdf:Table>
+                    Inner tables are supported and should still honour full width and column span settings of the outer table
+                  </pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder" >
+                    <pdf:Image src="./images/scryber_logo_380.png" />
+                    <pdf:Image src="./images/scryber_logo_380.png" />
+                    Two images with natural size.
+                  </pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >
+                    Footer 2
+                  </pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder" >
+                    <pdf:Div style:border-color="black" >
+                      Inner Div with textual content and an image
+                      <pdf:Image src="./images/scryber_logo_380.png" />
+                    </pdf:Div>
+                  </pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Mixed content table with inner widths" outline-title="Mixed content table with inner widths" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              When widths are specified on inner content of the table cells, these values will attempt to be honoured.
+              <pdf:Table style:class="padborder">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="200pt" >Inner Div with a 200 width</pdf:Div>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="100pt" >Inner Div with a 100 width</pdf:Div>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="100pt" >
+                      Inner Div with a 100pt width and an image
+                      <pdf:Image src="./images/scryber_logo_380.png" />
+                    </pdf:Div>
+                  </pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+             If the table is full width, then the width of the cells is calculated based on any explict cell widths
+             and the availabe space within the table.<pdf:Br/>
+             If the inner content of the cell is larger than the cell size calculated (or explicitly set),
+             then this will be beyond the boundaries of the cell. <pdf:B>May be fixed in a future release.</pdf:B>
+              <pdf:Table style:class="padborder" style:full-width="true" style:overflow-split="Never">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="200pt" >Inner Div with a 200 width</pdf:Div>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="100pt" >Inner Div with a 100 width</pdf:Div>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="100pt" >
+                      Inner Div with a 100pt width and an image
+                      <pdf:Image src="./images/scryber_logo_380.png" />
+                    </pdf:Div>
+                  </pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              If the table is not full width, but the inner widths are greater than the available size of the tables container,
+              then the whole table will be forced to be larger than it's outer container.
+              <pdf:Table style:class="padborder" style:overflow-split="Never">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="200pt" >Inner Div with a 200 width</pdf:Div>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="200pt" >Inner Div with a 200 width</pdf:Div>
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder">
+                    <pdf:Div style:border-color="black" style:width="200pt" >
+                      Inner Div with a 200pt width and an image
+                      <pdf:Image src="./images/scryber_logo_380.png" />
+                    </pdf:Div>
+                  </pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+        <!-- 
+          Cell alignment
+        -->
+
+        <pdf:Section id="TableCellAlignment" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Table Cell Alignment" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Tables cells support the alignment of content within them just like any block component. Because the cells size is directly linked to 
+              the other cells in the row. Then the height is set to the maximum height in any of the cells of that row, and the alignment is as per
+              the new size.
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+              <pdf:Table id="TableCellAlignment" style:class="padborder" >
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder" style:h-align="Right" style:v-align="Top" >Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:h-align="Center" >
+                    Cell 1.2<pdf:Br/>
+                    On a couple<pdf:Br/>
+                    of lines.
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:v-align="Top" style:h-align="Left">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Right">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:h-align="Center" style:v-align="Middle">
+                    Cell 2.2 - This is some long content in the<pdf:Br/>
+                    cells that if explictly<pdf:Br/>
+                    flowed over a number of lines.<pdf:Br/>
+                    So that it can make the other cells alignment work.
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Left">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder" style:v-align="Bottom" style:h-align="Left">Cell 3.1 - with extra content to show the alignment options of the cells.</pdf:Cell>
+                  <pdf:Cell style:bg-color="#AFF" style:v-align="Bottom" style:h-align="Center" style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:v-align="Bottom" style:h-align="Right">Cell 3.3 - Last cell with extra content so that we can align it.</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              Spanned cells and multiple columns are supported with the alignment.
+              <pdf:Table style:class="padborder" style:full-width="true">
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Center" >Cell 1.1 - center, middle</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:height="120pt" style:h-align="Center" style:v-align="Bottom" >Cell 1.2 - This is a cell with a specific height where the content flows across mltiple lines</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Center" >Cell 1.3 - center, middle</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Center" style:column-span="2" >Cell 2.1 - 2 column span, center, middle</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:height="120pt" style:h-align="Center" style:v-align="Bottom" >Cell 2.2 - This is a cell with a specific height where the content flows across mltiple lines</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Center"  style:column-count="2" >
+                    Cell 3.1 - This is
+                    a cell with 2 columns inside it, so the content should flow down the first column within the layout. And
+                    then move on to the second column. The height is not fixed in this cell, but there is a specific height on another cell so
+                    this causes the row height to be limited to the specified amount. Overflow will be truncated based on that row height.
+                  </pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:height="120pt" style:h-align="Center" style:v-align="Bottom" >Cell 3.2 - This is a cell with a specific height where the content flows across mltiple lines</pdf:Cell>
+                  <pdf:Cell style:class="padborder" style:v-align="Middle" style:h-align="Center"  style:column-count="2" >
+                    Cell 3.3 - center, middle, with an explicit
+                    <pdf:ColumnBreak/>Column break.
+                  </pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+        
+        <!-- 
+         Table overflowing
+        -->
+
+        <pdf:Section id="OverflowingTable" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Overflowing tables" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+             Tables can overflow onto new regions and pages. The individual rows are set never to split (and it is not supported 
+             to allow rows to split (as the content of the cells my be divided unequally). Headers should repeat by default at the top on
+             each new region, and even individual rows can be set to repeat on new regions (as it is a style based attribute).
+            </pdf:Para>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Simple overflowing onto a new column" outline-title="Simple overflowing onto a new column" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This table is in a multi column div with an explict height of 100pt, so the table will overflow onto each column.
+              <pdf:Div style:column-count="3" style:margins="5" style:height="100pt" style:bg-color="#EEEEEE">
+              <pdf:Table style:bg-color="#CCCCCC" >
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 11.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 11.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 11.3</pdf:Cell>
+                </pdf:Row>
+              </pdf:Table>
+              </pdf:Div>
+              Specifying full width will fill the available column(s) on all regions including the overflow regions.
+              <pdf:Div style:column-count="3" style:margins="5" style:height="100pt" style:bg-color="#EEEEEE">
+                <pdf:Table style:bg-color="#CCCCCC" style:full-width="true" >
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 11.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 11.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 11.3</pdf:Cell>
+                  </pdf:Row>
+                </pdf:Table>
+              </pdf:Div>
+              Padding and margins on outer content and tables should also be respected. (If the content cannot be fitted or there is
+              no where else to flow onto then the inner content will be truncated).
+              <pdf:Div style:column-count="3" style:margins="5" style:border-color="aqua" style:padding="5" style:height="100pt" style:bg-color="#EEEEEE">
+                <pdf:Table style:bg-color="#CCCCCC" style:margins="5" style:padding="5" style:border-color="lime" style:full-width="true" >
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 11.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 11.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 11.3</pdf:Cell>
+                  </pdf:Row>
+                </pdf:Table>
+              </pdf:Div>
+            </pdf:Div>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Simple overflowing onto a new page" outline-title="Simple overflowing onto a new page" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This table overflows from the current document page onto a new document page. All margins, padding, cell widths and spacing should be preserved.
+              <pdf:Table style:bg-color="#CCCCCC" style:margins="5" style:padding="5" style:border-color="lime" style:full-width="true" >
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+              </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 11.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 11.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 11.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 12.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 12.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 12.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 13.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 13.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 13.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 14.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 14.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 14.3</pdf:Cell>
+                </pdf:Row>
+            </pdf:Table>
+            </pdf:Div>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Overflowing with headers and footers onto a new column" outline-title="Overflowing with headers and footers onto a new column" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This table has a top Header-Row that should automatically be repeated at the top of each new layout, and a footer at the end of the table
+              <pdf:Div style:column-count="3"  style:margins="5" style:height="120pt" style:bg-color="#EEEEEE">
+                <pdf:Table style:bg-color="#CCCCCC" style:full-width="true">
+                  <pdf:Header-Row>
+                    <pdf:Header-Cell style:class="padborder">Header 1.1</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.2</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.3</pdf:Header-Cell>
+                  </pdf:Header-Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Footer-Row>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.1</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.2</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.3</pdf:Footer-Cell>
+                  </pdf:Footer-Row>
+                </pdf:Table>
+              </pdf:Div>
+              This table has 2 header rows, the first is set NOT to repeat and the second should repeat, and the 5th row is also set to repeat 
+              (but will only do so after it has been initially laid out).
+              <pdf:Div style:column-count="3"  style:margins="5" style:height="120pt" style:bg-color="#EEEEEE">
+                <pdf:Table style:bg-color="#CCCCCC" style:full-width="true">
+                  <pdf:Header-Row style:repeat="None">
+                    <pdf:Header-Cell style:class="padborder">Non-Repeating 1.1</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Non-Repeating 1.2</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Non-Repeating 1.3</pdf:Header-Cell>
+                  </pdf:Header-Row>
+                  <pdf:Header-Row>
+                    <pdf:Header-Cell style:class="padborder">Header 1.1</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.2</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.3</pdf:Header-Cell>
+                  </pdf:Header-Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row style:repeat="RepeatAtTop">
+                    <pdf:Cell style:class="padborder">Repeat 5.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Repeat 5.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Repeat 5.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Footer-Row>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.1</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.2</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.3</pdf:Footer-Cell>
+                  </pdf:Footer-Row>
+                </pdf:Table>
+              </pdf:Div>
+              Clipping an outer div should just continue with the table in one row
+              <pdf:Div  style:margins="5" style:height="80pt" style:overflow-action="Clip" style:bg-color="#EEEEEE">
+                <pdf:Table style:bg-color="#CCCCCC" style:full-width="true" >
+                  <pdf:Header-Row style:repeat="None">
+                    <pdf:Header-Cell style:class="padborder">Non-Repeating 1.1 cell that will continue to flow</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Non-Repeating 1.2 cell that will continue to flow</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Non-Repeating 1.3 cell that will continue to flow</pdf:Header-Cell>
+                  </pdf:Header-Row>
+                  <pdf:Header-Row>
+                    <pdf:Header-Cell style:class="padborder">Header 1.1</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.2</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.3</pdf:Header-Cell>
+                  </pdf:Header-Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row style:repeat="RepeatAtTop">
+                    <pdf:Cell style:class="padborder">Repeat 5.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Repeat 5.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Repeat 5.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Footer-Row>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.1</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.2</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.3</pdf:Footer-Cell>
+                  </pdf:Footer-Row>
+                </pdf:Table>
+              </pdf:Div>
+            </pdf:Div>
+            
+            
+            <!-- overflow as an outer block never to split -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Overflowing with split not allowed" outline-title="Overflowing with split not allowed" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              This table is wrapped in an outer div that cannot be split so should force a new page.
+              <pdf:Div style:column-count="1"  style:margins="5" style:bg-color="#EEEEEE" style:overflow-split="Never">
+                <pdf:Table id="NotSplit" style:bg-color="#CCCCCC" style:full-width="true"  >
+                  <pdf:Header-Row>
+                    <pdf:Header-Cell style:class="padborder">Header 1.1</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.2</pdf:Header-Cell>
+                    <pdf:Header-Cell style:class="padborder">Header 1.3</pdf:Header-Cell>
+                  </pdf:Header-Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Row>
+                    <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                    <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                  </pdf:Row>
+                  <pdf:Footer-Row>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.1</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.2</pdf:Footer-Cell>
+                    <pdf:Footer-Cell style:class="padborder">Foot 1.3</pdf:Footer-Cell>
+                  </pdf:Footer-Row>
+                </pdf:Table>
+              </pdf:Div>
+            </pdf:Div>
+            </Content>
+        </pdf:Section>
+
+        <pdf:Page id="DoesNotOverflow" outline-title="{item:SectionTitle}" >
+          <Style>
+            <style:Overflow action="Truncate"/>
+          </Style>
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Truncated Table" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The following table is on a page (not a section), and this is not set to overflow. As the table is laid out it will reach the limit of rows that can
+              be added to the page.<pdf:Br/>
+              Once no more rows can be added, then layout will stop and the table will be closed.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" id="LastTableInTheSet" >
+              <pdf:Div style:height="550pt" style:margins="10pt" style:border-color="blue" style:v-align="Middle" style:h-align="Center" >SPACER</pdf:Div>
+
+              <pdf:Table style:bg-color="#CCCCCC" style:full-width="true" >
+                <pdf:Header-Row>
+                  <pdf:Header-Cell style:class="padborder">Header 1.1</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder">Header 1.2</pdf:Header-Cell>
+                  <pdf:Header-Cell style:class="padborder">Header 1.3</pdf:Header-Cell>
+                </pdf:Header-Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 1.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 1.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 2.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 2.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 3.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 3.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 4.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 4.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 4.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 5.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 5.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 5.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 6.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 6.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 6.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 7.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 7.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 7.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 8.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 8.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 8.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 9.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 9.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 9.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Row>
+                  <pdf:Cell style:class="padborder">Cell 10.1</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 10.2</pdf:Cell>
+                  <pdf:Cell style:class="padborder">Cell 10.3</pdf:Cell>
+                </pdf:Row>
+                <pdf:Footer-Row>
+                  <pdf:Footer-Cell style:class="padborder">Foot 1.1</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder">Foot 1.2</pdf:Footer-Cell>
+                  <pdf:Footer-Cell style:class="padborder">Foot 1.3</pdf:Footer-Cell>
+                </pdf:Footer-Row>
+              </pdf:Table>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Page>
+        
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<mods:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:mods="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Modifications.Components.xsd"
+              auto-bind="true" mods:orig-path="../ReferenceFiles/GAW-T100000087263_1.pdf">
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx"/>
+  </Styles>
+  <Pages>
+    <mods:Insert mods:src-page-index="0" style:margins="20" >
+      <Header>
+        <pdf:Image src="../Images/Logo2x.png" />
+      </Header>
+      <Content>
+        <pdf:H1 >This is inserted at the front of the document</pdf:H1>
+        <pdf:Table>
+          <pdf:Row>
+            <pdf:Header-Cell>Supplier Name</pdf:Header-Cell>
+            <pdf:Cell>Givudan</pdf:Cell>
+          </pdf:Row>
+          <pdf:Row>
+            <pdf:Header-Cell>Supplier Code</pdf:Header-Cell>
+            <pdf:Cell>WCSCUU12345</pdf:Cell>
+          </pdf:Row>
+          <pdf:Row>
+            <pdf:Header-Cell>Supplier Address</pdf:Header-Cell>
+            <pdf:Cell>Full address of the supplier</pdf:Cell>
+          </pdf:Row>
+          <pdf:Row>
+            <pdf:Header-Cell>Supplier Name</pdf:Header-Cell>
+            <pdf:Cell>Givudan</pdf:Cell>
+          </pdf:Row>
+        </pdf:Table>
+      </Content>
+    </mods:Insert>
+  </Pages>
+</mods:Document>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber parser-mode='Strict' parser-log='true' append-log='true' log-level='Messages'
+          controller='Scryber.SystemTests.vs13.Samples.CodePageController_Controller,Scryber.SystemTests.vs13' ?>
+<pdf:Section  id="InnerControlledPage"
+              xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+            on-loaded="InnerControlledPage_Load">
+  
+  <Content>
+    <pdf:Div style:class='wide' >
+      <pdf:H4 style:class='group-heading' outline-title='References Page Controllers' text='Referenced Page Controllers' />
+      <pdf:Para style:margins='10 0 10 0'>
+        Controllers can be defined in each template. They will be parsed an used for each template and a single instance
+        bound to that template. This page is referenced from the CodeController.pdfx template, but has it's own controller.<pdf:Br/>
+        Any outlets or actions defined on the controller will only be taken from this template.        
+      </pdf:Para>
+      <pdf:Label id='InnerLoadLabel' />
+      <pdf:Br/>
+      <!-- Matching ID for the outer document, but we are isolated -->
+      <pdf:PlaceHolder id='dynamicContent' />
+    </pdf:Div>
+  </Content>
+  
+</pdf:Section>

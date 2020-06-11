@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<mods:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:mods="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Modifications.xsd"
+              auto-bind="true" mods:orig-path="../ReferenceFiles/AllSystemTests.pdf">
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx"/>
+  </Styles>
+  <Pages>
+    <mods:Insert mods:src-page-index="2" style:margins="20" >
+      <Content>
+        <pdf:H1 >This is inserted at the front of the document</pdf:H1>
+      </Content>
+    </mods:Insert>
+    <mods:Update mods:content-action="OnTop" mods:src-page-index="3" mods:src-page-count="4" visible="false" >
+      <Content>
+        <pdf:Div style:x="0" style:y="100" >
+          <pdf:H1>This will appear on the first 4 pages of content after the title page</pdf:H1>
+        </pdf:Div>
+      </Content>
+    </mods:Update>
+    <mods:Delete mods:src-page-index="10" mods:src-page-count="5" visible="false"/>
+    
+    <pdf:Page id="AtTheEnd" style:margins="20">
+      <Content>
+        <pdf:H1 >Here we add a page at the very end.</pdf:H1>
+      </Content>
+    </pdf:Page>
+  </Pages>
+</mods:Document>

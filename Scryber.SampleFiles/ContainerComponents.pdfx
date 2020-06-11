@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="Relative Positioning"/>
+  <Render-Options img-cache-mins="20"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Text Styles"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style applied-id="OverflowSpacerForPages" >
+      <style:Size height="180pt"/>
+    </style:Style>
+
+    <style:Style applied-id="OverflowSpacerForMultiColumn" >
+      <style:Size height="580pt"/>
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="ContainerComponents" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Container Components" />
+      </Items>
+      <Pages>
+
+        <pdf:Section id="PanelContainer" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Panel Container" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The root container component is the &lt;pdf:Div&gt;. All other containers inherit from the panel.<pdf:Br/>
+              Without any other style, a panel will always appear on a  new line and take up the space required to hold its inner components.<pdf:Br/>
+              The inner components are specified within the Content element of the Panel and will be laid out in a flowing manner.
+            </pdf:Para>
+
+            <!-- 
+              Panel content 
+            -->
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Panels as part of the content" outline-title="Panels as part of the content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the panel
+              <pdf:Div style:bg-color="#CFF" style:full-width="false" >
+                  Content within the panel on a light cyan background.
+              </pdf:Div>
+              Between Panels
+              <pdf:Div style:bg-color="#CFF" style:full-width="false">
+                  Multiple component content within the panel on a light cyan background.
+                  <pdf:Image src="Images/scryber_logo_380.png" />
+                  Still in the panel
+              </pdf:Div>
+              Between Panels
+              <pdf:Div style:bg-color="#CFF" style:full-width="false">
+                  Content will flow within the panel until it reaches the limits of the container / panel it is in and then it will flow onto the next line within the
+                  panel.
+              </pdf:Div>
+              Between panels
+              <pdf:Div style:bg-color="#CFF" style:full-width="true" >
+                  This panel has no explicit size but is set to full width (style:full-width='true')
+              </pdf:Div>
+              Between panels
+              <pdf:Div style:bg-color="#CFF" style:full-width="true" style:column-count="2">
+                  This panel has no explicit size but is set to full width (style:full-width='true') with 2 columns.
+                  So the content will use the column width rather than the panel width to flow.
+                  <pdf:ColumnBreak/>
+                  And new content can be forced onto the next column in the panel after a break.
+              </pdf:Div>
+              After the Panels
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Panels inline with content" outline-title="Panels inline with content" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the panel
+              <pdf:Div style:position-mode="Inline" style:bg-color="#CFF" style:full-width="true">
+                  This panel has a position mode of inline, so will be made part of the content,
+                  but does not have any block level styling. The content will form part of the existing block and continue the flow.
+              </pdf:Div>
+              After the panel.
+            </pdf:Div>
+            <!-- 
+              Panels with size
+            -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Panels with size" outline-title="Panels with size" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:width="400pt">
+                  This panel has a fixed width of 400pts
+              </pdf:Div>
+              
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:width="400pt">
+                  This panel also has a fixed width of 400pts, an the content will flow within the
+                  restricted width moving onto new lines where nescessary.
+              </pdf:Div>
+              
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:width="400pt" style:height="50pt">
+                  This panel has a fixed width of 400pts and a height of 50pts. The content will flow
+                  within the restricted width, moving onto new lines where nescessary, but the height will stay as 100pt.
+              </pdf:Div>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:width="400" style:column-count="2">
+                  This panel has an explicit width of 400pts with 2 columns, and no expicit height.
+                  So the content will use the column width rather than the panel width to flow.
+                  <pdf:ColumnBreak/>
+                  And new content can be forced onto the next column in the panel after a break.
+              </pdf:Div>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:width="400" style:height="50pt" style:column-count="2">
+                  This panel has an explicit width of 400pts and a height of 50pts with 2 columns.
+                  So the content will use the column width rather than the panel width to flow.
+                  And new content can be soft flowed onto the next column in the panel when it hits the maximum height.
+              </pdf:Div>
+
+            </pdf:Div>
+
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Panels with minimum size" outline-title="Panels with minimum size" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:bg-color="#CFF" style:full-width="false" style:min-width="400pt">
+                This panel has a minimum width of 400pts
+              </pdf:Div>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:full-width="false" style:min-width="400pt">
+                  This panel also has a minimum width of 400pts, so the content will flow beyond that dimension to the available space before
+                  moving onto new lines where nescessary.
+              </pdf:Div>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:full-width="false" style:min-width="400pt" style:min-height="50pt">
+                  This panel has a minimum width of 400pts and a minimum height of 50pts. The content will flow
+                  beyond that dimension to the available space before, but the height will always be at least 50pt.
+              </pdf:Div>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:full-width="false" style:min-width="400pt" style:min-height="50pt">
+                  This panel has a minimum width of 400pts and a minimum height of 50pts. The content will flow
+                  beyond that dimension to the available space before wrapping.
+                  <pdf:Image src="./images/scryber_logo_380.png" style:width="100pt" />
+                  Ands the content is allowed to extend beyond the<pdf:Br/>
+                  minimum height of 50pts, so whatever is required to contain it's content.
+              </pdf:Div>
+            </pdf:Div>
+            
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Panels with a maximum size" outline-title="Panels with a maximum size" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Br/>
+              
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" >
+                  This panel has a <pdf:B>maximum</pdf:B> width of 400pts
+              </pdf:Div>
+              
+              <pdf:Br/>
+
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" >
+                  This panel has a <pdf:B>maximum</pdf:B> width of 400pts, so the contents will flow on the next line once it has exceeded this dimension
+              </pdf:Div>
+
+              <pdf:Br/>
+
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" style:max-height="100pt" >
+                  This panel has a <pdf:B>maximum</pdf:B> width of 400pts and maximum height of 100pts, so the contents will flow on the next line once it has exceeded this dimension
+                  but does not exceed the max height.
+              </pdf:Div>
+
+              <pdf:Br/>
+
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" style:max-height="50pt" >
+                  This panel has a maximum width of 400pts and a maximum height of 50pts. The content will flow
+                  beyond that dimension to the available space before wrapping. But be truncated to the maximum height so content below will not be shown...
+                  <pdf:Image src="./images/scryber_logo_380.png" style:width="100pt" />
+                  Ands the content is NOT allowed to extend beyond the height of 50pts.
+              </pdf:Div>
+
+              <pdf:Br/>
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" style:max-height="50pt" style:overflow-action="Clip" >
+                  This panel has a maximum width of 400pts and a maximum height of 50pts with and overflow action of Clip. The content will flow
+                  beyond that dimension to the available space before wrapping. But be clipped to the maximum height...
+                  <pdf:Image src="./images/scryber_logo_380.png" style:width="100pt" />
+                  Ands the content is NOT allowed to extend beyond the height of 50pts.
+              </pdf:Div>
+
+              <pdf:Br/>
+              <pdf:H4 text="Panels with a maximum size and full width" outline-title="Panels with a maximum size and full width" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" style:max-height="50pt" style:full-width="true" >
+                  This panel has a <pdf:B>maximum</pdf:B> width of 400pts and maximum height of 50pts, so the contents will flow on the next line once it has exceeded this dimension
+                  but does not exceed the max height. As it is full width - it will always be 400 wide.
+              </pdf:Div>
+
+              <pdf:Br/>
+
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" style:max-height="50pt" >
+                  This panel has a maximum width of 400pts and a maximum height of 50pts. The content will flow
+                  beyond that dimension to the available space before wrapping. But be truncated to the maximum height so content below will not be shown...
+                  <pdf:Image src="./images/scryber_logo_380.png" style:width="100pt" />
+                  Ands the content is NOT allowed to extend beyond the height of 50pts.
+              </pdf:Div>
+
+              <pdf:Br/>
+              <pdf:Div style:bg-color="#CFF" style:max-width="400pt" style:max-height="50pt" style:overflow-action="Clip" >
+                  This panel has a maximum width of 400pts and a maximum height of 50pts with and overflow action of Clip. The content will flow
+                  beyond that dimension to the available space before wrapping. But be clipped to the maximum height...
+                  <pdf:Image src="./images/scryber_logo_380.png" style:width="100pt" />
+                  Ands the content is NOT allowed to extend beyond the height of 50pts.
+              </pdf:Div>
+
+
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="PanelOverflow" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Panel Overflow" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The panel by default will split across columns and pages where appropriate breaking into 2 blocks in the layout.
+              If the overflow split is Never, then this splitting is blocked, and the whole panel and it's content will move to
+              the next available region if available.
+            </pdf:Para>
+
+
+            <!-- 
+                Overflowing in columns
+              -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Overflowing panels in columns" outline-title="Overflowing panels in columns" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:Div style:width="500" style:height="100pt" style:column-count="3" style:bg-color="#CFF" >
+
+                  Outer panel with 3 columns and a width of of 500pt, and a height of 100pt
+                  <pdf:Div style:margins="5pt" style:bg-color="#FFC" >
+ 
+                      Inner panel that has 5 point margins, with flowing content that will wrap within the column and move onto the new column with
+                      it's flowing content taking into account the margins of the inner panel, so it is pushed down.
+
+                  </pdf:Div>
+                  Back in the outer panel
+                  <pdf:Div style:margins="5pt" style:bg-color="#FCF" style:overflow-split="Never" >
+                      An overflow split of Never on the inner panel along with the 5 point margins and full width,
+                      so it will always be kept together, and move onto the new column as a block, taking up the full available width.
+                  </pdf:Div>
+                  After the inner panels
+              </pdf:Div>
+
+              <pdf:Div style:full-width="true" style:height="100pt" style:margins="20 0 0 0" style:column-count="3" style:bg-color="#CFF" >
+                  Same rules apply when the panels have a full width.
+                  <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" >
+                      Inner panel that has 5 point margins and full width, with flowing content that will wrap within the column and move onto the new column with
+                      it's flowing content taking into account the margins of the inner panel, so it is pushed down.
+                  </pdf:Div>
+                  Back in the outer panel
+                  <pdf:Div style:margins="5pt" style:bg-color="#FCF" style:full-width="true" style:overflow-split="Never" >
+                      An overflow split of Never on the inner panel along with the 5 point margins and full width,
+                      so it will always be kept together, and move onto the new column as a block, taking up the full available width.
+                  </pdf:Div>
+                  After the inner panels
+              </pdf:Div>
+
+
+              <pdf:Div style:full-width="true" style:height="100pt" style:margins="20 0 0 0" style:column-count="3" style:bg-color="#CFF" >
+                  This should even work for nested panels
+                  <pdf:Div style:margins="5pt" style:bg-color="#FCF" style:full-width="true">
+                      Mid Panel
+                      <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" >
+                          Inner panel that has 5 point margins and full width, with flowing content that will wrap within the column and move onto the new column with
+                          it's flowing content taking into account the margins of the inner panel, so it is pushed down.
+                      </pdf:Div>
+                      Back in the mid panel
+                      <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" style:overflow-split="Never" >
+                          An overflow split of Never on the inner panel along with the 5 point margins and full width,
+                          so it will always be kept together.
+                      </pdf:Div>
+                      After the inner panels
+                  </pdf:Div>
+                  After the mid panel.
+              </pdf:Div>
+            </pdf:Div>
+
+            <!-- 
+                Overflowing in pages
+              -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Overflowing panels in pages" outline-title="Overflowing panels in pages" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:width="400pt" style:bg-color="#CFF" >
+                  The same principal applies to overflow in pages. Content should flow as far as it can in one page and then
+                  overflow onto a new page (if that page or sections overflow-action is set to NewPage). This should even work for nested panels.
+                  <pdf:Div id="OverflowSpacerForPages" style:class="spacer">
+                    SPACER
+                  </pdf:Div>
+                  <pdf:Div style:margins="5pt" style:bg-color="#FCF" style:full-width="true">
+                      Mid Panel
+                      <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" >
+                          Inner panel that has 5 point margins and full width, with flowing content that will wrap within the column and move onto the new column with
+                          it's flowing content taking into account the margins of the inner panel, so it is pushed down.
+                      </pdf:Div>
+                      Back in the mid panel
+                      <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" style:overflow-split="Never" >
+                          An overflow split of Never on the inner panel along with the 5 point margins and full width,
+                          so it will always be kept together even when overlowed to a new page.
+                      </pdf:Div>
+                      After the inner panels
+                  </pdf:Div>
+                  After the mid panel.
+              </pdf:Div>
+            </pdf:Div>
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Overflowing panels in pages and columns" outline-title="Overflowing panels in pages and columns" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:bg-color="#CFF" style:column-count="2" style:margins="20 0 0 0" >
+                  This should even work with a multi-column layout overflowing onto a new page at the end of the second column
+                  <pdf:Div id="OverflowSpacerForMultiColumn" style:class="spacer">
+                    SPACER
+                  </pdf:Div>
+                  <pdf:Div id="OverflowSpacerForMultiColumn" style:class="spacer">
+                    SPACER
+                  </pdf:Div>
+                  <pdf:Div style:margins="5pt" style:bg-color="#FCF" style:full-width="true">
+                      Mid Panel
+                      <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" >
+                          Inner panel that has 5 point margins and full width, with flowing content that will wrap within the column and move onto the new column with
+                          it's flowing content taking into account the margins of the inner panel, so it is pushed down.
+                      </pdf:Div>
+                      Back in the mid panel
+                      <pdf:Div style:margins="5pt" style:bg-color="#FFC" style:full-width="true" style:overflow-split="Never" >
+                          An overflow split of Never on the inner panel along with the 5 point margins and full width,
+                          so it will always be kept together even when overlowed to a new page.
+                      </pdf:Div>
+                      After the inner panels
+                  </pdf:Div>
+                  After the mid panel.
+              </pdf:Div>
+              After the outer panel
+            </pdf:Div>
+
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="PanelSubclasses" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Simple Sub Classes" />
+          </Items>
+          <Content>
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The panel is the base container component. Scryber also defines a number of subclasses of the panel that apply a slightly different
+              default style and can be used inline. These offer convenience and also independant styling posibilities
+            </pdf:Para>
+
+            <!-- 
+               Container Sub-classes
+              -->
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Div container" outline-title="Div container" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the div
+              <pdf:Div style:border-color="aqua" style:bg-color="#FFC" >
+                The Div has a default style with full-width='true' and the content of the div is input in any template directly under the element itself.
+              </pdf:Div>
+              Below the div
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Para container" outline-title="Para container" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the para
+              <pdf:Para style:border-color="aqua" style:bg-color="#FFC" >
+                The Para(graph) also has a full width of true and the content is input directly under the element,
+                but it also has a default top margin of 5 points.
+              </pdf:Para>
+              Below the para
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Blockquote container" outline-title="Blockquote container" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the block quote
+              <pdf:Blockquote style:border-color="aqua" style:bg-color="#FFC">
+                The block quote is NOT full width, and <pdf:Br/>
+                it has a default margins all around of 10 points
+              </pdf:Blockquote>
+              Below the block quote
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Pre container" outline-title="Pre container" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the Pre
+              <pdf:Pre style:border-color="aqua" style:bg-color="#FFC">
+                The Pre(formatted) container
+has no margins or padding, but the content is by default in Courier font
+    is set to honour the white space and text should not wrap onto the next lines of the content but keep going to the end of the page.
+
+        It should also not split across a column or page but be kept together.
+        
+              </pdf:Pre>
+              Below the Pre
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Span container" outline-title="Span container" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              Above the Span
+              <pdf:Span style:border-color="aqua" style:bg-color="#FFC" style:fill-color="gray">
+                The Span component has a position mode of inline. This means that no block is created to house the inner components.
+                Also block level styles no longer apply - e.g. Background, Border, Size. Only the inline styles such as Font, Text, Fill, Stroke apply.
+              </pdf:Span>
+              Below the Span
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Bold, Italic and Underline" outline-title="Bold, Italic and Underline" style:class="group-heading" 
+                      style:margins="0 0 10 0"></pdf:H4>
+              Above the Inline containers
+              <pdf:Span>
+                The <pdf:B>Bold</pdf:B>, <pdf:I>Italic</pdf:I> and <pdf:U>Underline</pdf:U> components are all subclasses of panel with the 
+                default style set as appropriate. However, they can be manipulated as required just like any other panel component.
+                <pdf:B style:position-mode="Block" style:bg-color="aqua" style:margins="4" style:padding="2" style:font-bold="false" style:font-italic="true">
+                  This is actualy a bold container (&lt;pdf:B&gt;) with the style modified so it appears as a block in italic.</pdf:B>
+                After the bold.
+              </pdf:Span>
+              Below the inline containers
+            </pdf:Div>
+
+          </Content>
+        </pdf:Section>
+
+        <pdf:Section id="HeadingSubclasses" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Heading containers" />
+          </Items>
+          <Content>
+
+            <!-- 
+              Heading containers
+            -->
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              All the headings inerit from a heading base class which itself inherits from our panel. They also have an extra text attribute which simply refers
+              to a label as the first content in the heading container. This means that all Headings are Panels and can follow all the style
+              rules for panels. Each individual Heading component (H1 - 6) applies it's own base style, but they also have a position mode of Block
+              and Never for an overflow split.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+
+              <pdf:H4 text="Default heading styles" outline-title="Default heading styles" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <pdf:H1 text="Heading 1 base style - 36pt Bold font" />
+              <pdf:H2 text="Heading 2 base style - 30pt Bold, Italic font" />
+              <pdf:H3 text="Heading 3 base style - 24pt Bold font" />
+              <pdf:H4 text="Heading 4 base style - 20pt Bold, Italic font" />
+              <pdf:H5 text="Heading 5 base style - 17pt Bold font" />
+              <pdf:H6 text="Heading 6 base style - 15pt Bold, Italic font" />
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+
+              <pdf:H4 text="Mixed content headings" outline-title="Mixed content headings" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              <!-- 
+                custom heading
+              -->
+
+              <pdf:H2 style:padding="0 50 0 0" style:border-color="aqua" style:border-width="2" style:full-width="true">
+                <pdf:Canvas style:width="50" style:margins="2" style:height="25" style:x="-50" style:y="0" >
+                  <Style>
+                    <style:Overflow action="Clip" />
+                    <style:Clipping all="2"/>
+                  </Style>
+                  <pdf:Path d="M0,0 v25 h50 v-25 z" style:fill-color="#00247d" />
+                  <pdf:Path d="M0,0 L50,25 M50,0 L0,25" style:stroke-color="#fff" style:stroke-width="5" />
+                  <pdf:Path d="M0,1 L50,26 M52,0 L2,26" style:stroke-color="#cf142b" style:stroke-width="2" />
+                  <pdf:Path d="M25,0 v25 M0,12.5 h50" style:stroke-color="#fff" style:stroke-width="8" />
+                  <pdf:Path d="M25,0 v25 M0,12.5 h50" style:stroke-color="#cf142b" style:stroke-width="5"/>
+                </pdf:Canvas>
+                As a panel sub class, the content <pdf:Span style:font-size="14"  >
+                  of a heading<pdf:Br/>
+                  doesn't just
+                </pdf:Span>need to be textual!
+              </pdf:H2>
+
+            </pdf:Div>
+          </Content>
+
+        </pdf:Section>
+
+        <pdf:Section id="PositionedSubclasses" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Positioned containers" />
+          </Items>
+          <Content>
+
+            <!-- 
+              Heading containers
+            -->
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Along with the simple sub-classes and the headings, there are 2 positioned panel subclasses. The Canvas and LayerGroup.
+              The Canvas forces all inner content (by default) to be relatively positioned and the layer group contains a collection of inner layers
+              that are (by default) relatively positioned one on top of the other.
+            </pdf:Para>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Canvas component" outline-title="Canvas component" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              By default iner components are at 0,0
+              <pdf:Canvas style:border-color="aqua">
+                <pdf:Image src="Images/scryber_logo_380.png" />
+                <pdf:Label text="Some text in a label" style:font-size="24" style:fill-color="fuchsia" style:font-bold="true" />
+                <pdf:Rect style:width="100" style:height="100" style:fill-opacity="0.2" />
+              </pdf:Canvas>
+              But can be positioned as required in the canvas
+              <pdf:Canvas style:border-color="aqua" style:full-width="true">
+                <pdf:Image src="Images/scryber_logo_380.png" style:x="50" style:y="80" />
+                <pdf:Label text="Some text in a label" style:font-size="24" style:x="70" style:fill-color="fuchsia" style:font-bold="true" />
+                <pdf:Rect style:width="100" style:height="100" style:y="30" style:fill-opacity="0.2" />
+              </pdf:Canvas>
+              Set a width, height and overflow action of clip to keep the visible content to the required size
+              <pdf:Canvas style:border-color="aqua" style:width="130" style:height="100" style:overflow-action="Clip" >
+                <pdf:Image src="Images/scryber_logo_380.png" style:x="50" style:y="80" style:width="150" />
+                <pdf:Label text="Some text in a label" style:font-size="24" style:x="70" style:text-wrap="NoWrap" style:fill-color="fuchsia" style:font-bold="true" />
+                <pdf:Rect style:width="100" style:height="100" style:y="30" style:fill-opacity="0.2" />
+              </pdf:Canvas>
+              
+              Below the canvas
+            </pdf:Div>
+
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="LayerGroup component" outline-title="LayerGroup component" style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+              The layer group contains a collection of layers, each one by default positioned at 0,0 top left, and rendered one on top of the other.<pdf:Br/>
+              The layers themselves are just panels that can contain anything a normal panel could contain.
+              <pdf:LayerGroup>
+                <pdf:Layer style:font-size="30pt"  style:bg-color="fuchsia" style:bg-opacity="0.2">
+                  This is the content on the first layer
+                  <pdf:Image src="Images/scryber_logo_380.png" />
+                </pdf:Layer>
+                <pdf:Layer style:font-size="20pt"  style:bg-color="lime" style:bg-opacity="0.8" >
+                  This is the content on the middle layer
+                  <pdf:Image src="Images/scryber_logo_380.png" />
+                </pdf:Layer>
+                <pdf:Layer style:font-size="10pt"  style:bg-color="aqua" style:bg-opacity="0.8">
+                  This is the content on the last layer
+                  <pdf:Image src="Images/scryber_logo_380.png" />
+                </pdf:Layer>
+                
+              </pdf:LayerGroup>
+              Below the layers
+            </pdf:Div>
+
+
+          </Content>
+        </pdf:Section>
+        
+        <pdf:Page id="DoesNotOverflow" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Not Overflowing Pages" />
+          </Items>
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              The following div is on a page (not a section), and this is not set to overflow. As the height of the red border div is larger than the available space
+              after the blue border div then it should not be rendered.
+            </pdf:Para>
+            
+            <pdf:Div style:class="wide" >
+              <pdf:Div style:height="500pt" style:margins="10pt" style:border-color="blue" style:v-align="Middle" style:h-align="Center" >SPACER</pdf:Div>
+              <pdf:Div style:height="300pt" style:border-color="red" style:v-align="Middle" style:h-align="Center" >Invisible due to overflow</pdf:Div>
+            </pdf:Div>
+
+          </Content>
+        </pdf:Page>
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

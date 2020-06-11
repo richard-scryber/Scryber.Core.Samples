@@ -1,6 +1,6 @@
 using System;
 
-namespace Scryber.Models
+namespace Scryber.Core.Samples.Web.Models
 {
     public class ErrorViewModel
     {

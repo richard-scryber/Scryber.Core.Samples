@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber log-level='messages' append-log='true' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:attach="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Attachments.xsd"
+              xmlns:chart="https://www.scryber.co.uk/schemas/intense/release/v1/Scryber.Charts.xsd"
+              auto-bind="true">
+  <Render-Options compression-type="None" />
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Additions>
+    <attach:Attachment id="MyAttachment" src="../images/gradient.png" desc="Just an image attachment" />
+    <attach:Attachment id="MyOtherAttach" src="http://www.scryber.co.uk/Portals/2/Images/scryber_logo_flat_350.png" desc="This is a remote url attachment" />
+  </Additions>
+  <Items>
+    <pdf:String-Item key="ChartLabel" value="This is the chart" />
+    <pdf:Xml-Item key="ChartData" >
+      <all>
+        <agent name="Fred" cookie-sales="40" gender="Male" />
+        <agent name="Sally" cookie-sales="45" gender="Female" />
+        <agent name="Beatrice" cookie-sales="42" gender="Female" />
+      </all>
+    </pdf:Xml-Item>
+  </Items>
+  <Styles>
+    <style:Styles-Ref source="../BaseStyles.psfx"/>
+
+    <style:Style applied-type="pdf:Page" >
+      <style:Page width="560" height="800"/>
+    </style:Style>
+
+    <style:Style applied-type="chart:ChartHeader" >
+      <style:Margins bottom="0pt"/>
+      <style:Size full-width="true" height="20pt"/>
+      <style:Position h-align="Center" />
+      <style:Text number-format="C" />
+    </style:Style>
+
+   
+
+    <style:Style applied-type="chart:Pt" applied-class="agent-Female">
+      <style:Fill color="red" />
+    </style:Style>
+
+    <style:Style applied-class="agent-Male">
+      <style:Fill color="blue" />
+    </style:Style>
+  </Styles>
+  <Pages>
+    <pdf:Section id="AttachmentPage" style:margins="20pt" >
+      <Content>
+        <pdf:Div style:column-count="2" >
+
+          <chart:GridChart id="ROIChart" style:height="200pt" visible="true" >
+            <Graphs>
+              <chart:Column id="ComparisonColumns" series-id="ComparisonData" style:fill-color="#14775a" style:margins="40pt" />
+              <chart:Line id="OptimumLine" series-id="OptimumData" style:stroke-color="red" />
+            </Graphs>
+            <YAxis label-format="0:$#,##0" grid-lines="Major" min-value="0" tick-marks="Major" style:font-size="8pt" style:text-wrap="NoWrap" >
+              <MajorGrid style:stroke-color="#DDDDDD"/>
+            </YAxis>
+          </chart:GridChart>
+
+          <chart:Series id="ComparisonData" x-data-type="Label" y-data-type="Double"  >
+            <chart:Pt x="Standard" y="11528"/>
+            <chart:Pt x="Systemizer®" y="6267"/>
+            <chart:Pt x="Systemizer® XPress" y="5026"/>
+          </chart:Series>
+
+          <chart:Series id="OptimumData" x-data-type="Label" y-data-type="Double"  >
+            <chart:Pt x="Standard" y="5026"/>
+            <chart:Pt x="Systemizer®" y="5026"/>
+            <chart:Pt x="Systemizer® XPress" y="5026"/>
+          </chart:Series>
+
+          
+          <pdf:ColumnBreak/>
+
+          <data:XMLDataSource id="ChartDataSource" xml-node-data="{item:ChartData}" />
+          <chart:DataSeries id="BoundData" datasource-id="ChartDataSource" select="//all/agent" x-data-type="Integer" y-data-type="Label">
+            <chart:Pt x="{xpath:@name}" y="{xpath:@cookie-sales}" style:class="{xpath" />
+          </chart:DataSeries>
+          
+          <chart:GridChart id="Agents" style:height="300pt" >
+            <Heading text="{item:ChartTitle}" style:font-size="30pt" style:v-align="Top" style:h-align="Center" />
+            <Graphs>
+              <chart:Column series-id="BoundData" />
+            </Graphs>
+          </chart:GridChart>
+          
+        </pdf:Div>
+        
+        <chart:GridChart id="MyChart" style:margins="0pt" visible="true"
+                         style:padding="20pt" style:height="300pt" >
+          <Heading style:font-size="12pt" >
+            <pdf:Label text="{item:ChartLabel}" />
+            <pdf:Line style:stroke-color="red" style:stroke-width="2pt" />
+          </Heading>
+          
+          <XAxis visible="true" tick-marks="None" sides="Bottom"
+                 labels="Both" style:font-size="8pt" major-repeat="2"
+                 grid-lines="None" grid-infront="false" style:class="chart-x" >
+            <!--<MajorTick style:stroke-width="2pt" style:stroke-color="#F0F" style:height="10pt" />
+            <MinorTick style:stroke-width="1pt" style:stroke-color="#0FF" style:height="5pt" />
+            <MajorGrid style:stroke-color="#F0F" style:stroke-width="2pt" style:stroke-dash="Long-dash" />
+            <MinorGrid style:stroke-color="#0FF" style:stroke-width="0.5pt" />-->
+          </XAxis>
+          <YAxis visible="true" sides="Left" tick-marks="Both" style:font-size="10pt"
+                 grid-lines="Both" labels="Both" label-format="{0:C}" >
+            <MajorTick  style:stroke-width="1pt" style:stroke-color="#000" style:width="10pt" ></MajorTick>
+            <MinorTick style:stroke-width="1pt" style:stroke-color="#888" style:width="5pt" />
+            <MajorGrid style:stroke-color="#FF0" />
+          </YAxis>
+          <Graphs>
+            <chart:Column series-id="FirstSeries" marker-shape="Triangle" style:margins="4pt" style:fill-color="#14775a" style:stroke-color="black" />
+            <!--<chart:Line series-id="LinearSeries" style:margins="8pt" style:fill-opacity="1" style:stroke-color="black" style:stroke-width="2pt" >
+              <Marker shape="Circle" style:width="8" style:stroke-width="1" style:fill-color="green" />
+            </chart:Line>-->
+          </Graphs>
+        </chart:GridChart>
+        
+        
+        <chart:Series id="FirstSeries" name="My First Series" x-data-type="Label" y-data-type="Double" >
+          <chart:Pt x="January" y="250" />
+          <chart:Pt x="February" y="300" />
+          <chart:Pt x="March" y="297" />
+          <chart:Pt x="April" y="314" />
+          <chart:Pt x="May" y="97" />
+          <chart:Pt x="June" y="200" />
+          <chart:Pt x="July" y="200" />
+        </chart:Series>
+
+        <chart:Series id="LinearSeries" name="My Second Series"
+                      x-data-type="Label" y-data-type="Double" >
+          <chart:Pt x="January" y="100" />
+          <chart:Pt x="February" y="300" />
+          <chart:Pt x="March" y="300" />
+          <chart:Pt x="April" y="400" />
+          <chart:Pt x="May" y="300" />
+          <chart:Pt x="June" y="300" />
+          <chart:Pt x="July" y="300" />
+          <chart:Pt x="Aug" y="300" />
+          <chart:Pt x="September" y="300" />
+          <chart:Pt x="October" y="300" />
+          <chart:Pt x="November" y="300" />
+          <chart:Pt x="December" y="300" />
+        </chart:Series>
+
+        <data:XMLDataSource id="CookieSales" xml-node-data="{item:ChartData}" />
+        
+        <pdf:Table visible="true">
+          <data:ForEach datasource-id="CookieSales" select="/all/agent" start-index="0" step="1" >
+            <Template>
+              <pdf:Row >
+                <pdf:Cell >
+                  <pdf:Text value="{xpath:concat('agent-',@gender)}" />
+                </pdf:Cell>
+                <pdf:Cell>
+                  <pdf:Text value="45" />
+                </pdf:Cell>
+              </pdf:Row>
+            </Template>
+          </data:ForEach>
+        </pdf:Table>
+
+        <chart:GridChart id="BoundChart" style:width="400" style:height="300" visible="true" >
+          <Graphs>
+            <chart:Column series-id="AgentSales"></chart:Column>
+          </Graphs>
+        </chart:GridChart>
+
+        <data:ForEach datasource-id="CookieSales" >
+          <Template>
+            <chart:DataSeries id="AgentSales"
+                          select="/all/agent"
+                          x-data-type="Label" y-data-type="Double" >
+            <chart:Pt x="{xpath:@name}" y="{xpath:@cookie-sales}" style:class="{xpath:concat('agent-',@gender)}"  />
+        </chart:DataSeries>
+          </Template>
+        </data:ForEach>
+        
+
+        
+      </Content>
+    </pdf:Section>
+  </Pages>
+</pdf:Document>

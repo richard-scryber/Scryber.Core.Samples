@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?scryber parser-mode='Strict' parser-log='false' append-log='true' log-level='Messages' culture='en-US' ?>
+<comp:Document xmlns:comp="Scryber.Components, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:style="Scryber.Styles, Scryber.Styles, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:data="Scryber.Data, Scryber.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              xmlns:mod="Scryber.Modifications.Components, Scryber.Modifications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f88ebab663f8ed8"
+              xmlns:bind="Scryber.Binding.Components, Scryber.Binding, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f88ebab663f8ed8"
+              id="BindingGrids" auto-bind="true">
+  <Viewer page-display="Thumbnails"/>
+  <Styles>
+
+    <style:Style applied-type="comp:Page" >
+      <style:Font family="Helvetica" size="12pt" />
+      <style:Margins all="20pt" />
+    </style:Style>
+
+    <style:Style applied-class="cell" >
+      <style:Padding all="4pt"/>
+      <style:Border color="black" width="0.5pt"/>
+    </style:Style>
+
+    <style:Style applied-class="alt-cell" >
+      <style:Background color="#CCC"/>
+    </style:Style>
+
+    <style:Style applied-class="right" >
+      <style:Position h-align="Right"/>
+    </style:Style>
+  </Styles>
+
+  <Pages>
+
+    <data:XMLDataSource id="MyXmlData" source-path="../../Resources/Books.xml" cache-duration="10" >
+    </data:XMLDataSource>
+    
+    <comp:Section id="fullgrids" outline-title="Full Set of data grids" >
+      <Content>
+        
+       
+        <comp:H1>Simple grid with an xml datasource</comp:H1>
+        <bind:DataGrid datasource-id="MyXmlData" select="//catalog/book"
+                       bind:alternating-row-class="alt-cell" style:full-width="true" >
+          <Columns>
+            <bind:TextColumn text="{xpath:title}" header-text="Title"  bind:cell-class="cell" ></bind:TextColumn>
+            <bind:TextColumn text="{xpath:author}" header-text="Author" bind:cell-class="cell" style:width="200pt"  />
+            <bind:NumberColumn value="{xpath:price}" header-text="Price" bind:header-cell-class="cell right" bind:cell-class="cell" style:width="70pt" style:number-format="C" />
+          </Columns>
+        </bind:DataGrid>
+      </Content>
+    </comp:Section>
+
+  </Pages>
+</comp:Document>

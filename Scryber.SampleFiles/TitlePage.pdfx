@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx"/>
+  </Styles>
+  
+  <Pages>
+    <pdf:Page id="TitlePage" outline-title="Title Page">
+      <Style>
+        <style:Page number-style="Decimals" />
+      </Style>
+      <Content>
+        <pdf:Image src="./Images/scryber_logo_380.png" style:width="70mm" style:padding="20pt" />
+        <pdf:Image style:padding="10pt 0 0 0" src="./Images/banner_image.png" />
+        <pdf:Div style:y="100mm" style:margins="0 20pt 0 20pt">
+          <pdf:H1 >Scryber PDF Component Library Tests</pdf:H1>
+          <pdf:Para style:font-italic="true">A complete set of tests for the features in the scryber library.</pdf:Para>
+          <pdf:Line style:class="separator" />
+          <pdf:Para>
+            Generation Date: <pdf:Date style:date-format="D" />
+          </pdf:Para> 
+          <pdf:Para>Author: Richard Hewitson</pdf:Para>
+          <pdf:Para>Scryber Version: <pdf:Label text="{item:AssmVersion}" /> (<pdf:Label text="{item:FileVersion}" />)</pdf:Para>
+        </pdf:Div>
+      </Content>
+    </pdf:Page>
+  </Pages>
+</pdf:Document>

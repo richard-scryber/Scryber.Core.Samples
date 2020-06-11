@@ -1,0 +1,4 @@
+﻿This is inside the fragment <div>
+This is some text in a <b>&lt;div&gt;</b> That should appear in its own block
+<div>
+This is outside the div, but still in the fragment.

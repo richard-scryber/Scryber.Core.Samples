@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="All System Tests"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Layout Columns"/>
+  </Params>
+  <Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="ColumnBlockLayout" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Blocks with columns" />
+        <pdf:Date-Param id="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+
+        <pdf:Section id="TwoColumnsBlock" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Two Column Block" />
+          </Items>
+          <Content>
+
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Columns are also supported at the block level so everything within the content of any container will be split into the columns
+              and flow from the first to the last column. When the page overflows, the block will be extended and content will
+              again be split into the desired columns.
+            </pdf:Para>
+
+            <pdf:Div style:column-count="2" style:class="wide">
+
+              <pdf:H4 text="Flowing long text along columns" style:class="group-heading"
+                      outline-title="Flowing long text along column blocks" ></pdf:H4>
+
+
+              <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                This is a paragraph of text within a block with a column count of 2.
+                The content of the paragraph will flow down one column and then move onto the next column.
+                <pdf:Br/>
+                <pdf:Br/>
+                Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                <pdf:Br/>
+                Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                <pdf:Br/>
+                <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                <pdf:Image src="./images/scryber_logo_380.png" />
+
+                Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                <pdf:Br/>
+                An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                <pdf:Br/>
+                Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                <pdf:Image src="./images/scryber_logo_380.png" />
+                Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                <pdf:Br/>
+                An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                <pdf:Br/>
+                Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                <pdf:Br/>
+                <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                <pdf:Image src="./images/scryber_logo_380.png" />
+
+                Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                <pdf:Br/>
+                An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                <pdf:Br/>
+                Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+
+              </pdf:Para>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="FourColumnsBlock" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Four Column Block" />
+          </Items>
+          <Content>
+
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Again the number of columns in a block is unlimited, so we can add more and more columns as required.
+            </pdf:Para>
+
+            <pdf:Div style:column-count="4" style:class="wide">
+
+              <pdf:H4 text="Flowing long text along columns" style:class="group-heading"
+                      outline-title="Flowing long text along column blocks" ></pdf:H4>
+
+
+              <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                This is a paragraph of text within a block with a column count of 4.
+                The content of the paragraph will flow down one column and then move onto the next column.
+                <pdf:Br/>
+                <pdf:Br/>
+                Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                <pdf:Br/>
+                Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                <pdf:Br/>
+                <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                <pdf:Image src="./images/scryber_logo_380.png" />
+
+                Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                <pdf:Br/>
+                An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                <pdf:Br/>
+                Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                <pdf:Image src="./images/scryber_logo_380.png" />
+                Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                <pdf:Br/>
+                An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                <pdf:Br/>
+                Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                <pdf:Br/>
+                <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                <pdf:Image src="./images/scryber_logo_380.png" />
+
+                Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                <pdf:Br/>
+                An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                <pdf:Br/>
+                Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                <pdf:Br/>
+                Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                <pdf:Br/>
+                Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                <pdf:Br/>
+                Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                <pdf:Br/>
+                Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+
+              </pdf:Para>
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="NestedColumnsBlock" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Nested Column Block" />
+          </Items>
+          <Content>
+
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Because columns are supported at the block level, it is possible to nest columns within columns.<pdf:Br/>
+              In this example a 2 column div (aqua border) is nested within an outer 2 column div
+              (lime border).
+            </pdf:Para>
+
+            <pdf:Div style:border-color="lime" style:border-width="2pt"  style:class="wide" style:column-count="2"
+                     style:padding="10" style:margins="10 20 0 20">
+
+
+              <pdf:Div style:column-count="2" style:border-color="aqua" style:border-width="2pt" style:padding="4pt" style:margins="10pt" >
+
+                <pdf:H4 text="Flowing long text along columns" style:class="group-heading"
+                        outline-title="Flowing long text along column blocks" ></pdf:H4>
+
+
+                <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                  This is a paragraph of text within a block with a column count of 4.
+                  The content of the paragraph will flow down one column and then move onto the next column.
+                  <pdf:Br/>
+                  <pdf:Br/>
+                  Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:Br/>
+                  Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                  <pdf:Br/>
+                  <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                  <pdf:Image src="./images/scryber_logo_380.png" />
+
+                  Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                  <pdf:Br/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:Br/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:Br/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                  <pdf:Image src="./images/scryber_logo_380.png" />
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:Br/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                  <pdf:Br/>
+                  <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                  <pdf:Image src="./images/scryber_logo_380.png" />
+
+                  Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                  <pdf:Br/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:Br/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:Br/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+
+                </pdf:Para>
+              </pdf:Div>
+
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="ExplicitColumnBreaks" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Explicit Column Breaks" />
+          </Items>
+          <Content>
+
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              By default the inner content for a column will flow down the height of the page, and then back up
+              to the top of the container and flow down again.<pdf:Br/>
+              The distance that content flows down can be limited by explict column breaks. Each column layout will
+              be stopped at the requested location and moved onto the next column.<pdf:Br/>
+              Nesting is still supported, and the flow will continue onto the next page as available.
+            </pdf:Para>
+
+            <pdf:Div style:border-color="lime" style:border-width="2pt"  style:class="wide" style:column-count="2"
+                     style:padding="10" style:margins="10 20 0 20">
+
+
+              <pdf:Div style:column-count="2" style:border-color="aqua" style:border-width="2pt" >
+
+                <pdf:H4 text="Flowing long text along columns" style:class="group-heading"
+                        outline-title="Flowing long text along column blocks" ></pdf:H4>
+
+
+                <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                  This is a paragraph of text within a block with a column count of 4.
+                  The content of the paragraph will flow down one column and then move onto the next column.
+                  <pdf:Br/>
+                  <pdf:Br/>
+                  Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:ColumnBreak />
+                  Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                  <pdf:Br/>
+                  <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                  <pdf:Image src="./images/scryber_logo_380.png" />
+
+                  Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                 <pdf:ColumnBreak />
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:Br/>
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:ColumnBreak />
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  <pdf:ColumnBreak/>
+                  Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                  <pdf:Br/>
+                  Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                  <pdf:ColumnBreak/>
+                  <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                  <pdf:Image src="./images/scryber_logo_380.png" />
+                  Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                  <pdf:Br/>
+                  An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                  <pdf:Br/>
+                  Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                  <pdf:ColumnBreak/>
+                  Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                  <pdf:Br/>
+                  Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                  Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                 
+                </pdf:Para>
+              </pdf:Div>
+            </pdf:Div>
+
+            <pdf:Para style:class="notes" style:bg-color="#DDD">
+              Content after the block will still continue on in it's own flow.
+            </pdf:Para>
+            
+          </Content>
+        </pdf:Section>
+
+
+        <pdf:Section id="EightExplictColumnBreaks" style:class="system-test-page" outline-title="{item:SectionTitle}"
+                     style:paper-orientation="Landscape">
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="8 Columns with explicit height" />
+          </Items>
+          <Content>
+
+
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+              Again by setting the page as landscape we have more room to increase the nesting and can set an explicit
+              height on the block, so the content is balanced.<pdf:Br/>
+              <pdf:B style:fill-color="red">NOTE: The content will be truncated when it reaches the
+              limits of the height restricted block.</pdf:B>
+            </pdf:Para>
+
+
+            <pdf:Div style:border-color="lime" style:border-width="2pt"  style:class="wide" style:column-count="2"
+                     style:padding="5" style:alley-width="5" style:margins="10 20 0 20" style:height="300pt">
+
+              <pdf:Div style:border-color="fuchsia" style:column-count="2" style:padding="5" style:margins="0" style:alley-width="5" >
+
+                <pdf:Div style:column-count="2" style:border-color="aqua" style:border-width="2pt" style:alley-width="5" >
+
+                  <pdf:H4 text="Flowing long text along columns" style:class="group-heading"
+                          outline-title="Flowing long text along column blocks" ></pdf:H4>
+
+
+                  <pdf:Para id="LongTextPara" style:font-family="Arial" >
+                    This is a paragraph of text within a block with a column count of 4.
+                    The content of the paragraph will flow down one column and then move onto the next column.
+                    <pdf:Br/>
+                    <pdf:Br/>
+                    Lorem ipsùm dôlor sît amet, ét facilïsîs sçripsérit nam. An sît èlitr volùtpât. Mâlorum hendrerît vûlputàtê séâ të, éx eam graeci similiqùe sadipsçing. In ancillaê désérùissè vèl, éàm cu vœcént appetéré urbanitas. An eum pôssim pârtïendo, tollit pëtentîum percîpitur éi éum. Suas dicat dètracto te sed, êlitr suscîpît ùt eûm.
+                    <pdf:Br/>
+                    Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                    Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                    <pdf:Br/>
+                    <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                    <pdf:Image src="./images/scryber_logo_380.png" />
+
+                    Nobïs lâudem èuîsmod no has, mèlîoré fâçilisï mèi an. Vèl ut falli putant. Màlorûm irâcundia te prœ, të nostrud signiférumqué per, diçtas dicërët ad éùm. Per incorrùpte argùmëntum né. Ut pri qûis nihil cœnvénirè.
+                    Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                    <pdf:Br/>
+                    Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+                    <pdf:Br/>
+                    Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                    <pdf:Br/>
+                    An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                    <pdf:Br/>
+                    Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+                    
+                    Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                    <pdf:Br/>
+                    Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. This is the line that overflows onto the next region. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                    
+                    Nèc éa pertinàcïà voluptatibus, éi vis mûndi omittâm libérâvisse. Sit àpparêât pondérum invèniré té, qùœ errëm màiorum nèglegentûr at. Id qùo venîàm petentîum scrîpsërit, in mèî fùîssêt nominavi elèctram, pro case delënit îd. Quœt blàndit gubergren êum nê. Eum et omnium fuissêt. Et mêl nôstrum œmittam ocurreret.
+                    <pdf:Br/>
+                    Obliqûe pârtiéndo réfôrmidàns vîm id. At sit dîctàs pértïnàx quaêrendum. Primà illud dèmocritûm té usû, te çum îllûm diçat bœnorum. Et néç lûdùs impédit dolores, ëà qûêm evêrtitur suscipïantùr sït. Té hïs sâpiéntem erroribus splëndïde, viris forënsibùs inciderïnt mel at. Dictâ dôlôrum èu vel, mundi fabulas théophràstus vim at, qùas céteros honèstâtis an mèï.
+
+                    <pdf:B>Images as part of the column layout are supported in the usual way.</pdf:B> <pdf:Br/>
+                    <pdf:Image src="./images/scryber_logo_380.png" />
+                    Legimùs gubèrgren reprehendunt in hïs. Elit detraxit scriptorém ât îûs. Populo dissentiet sed ut, eôs èt lîber dëlicata. Has impedît fâcilisîs urbanitas ad, çhorœ perseqùëris èi sêd, éu nam chœrô qùœdsi çonsulatù. Ex brùte putant possim has, qûî solêt saepè ut, vèl éx èîus dïcam obliqùè. Illùm gràeco pèriçulîs no has, sèa qûâs cœrrûmpit îd, nâtum utroquê rationîbùs ëu éœs.
+                    <pdf:Br/>
+                    An vêl àccusata errœribus întellégebat, vim verîtùs lûcilïûs aççusamus cû. At utamur admôdûm sensîbùs nëc. Açcommœdarè nëçêssitâtîbus ât vix. Munërè omnèsqùe sed id, mazim elàborârét cu séa, vis magna promptà assentior èu.
+                    <pdf:Br/>
+                    Graêcë ancillàè meî êû, nam no mëis suscipit sëntentiâe. Cùm êx altêrum inimîçûs ïntéllègat, lœrem tatîœn vel nè. Prô îd offiçïis nèglegëntûr, usu èt quëm dolorum dolœrêm. Pro êî qûïdam àpërirï vituperatœrïbùs.
+
+                    Honëstatis âccommôdare ëu vîm, phâèdrum întellégât usu nô. Autëm pœstëa çônséçtetuer quî at. Cu àgam rebum ïntêgre eum. Vêri exercî melîus ei êûm. Régione tibiqùe prï àd, cu cetéro sçrïpsèrit has.
+                    <pdf:Br/>
+                    Nô tollit splëndidê vèl. Ea prî quis électram, alia utinàm quaêstio sèd no, èx ius nonumy consëctétuêr. Mèi ea delénitï àliquando përsêqùerïs. Pér qùàéqùè fabulas ad. Ei usu nûllâ exèrci, prï harum ridéns ei. Në dicànt quàéstîô hàs, eù civîbus volumus vôluptûâ vèl.
+                    Méa id vîtaè mënândrï. Vél id nisl iuvarët scrîptôrem, ius ïn delenit voluptàtùm, lâudem singulis côtidiéqùë no pro. Rêgione dolorûm vim ëx, eu cîbœ mœdus êum, èt falli tatîon cûm. Eî ôporteat vïtûperâtà sit, èst ne hinc êlâbœraret.
+                  </pdf:Para>
+                </pdf:Div>
+              </pdf:Div>
+            </pdf:Div>
+            <pdf:Para style:class="notes" style:bg-color="#DDD" >
+              Content after the block will still continue on in it's own flow.
+            </pdf:Para>
+
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

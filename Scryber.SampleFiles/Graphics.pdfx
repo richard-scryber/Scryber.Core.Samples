@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="Relative Positioning"/>
+  <Items>
+    <pdf:String-Item key="Title" value="Text Styles"/>
+  </Items>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="ImagesFills" >
+      <Items>
+        <pdf:String-Item key="SectionTitle" value="Graphics" />
+        <pdf:Date-Item key="ReportDate" value="12 Feb 2015"/>
+      </Items>
+      <Pages>
+        
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

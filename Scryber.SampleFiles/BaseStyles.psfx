@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<style:Styles xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
+
+  <style:Style >
+    <style:Badge y-offset="5pt"/>
+  </style:Style>
+
+  
+  <style:Style applied-type="pdf:Page" >
+    <style:Font family="Helvetica" size="10pt" />
+    <style:Badge y-offset="5pt" x-offset="5pt"/>
+    <style:Outline open="false" italic="true"/>
+  </style:Style>
+
+  <style:Style applied-type="pdf:Panel" >
+  </style:Style>
+ 
+  <style:Style applied-type="pdf:PageGroup" >
+    <style:Outline open="true" bold="true"/>
+  </style:Style>
+  
+  <style:Style applied-class="banner" >
+    <style:Background img-src="./images/banner_image.png" repeat="None" x-pos="50pt"/>
+  </style:Style>
+
+  <style:Style applied-type="pdf:Line" applied-class="separator" >
+    <style:Stroke color="#999" width="2pt"/>
+    <style:Margins top="4pt" bottom="10pt"/>
+  </style:Style>
+
+  <style:Style applied-type="pdf:Document" >
+    <style:Outline open="true"/>
+    <!--<style:Page number-style="Decimals"/>-->
+  </style:Style>
+
+  <style:Style applied-class="pg-header-table" >
+    <style:Position full-width="true"/>
+    <style:Margins left="15pt" top="15pt" right="15pt"/>
+    <style:Font size="10pt" />
+    <style:Fill color="gray"/>
+  </style:Style>
+
+  <style:Style applied-class="pg-header-left" >
+    <style:Position h-align="Left" />
+    <style:Padding bottom="10pt"/>
+  </style:Style>
+  <style:Style applied-class="pg-header-mid" >
+    <style:Position h-align="Center" />
+  </style:Style>
+  
+  <style:Style applied-class="pg-header-right" >
+    <style:Position h-align="Right" />
+  </style:Style>
+  
+  <style:Style applied-class="pg-header-bottom" >
+    <style:Table cell-column-span="3"/>
+  </style:Style>
+
+  <style:Style applied-class="section-heading" >
+    <style:Margins left="20pt" right="20pt" bottom="5pt"/>
+    <style:Border sides="Bottom" color="fuchsia"/>
+    <style:Font family="Calibri"  size="20pt" bold="false" italic="true"/>
+    <style:Padding bottom="5pt" top="15pt"/>
+    <style:Position full-width="true"/>
+    <style:Font />
+  </style:Style>
+
+  <style:Style applied-class="group-heading" >
+    <style:Border sides="Bottom" color="#00BFFF"/>
+    <style:Font family="Calibri"  size="16pt" bold="false" italic="true"/>
+    <style:Padding bottom="5pt" top="15pt"/>
+    <style:Position full-width="true"/>
+  </style:Style>
+
+  <style:Style applied-class="notes" >
+    <style:Margins left="20pt" right="20pt"/>
+    <style:Font size="10pt" />
+  </style:Style>
+  
+  <style:Style applied-class="narrow" >
+    <style:Margins left="20pt" right="20pt"/>
+    <style:Columns count="2"/>
+  </style:Style>
+
+  <style:Style applied-class="wide" >
+    <style:Margins left="20pt" right="20pt"/>
+    <style:Columns count="1"/>
+  </style:Style>
+
+  <style:Style applied-class="pg-footer" >
+    <style:Padding all="10pt" />
+    <style:Position h-align="Center" />
+    <style:Fill color="gray"/>
+    <style:Border style="None"/>
+  </style:Style>
+
+  <style:Style applied-class="red-fill" >
+    <style:Fill color="red" style="Solid"/>
+  </style:Style>
+
+
+  <style:Style applied-class="blue-fill" >
+    <style:Fill color="#AAAAFF" style="Solid"/>
+  </style:Style>
+
+  <style:Style applied-class="red-stroke" >
+    <style:Stroke color="red" width="0.5"/>
+    <style:Fill style="None"/>
+  </style:Style>
+
+
+  <style:Style applied-class="blue-stroke" >
+    <style:Stroke color="#AAAAFF" width="0.5"/>
+    <style:Fill style="None"/>
+  </style:Style>
+
+  <style:Style applied-class="dashed" >
+    <style:Stroke style="Dash" dash="[1 1] 2" width="1.5pt"/>
+  </style:Style>
+
+  <!-- Image Contact Sheet styles -->
+  
+  <style:Style applied-type="pdf:Div" applied-class="contact-sheet"  >
+    <style:Border color="#333" corner-radius="4" width="1"/>
+    <style:Background color="#DDD"/>
+    <style:Margins all="0" top="5" />
+    <style:Padding all="5" top="10"/>
+    
+  </style:Style>
+  
+  <style:Style applied-type="pdf:Image" applied-class="contact-sheet" >
+    <style:Margins all="5pt"/>
+    <style:Border color="#333" corner-radius="10" width="2" sides="Bottom Right" />
+    <style:Background color="#DDD" />
+    <style:Padding all="10pt" top="15pt" />
+    <style:Overflow action="Clip"/>
+  </style:Style>
+
+  <style:Style applied-type="pdf:Label" applied-class="contact-sheet" >
+    <style:Font italic="true" size="9pt" />
+    <style:Fill color="gray"/>
+  </style:Style>
+
+  <style:Style applied-type="pdf:Link" >
+    <style:Fill color="blue"/>
+    <style:Text decoration="Underline"/>
+  </style:Style>
+
+  <!-- Spacer styles -->
+  
+  <style:Style applied-class="spacer" applied-type="pdf:Div">
+    <style:Border width="2" color="white"/>
+    <style:Position h-align="Center" v-align="Middle" />
+    <style:Margins all="10"/>
+    <style:Overflow split="Never"/>
+  </style:Style>
+  
+  <style:Style applied-id="OverflowSpacerForPages" >
+    <style:Position height="80"/>
+  </style:Style>
+
+  <style:Style applied-id="OverflowSpacerForMultiColumn" >
+    <style:Position height="460pt"/>
+  </style:Style>
+  
+  <!-- Table Styles -->
+
+  <style:Style applied-type="pdf:Cell" >
+    <style:Border style="None" />
+  </style:Style>
+  
+  <style:Style applied-class="padborder" applied-type="pdf:Cell" >
+    <style:Padding all="4pt"/>
+    <style:Border color="gray" width="0.5" style="Solid"/>
+  </style:Style>
+
+  <style:Style applied-class="padborder" applied-type="pdf:Table" >
+    <style:Padding all="10pt"/>
+    <style:Margins all="10pt"/>
+    <style:Border color="lime" width="0.5" style="Solid"/>
+  </style:Style>
+
+  <style:Style applied-class="padborder" applied-type="pdf:Footer-Cell" >
+    <style:Font italic="true" />
+  </style:Style>
+
+  <style:Style applied-class="lime" applied-type="pdf:Cell" >
+    <style:Background color="lime" style="Solid" opacity="0.3"/>
+    <style:Font italic="true" />
+    <style:Margins all="4pt"/>
+    <style:Position h-align="Right" v-align="Bottom"/>
+  </style:Style>
+
+  <style:Style applied-class="hf-styles" applied-type="pdf:Table" >
+    <style:Background color="#FFFFAA"/>
+  </style:Style>
+  
+  <style:Style applied-class="hf-styles" applied-type="pdf:Cell">
+    <style:Background color="#AAAAAA" style="Solid" opacity="0.5"/>
+    <style:Font size="14pt" />
+  </style:Style>
+  
+  <style:Style applied-class="hf-styles" applied-type="pdf:Footer-Cell" >
+    <style:Background color="#AAFFFF"/>
+  </style:Style>
+
+  <style:Style applied-class="hf-styles" applied-type="pdf:Header-Cell" >
+    <style:Background color="#FFAAFF"/>
+  </style:Style>
+  
+  <!-- List Styles -->
+
+  <style:Style applied-type="pdf:Ol" applied-class="num-1">
+    <style:List number-group="numberset-1" number-style="LowercaseLetters" />
+  </style:Style>
+
+  <style:Style applied-type="pdf:List" applied-class="inner-center" >
+    <style:List number-alignment="Center" number-group="inner-contig" />
+  </style:Style>
+
+
+
+  <style:Style applied-type="pdf:List" applied-class="complex">
+    <style:Background img-src="./Images/banner_image.png" repeat="None" x-size="400pt"/>
+    <style:Padding all="5pt" top="20pt"/>
+    <style:Margins all="20pt"/>
+    <style:Border color="#DDD"/>
+    <style:Position width="400pt"/>
+    <style:List number-style="None"/>
+    <style:Font size="30pt" />
+  </style:Style>
+
+  <style:Style applied-type="pdf:Li" applied-class="complex">
+    <style:Background img-src="./Images/scryber_logo_only.png" style="Image" repeat="None" x-pos="5" x-size="20" y-pos="8"/>
+    <style:Font family="Times" />
+  </style:Style>
+
+  <style:Style applied-type="pdf:Li" applied-class="overrides" >
+    <style:Position height="130"/>
+    <style:Border color="black"/>
+    <style:Overflow action="Clip"/>
+  </style:Style>
+  
+  <!-- Page Number Styles -->
+
+  <style:Style applied-class="with-roman" >
+    <style:Page number-style="LowercaseRoman" number-prefix="P" />
+  </style:Style>
+
+  <style:Style applied-class="num-format" applied-type="pdf:Cell" >
+    <style:Border color="#DDD" />
+    <style:Padding all="4pt"/>
+  </style:Style>
+
+  <style:Style applied-class="num-format" applied-type="pdf:Table" >
+    <style:Margins top="4pt"/>
+  </style:Style>
+
+  <style:Style applied-type="pdf:PlaceHolder" applied-class="placeholder-inherited" >
+    <style:Font size="14pt" bold="true" italic="true"/>
+    <style:Fill color="maroon"/>
+  </style:Style>
+
+  <style:Style applied-class="ph-padded" >
+    <style:Padding all="10pt"/>
+  </style:Style>
+
+  <style:Style applied-class="ph-coloured" >
+    <style:Fill color="maroon"/>
+    <style:Background color="#EEEEEE"/>
+  </style:Style>
+
+  <style:Style applied-class="arabic" >
+    <style:Font family="Arabic Typesetting"/>
+    <style:Text text-direction="RTL"/>
+  </style:Style>
+
+  <style:Style applied-class="western" >
+    <style:Font family="Helvetica"/>
+    <style:Text text-direction="LTR"/>
+  </style:Style>
+</style:Styles>
+

@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
-using Scryber.Models;
+using Scryber.Core.Samples.Web.Models;
+using Scryber.Core.Samples.Web;
 using Microsoft.Extensions;
 
 namespace Scryber.Controllers
@@ -13,31 +15,25 @@ namespace Scryber.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IPDFDocumentService _docService;
+        private readonly IWebHostEnvironment _env;
+        private readonly string _absPath;
+
+        private const string SamplesPath = "../Samples/";
         
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment, IPDFDocumentService documentService)
         {
+            _docService = documentService;
             _logger = logger;
+            _env = environment;
+            _absPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(environment.WebRootPath, SamplesPath));
         }
 
         public IActionResult Index()
         {
-            using (var ms = new System.IO.MemoryStream())
-            {
-                var writer = new OpenType.BigEndianWriter(ms);
-                UInt16 _uint = (UInt16)20;
-                
-                writer.WriteUInt16(20);
-
-                ms.Position = 0;
-
-                var reader = new OpenType.BigEndianReader(ms);
-                UInt16 end = reader.ReadUInt16();
-
-                if (_uint != end)
-                    throw new InvalidOperationException("Not the same");
-            }
-            return View();
+            var allDocs = _docService.GetDocumentReferences(_absPath);
+            return View(allDocs);
         }
 
         public IActionResult Privacy()
@@ -47,23 +43,23 @@ namespace Scryber.Controllers
 
         [HttpGet]
         [ResponseCache(NoStore = true)]
-        public IActionResult Generate()
+        public IActionResult Generate(string name)
         {
-            var path = AppContext.BaseDirectory;
-            path = System.IO.Path.Combine(path, "../../../Samples/Document.pdfx");
-            path = System.IO.Path.GetFullPath(path);
-            if (System.IO.File.Exists(path))
+            name = Uri.UnescapeDataString(name);
+            var reference = _docService.GetAReference(_absPath, name);
+            if (null == reference)
+                return NotFound(name);
+            else
             {
-                var doc = Scryber.Components.PDFDocument.ParseDocument(path);
+                var doc = _docService.GetDocument(reference);
 
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
                 doc.ProcessDocument(ms);
                 ms.Flush();
                 ms.Position = 0;
+                
                 return new FileStreamResult(ms, "application/pdf");
             }
-            else
-                return NotFound(path);
 
         }
 
@@ -72,5 +68,7 @@ namespace Scryber.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

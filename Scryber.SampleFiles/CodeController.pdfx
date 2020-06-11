@@ -1,0 +1,95 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<?scryber parser-mode='Lax' parser-log='true' append-log='true' log-level='Warnings'
+          controller='Scryber.SystemTests.vs13.Samples.CodeController_Controller,Scryber.SystemTests.vs13' ?>
+
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              id='CodeController' auto-bind='true' on-loaded='CodeController_Loaded'>
+  <Render-Options compression-type='FlateDecode' ></Render-Options>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style id="MyStyle" applied-class="dynamic" on-databinding="StyleDataBinding" />
+    <style:Style id="OtherStyle" />
+
+    
+    <style:StyleGroup id="MyStyleGroup" on-databinding="StyleGroupBinding">
+      
+      <style:Style applied-class="wide" >
+        <style:Border color="aqua"/>
+      </style:Style>
+      
+    </style:StyleGroup>
+  </Styles>
+  <Pages>
+
+    <pdf:PageGroup id='ControllerPages' outline-title='Code Controllers'>
+      <Pages>
+        
+        <pdf:Page id='titlepage' on-init='Page_Initialized' on-loaded='Page_Loaded' 
+                  on-databinding='Page_Binding' on-databound='Page_Bound' 
+                  on-prelayout='Page_PreLayout' on-postlayout='Page_PostLayout'
+                  on-prerender='Page_PreRender' on-postrender='Page_PostRender'>
+          <Content>
+            <pdf:H2 style:class='section-heading' >Code Controllers</pdf:H2>
+            <pdf:Para style:class='notes dynamic'>By specifying a controller class on the scryber processing instruction
+            the parser can dynamically assign components to fields and properties on controllers with matching id's and also
+            hook into event actions declared on the controller class.</pdf:Para>
+
+            
+            <pdf:Div style:class='wide' outline-title='Page Events' >
+              <pdf:H4 style:class='group-heading' text='Page Events' />
+              <pdf:Para style:margins='0 0 10 0'>These labels are initially blank, but are assigned values on each
+              of the events registered on the page component</pdf:Para>
+              <pdf:Label id='InitLabel' />
+              <pdf:Br/>
+              <pdf:Label id='LoadLabel' />
+              <pdf:Br/>
+              <pdf:Label id='BindingLabel' />
+              <pdf:Br/>
+              <pdf:Label id='BoundLabel' />
+              <pdf:Br/>
+              <pdf:Label id='PreLayoutLabel' />
+              <pdf:Br/>
+              <pdf:Para style:font-italic='true' >Because we are now after the layout, no other events 
+              which affect the content will be rendered in the final PDF, but the value setting can be 
+              seen in the trace log.</pdf:Para>
+              <!-- After the layout text is not used, so no output -->
+              <pdf:Label id='PostLayoutLabel' />
+              <pdf:Br/>
+              <pdf:Label id='PreRenderLabel' />
+              <pdf:Br />
+              <pdf:Label id='PostRenderLabel' />
+              <pdf:Br/>
+              <pdf:Label>After the event labels</pdf:Label>
+            </pdf:Div>
+
+            <pdf:Div style:class='wide' outline-title='Complex Content'  >
+              <pdf:H4 style:class='group-heading' text='Complex Content' />
+              <pdf:Para style:margins='0 0 10 0'>
+                It is even possible to assign multiple complex content values to the components at runtime.
+              </pdf:Para>
+              
+              <pdf:Div style:column-count='2' style:padding='0 0 5 0' >
+                <pdf:Image id='DynamicImage' style:border-color='black' style:margins='10' style:padding='5pt' style:bg-color='#EEE'
+                           on-loaded='DynamicImage_Loaded' style:width='100pt' />
+                <pdf:ColumnBreak />
+                <pdf:List on-loaded='EmptyList_Loaded' />
+              </pdf:Div>
+              <pdf:PlaceHolder id='ExplicitPlaceholderID' />
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Page>
+
+        <pdf:PlaceHolder id='dynamicContent' on-loaded='PopulatePlaceholder' />
+
+        <pdf:Page-Ref id='referencedPage' source='CodePageController.ppfx'/>
+        
+      </Pages>
+    </pdf:PageGroup>
+    
+
+  </Pages>
+</pdf:Document>

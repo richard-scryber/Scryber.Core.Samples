@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<pdf:UserComponent xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
+  <Content>
+    <pdf:Div style:class="pg-footer">
+      <pdf:PageNumber style:display-format="Page {0} of {1}" />
+    </pdf:Div>
+  </Content>
+</pdf:UserComponent>

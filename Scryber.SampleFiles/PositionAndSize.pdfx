@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:style="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              auto-bind="true" >
+  <Outline title="Relative Positioning"/>
+  <Render-Options img-cache-mins="20"/>
+  <Params>
+    <pdf:String-Param id="Title" value="Text Styles"/>
+  </Params>
+  <Viewer page-display="Outlines" page-layout="SinglePage"/>
+  <Styles>
+    <style:Styles-Ref source="BaseStyles.psfx" />
+
+    <style:Style applied-id="OverflowSpacerForPages" >
+      <style:Size height="180pt"/>
+    </style:Style>
+
+    <style:Style applied-id="OverflowSpacerForMultiColumn" >
+      <style:Size height="580pt"/>
+    </style:Style>
+
+    <style:Style applied-class="bordered" >
+      <style:Border color="#777" width="0.5"/>
+      <style:Size full-width="false"/>
+    </style:Style>
+    
+  </Styles>
+  <Pages>
+    <pdf:PageGroup outline-title="{item:SectionTitle}" id="PositionedComponents" >
+      <Items>
+        <pdf:String-Param id="SectionTitle" value="Position and Size" />
+      </Items>
+      <Pages>
+
+        <pdf:Section id="PanelContainer" style:class="system-test-page" outline-title="{item:SectionTitle}" >
+          <Items>
+            <pdf:String-Param id="SectionTitle" value="Sizing Blocks" />
+          </Items>
+          
+          <Content>
+            <pdf:H2 style:class="section-heading" text="{item:SectionTitle}"></pdf:H2>
+            <pdf:Para style:class="notes" >
+             Blocks - Panels, Divs, Paras, Tables, etc. all support the width and height size properties which will explicitly restrict that dimension.<pdf:Br/>
+              The full-width attribute will be ignored if an explicit width is set on the block.
+            </pdf:Para>
+
+            <!-- 
+              Panel content 
+            -->
+            <pdf:Div style:class="wide" >
+              <pdf:H4 text="Fixed width and height Divs" outline-title="Fixed width and height Divs"
+                      style:class="group-heading" style:margins="0 0 10 0"></pdf:H4>
+
+              <pdf:Div style:class="bordered" style:width="150pt" >
+                Fixed width of 100pt.
+              </pdf:Div>
+              <pdf:Br/>
+              <pdf:Div style:class="bordered" style:width="150pt" >
+                Fixed width of 150pt with content that will flow within the div.
+              </pdf:Div>
+              <pdf:Br/>
+              <pdf:Div style:class="bordered" style:height="40pt" style:full-width="false" >
+                Flowing content
+              </pdf:Div>
+              <pdf:Br/>
+
+              <!-- <pdf:Div style:width="80" style:height="80" style:bg-color="#DDD" style:margins="20" style:padding="20">
+                Fixed w i d t h
+              </pdf:Div>
+              <pdf:Div style:class="bordered" style:min-height="40pt" style:min-width="200pt" >
+                Flowing content with MIN width and height.
+              </pdf:Div>
+              <pdf:Div style:class="bordered" 
+                       style:min-height="40pt" style:min-width="200pt"  >
+                Flowing content with MIN width and height that goes beyond that 
+                width so should keep flowing across the length of the line.
+              </pdf:Div>
+              <pdf:Div style:class="bordered"
+                       style:min-height="40pt" style:min-width="200pt"  >
+                Flowing content with MIN width and height that goes beyond that
+                width so should keep flowing across the length of the line and eventually wrap onto the next line.
+              </pdf:Div>
+            
+              <pdf:Div style:class="bordered" 
+                       style:min-height="40pt" style:max-width="200pt" >
+                Flowing content with MAX width
+              </pdf:Div>
+              <pdf:Div style:class="bordered" 
+                       style:min-height="40pt" style:max-width="200pt" >
+                Flowing content with MAX width that goes beyond.
+              </pdf:Div>
+              <pdf:Div style:overflow-split="Never" style:class="bordered" 
+                       style:max-height="40pt" style:max-width="200pt" 
+                       style:full-width="true" >
+                Flowing content with MAX width that goes beyond, and full width set.
+              </pdf:Div>-->
+            </pdf:Div>
+          </Content>
+        </pdf:Section>
+        
+        <pdf:Section>
+          <Content>
+            <pdf:Table style:class="bordered" id="WithMinAndMaxSizes" style:max-width="200" >
+              <pdf:Row >
+                <pdf:Cell style:class="bordered" style:margins="0" style:padding="20" style:bg-color="#DDD" >Maximum 100 points wide</pdf:Cell>
+                <pdf:Cell style:class="bordered" style:margins="0" style:padding="20" style:bg-color="#DDD" >Maximum 100 points wide</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="bordered" style:padding="5" style:bg-color="#DDD" >Max 100 points wide</pdf:Cell>
+                <pdf:Cell style:class="bordered" style:margins="0" style:padding="20" style:bg-color="#DDD" >Maximum 100 points wide</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="bordered" style:margins="20" style:padding="20" style:min-height="60" style:min-width="80" style:bg-color="#DDD" >Min 50 that should extend beyond the cell minimum width a n d t hen flow onto the next line.</pdf:Cell>
+                <pdf:Cell style:class="bordered" style:padding="5" style:min-width="120" style:bg-color="#DDD" >Min 50</pdf:Cell>
+              </pdf:Row>
+              <pdf:Row>
+                <pdf:Cell style:class="bordered" style:margins="20" style:padding="20" style:min-height="60" style:min-width="80" style:bg-color="#DDD" >Min 50 that should extend beyond the cell minimum width a n d t hen flow onto the next line.</pdf:Cell>
+                <pdf:Cell style:class="bordered" style:padding="5" style:min-width="120" style:bg-color="#DDD" >Min 50</pdf:Cell>
+              </pdf:Row>
+            </pdf:Table>
+          </Content>
+        </pdf:Section>
+
+      </Pages>
+
+    </pdf:PageGroup>
+  </Pages>
+</pdf:Document>

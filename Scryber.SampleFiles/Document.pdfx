@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scryber append-log='true' log-level='Messages' parser-mode="Lax" parser-log='true' ?>
+<pdf:Document xmlns:pdf="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:data="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              xmlns:styles="https://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+		auto-bind="true" id="pdf_document_2">
+<Render-Options compression-type="FlateDecode"/>
+<Viewer page-display="Thumbnails" page-layout="SinglePage"/>
+<Styles>
+  <styles:Style applied-type="pdf:Page">
+    <styles:Border width="1pt" color="#FFF"/>
+    <styles:Margins/>
+    <styles:Padding all="20pt"/>
+  </styles:Style>
+  <styles:Styles-Ref source="BaseStyles2.psfx"/>
+  <styles:Style applied-type="pdf:Para">
+    <styles:Background color="#AAF"/>
+    <styles:Border/>
+    <styles:Margins all="0pt"/>
+    <styles:Padding all="5pt"/>
+  </styles:Style>
+  <styles:Style applied-type="pdf:Cell">
+    <styles:Border color="#AAA" width="1pt" style="Solid"/>
+    <styles:Padding all="2pt"/>
+  </styles:Style>
+  <styles:Style applied-type="pdf:Table">
+    <styles:Border color="#AAA" width="1pt" style="Solid"/>
+    <styles:Position/>
+  </styles:Style>
+  <styles:Style applied-type="pdf:Image" applied-class="float">  <styles:Background color="#DDD"/>
+    <styles:Padding all="30pt"/>
+  </styles:Style>
+</Styles>
+<Pages>
+  <pdf:Page id="MyFirstPage" visible="true" styles:h-align="Left" styles:paper-size="A4" styles:paper-orientation="Portrait" styles:font-size="12" styles:overflow-action="Clip">
+    <Content>
+      <pdf:Para id="pdf_para_3">Hello</pdf:Para>
+      <pdf:Image id="pdf_image_2" src="./steps.jpg" styles:height="100pt"/>
+      <pdf:Table id="pdf_table_1" styles:full-width="false">
+        <pdf:Row id="pdf_table_1_Row1" styles:border-color="Black">
+          <pdf:Cell id="pdf_table_1_Cell1_1" styles:fill-color="Aqua" styles:font-size="40" styles:width="300">Looking good on the wrapping</pdf:Cell>
+          <pdf:Cell id="pdf_table_1_Cell1_2" styles:width="100">Cell 2</pdf:Cell>
+          <pdf:Cell id="pdf_table_1_Cell1_3" styles:width="60pt">Cell 3</pdf:Cell>
+        </pdf:Row>
+        <pdf:Row id="pdf_table_1_Row2">
+          <pdf:Cell id="pdf_table_1_Cell2_1" styles:padding="10"><pdf:Image id="pdf_image_1" src="./lakes.jpg" styles:width="200" styles:height="270pt"/></pdf:Cell>
+          <pdf:Cell id="pdf_table_1_Cell2_2">Cell 5</pdf:Cell>
+          <pdf:Cell id="pdf_table_1_Cell2_3">Cell 6</pdf:Cell>
+        </pdf:Row>
+      </pdf:Table>
+      <pdf:Para id="pdf_para_1">Add your text here...</pdf:Para>
+    </Content>
+  </pdf:Page>
+  <pdf:Page id="MySecondPage" styles:class="pgstyle2">
+    <Content>
+      <pdf:Para id="pdf_para_4">Hello World<pdf:Br/>
+And More Content</pdf:Para>
+    </Content>
+  </pdf:Page>
+</Pages>
+</pdf:Document>
