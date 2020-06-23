@@ -25,9 +25,6 @@ namespace Scryber.Core.Samples.Web
         {
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
-            services.AddSingleton<IPDFPathMappingService, Scryber.Online.Web.Services.PDFPathMappingService>();
-            services.AddSingleton<IPDFDocumentService, Services.PDFDocumentService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,8 +56,6 @@ namespace Scryber.Core.Samples.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Scryber.ServiceProvider.SetProvider(app.ApplicationServices);
-            
         }
     }
 }
