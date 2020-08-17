@@ -1,0 +1,46 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<pdf:Document xmlns:pdf = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
+                xmlns:styles = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd'
+                xmlns:data = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd'
+                        >
+  <Params>
+    <pdf:Object-Param id='Model' ></pdf:Object-Param>
+  </Params>
+
+  <Styles>
+    <!-- Bind the head and body styles to the Theme -->
+    <styles:Style applied-class='head'>
+      <styles:Padding all='20pt'/>
+      <styles:Background color='{@:Model.Theme.TitleBg}' />
+      <styles:Fill color='{@:Model.Theme.TitleColor}'/>
+      <styles:Font family='{@:Model.Theme.TitleFont}' bold='false' italic='false' />
+    </styles:Style>
+
+    <styles:Style applied-class='body'>
+      <styles:Font family='{@:Model.Theme.BodyFont}' size='{@:Model.Theme.BodySize}' />
+      <styles:Fill color='#333300'/>
+      <styles:Padding all='20pt'/>
+    </styles:Style>
+
+  </Styles>
+
+  <Pages>
+
+    <pdf:Section>
+      <Content>
+        <!-- Specify the class names on the components to use the styles -->
+        <pdf:H1 styles:class='head' text='{@:Model.Title}' ></pdf:H1>
+        <pdf:Div styles:class='body' >
+          <!-- and then loop through -->
+          <data:ForEach value='{@:Model.List}' >
+            <Template>
+              <pdf:Label id='{@:.Id}' text='{@:.Name}' ></pdf:Label>
+              <pdf:Br/>
+            </Template>
+          </data:ForEach>
+        </pdf:Div>
+      </Content>
+    </pdf:Section>
+
+  </Pages>
+</pdf:Document>

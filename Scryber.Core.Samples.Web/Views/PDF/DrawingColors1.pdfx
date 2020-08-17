@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+  <Styles>
+    
+    <!-- catch all style-->
+    <styles:Style >
+      <styles:Font family="Arial" size="20pt"/>
+    </styles:Style>
+
+    <styles:Style applied-class="floating" >
+      <styles:Position mode="Absolute" x="230" y="90"/>
+      <styles:Size width="300pt"/>
+      <styles:Background color="fuchsia" opacity="0.5"/>
+      <styles:Border color="maroon" width="15pt" opacity="0.5"
+                     corner-radius="15pt" sides="Bottom Left Right"/>
+      
+    </styles:Style>
+
+    <styles:Style applied-class="stroked" >
+      <styles:Stroke color="#C77" style="Dash" width="2pt" />
+    </styles:Style>
+  </Styles>
+  <Pages>
+    
+    <!-- Page background with 40pt top padding -->
+    <pdf:Page styles:bg-color="aqua" styles:padding="40 0 0 0" >
+     <Content>
+       
+       
+       <!--  Borders set on a full width div. -->
+       <pdf:Div styles:class="stroked" styles:bg-color="#FAA" styles:padding="20pt" styles:border-style="Dash"
+                styles:border-color="#C77" styles:border-width="3pt" styles:border-corner-radius="10pt" 
+                styles:fill-color="aqua" styles:font-bold="true" styles:font-size="40pt" styles:stroke-dash="Long-Dash">
+         Light pink bg with aqua Text.
+       </pdf:Div>
+
+       <!-- Thick border will overlay the inner content -->
+       <pdf:Div styles:class="floating" >
+         <pdf:Span styles:fill-color="white" styles:fill-opacity="0.7" >
+           Semi-opaque fuschia with white semi-transparent text.
+         </pdf:Span>
+       </pdf:Div>
+
+       <pdf:Rect styles:class="stroked" styles:fill-color="lime" styles:fill-opacity="0.9"
+                 styles:position-mode="Absolute" 
+                 styles:x="120" styles:y="120" styles:width="120" styles:height="120" ></pdf:Rect>
+     
+       
+      </Content>
+    </pdf:Page>
+  </Pages>
+  
+</pdf:Document>

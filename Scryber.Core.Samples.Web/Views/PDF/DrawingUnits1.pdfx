@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+  <Styles>
+    
+    <!-- catch all style-->
+    <styles:Style >
+      <styles:Font family="Arial" size="10pt"/>
+    </styles:Style>
+    
+    <!-- Values set on the styles class-->
+    <styles:Style applied-class="positioned" >
+      <styles:Padding top="10pt" left="20pt" bottom="4mm" right="0.25in"/>
+      <styles:Position mode="Absolute" x="30mm" y="40mm"/>
+      <styles:Size width="100mm" />
+      <styles:Background color="#AAAAFF"/>
+    </styles:Style>
+    
+  </Styles>
+  <Pages>
+    <pdf:Page >
+     <Content>
+       
+       <!-- Explict values on the component -->
+       <pdf:Div styles:position-mode="Absolute" styles:padding="20pt" styles:x="120mm" styles:y="40mm" styles:width="100pt" styles:bg-color="#FFAAAA" >
+         20pt padding all around at 120mm, 40mm with a width of 100pt.
+       </pdf:Div>
+       
+       <!-- Or values in the style. -->
+       <pdf:Div styles:class="positioned" >
+         20pt padding all around at 10pt, 20pt with a width of 100mm.
+       </pdf:Div>
+      </Content>
+    </pdf:Page>
+  </Pages>
+  
+</pdf:Document>

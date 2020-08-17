@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<styles:Styles xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+        xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd">
+
+  <styles:Style applied-class="title" >
+    <styles:Font family="Segoe UI" bold="false" size="60pt"/>
+    <styles:Margins all="20pt"/>
+    <styles:Padding all="10pt"/>
+    <styles:Position h-align="Center" />
+  </styles:Style>
+
+
+  <styles:Style applied-class="page-head" >
+    <styles:Font family="Segoe UI" bold="false" size="14pt"/>
+    <styles:Margins top="20pt" left="10pt" right="10pt" bottom="10pt" />
+    <styles:Border sides="Bottom" style="Solid" width="1pt"/>
+    <styles:Padding all="10pt"/>
+  </styles:Style>
+
+</styles:Styles>

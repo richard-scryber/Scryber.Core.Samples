@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
+              auto-bind="true" >
+  <Info>
+    <Title></Title>
+  </Info>
+  <Styles>
+    <styles:Styles-Ref source="./Styles/Stylesheet.psfx"/>
+
+    <styles:Style applied-class="title" >
+      <styles:Font bold="true" size="40"/>
+      <styles:Position h-align="Right"/>
+    </styles:Style>
+
+
+    <styles:Style applied-class="page-head" >
+      <styles:Border color="red" width="2pt"/>
+      <styles:Font size="10pt"/>
+    </styles:Style>
+    
+  </Styles>
+
+  <Params>
+    <pdf:String-Param id="doc-title" value="Referenced Files" />
+  </Params>
+  
+  <Pages>
+    <pdf:Page-Ref source="Pages/HeaderPage.ppfx">
+      <Params>
+        <pdf:String-Param id="doc-title" value="Different Section" />
+      </Params>
+    </pdf:Page-Ref>
+
+    <pdf:Page>
+      <Header>
+        <pdf:Component-Ref source="Components/StdHeader.pcfx"></pdf:Component-Ref>
+      </Header>
+      <Content>
+        <pdf:H1 styles:class="title" >This is the second Page </pdf:H1>
+      </Content>
+    </pdf:Page>
+  </Pages>
+</pdf:Document>

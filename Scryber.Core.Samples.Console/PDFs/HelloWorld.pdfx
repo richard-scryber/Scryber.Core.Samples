@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
+  <Styles>
+
+    <styles:Style applied-class="mystyle" >
+      <styles:Margins all="20pt"/>
+      <styles:Padding all="20pt"/>
+      <styles:Font family="Arial" size="20pt"/>
+      <styles:Background color="#FF0000"/>
+      <styles:Fill color="white"/>
+    </styles:Style>
+    
+  </Styles>
+  <Pages>
+    <pdf:Page>
+      <Content>
+        <pdf:Div styles:class="mystyle">
+          <pdf:Label>Hello World, from scryber.</pdf:Label>
+        </pdf:Div>
+        
+      </Content>
+    </pdf:Page>
+    
+  </Pages>
+</pdf:Document>

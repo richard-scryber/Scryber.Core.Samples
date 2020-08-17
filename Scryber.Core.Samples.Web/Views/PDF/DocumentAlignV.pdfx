@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+  <Styles>
+    <styles:Style applied-type="pdf:H1" >
+      <styles:Position h-align="Center"/>
+      <styles:Border color="green" width="1pt"/>
+      <styles:Padding all="5pt"/>
+    </styles:Style>
+
+    <styles:Style applied-type="pdf:Div" >
+      <styles:Border color="red" width="1pt" />
+      <styles:Padding all="5pt"/>
+      <styles:Margins top="10pt"/>
+    </styles:Style>
+  </Styles>
+  <Pages>
+    <pdf:Section styles:v-align="Bottom" >
+      <Content>
+        <pdf:H1 >Page has a bottom vertical alignment</pdf:H1>
+        <pdf:Div styles:height="200pt">
+          Default top left alignment.
+          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
+        </pdf:Div>
+        <pdf:Div styles:h-align="Right" styles:v-align="Bottom" styles:height="200pt">
+          Right Bottom alignment with mixed content.
+          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
+        </pdf:Div>
+        <pdf:Div styles:h-align="Center" styles:v-align="Middle" styles:width="350pt" styles:height="200pt">
+          Center Middle alignment with fixed width and mixed content.
+          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
+        </pdf:Div>
+     </Content>
+    </pdf:Section>
+  </Pages>
+  
+</pdf:Document>

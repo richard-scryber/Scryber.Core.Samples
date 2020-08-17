@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
@@ -13,11 +13,14 @@
     <ApplicationURL>http://localhost:5000</ApplicationURL>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Options\**" />
+    <Content Remove="Options\**" />
+    <EmbeddedResource Remove="Options\**" />
+    <None Remove="Options\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Utility\" />
-    <Folder Include="Samples\" />
     <Folder Include="Services\" />
-    <Folder Include="Options\" />
-    <Folder Include="Views\PDF\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Utility\ScryberPDFHandlerFactory.cs" />
@@ -27,13 +30,187 @@
     <Compile Remove="Utility\PDFDocument_ResponseExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Samples\Document.pdfx" />
-    <None Remove="Samples\Document %28copy%29.pdfx" />
-    <None Remove="Samples\Document1.pdfx" />
+    <Content Remove="wwwroot\images\Toroid24.tiff" />
+    <Content Remove="wwwroot\images\Toroid32.png" />
+    <Content Remove="wwwroot\images\Toroid32.tiff" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\Toroid24.tiff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\images\Toroid32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\images\Toroid32.tiff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
-    <PackageReference Include="Scryber.Core.Mvc" Version="1.0.0.6" />
-    <PackageReference Include="Scryber.Core.Schemas" Version="1.0.0.8" />
+    <PackageReference Include="Scryber.Core.Mvc" Version="1.0.0.24" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Content\Images\group.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Images\landscape.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Images\Toroid24.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Images\Toroid24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Images\Toroid24.tiff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Images\Toroid32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Images\Toroid32.tiff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\Components\StdHeader.pcfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentAlignNested.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentAlignV.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentAlignH.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentColumns5.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentColumns4.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentColumns3.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentColumns2.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentComponentsPages.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentController.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentDataSources.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentImageSizes.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentOutline2.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentOutline1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPageGroups.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPageNumbers.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPageOf.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentColumns1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingColors1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingImagesNotFound.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingImagesRemote.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingImages.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingDashes.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingColorsBound.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingUnits1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPageSizes.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPages3.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPages2.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPositioningAbsolute.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPages1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentSizingClipping.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentSizingMargins - Copy.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentSizingMinMax.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentSizing.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPositioningOrder.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPositioningRelative.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPositioningModes.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPositioningFullWidth.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentPositioningBlocks.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentTemplateParameters.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentXmlParameters.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentStyleParameters.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentParameters.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentProperties.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentRefs.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\Pages\HeaderPage.ppfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\Styles\Stylesheet.psfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Scryber.Core.Samples.Web;
 
-namespace Scryber
+namespace Scryber.Core.Samples.Web
 {
     public class Program
     {
@@ -17,11 +17,19 @@ namespace Scryber
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            var builder = Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hosingContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+            return builder;
+        }
     }
 }

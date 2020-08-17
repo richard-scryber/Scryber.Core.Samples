@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+                xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
+
+  <Pages>
+   
+    <pdf:Page styles:margins="20pt" styles:font-size="20pt">
+      <Content>
+        <pdf:Div styles:border-color="black" styles:border-width="1pt" >
+          The content of this div is all as a block (by default)
+        
+          <pdf:Div styles:fill-color="maroon" >This div is positioned as a block.</pdf:Div>
+
+          <!-- Images are by detault displayed as blocks -->
+          <pdf:Image styles:width="60pt" src="../../Content/Images/group.png" />
+          
+          After the content.
+        </pdf:Div>
+
+        <pdf:Div styles:border-color="black" styles:border-width="1pt" >
+          The content of this div is set explicity to inline.
+          
+          <pdf:Div styles:position-mode="Inline" styles:fill-color="maroon">This div is positioned as a block.</pdf:Div>
+
+          <!-- Image is also set to inline and will increase the line height automatically -->
+          <pdf:Image styles:position-mode="Inline" styles:width="60pt"  src="../../Content/Images/group.png" />
+
+          After the content.
+        </pdf:Div>
+        
+       
+      </Content>
+    </pdf:Page>
+  </Pages>
+
+</pdf:Document>

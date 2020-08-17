@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Div xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+        xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+        styles:class="page-head" styles:column-count="2" >
+
+  <pdf:Label styles:class="head-text" text="{@:doc-title}" />
+  <pdf:ColumnBreak/>
+  <pdf:Date styles:class="head-text" styles:date-format="dd MMM yyyy" />
+</pdf:Div>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+  <Params>
+    <pdf:String-Param id="Title" value="Document Title" />
+  </Params>
+  
+  <Data>
+    <data:JsonDataSource id="XmlSource" source-path="http://localhost:5000/Home/Json" ></data:JsonDataSource>
+  </Data>
+  
+  <Styles>
+    <styles:Style applied-type="pdf:H1" applied-class="title" >
+      <styles:Background color="#336666"/>
+      <styles:Fill color="#FFFFFF"/>
+      <styles:Font family="Gill Sans" size="24pt" italic="true"/>
+    </styles:Style>
+  </Styles>
+  
+  <Pages>
+
+    <!-- Use the models 'DocTitle' property for the outline. -->
+    <pdf:Page styles:margins="20pt">
+      <Content>
+        <data:With datasource-id="JsonSource"  >
+
+          <!-- And use it as the text on the heading -->
+          <pdf:H1 styles:class="title" text="{@:Title}" > </pdf:H1>
+          
+          <pdf:Ul>
+            <!-- now we loop through the 'Entries' property -->
+            <data:ForEach value="{@:.Entries/Entry}" >
+              <Template>
+                <pdf:Li>
+                  <!-- and create a list item for each entry (. prefix) with the name property. -->
+                  <pdf:Text value="{@:.Name}" />
+                </pdf:Li>
+              </Template>
+            </data:ForEach>
+          </pdf:Ul>
+        </data:With>
+        
+      </Content>
+    </pdf:Page>
+  </Pages>
+
+</pdf:Document>
