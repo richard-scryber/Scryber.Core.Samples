@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+            xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+            xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+<Styles>
+    <!-- Div style -->
+    <styles:Style applied-class="img-wrap">
+      <styles:Font size="40pt" bold="true"/>
+      <styles:Position h-align="Center"/>
+      <styles:Border color="fuchsia"/>
+      <!-- x-size (or y-size) alone will keep the natural proportions of the image -->
+      <styles:Fill img-src="../../Content/Images/Landscape.jpg" x-size="60pt" />
+    </styles:Style>
+
+    <styles:Style applied-class="fill-pos">
+    <styles:Margins top="5pt"/>
+    <!-- aplying a specific stating position and step -->
+    <styles:Fill x-pos="30pt" y-pos="-15pt" x-step="70pt" y-step="60pt" />
+    <styles:Size min-height="100pt"/>
+    </styles:Style>
+
+    
+</Styles>
+<Pages>
+
+    <pdf:Page styles:padding="40 10 20 10" >
+    <Content>
+
+    <pdf:Div styles:class="img-wrap" styles:min-height="100pt" >
+        <pdf:Span> Filled image x-size only</pdf:Span>
+    </pdf:Div>
+
+    <pdf:Div styles:class="img-wrap fill-pos" styles:fill-repeat="RepeatX" >
+        <pdf:Span> Filled image with X repeat only</pdf:Span>
+    </pdf:Div>
+
+    <pdf:Div styles:class="img-wrap fill-pos" styles:fill-repeat="RepeatY" >
+        <pdf:Span> Filled image with Y repeat only</pdf:Span>
+    </pdf:Div>
+
+    <pdf:Div styles:class="img-wrap fill-pos" styles:fill-repeat="Fill" >
+      <!-- Fill repeat doesn't work at the moment. We are loking at it.-->
+        <pdf:Span> Filled image with Fill, overriding other settings</pdf:Span>
+    </pdf:Div>
+
+      <!-- A shape with a fill and background image -->
+      <pdf:Rect styles:position-mode="Absolute" styles:class="img-wrap"
+                styles:bg-image="../../Content/Images/group.png" styles:padding="20"
+                styles:x="360" styles:y="300" styles:width="120" styles:height="120pt" ></pdf:Rect>
+    </Content>
+    </pdf:Page>
+</Pages>
+
+</pdf:Document>

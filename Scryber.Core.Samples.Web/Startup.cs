@@ -58,7 +58,7 @@ namespace Scryber.Core.Samples.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
             
-            
+            //Scryber.ServiceProvider.SetProvider(services);
         }
     }
 }

@@ -92,6 +92,9 @@
     <None Update="Content\Images\Toroid32.tiff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\PDF\Components\ScryberLogo.pcfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Views\PDF\Components\StdHeader.pcfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -128,6 +131,21 @@
     <None Update="Views\PDF\DocumentImageSizes.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\PDF\DocumentLists1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentTablesDatabound.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentTablesNested.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentTablesHeaders.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentTables1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Views\PDF\DocumentOutline2.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -147,6 +165,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DrawingColors1.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingPathsBezier.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingPathsPositioned.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingImagesFilled.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DrawingFontsMultibyte.pdfx">
@@ -218,7 +245,7 @@
     <None Update="Views\PDF\DocumentSizingClipping.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Views\PDF\DocumentSizingMargins - Copy.pdfx">
+    <None Update="Views\PDF\DocumentSizingMargins.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DocumentSizingMinMax.pdfx">
