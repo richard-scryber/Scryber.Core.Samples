@@ -20,9 +20,6 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             _env = environment;
             _rootPath = environment.ContentRootPath;
-            var configService = Scryber.ServiceProvider.GetService<IScryberConfigurationService>();
-            var imaging = configService.ImagingOptions;
-            var allowMission = imaging.AllowMissingImages;
         }
 
         public IActionResult Index()
@@ -191,7 +188,9 @@ namespace Scryber.Core.Samples.Web.Controllers
                     new XAttribute("title", "Testing Xml Datasources"),
                     new XElement("Entries",
                         new XElement("Entry", new XAttribute("Name", "First Xml"), new XAttribute("Id", "FirstID")),
-                        new XElement("Entry", new XAttribute("Name", "Second Xml"), new XAttribute("Id", "SecondID"))
+                        new XElement("Entry", new XAttribute("Name", "Second Xml"), new XAttribute("Id", "SecondID")),
+                        new XElement("Entry", new XAttribute("Name", "Third Xml"), new XAttribute("Id", "ThirdID")),
+                        new XElement("Entry", new XAttribute("Name", "Fourth Xml"), new XAttribute("Id", "FourthID"))
                         )
                     )
                 );
