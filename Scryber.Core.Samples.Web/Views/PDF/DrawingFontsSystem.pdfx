@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+
+  <Styles>
+    
+    <!-- Add a style to images -->
+    <styles:Style applied-type="pdf:Div" applied-class="std-font" >
+      <styles:Font size="20pt" />
+      <styles:Background color="#AAA"/>
+      <styles:Padding all="4pt"/>
+      <styles:Margins bottom="10pt" />
+    </styles:Style>
+
+  </Styles>
+  <Pages>
+    
+    <pdf:Page styles:padding="10" >
+     <Content>
+       
+       <pdf:Div styles:class="std-font" styles:font-family="Arial" >
+         <pdf:Span>Arial is a system installed font.</pdf:Span>
+       </pdf:Div>
+       <pdf:Div styles:class="std-font" styles:font-family="Segoe UI" >
+         <pdf:Span>Segoe UI is a system installed font.</pdf:Span>
+       </pdf:Div>
+       <pdf:Div styles:class="std-font" styles:font-family="Impact" >
+         <pdf:Span>Impact is a system installed font.</pdf:Span>
+       </pdf:Div>
+       <pdf:Div styles:class="std-font" styles:font-family="Comic Sans MS" >
+         <pdf:Span>Comic Sans is a system installed font.</pdf:Span>
+       </pdf:Div>
+       <pdf:Div styles:class="std-font" styles:font-family="Wingdings" >
+         <pdf:Span>Wingdings is a system installed font.</pdf:Span>
+       </pdf:Div>
+      </Content>
+    </pdf:Page>
+  </Pages>
+  
+</pdf:Document>

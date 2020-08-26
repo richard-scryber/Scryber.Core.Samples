@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
+  <Styles>
+    <!-- Div style -->
+    <styles:Style applied-class="img-wrap">
+      <styles:Font size="20pt" bold="true"/>
+      <styles:Position h-align="Center"/>
+      <styles:Border color="fuchsia"/>
+      <styles:Background img-src="../../Content/Images/Landscape.jpg" x-size="60pt" />
+    </styles:Style>
+
+    <styles:Style applied-class="bg-pos">
+      <styles:Margins top="5pt"/>
+      <styles:Background x-pos="30pt" y-pos="-15pt" x-step="70pt" y-step="60pt" />
+      <styles:Size min-height="100pt"/>
+    </styles:Style>
+
+    <styles:Style applied-type="pdf:Span">
+      <styles:Fill color="fuchsia"/>
+    </styles:Style>
+  </Styles>
+  <Pages> 
+    
+    <pdf:Page styles:padding="40 10 20 10" >
+     <Content>
+
+       <pdf:Div styles:class="img-wrap" styles:min-height="160pt" >
+         <pdf:Span> Background image x-size only</pdf:Span>
+       </pdf:Div>
+       
+       <pdf:Div styles:class="img-wrap bg-pos" styles:bg-repeat="RepeatX" >
+         <pdf:Span> Background image with X repeat only</pdf:Span>
+       </pdf:Div>
+
+       <pdf:Div styles:class="img-wrap bg-pos" styles:bg-repeat="RepeatY" >
+         <pdf:Span> Background image with Y repeat only</pdf:Span>
+       </pdf:Div>
+
+       <pdf:Div styles:class="img-wrap bg-pos" styles:bg-repeat="Fill" >
+         <pdf:Span> Background image with Fill, overriding other settings</pdf:Span>
+       </pdf:Div>
+        
+      </Content>
+    </pdf:Page>
+  </Pages>
+  
+</pdf:Document>

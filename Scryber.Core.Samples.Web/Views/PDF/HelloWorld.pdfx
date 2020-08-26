@@ -1,13 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
-              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
-              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
-    
-    <Pages>
-        <pdf:Page>
-            <Content>
-                <pdf:Label>Hello World, from scryber.</pdf:Label>
-            </Content>
-       </pdf:Page>
-    </Pages>
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<pdf:Document xmlns:pdf='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
+              xmlns:styles='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd'
+              xmlns:data='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd' >
+  <Params>
+    <pdf:String-Param id='Title' value='Hello World'  />
+  </Params>
+  <Styles>
+    <styles:Style applied-type='pdf:Page'>
+      <styles:Font family='Arial' size='14pt' />
+    </styles:Style>
+
+    <styles:Style applied-class='heading' >
+      <styles:Fill color='#FF7777'/>
+      <styles:Text decoration='Underline'/>
+    </styles:Style>
+  </Styles>
+  <Pages>
+
+    <pdf:Page styles:margins='20pt'>
+      <Content>
+        <pdf:H1 styles:class='heading' text='{@:Title}' />
+        <pdf:Div>We hope you like scryber.</pdf:Div>
+
+      </Content>
+    </pdf:Page>
+  </Pages>
+
 </pdf:Document>

@@ -35,6 +35,21 @@
     <Content Remove="wwwroot\images\Toroid32.tiff" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\Fonts\Std\AvenirNextCondensed-Regular-08.ttf" />
+    <None Remove="Content\Fonts\Std\AvenirNextCondensed-UltraLight-11.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Fonts\Std\AvenirNextCondensed-Regular-08.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Std\AvenirNextCondensed-UltraLight-11.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Title\DIN Alternate Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="wwwroot\images\Toroid24.tiff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -50,6 +65,12 @@
     <PackageReference Include="Scryber.Core.Mvc" Version="1.0.0.24" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Content\Fonts\Std\AvenirNextCondensed-Bold-01.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Fonts\Std\AvenirNextCondensed-UltraLightItalic-12.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Content\Images\group.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -128,19 +149,52 @@
     <None Update="Views\PDF\DrawingColors1.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Views\PDF\DrawingImagesNotFound.pdfx">
+    <None Update="Views\PDF\DrawingFontsMultibyte.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Views\PDF\DrawingImagesRemote.pdfx">
+    <None Update="Views\PDF\DrawingFontsSpacing.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsLeading.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsSizing.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsDecoration.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsStyles.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsCustom.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsSystem.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DrawingImages.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingImagesNotFound.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingImageBackgrounds.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingFontsStandard.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DrawingDashes.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DrawingColorsBound.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingPathsOtherShapes.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DrawingPathsLines.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DrawingUnits1.pdfx">

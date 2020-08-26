@@ -20,9 +20,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             _env = environment;
             _rootPath = environment.ContentRootPath;
-            var configService = Scryber.ServiceProvider.GetService<IScryberConfigurationService>();
-            var imaging = configService.ImagingOptions;
-            var allowMission = imaging.AllowMissingImages;
+            
         }
 
         public IActionResult Index()
@@ -32,12 +30,18 @@ namespace Scryber.Core.Samples.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult HelloWorld()
+        public IActionResult HelloWorld(string title = "Hello World From Scryber")
         {
             var path = _env.ContentRootPath;
             path = System.IO.Path.Combine(path, "Views", "PDF", "HelloWorld.pdfx");
 
-            return this.PDF(path);
+            using (var doc = PDFDocument.ParseDocument(path))
+            {
+                doc.Params["Title"] = title;
+                var page = doc.Pages[0] as PDFPage;
+                page.Contents.Add(new PDFLabel() { Text = "My Content" });
+                return this.PDF(doc); // inline:false, outputFileName:"HelloWorld.pdf"
+            }
         }
 
         [HttpGet]
@@ -58,7 +62,7 @@ namespace Scryber.Core.Samples.Web.Controllers
             Scryber.Drawing.PDFImageData data = Scryber.Drawing.PDFImageData.LoadImageFromBitmap("Dynamic", bmp, false);
             pdf.Params["toroidBin"] = data;
 
-            return this.PDF(pdf);
+            return this.PDF(pdf); //, inline:false, outputFileName:"HelloWorld.pdf");
         }
 
         public IActionResult ImageDocument()
