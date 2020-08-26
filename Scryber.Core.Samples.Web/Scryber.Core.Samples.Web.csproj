@@ -131,6 +131,12 @@
     <None Update="Views\PDF\DocumentImageSizes.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\PDF\DocumentListDefinitions.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentListsOverflow.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Views\PDF\DocumentLists1.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
