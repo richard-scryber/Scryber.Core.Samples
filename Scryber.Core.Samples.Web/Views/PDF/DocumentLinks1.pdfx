@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
+  <Params>
+    <pdf:String-Param id="search" value="https://www.google.com" />
+  </Params>
+
+  <Styles>
+
+    <styles:Style applied-class="nav" >
+      <styles:Background color="navy"/>
+      <styles:Font size="10pt" bold="true"/>
+      <styles:Position h-align="Center"/>
+      <styles:Fill color="#CCC"/>
+      <styles:Padding all="10pt"/>
+      <styles:Margins bottom="10pt"/>
+      <styles:Columns count="5"/>
+    </styles:Style>
+    
+  </Styles>
+  <Pages>
+
+    <pdf:PageGroup>
+      <Header>
+        <pdf:Div styles:class="nav" >
+          <pdf:Link action="FirstPage" destination-fit="PageWidth" >&lt;&lt; First Page</pdf:Link>
+          <pdf:ColumnBreak/>
+          <pdf:Link action="PrevPage">&lt; Previous Page</pdf:Link>
+          <pdf:ColumnBreak/>
+          <pdf:PageNumber />
+          <pdf:ColumnBreak/>
+          <pdf:Link action="NextPage" > Next Page &gt;</pdf:Link>
+          <pdf:ColumnBreak/>
+          <pdf:Link action="LastPage">Last Page &gt;&gt;</pdf:Link>
+        </pdf:Div>
+      </Header>
+      <Pages>
+        <pdf:Page >
+          <Content>Title Page</Content>
+        </pdf:Page>
+
+        <pdf:Section>
+          <Content>
+            Content 1
+            <pdf:PageBreak/>
+            Content 2
+            <pdf:PageBreak/>
+            Content 3
+          </Content>
+        </pdf:Section>
+      </Pages>
+    </pdf:PageGroup>
+
+   
+  </Pages>
+  
+</pdf:Document>

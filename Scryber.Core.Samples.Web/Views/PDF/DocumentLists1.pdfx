@@ -19,11 +19,11 @@
             <pdf:ColumnBreak/>
 
             <pdf:Ol>
-              <pdf:Li >First Item</pdf:Li>
-              <pdf:Li >Second Item</pdf:Li>
-              <pdf:Li >Third Item</pdf:Li>
-              <pdf:Li >Fourth Item</pdf:Li>
-              <pdf:Li >
+              <pdf:Li>First Item</pdf:Li>
+              <pdf:Li>Second Item</pdf:Li>
+              <pdf:Li>Third Item</pdf:Li>
+              <pdf:Li>Fourth Item</pdf:Li>
+              <pdf:Li>
                 Complex Item
                 <pdf:Span styles:fill-color="red">
                   With inner content,
@@ -35,7 +35,7 @@
 
             <pdf:ColumnBreak/>
 
-            <pdf:List styles:number-style="LowercaseRoman">
+            <pdf:List styles:number-style="">
               <pdf:Li>First item roman.</pdf:Li>
               <pdf:Li>Second item roman.</pdf:Li>
               <pdf:Li>Third item roman.</pdf:Li>

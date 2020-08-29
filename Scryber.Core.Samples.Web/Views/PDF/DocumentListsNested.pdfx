@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
+  <Styles>
+    <styles:Style applied-type="pdf:Ol" >
+      <styles:List number-style="Decimals" number-postfix="."/>
+    </styles:Style>
+    
+    <styles:Style applied-class="inner" >
+      <styles:List number-style="LowercaseRoman" number-concat="true" number-group="lr"/>
+    </styles:Style>
+  </Styles>
+  <Pages>
+
+        <pdf:Page styles:margins="20pt" styles:font-size="12pt" >
+          <Content>
+
+            <pdf:Div styles:column-count="2" styles:height="170pt" styles:border-color="aqua">
+              
+              <pdf:Ol styles:number-alignment="Left" styles:number-inset="20pt">
+                <pdf:Li >Decimal First Item</pdf:Li>
+                <pdf:Li >
+                  Decimal Second Item with inner list that inherits the Ol style and adds the 'inner' list style.
+                  <pdf:Ol styles:class="inner" >
+                    <pdf:Li>First Lowercase item</pdf:Li>
+                    <pdf:Li>Second Lowercase item</pdf:Li>
+                    <pdf:Li>Third Lowercase item</pdf:Li>
+                  </pdf:Ol>
+                </pdf:Li>
+                <pdf:Li >Decimal Third Item</pdf:Li>
+                <pdf:Li >Decimal Fourth Item 
+              </pdf:Li>
+                <pdf:Li>
+                  Decimal fifth Item with continuation of the 'lr' group from the inner style
+                  <pdf:Ol styles:class="inner" >
+                    <pdf:Li styles:number-alignment="Left" styles:number-inset="100pt">Fourth Lowercase item</pdf:Li>
+                    <pdf:Li styles:number-alignment="Left" styles:number-inset="70pt">Fifth Lowercase item</pdf:Li>
+                    <pdf:Li styles:number-alignment="Left" styles:number-inset="30pt">Sixth Lowercase item</pdf:Li>
+                  </pdf:Ol>
+                </pdf:Li>
+              </pdf:Ol>
+            </pdf:Div>
+            
+          </Content>
+        </pdf:Page>
+
+   
+  </Pages>
+  
+</pdf:Document>
