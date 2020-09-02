@@ -12,9 +12,24 @@
     <styles:Style applied-type="doc:Link" >
       <styles:Font bold="true"/>
       <styles:Fill color="navy"/>
-      <styles:Text decoration="Underline"/>
     </styles:Style>
-    
+
+    <styles:Style applied-class="tab-fill" >
+      <styles:Stroke dash="Sparse-Dot"/>
+      <styles:Position mode="Inline" />
+      <styles:Padding top="12pt"/>
+      <styles:Margins/>
+    </styles:Style>
+
+    <styles:Style applied-type="pdf:Cell">
+      <styles:Border style="None"/>
+      <styles:Padding left="0" right="0"/>
+    </styles:Style>
+
+    <styles:Style applied-class="pg-num" >
+      <styles:Position h-align="Left" />
+      <styles:Padding left="0"/>
+    </styles:Style>
   </Styles>
  
       <Pages>
