@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
   <Params>
     <!-- Declare the parameters -->
-    <pdf:Bool-Param id="ShowTitle" value="true" />
-    <pdf:String-Param id="MyTitle" value="Document Title" />
-    <pdf:Color-Param id="TitleBg" value="#AAAAAA" />
+    <doc:Bool-Param id="ShowTitle" value="true" />
+    <doc:String-Param id="MyTitle" value="Document Title" />
+    <doc:Color-Param id="TitleBg" value="#AAAAAA" />
   </Params>
 
   <Pages>
     <!-- Use the 'MyTitle' parameter for the outline. -->
-    <pdf:Page outline-title="{@:MyTitle}" styles:margins="20pt" styles:font-size="12pt">
+    <doc:Page outline-title="{@:MyTitle}" styles:margins="20pt" styles:font-size="12pt">
       <Content>
         <!-- And use it as the text on the heading with a visble flag and background -->
-        <pdf:H1 visible="{@:ShowTitle}" styles:bg-color="{@:TitleBg}"  text="{@:MyTitle}" > </pdf:H1>
-        <pdf:Para >This is the content of the document</pdf:Para>
+        <doc:H1 visible="{@:ShowTitle}" styles:bg-color="{@:TitleBg}"  text="{@:MyTitle}" > </doc:H1>
+        <doc:Para >This is the content of the document</doc:Para>
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

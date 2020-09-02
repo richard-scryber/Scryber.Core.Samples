@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <?scryber parser-mode='Lax' ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Params>
-    <pdf:String-Param id="search" value="https://www.google.com" />
+    <doc:String-Param id="search" value="https://www.google.com" />
   </Params>
 
   <Styles>
 
-    <styles:Style applied-type="pdf:Link" >
+    <styles:Style applied-type="doc:Link" >
       <styles:Font bold="true"/>
       <styles:Fill color="navy"/>
       <styles:Text decoration="Underline"/>
@@ -18,36 +18,36 @@
   </Styles>
  
       <Pages>
-        <pdf:Page styles:padding="20pt" >
+        <doc:Page styles:padding="20pt" >
           <Content>
-            <pdf:H1>Title Page</pdf:H1>
-            <pdf:Div>
-              <pdf:Link destination="#Page1" >First Page</pdf:Link>
-            </pdf:Div>
-            <pdf:Div>
-              <pdf:Link destination="SecondPage" destination-fit="FullPage" >Link to Page <pdf:PageOf component="SecondPage" /></pdf:Link>
-            </pdf:Div>
-            <pdf:Div>
-              <pdf:Link destination="#Page3" destination-fit="BoundingBox" >Third Page</pdf:Link>
-            </pdf:Div>
+            <doc:H1>Title Page</doc:H1>
+            <doc:Div>
+              <doc:Link destination="#Page1" >First Page</doc:Link>
+            </doc:Div>
+            <doc:Div>
+              <doc:Link destination="SecondPage" destination-fit="FullPage" >Link to Page <doc:PageOf component="SecondPage" /></doc:Link>
+            </doc:Div>
+            <doc:Div>
+              <doc:Link destination="#Page3" destination-fit="BoundingBox" >Third Page</doc:Link>
+            </doc:Div>
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
-        <pdf:Section>
+        <doc:Section>
           <Content>
-            <pdf:Span id="Page1"  >Content on page 1</pdf:Span>
-            <pdf:PageBreak/>
-            <pdf:Span id="Page2" name="SecondPage" >Content on page 2</pdf:Span>
-            <pdf:PageBreak/>
+            <doc:Span id="Page1"  >Content on page 1</doc:Span>
+            <doc:PageBreak/>
+            <doc:Span id="Page2" name="SecondPage" >Content on page 2</doc:Span>
+            <doc:PageBreak/>
             Content 3
-            <pdf:Div id="Page3" styles:width="100" styles:height="100" styles:x="100" styles:y="100"
+            <doc:Div id="Page3" styles:width="100" styles:height="100" styles:x="100" styles:y="100"
                      styles:bg-color="black" styles:fill-color="white" styles:font-size="10pt"
                      styles:padding="20pt">
                 Small Content on the page
-            </pdf:Div>
+            </doc:Div>
           </Content>
-        </pdf:Section>
+        </doc:Section>
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

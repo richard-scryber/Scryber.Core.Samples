@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
   <Pages>
     <!-- Use the 'MyTitle' parameter for the outline. -->
-    <pdf:Page styles:margins="20pt" styles:font-size="12pt" >
+    <doc:Page styles:margins="20pt" styles:font-size="12pt" >
       <Content>
         
-        <pdf:Span >An image will natually size to it's dimensions without space restriction.</pdf:Span>
-        <pdf:Image src="../../Content/Images/landscape.jpg" />
+        <doc:Span >An image will natually size to it's dimensions without space restriction.</doc:Span>
+        <doc:Image src="../../Content/Images/landscape.jpg" />
 
-        <pdf:Div styles:column-count="4" styles:margins="10 0 0 0" >
-          <pdf:B>First Column</pdf:B><pdf:Br/>
+        <doc:Div styles:column-count="4" styles:margins="10 0 0 0" >
+          <doc:B>First Column</doc:B><doc:Br/>
           An image will fit to it's container if no explicit size is set.
-          <pdf:Image src="../../Content/Images/landscape.jpg" />
-          <pdf:ColumnBreak/>
-          <pdf:B>Second Column</pdf:B><pdf:Br/>
+          <doc:Image src="../../Content/Images/landscape.jpg" />
+          <doc:ColumnBreak/>
+          <doc:B>Second Column</doc:B><doc:Br/>
           If a width is set, then the sizing will be proportional.
-          <pdf:Image src="../../Content/Images/landscape.jpg" styles:width="100pt" />
-          <pdf:ColumnBreak/>
-          <pdf:B>Third Column</pdf:B><pdf:Br/>
+          <doc:Image src="../../Content/Images/landscape.jpg" styles:width="100pt" />
+          <doc:ColumnBreak/>
+          <doc:B>Third Column</doc:B><doc:Br/>
           If a height is set, then the sizing will be proportional.
-          <pdf:Image src="../../Content/Images/landscape.jpg" styles:height="50pt" />
+          <doc:Image src="../../Content/Images/landscape.jpg" styles:height="50pt" />
           
-          <pdf:ColumnBreak/>
-          <pdf:B>Third Column</pdf:B><pdf:Br/>
+          <doc:ColumnBreak/>
+          <doc:B>Third Column</doc:B><doc:Br/>
           If a width and height are set these will be used explicitly.
-          <pdf:Image src="../../Content/Images/landscape.jpg" styles:width="100pt" styles:height="50pt" />
-      </pdf:Div>
+          <doc:Image src="../../Content/Images/landscape.jpg" styles:width="100pt" styles:height="50pt" />
+      </doc:Div>
 
         <!-- Photo by Bailey Zindel on Unsplash -->
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

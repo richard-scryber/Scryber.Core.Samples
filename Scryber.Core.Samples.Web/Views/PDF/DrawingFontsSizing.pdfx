@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
 
   <Styles>
     
     <!-- Add a style to images -->
-    <styles:Style applied-type="pdf:Div" applied-class="std-font" >
+    <styles:Style applied-type="doc:Div" applied-class="std-font" >
       <styles:Font size="20pt" />
       <styles:Background color="#AAA"/>
       <styles:Padding all="4pt"/>
@@ -18,28 +18,28 @@
   <Pages>
     
     <!-- Setting the font on the page, rather than at each level. -->
-    <pdf:Page styles:padding="10" styles:font-family="Segoe UI" >
+    <doc:Page styles:padding="10" styles:font-family="Segoe UI" >
      <Content>
        
-       <pdf:Div styles:class="std-font" styles:text-decoration="Underline" >
-         <pdf:Span styles:font-size="10pt">Underlined Segoe UI in 10pt.</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="std-font" styles:text-decoration="Underline" >
+         <doc:Span styles:font-size="10pt">Underlined Segoe UI in 10pt.</doc:Span>
+       </doc:Div>
 
-       <pdf:Div styles:class="std-font" styles:text-decoration="Underline" >
-         <pdf:Span styles:font-size="30pt">Underlined Segoe UI in 30pt.</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="std-font" styles:text-decoration="Underline" >
+         <doc:Span styles:font-size="30pt">Underlined Segoe UI in 30pt.</doc:Span>
+       </doc:Div>
        
-       <pdf:Div styles:class="std-font" 
+       <doc:Div styles:class="std-font" 
                 styles:font-bold="true" >
-         <pdf:Span>Segoe UI as a<pdf:Span styles:font-size="30pt">
+         <doc:Span>Segoe UI as a<doc:Span styles:font-size="30pt">
            bold variant with
-           <pdf:Span styles:font-size="50pt" styles:text-decoration="Underline">various</pdf:Span>
-         </pdf:Span>sizes.</pdf:Span>
-       </pdf:Div>
+           <doc:Span styles:font-size="50pt" styles:text-decoration="Underline">various</doc:Span>
+         </doc:Span>sizes.</doc:Span>
+       </doc:Div>
 
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

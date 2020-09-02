@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
   <Styles>
     <styles:Style applied-class="bordered">
@@ -11,26 +11,26 @@
   </Styles>
   <Pages>
    
-    <pdf:Page styles:margins="20pt" styles:font-size="20pt">
+    <doc:Page styles:margins="20pt" styles:font-size="20pt">
       <Content>
         This is the content of the page
         
-        <pdf:Div styles:class="bordered" >This is the content above the block.</pdf:Div>
+        <doc:Div styles:class="bordered" >This is the content above the block.</doc:Div>
 
-        <pdf:Div styles:class="bordered" >This is the flowing content within the block that will span over multiple lines
-          <pdf:Span styles:position-mode="Absolute" styles:bg-color="aqua" styles:x="300pt" styles:y="60pt" >This is absolute</pdf:Span>
+        <doc:Div styles:class="bordered" >This is the flowing content within the block that will span over multiple lines
+          <doc:Span styles:position-mode="Absolute" styles:bg-color="aqua" styles:x="300pt" styles:y="60pt" >This is absolute</doc:Span>
           with the content within it.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Div styles:class="bordered">
+        <doc:Div styles:class="bordered">
           After a block, this will then continue with the previous flow of content.
-        </pdf:Div>
+        </doc:Div>
         
         <!-- Absolute postitioning can be applied to any component, and size can be specified. -->
-        <pdf:Image styles:position-mode="Absolute" src="../../Content/Images/group.png" styles:fill-opacity="0.7"
+        <doc:Image styles:position-mode="Absolute" src="../../Content/Images/group.png" styles:fill-opacity="0.7"
                   styles:x="500pt" styles:y="150pt" styles:width="150pt" styles:height="150pt" />
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

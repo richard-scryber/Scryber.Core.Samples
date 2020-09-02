@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Styles>
-    <styles:Style applied-type="pdf:Ol" >
+    <styles:Style applied-type="doc:Ol" >
       <styles:List number-style="Decimals" number-postfix="."/>
     </styles:Style>
     
@@ -14,39 +14,39 @@
   </Styles>
   <Pages>
 
-        <pdf:Page styles:margins="20pt" styles:font-size="12pt" >
+        <doc:Page styles:margins="20pt" styles:font-size="12pt" >
           <Content>
 
-            <pdf:Div styles:column-count="2" styles:height="170pt" styles:border-color="aqua">
+            <doc:Div styles:column-count="2" styles:height="170pt" styles:border-color="aqua">
               
-              <pdf:Ol styles:number-alignment="Left" styles:number-inset="20pt">
-                <pdf:Li >Decimal First Item</pdf:Li>
-                <pdf:Li >
+              <doc:Ol styles:number-alignment="Left" styles:number-inset="20pt">
+                <doc:Li >Decimal First Item</doc:Li>
+                <doc:Li >
                   Decimal Second Item with inner list that inherits the Ol style and adds the 'inner' list style.
-                  <pdf:Ol styles:class="inner" >
-                    <pdf:Li>First Lowercase item</pdf:Li>
-                    <pdf:Li>Second Lowercase item</pdf:Li>
-                    <pdf:Li>Third Lowercase item</pdf:Li>
-                  </pdf:Ol>
-                </pdf:Li>
-                <pdf:Li >Decimal Third Item</pdf:Li>
-                <pdf:Li >Decimal Fourth Item 
-              </pdf:Li>
-                <pdf:Li>
+                  <doc:Ol styles:class="inner" >
+                    <doc:Li>First Lowercase item</doc:Li>
+                    <doc:Li>Second Lowercase item</doc:Li>
+                    <doc:Li>Third Lowercase item</doc:Li>
+                  </doc:Ol>
+                </doc:Li>
+                <doc:Li >Decimal Third Item</doc:Li>
+                <doc:Li >Decimal Fourth Item 
+              </doc:Li>
+                <doc:Li>
                   Decimal fifth Item with continuation of the 'lr' group from the inner style
-                  <pdf:Ol styles:class="inner" >
-                    <pdf:Li styles:number-alignment="Left" styles:number-inset="100pt">Fourth Lowercase item</pdf:Li>
-                    <pdf:Li styles:number-alignment="Left" styles:number-inset="70pt">Fifth Lowercase item</pdf:Li>
-                    <pdf:Li styles:number-alignment="Left" styles:number-inset="30pt">Sixth Lowercase item</pdf:Li>
-                  </pdf:Ol>
-                </pdf:Li>
-              </pdf:Ol>
-            </pdf:Div>
+                  <doc:Ol styles:class="inner" >
+                    <doc:Li styles:number-alignment="Left" styles:number-inset="100pt">Fourth Lowercase item</doc:Li>
+                    <doc:Li styles:number-alignment="Left" styles:number-inset="70pt">Fifth Lowercase item</doc:Li>
+                    <doc:Li styles:number-alignment="Left" styles:number-inset="30pt">Sixth Lowercase item</doc:Li>
+                  </doc:Ol>
+                </doc:Li>
+              </doc:Ol>
+            </doc:Div>
             
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <?scryber append-log='true' log-level='Messages' parser-log='true' ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   
   <Viewer hide-toolbar="true" page-layout="TwoColumnRight" center-window="true" />
   <Render-Options component-names="ExplicitOnly" compression-type="FlateDecode" output-compliance="None" img-cache-mins="10" string-output="Hex" >
-    <pdf:Writer />
+    <doc:Writer />
   </Render-Options>
   <Info creator="Scryber Documentation Tooling" >
     <Title>{@:Title}</Title>
     <Subject>{@:Subject}</Subject>
     <Keywords>{@:Keywords}</Keywords>
     <Author>{@:Author}</Author>
-    <pdf:Extra name="Tag" >Document tag</pdf:Extra>
+    <doc:Extra name="Tag" >Document tag</doc:Extra>
   </Info>
      
   <Styles>
@@ -22,19 +22,19 @@
   </Styles>
 
   <Params>
-    <pdf:String-Param id="MyTitle" value="Document Title" />
-    <pdf:String-Param id="Author" value="Richard Hewitson" />
-    <pdf:String-Param id="Subject" value="This is the subject" />
-    <pdf:String-Param id="Title" value="My Document" />
-    <pdf:String-Param id="Keywords" value="Scryber; Document Info; Properties" />
+    <doc:String-Param id="MyTitle" value="Document Title" />
+    <doc:String-Param id="Author" value="Richard Hewitson" />
+    <doc:String-Param id="Subject" value="This is the subject" />
+    <doc:String-Param id="Title" value="My Document" />
+    <doc:String-Param id="Keywords" value="Scryber; Document Info; Properties" />
   </Params>
   
   <Pages>
-    <pdf:Page outline-title="Third Page">
+    <doc:Page outline-title="Third Page">
       <Content>
-        <pdf:H1 styles:class="title" text="{@:MyTitle}" > </pdf:H1>
+        <doc:H1 styles:class="title" text="{@:MyTitle}" > </doc:H1>
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

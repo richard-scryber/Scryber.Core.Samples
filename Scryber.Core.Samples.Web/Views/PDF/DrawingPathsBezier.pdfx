@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
             xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
             xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
 
-    <styles:Style applied-type="pdf:Div" >
+    <styles:Style applied-type="doc:Div" >
       <styles:Padding all="10pt"/>
       <styles:Margins bottom="10pt" />
       <styles:Background color="#AAA"/>
@@ -14,34 +14,34 @@
   </Styles>
   <Pages>
 
-    <pdf:Page styles:margins="20pt" >
+    <doc:Page styles:margins="20pt" >
       <Content>
-        <pdf:Div styles:bg-color="#AAA" >
-          This is some content<pdf:Br/>
+        <doc:Div styles:bg-color="#AAA" >
+          This is some content<doc:Br/>
 
           <!-- relatively positioned shapes -->
-          <pdf:Canvas styles:width="450" styles:height="400" styles:border-color="black" styles:bg-color="white">
+          <doc:Canvas styles:width="450" styles:height="400" styles:border-color="black" styles:bg-color="white">
 
-            <pdf:Path d="M 100 350 l 150 -300" styles:stroke-color="red" styles:stroke-width="3" ></pdf:Path>
-            <pdf:Path d="M 250 50 l 150 300" styles:stroke-color="red" styles:stroke-width="3" ></pdf:Path>
+            <doc:Path d="M 100 350 l 150 -300" styles:stroke-color="red" styles:stroke-width="3" ></doc:Path>
+            <doc:Path d="M 250 50 l 150 300" styles:stroke-color="red" styles:stroke-width="3" ></doc:Path>
 
-            <pdf:Path d="M 175 200 l 150 0" styles:stroke-color="green" styles:stroke-width="3" ></pdf:Path>
+            <doc:Path d="M 175 200 l 150 0" styles:stroke-color="green" styles:stroke-width="3" ></doc:Path>
 
-            <pdf:Path d="M 100 350 q 150 -300 300 0" styles:stroke-color="black" styles:fill-style="None" styles:stroke-width="3" ></pdf:Path>
+            <doc:Path d="M 100 350 q 150 -300 300 0" styles:stroke-color="black" styles:fill-style="None" styles:stroke-width="3" ></doc:Path>
 
-            <pdf:Ellipse styles:x="97" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black" />
-            <pdf:Ellipse styles:x="247" styles:y="47" styles:width="6" styles:height="6" styles:fill-color="black"  />
-            <pdf:Ellipse styles:x="397" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black"  />
+            <doc:Ellipse styles:x="97" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black" />
+            <doc:Ellipse styles:x="247" styles:y="47" styles:width="6" styles:height="6" styles:fill-color="black"  />
+            <doc:Ellipse styles:x="397" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black"  />
 
-            <pdf:Label text="A" styles:x="75" styles:y="350" styles:font-bold="true" styles:font-size="30" />
-            <pdf:Label text="B" styles:x="240" styles:y="15" styles:font-bold="true" styles:font-size="30" />
-            <pdf:Label text="C" styles:x="400" styles:y="350" styles:font-bold="true" styles:font-size="30" />
-          </pdf:Canvas>
+            <doc:Label text="A" styles:x="75" styles:y="350" styles:font-bold="true" styles:font-size="30" />
+            <doc:Label text="B" styles:x="240" styles:y="15" styles:font-bold="true" styles:font-size="30" />
+            <doc:Label text="C" styles:x="400" styles:y="350" styles:font-bold="true" styles:font-size="30" />
+          </doc:Canvas>
           After the canvas.
-        </pdf:Div>
+        </doc:Div>
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

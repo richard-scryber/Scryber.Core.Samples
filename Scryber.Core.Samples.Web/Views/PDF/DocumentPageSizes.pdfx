@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
     
     <!-- changing the default page size to A3 Landscape -->
-    <styles:Style applied-type="pdf:Page" >
+    <styles:Style applied-type="doc:Page" >
       <styles:Page size="A3" orientation="Landscape"/>
     </styles:Style>
 
@@ -16,7 +16,7 @@
     </styles:Style>
 
     <!-- set up the default style for a heading 1-->
-    <styles:Style applied-type="pdf:H1" >
+    <styles:Style applied-type="doc:H1" >
       <styles:Border color="green" width="2"/>
       <styles:Padding all="5pt"/>
       <styles:Margins all="10pt"/>
@@ -26,31 +26,31 @@
   </Styles>
   
   <Pages>
-    <pdf:Page>
+    <doc:Page>
       <Content>
-        <pdf:H1 >This is the content on a default page size</pdf:H1>
+        <doc:H1 >This is the content on a default page size</doc:H1>
       </Content>
-    </pdf:Page>
+    </doc:Page>
 
-    <pdf:Page styles:class="long">
+    <doc:Page styles:class="long">
       <Content>
-        <pdf:H1 >This is the content on a portrait page</pdf:H1>
+        <doc:H1 >This is the content on a portrait page</doc:H1>
       </Content>
-    </pdf:Page>
+    </doc:Page>
 
-    <pdf:Section styles:class="long" styles:paper-size="A4">
+    <doc:Section styles:class="long" styles:paper-size="A4">
       <Content>
-        <pdf:H1  >This is the content on an explict page size</pdf:H1>
-        <pdf:PageBreak/>
-        <pdf:H1 >That continues to the next page</pdf:H1>
+        <doc:H1  >This is the content on an explict page size</doc:H1>
+        <doc:PageBreak/>
+        <doc:H1 >That continues to the next page</doc:H1>
       </Content>
-    </pdf:Section>
+    </doc:Section>
 
-    <pdf:Section>
+    <doc:Section>
       <Content>
-        <pdf:H1  >And back to the default size</pdf:H1>
+        <doc:H1  >And back to the default size</doc:H1>
       </Content>
-    </pdf:Section>
+    </doc:Section>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
             xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
             xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
 
-    <styles:Style applied-type="pdf:Div" >
+    <styles:Style applied-type="doc:Div" >
       <styles:Padding all="10pt"/>
       <styles:Margins bottom="10pt" />
       <styles:Background color="#AAA"/>
@@ -35,27 +35,27 @@
   </Styles>
   <Pages>
 
-    <pdf:Page styles:margins="20pt" >
+    <doc:Page styles:margins="20pt" >
       <Content>
-        <pdf:Div styles:bg-color="#AAA" >
-          This is some content<pdf:Br/>
+        <doc:Div styles:bg-color="#AAA" >
+          This is some content<doc:Br/>
 
           <!-- relatively positioned shapes -->
-          <pdf:Rect styles:class="red small relative" />
-          <pdf:Ellipse styles:class="red small relative" 
-                       styles:x="220pt" styles:fill-opacity="0.5" ></pdf:Ellipse>
+          <doc:Rect styles:class="red small relative" />
+          <doc:Ellipse styles:class="red small relative" 
+                       styles:x="220pt" styles:fill-opacity="0.5" ></doc:Ellipse>
           
           <!-- absolutely positioned shapes -->
-          <pdf:Poly styles:class="small absolute" 
+          <doc:Poly styles:class="small absolute" 
                     styles:vertex-count="5" styles:vertex-step="2" />
-          <pdf:Poly styles:class="small absolute" styles:x="440pt"
+          <doc:Poly styles:class="small absolute" styles:x="440pt"
                     styles:vertex-count="10" styles:vertex-step="3" />
 
-          <pdf:Br/>After the line.
-        </pdf:Div>
+          <doc:Br/>After the line.
+        </doc:Div>
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

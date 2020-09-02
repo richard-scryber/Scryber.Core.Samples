@@ -1,46 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
-    <styles:Style applied-type="pdf:H1" >
+    <styles:Style applied-type="doc:H1" >
       <styles:Position h-align="Center"/>
       <styles:Border color="green" width="1pt"/>
       <styles:Padding all="5pt"/>
     </styles:Style>
 
-    <styles:Style applied-type="pdf:Div" >
+    <styles:Style applied-type="doc:Div" >
       <styles:Border color="red" width="1pt" />
       <styles:Padding all="5pt"/>
       <styles:Margins top="10pt"/>
     </styles:Style>
   </Styles>
   <Pages>
-    <pdf:Section >
+    <doc:Section >
       <Content>
-        <pdf:H1 >This is the Centered Heading</pdf:H1>
-        <pdf:Div>
-          Default alignment.<pdf:Br/>
+        <doc:H1 >This is the Centered Heading</doc:H1>
+        <doc:Div>
+          Default alignment.<doc:Br/>
           With mixed content.
-          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
-        </pdf:Div>
-        <pdf:Div styles:h-align="Right">
-          Right alignment.<pdf:Br/>
+          <doc:Image src="../../content/images/group.png" styles:width="50pt" />
+        </doc:Div>
+        <doc:Div styles:h-align="Right">
+          Right alignment.<doc:Br/>
           With mixed content.
-          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
-        </pdf:Div>
-        <pdf:Div styles:h-align="Center">
-          Center alignment.<pdf:Br/>
+          <doc:Image src="../../content/images/group.png" styles:width="50pt" />
+        </doc:Div>
+        <doc:Div styles:h-align="Center">
+          Center alignment.<doc:Br/>
           With mixed content.
-          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
-        </pdf:Div>
-        <pdf:Div styles:h-align="Justified">
+          <doc:Image src="../../content/images/group.png" styles:width="50pt" />
+        </doc:Div>
+        <doc:Div styles:h-align="Justified">
           This is justified alignment across multiple lines in the container that will stretch to the width with word and character spacing, with mixed content.
-          <pdf:Image src="../../content/images/group.png" styles:width="50pt" />
-        </pdf:Div>
-        <pdf:H1>After the content</pdf:H1>
+          <doc:Image src="../../content/images/group.png" styles:width="50pt" />
+        </doc:Div>
+        <doc:H1>After the content</doc:H1>
      </Content>
-    </pdf:Section>
+    </doc:Section>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

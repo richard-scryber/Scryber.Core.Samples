@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Canvas xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Canvas xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
         xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
         >
 
-  <pdf:Path d="M 100 350 l 150 -300" styles:stroke-color="red" styles:stroke-width="3" ></pdf:Path>
-  <pdf:Path d="M 250 50 l 150 300" styles:stroke-color="red" styles:stroke-width="3" ></pdf:Path>
+  <doc:Path d="M 100 350 l 150 -300" styles:stroke-color="red" styles:stroke-width="3" ></doc:Path>
+  <doc:Path d="M 250 50 l 150 300" styles:stroke-color="red" styles:stroke-width="3" ></doc:Path>
   
-  <pdf:Path d="M 175 200 l 150 0" styles:stroke-color="green" styles:stroke-width="3" ></pdf:Path>
+  <doc:Path d="M 175 200 l 150 0" styles:stroke-color="green" styles:stroke-width="3" ></doc:Path>
   
-  <pdf:Path d="M 100 350 q 150 -300 300 0" styles:stroke-color="green" styles:stroke-width="3" ></pdf:Path>
+  <doc:Path d="M 100 350 q 150 -300 300 0" styles:stroke-color="green" styles:stroke-width="3" ></doc:Path>
   
-  <pdf:Ellipse styles:x="97" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black" />
-  <pdf:Ellipse styles:x="247" styles:y="47" styles:width="6" styles:height="6" styles:fill-color="black"  />
-  <pdf:Ellipse styles:x="397" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black"  />
+  <doc:Ellipse styles:x="97" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black" />
+  <doc:Ellipse styles:x="247" styles:y="47" styles:width="6" styles:height="6" styles:fill-color="black"  />
+  <doc:Ellipse styles:x="397" styles:y="347" styles:width="6" styles:height="6" styles:fill-color="black"  />
   
   
-</pdf:Canvas>
+</doc:Canvas>

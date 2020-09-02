@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   
   <Styles>
 
-    <styles:Style applied-type="pdf:Cell" >
+    <styles:Style applied-type="doc:Cell" >
     </styles:Style>
 
-    <styles:Style applied-type="pdf:Cell" applied-class="strong" >
+    <styles:Style applied-type="doc:Cell" applied-class="strong" >
       <styles:Font bold="true"/>
     </styles:Style>
 
@@ -19,65 +19,65 @@
   </Styles>
   <Pages>
 
-        <pdf:Page styles:margins="20pt" styles:font-size="12pt">
+        <doc:Page styles:margins="20pt" styles:font-size="12pt">
           <Content>
 
-            <pdf:Div styles:column-count="2" styles:max-height="200pt" styles:border-color="aqua" styles:padding="2pt" >
+            <doc:Div styles:column-count="2" styles:max-height="200pt" styles:border-color="aqua" styles:padding="2pt" >
 
 
-              <pdf:Table styles:margins="0 0 10 0" styles:full-width="true">
+              <doc:Table styles:margins="0 0 10 0" styles:full-width="true">
                 
                 <!-- Header that will not repeat based on style-->
-                <pdf:Header-Row styles:class="table-title" >
-                  <pdf:Header-Cell styles:column-span="3" >A flowing table</pdf:Header-Cell>
-                </pdf:Header-Row>
+                <doc:Header-Row styles:class="table-title" >
+                  <doc:Header-Cell styles:column-span="3" >A flowing table</doc:Header-Cell>
+                </doc:Header-Row>
                 
                 <!-- Header that will repeat -->
-                <pdf:Header-Row>
-                  <pdf:Header-Cell>Header 1</pdf:Header-Cell>
-                  <pdf:Header-Cell>Header 2</pdf:Header-Cell>
-                  <pdf:Header-Cell>Header 3</pdf:Header-Cell>
-                </pdf:Header-Row>
+                <doc:Header-Row>
+                  <doc:Header-Cell>Header 1</doc:Header-Cell>
+                  <doc:Header-Cell>Header 2</doc:Header-Cell>
+                  <doc:Header-Cell>Header 3</doc:Header-Cell>
+                </doc:Header-Row>
                 
-                <pdf:Row>
-                  <pdf:Cell>Cell 1.1</pdf:Cell>
-                  <pdf:Cell>Wide Cell 1.2</pdf:Cell>
-                  <pdf:Cell>Cell 1.3</pdf:Cell>
-                </pdf:Row>
-                <pdf:Row>
-                  <pdf:Cell>Cell 2.1</pdf:Cell>
-                  <pdf:Cell styles:column-span="2">2 Column Cell 2.2</pdf:Cell>
-                </pdf:Row>
+                <doc:Row>
+                  <doc:Cell>Cell 1.1</doc:Cell>
+                  <doc:Cell>Wide Cell 1.2</doc:Cell>
+                  <doc:Cell>Cell 1.3</doc:Cell>
+                </doc:Row>
+                <doc:Row>
+                  <doc:Cell>Cell 2.1</doc:Cell>
+                  <doc:Cell styles:column-span="2">2 Column Cell 2.2</doc:Cell>
+                </doc:Row>
                 
                 <!-- Standard row, that will repeat after
                 it has been initially laid out -->
-                <pdf:Row styles:repeat="RepeatAtTop" styles:bg-color="#EEE">
-                  <pdf:Cell>Repeat 3.1</pdf:Cell>
-                  <pdf:Cell>Repeat 3.2</pdf:Cell>
-                  <pdf:Cell styles:width="60pt">Cell 3.3</pdf:Cell>
-                </pdf:Row>
+                <doc:Row styles:repeat="RepeatAtTop" styles:bg-color="#EEE">
+                  <doc:Cell>Repeat 3.1</doc:Cell>
+                  <doc:Cell>Repeat 3.2</doc:Cell>
+                  <doc:Cell styles:width="60pt">Cell 3.3</doc:Cell>
+                </doc:Row>
                 
-                <pdf:Row><pdf:Cell>Cell 4.1</pdf:Cell><pdf:Cell>Wide Cell 4.2</pdf:Cell><pdf:Cell>Cell 4.3</pdf:Cell></pdf:Row>
-                <pdf:Row><pdf:Cell>Cell 5.1</pdf:Cell><pdf:Cell>Wide Cell 5.2</pdf:Cell><pdf:Cell>Cell 5.3</pdf:Cell></pdf:Row>
-                <pdf:Row><pdf:Cell>Cell 6.1</pdf:Cell><pdf:Cell>Wide Cell 6.2</pdf:Cell><pdf:Cell>Cell 6.3</pdf:Cell></pdf:Row>
-                <pdf:Row><pdf:Cell>Cell 7.1</pdf:Cell><pdf:Cell>Cell 7.2</pdf:Cell><pdf:Cell>Cell 7.3</pdf:Cell></pdf:Row>
-                <pdf:Row><pdf:Cell>Cell 8.1</pdf:Cell><pdf:Cell>Cell 8.2</pdf:Cell><pdf:Cell>Cell 8.3</pdf:Cell></pdf:Row>
-                <pdf:Row><pdf:Cell>Cell 9.1</pdf:Cell><pdf:Cell>Cell 9.2</pdf:Cell><pdf:Cell>Cell 9.3</pdf:Cell></pdf:Row>
-                <pdf:Row><pdf:Cell>Cell 10.1</pdf:Cell><pdf:Cell>Cell 10.2</pdf:Cell><pdf:Cell>Cell 10.3</pdf:Cell></pdf:Row>
+                <doc:Row><doc:Cell>Cell 4.1</doc:Cell><doc:Cell>Wide Cell 4.2</doc:Cell><doc:Cell>Cell 4.3</doc:Cell></doc:Row>
+                <doc:Row><doc:Cell>Cell 5.1</doc:Cell><doc:Cell>Wide Cell 5.2</doc:Cell><doc:Cell>Cell 5.3</doc:Cell></doc:Row>
+                <doc:Row><doc:Cell>Cell 6.1</doc:Cell><doc:Cell>Wide Cell 6.2</doc:Cell><doc:Cell>Cell 6.3</doc:Cell></doc:Row>
+                <doc:Row><doc:Cell>Cell 7.1</doc:Cell><doc:Cell>Cell 7.2</doc:Cell><doc:Cell>Cell 7.3</doc:Cell></doc:Row>
+                <doc:Row><doc:Cell>Cell 8.1</doc:Cell><doc:Cell>Cell 8.2</doc:Cell><doc:Cell>Cell 8.3</doc:Cell></doc:Row>
+                <doc:Row><doc:Cell>Cell 9.1</doc:Cell><doc:Cell>Cell 9.2</doc:Cell><doc:Cell>Cell 9.3</doc:Cell></doc:Row>
+                <doc:Row><doc:Cell>Cell 10.1</doc:Cell><doc:Cell>Cell 10.2</doc:Cell><doc:Cell>Cell 10.3</doc:Cell></doc:Row>
                 
-                <pdf:Footer-Row styles:bg-color="#CCC" >
-                  <pdf:Footer-Cell>Footer 1</pdf:Footer-Cell>
-                  <pdf:Footer-Cell>Footer 2</pdf:Footer-Cell>
-                  <pdf:Footer-Cell>Footer 3</pdf:Footer-Cell>
-                </pdf:Footer-Row>
-              </pdf:Table>
+                <doc:Footer-Row styles:bg-color="#CCC" >
+                  <doc:Footer-Cell>Footer 1</doc:Footer-Cell>
+                  <doc:Footer-Cell>Footer 2</doc:Footer-Cell>
+                  <doc:Footer-Cell>Footer 3</doc:Footer-Cell>
+                </doc:Footer-Row>
+              </doc:Table>
             
-            </pdf:Div>
+            </doc:Div>
 
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
@@ -26,31 +26,31 @@
   <Pages>
     
     <!-- Page background with 40pt top padding -->
-    <pdf:Page styles:bg-color="aqua" styles:padding="40 0 0 0" >
+    <doc:Page styles:bg-color="aqua" styles:padding="40 0 0 0" >
      <Content>
        
        
        <!--  Borders set on a full width div. -->
-       <pdf:Div styles:class="stroked" styles:bg-color="#FAA" styles:padding="20pt" styles:border-style="Dash"
+       <doc:Div styles:class="stroked" styles:bg-color="#FAA" styles:padding="20pt" styles:border-style="Dash"
                 styles:border-color="#C77" styles:border-width="3pt" styles:border-corner-radius="10pt" 
                 styles:fill-color="aqua" styles:font-bold="true" styles:font-size="40pt" styles:stroke-dash="Long-Dash">
          Light pink bg with aqua Text.
-       </pdf:Div>
+       </doc:Div>
 
        <!-- Thick border will overlay the inner content -->
-       <pdf:Div styles:class="floating" >
-         <pdf:Span styles:fill-color="white" styles:fill-opacity="0.7" >
+       <doc:Div styles:class="floating" >
+         <doc:Span styles:fill-color="white" styles:fill-opacity="0.7" >
            Semi-opaque fuschia with white semi-transparent text.
-         </pdf:Span>
-       </pdf:Div>
+         </doc:Span>
+       </doc:Div>
 
-       <pdf:Rect styles:class="stroked" styles:fill-color="lime" styles:fill-opacity="0.9"
+       <doc:Rect styles:class="stroked" styles:fill-color="lime" styles:fill-opacity="0.9"
                  styles:position-mode="Absolute" 
-                 styles:x="120" styles:y="120" styles:width="120" styles:height="120" ></pdf:Rect>
+                 styles:x="120" styles:y="120" styles:width="120" styles:height="120" ></doc:Rect>
      
        
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

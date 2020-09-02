@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
-    <PackageReference Include="Scryber.Core.Mvc" Version="1.0.0.24" />
+    <PackageReference Include="Scryber.Core.Mvc" Version="1.0.0.25" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Content\Fonts\Std\AvenirNextCondensed-Bold-01.ttf">
@@ -128,7 +128,22 @@
     <None Update="Views\PDF\DocumentDataSources.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\PDF\DocumentHtmlMarkdown.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentHtmlStyled.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentHtmlBound.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Views\PDF\DocumentImageSizes.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentHtmlSimple.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\PDF\DocumentLinksUrls.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\PDF\DocumentLinksDestination.pdfx">

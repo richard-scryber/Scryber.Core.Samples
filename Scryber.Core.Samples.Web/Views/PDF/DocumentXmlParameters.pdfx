@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Params>
     <!-- Declare the parameters -->
-    <pdf:String-Param id="MyTitle" value="Document Title" />
+    <doc:String-Param id="MyTitle" value="Document Title" />
     
     <!-- This is the xml content that will be used by default -->
-    <pdf:Xml-Param id="MyData" >
+    <doc:Xml-Param id="MyData" >
       <Root>
         <Entry id="First">First Name</Entry>
         <Entry id="Second">Second Name</Entry>
         <Entry id="Third">Third Name</Entry>
       </Root>
-    </pdf:Xml-Param>
+    </doc:Xml-Param>
     
   </Params>
 
   <Pages>
     <!-- Use the 'MyTitle' parameter for the outline. -->
-    <pdf:Page outline-title="{@:MyTitle}" styles:margins="20pt" styles:font-size="12pt">
+    <doc:Page outline-title="{@:MyTitle}" styles:margins="20pt" styles:font-size="12pt">
       <Content>
         <!-- And use it as the text on the heading with a visble flag and background -->
-          <pdf:H1  text="{@:MyTitle}" > </pdf:H1>
-          <pdf:Para >This is the content of the xml document</pdf:Para>
+          <doc:H1  text="{@:MyTitle}" > </doc:H1>
+          <doc:Para >This is the content of the xml document</doc:Para>
         
-          <pdf:Ul>
+          <doc:Ul>
             <!-- Now bind the content of the MyData parameter into a foreach, with the selector of //Root/Entry 
                  to loop through each one in turn -->
             <data:ForEach value="{@:MyData}" select="//Root/Entry" >
               <Template>
-                <pdf:Li >
-                  <pdf:Text value="{xpath:text()}" />
-                </pdf:Li>
+                <doc:Li >
+                  <doc:Text value="{xpath:text()}" />
+                </doc:Li>
               </Template>
             </data:ForEach>
-          </pdf:Ul>
+          </doc:Ul>
         
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

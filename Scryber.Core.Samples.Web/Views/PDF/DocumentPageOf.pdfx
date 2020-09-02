@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' encoding='utf-8' ?>
 
-<pdf:Document xmlns:pdf='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
+<doc:Document xmlns:doc='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
               xmlns:styles='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd'
               xmlns:data='http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd' >
   <Render-Options compression-type='None' string-output='Text' />
@@ -22,30 +22,30 @@
   
   <Pages>
 
-    <pdf:Section name='IntroSection' styles:class='pg-num intro'>
+    <doc:Section name='IntroSection' styles:class='pg-num intro'>
       <Content>
-        <pdf:Div>Introductions with lowercase roman.</pdf:Div>
+        <doc:Div>Introductions with lowercase roman.</doc:Div>
         <!-- Page 1 -->
-        <pdf:PageNumber />
-        <pdf:Div >Reference to the content on page <pdf:PageOf component='#Page2' />
-      </pdf:Div>
+        <doc:PageNumber />
+        <doc:Div >Reference to the content on page <doc:PageOf component='#Page2' />
+      </doc:Div>
       </Content>
-    </pdf:Section>
+    </doc:Section>
 
-    <pdf:Section styles:class='pg-num' styles:page-number-start-index='1' >
+    <doc:Section styles:class='pg-num' styles:page-number-start-index='1' >
       <Content>
-        <pdf:Div>These are the page numbers shown on each of the pages</pdf:Div>
+        <doc:Div>These are the page numbers shown on each of the pages</doc:Div>
         <!-- Page 1 -->
-        <pdf:PageNumber id='Page1' />
-        <pdf:PageBreak/>
+        <doc:PageNumber id='Page1' />
+        <doc:PageBreak/>
         <!-- Page 2 -->
-        <pdf:PageNumber id='Page2' />
-        <pdf:Div >
-          Reference back the intro content <pdf:PageOf component='IntroSection' styles:display-format='on page {0} ({2})' ></pdf:PageOf>
-        </pdf:Div>
+        <doc:PageNumber id='Page2' />
+        <doc:Div >
+          Reference back the intro content <doc:PageOf component='IntroSection' styles:display-format='on page {0} ({2})' ></doc:PageOf>
+        </doc:Div>
       </Content>
-    </pdf:Section>
+    </doc:Section>
 
   </Pages>
   
-</pdf:Document>
+</doc:Document>

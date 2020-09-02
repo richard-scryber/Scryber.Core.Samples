@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Params>
-    <pdf:Color-Param value="#FAA" id="bg-color" />
-    <pdf:Color-Param value="#C77" id="border-color" />
-    <pdf:Unit-Param value="2pt" id="border-width" />
+    <doc:Color-Param value="#FAA" id="bg-color" />
+    <doc:Color-Param value="#C77" id="border-color" />
+    <doc:Unit-Param value="2pt" id="border-width" />
   </Params>
   <Styles>
     
@@ -30,24 +30,24 @@
   <Pages>
     
     <!-- Page background with 40pt top padding -->
-    <pdf:Page styles:bg-color="aqua" styles:padding="40 0 0 0" >
+    <doc:Page styles:bg-color="aqua" styles:padding="40 0 0 0" >
      <Content>
        
        
        <!--  Borders set on a full width div. -->
-       <pdf:Div styles:bg-color="{@:bg-color}" styles:padding="20pt" 
+       <doc:Div styles:bg-color="{@:bg-color}" styles:padding="20pt" 
                 styles:border-color="{@:border-color}" styles:border-width="{@:border-width}">
          Bound background and border
-       </pdf:Div>
+       </doc:Div>
 
        <!-- Thick border will overlay the inner content -->
-       <pdf:Div styles:class="floating" >
+       <doc:Div styles:class="floating" >
          Bound background and border on a style.
-       </pdf:Div>
+       </doc:Div>
 
        
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

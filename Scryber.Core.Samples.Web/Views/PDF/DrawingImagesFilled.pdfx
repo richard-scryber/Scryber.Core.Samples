@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
             xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
             xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
 <Styles>
@@ -23,32 +23,32 @@
 </Styles>
 <Pages>
 
-    <pdf:Page styles:padding="40 10 20 10" >
+    <doc:Page styles:padding="40 10 20 10" >
     <Content>
 
-    <pdf:Div styles:class="img-wrap" styles:min-height="100pt" >
-        <pdf:Span> Filled image x-size only</pdf:Span>
-    </pdf:Div>
+    <doc:Div styles:class="img-wrap" styles:min-height="100pt" >
+        <doc:Span> Filled image x-size only</doc:Span>
+    </doc:Div>
 
-    <pdf:Div styles:class="img-wrap fill-pos" styles:fill-repeat="RepeatX" >
-        <pdf:Span> Filled image with X repeat only</pdf:Span>
-    </pdf:Div>
+    <doc:Div styles:class="img-wrap fill-pos" styles:fill-repeat="RepeatX" >
+        <doc:Span> Filled image with X repeat only</doc:Span>
+    </doc:Div>
 
-    <pdf:Div styles:class="img-wrap fill-pos" styles:fill-repeat="RepeatY" >
-        <pdf:Span> Filled image with Y repeat only</pdf:Span>
-    </pdf:Div>
+    <doc:Div styles:class="img-wrap fill-pos" styles:fill-repeat="RepeatY" >
+        <doc:Span> Filled image with Y repeat only</doc:Span>
+    </doc:Div>
 
-    <pdf:Div styles:class="img-wrap fill-pos" styles:fill-repeat="Fill" >
+    <doc:Div styles:class="img-wrap fill-pos" styles:fill-repeat="Fill" >
       <!-- Fill repeat doesn't work at the moment. We are loking at it.-->
-        <pdf:Span> Filled image with Fill, overriding other settings</pdf:Span>
-    </pdf:Div>
+        <doc:Span> Filled image with Fill, overriding other settings</doc:Span>
+    </doc:Div>
 
       <!-- A shape with a fill and background image -->
-      <pdf:Rect styles:position-mode="Absolute" styles:class="img-wrap"
+      <doc:Rect styles:position-mode="Absolute" styles:class="img-wrap"
                 styles:bg-image="../../Content/Images/group.png" styles:padding="20"
-                styles:x="360" styles:y="300" styles:width="120" styles:height="120pt" ></pdf:Rect>
+                styles:x="360" styles:y="300" styles:width="120" styles:height="120pt" ></doc:Rect>
     </Content>
-    </pdf:Page>
+    </doc:Page>
 </Pages>
 
-</pdf:Document>
+</doc:Document>

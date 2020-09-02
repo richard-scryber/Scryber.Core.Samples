@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+              xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
+  <Params>
+    <doc:Xml-Param id="html" >
+      <table xmlns="http://www.w3.org/1999/xhtml">
+        <tr>
+          <td>Cell1</td>
+          <td>Cell2</td>
+          <td>Cell3</td>
+        </tr>
+        <tr>
+          <td>Cell1</td>
+          <td>Cell2</td>
+          <td>Cell3</td>
+        </tr>
+      </table>
+    </doc:Xml-Param>
+  </Params>
+
+
+  
+  <Pages>
+    
+    <doc:Section styles:margins="20pt" styles:font-size="12pt">
+      <Content>
+
+        <doc:HtmlFragment source="" contents="{@:html}">
+          
+        </doc:HtmlFragment>
+        
+        <doc:Div styles:column-count="2" styles:height="200pt">
+        <doc:HtmlFragment >
+          <div xmlns="http://www.w3.org/1999/xhtml" style="color:#FFF; background-color:#323232; padding: 10px">
+            <p>This is a paragraph of text</p>
+            <table style="width:400pt; padding: 10pt 0pt; color:#00a8a1">
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr  style="background-color:#00a8a1; font-family: 'Arial'; font-size: 30px; color:#323232; font-weight:bold;">
+                <td style="width:100pt">Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td colspan="2">Cell1</td>
+                <td>Cell2</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tr>
+                <td>Cell1</td>
+                <td>Cell2</td>
+                <td>Cell3</td>
+              </tr>
+              <tfoot>
+                <tr>
+                  <td>Footer1</td>
+                  <td>Footer2</td>
+                  <td>Footer3</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </doc:HtmlFragment>
+        </doc:Div>
+      </Content>
+    </doc:Section>
+
+  </Pages>
+  
+</doc:Document>
