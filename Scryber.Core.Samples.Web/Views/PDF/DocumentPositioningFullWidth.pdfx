@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
 
   <Styles>
@@ -10,54 +10,54 @@
   </Styles>
   <Pages>
    
-    <pdf:Page styles:margins="20pt" styles:font-size="20pt">
+    <doc:Page styles:margins="20pt" styles:font-size="20pt">
       <Content>
-        <pdf:Div styles:class="bordered" >
-          This div is full width<pdf:Br/>
-          And will extend beyond the content.<pdf:Br/>
+        <doc:Div styles:class="bordered" >
+          This div is full width<doc:Br/>
+          And will extend beyond the content.<doc:Br/>
           To the width of its container.
-        </pdf:Div>
-        <pdf:Br/>
-        <pdf:Div styles:class="bordered" styles:full-width="false" >
-          This div is NOT full width<pdf:Br/>
-          And will only size to the content.<pdf:Br/>
-        </pdf:Div>
-        <pdf:Br/>
-        <pdf:Div styles:class="bordered" styles:full-width="false" >
+        </doc:Div>
+        <doc:Br/>
+        <doc:Div styles:class="bordered" styles:full-width="false" >
+          This div is NOT full width<doc:Br/>
+          And will only size to the content.<doc:Br/>
+        </doc:Div>
+        <doc:Br/>
+        <doc:Div styles:class="bordered" styles:full-width="false" >
           This div is NOT full width,
           but will  size to the content available in the container,
           and then flow to the next line.
-        </pdf:Div>
-        <pdf:Br/>
+        </doc:Div>
+        <doc:Br/>
         <!-- Tables are not by default full width-->
-        <pdf:Table>
-          <pdf:Row>
-            <pdf:Cell styles:class="bordered">First</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Second</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Third</pdf:Cell>
-          </pdf:Row>
-          <pdf:Row>
-            <pdf:Cell styles:class="bordered">Fourth</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Fifth</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Sixth</pdf:Cell>
-          </pdf:Row>
-        </pdf:Table>
-        <pdf:Br/>
+        <doc:Table>
+          <doc:Row>
+            <doc:Cell styles:class="bordered">First</doc:Cell>
+            <doc:Cell styles:class="bordered">Second</doc:Cell>
+            <doc:Cell styles:class="bordered">Third</doc:Cell>
+          </doc:Row>
+          <doc:Row>
+            <doc:Cell styles:class="bordered">Fourth</doc:Cell>
+            <doc:Cell styles:class="bordered">Fifth</doc:Cell>
+            <doc:Cell styles:class="bordered">Sixth</doc:Cell>
+          </doc:Row>
+        </doc:Table>
+        <doc:Br/>
         <!-- Tables are not by default full width-->
-        <pdf:Table styles:full-width="true">
-          <pdf:Row>
-            <pdf:Cell styles:class="bordered">First</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Second</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Third</pdf:Cell>
-          </pdf:Row>
-          <pdf:Row>
-            <pdf:Cell styles:class="bordered">Fourth</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Fifth</pdf:Cell>
-            <pdf:Cell styles:class="bordered">Sixth</pdf:Cell>
-          </pdf:Row>
-        </pdf:Table>
+        <doc:Table styles:full-width="true">
+          <doc:Row>
+            <doc:Cell styles:class="bordered">First</doc:Cell>
+            <doc:Cell styles:class="bordered">Second</doc:Cell>
+            <doc:Cell styles:class="bordered">Third</doc:Cell>
+          </doc:Row>
+          <doc:Row>
+            <doc:Cell styles:class="bordered">Fourth</doc:Cell>
+            <doc:Cell styles:class="bordered">Fifth</doc:Cell>
+            <doc:Cell styles:class="bordered">Sixth</doc:Cell>
+          </doc:Row>
+        </doc:Table>
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
   <Styles>
     <styles:Style applied-class="bordered">
@@ -11,28 +11,28 @@
   </Styles>
   <Pages>
    
-    <pdf:Page styles:margins="20pt" styles:font-size="20pt">
+    <doc:Page styles:margins="20pt" styles:font-size="20pt">
       <Content>
         This is the content of the page, 
         
         
-        <pdf:Div styles:class="bordered" >This is the flowing content within the block that 
+        <doc:Div styles:class="bordered" >This is the flowing content within the block that 
         will span over multiple lines
-          <pdf:Span styles:position-mode="Relative" styles:bg-color="aqua" styles:x="25pt" 
-                    styles:y="20pt" styles:padding="4pt" >This is relative positioned</pdf:Span>
+          <doc:Span styles:position-mode="Relative" styles:bg-color="aqua" styles:x="25pt" 
+                    styles:y="20pt" styles:padding="4pt" >This is relative positioned</doc:Span>
           with this content over the top.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Div styles:class="bordered" styles:padding="10 60 10 10">
-          <pdf:Image src="../../Content/Images/group.png" styles:position-mode="Relative" 
+        <doc:Div styles:class="bordered" styles:padding="10 60 10 10">
+          <doc:Image src="../../Content/Images/group.png" styles:position-mode="Relative" 
                      styles:x="-40pt" styles:y="-10pt" styles:width="100pt" styles:fill-opacity="0.5" />
           This is the content that will flow over the top with the 60 point left padding and the 
           image set at -40, -10 relative to the container with a width of 100pt
           and a 50% opacity.
-        </pdf:Div>
+        </doc:Div>
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
 
   <Styles>
     
-    <styles:Style applied-type="pdf:Page" >
+    <styles:Style applied-type="doc:Page" >
       <styles:Font size="12pt"/>
       <styles:Margins all="20pt"/>
       <styles:Overlay-Grid color="aqua" spacing="50pt" show="true"/>
@@ -27,42 +27,42 @@
   </Styles>
   <Pages>
    
-    <pdf:Page styles:class="bordered" > <!--Styles applied to the page type -->
+    <doc:Page styles:class="bordered" > <!--Styles applied to the page type -->
       <Content>
-        <pdf:B>Minimum Size, not reached</pdf:B>
-        <pdf:Div styles:class="bordered red" styles:full-width="false" styles:min-height="60pt" styles:min-width="350pt" >
+        <doc:B>Minimum Size, not reached</doc:B>
+        <doc:Div styles:class="bordered red" styles:full-width="false" styles:min-height="60pt" styles:min-width="350pt" >
           This div has a red border with min size.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Br/>
-        <pdf:B>Minimum Size, width reached</pdf:B>
-        <pdf:Div styles:class="bordered red" styles:full-width="false" styles:min-height="60pt" styles:min-width="350pt" >
+        <doc:Br/>
+        <doc:B>Minimum Size, width reached</doc:B>
+        <doc:Div styles:class="bordered red" styles:full-width="false" styles:min-height="60pt" styles:min-width="350pt" >
           This div has a red border with min size, but the content will push this out beyond the minimum width.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Br/>
-        <pdf:B>Minimum Size, width reached</pdf:B>
-        <pdf:Div styles:class="bordered red" styles:full-width="false" styles:min-height="60pt" styles:min-width="350pt" >
+        <doc:Br/>
+        <doc:B>Minimum Size, width reached</doc:B>
+        <doc:Div styles:class="bordered red" styles:full-width="false" styles:min-height="60pt" styles:min-width="350pt" >
           This div has a red border with min size, but the content will push this out beyond the minimum width to the
           space in the container, and then flow as normal.
-        </pdf:Div>
+        </doc:Div>
 
         <!-- sizes can be set from the style 'sized' too -->
-        <pdf:Br/>
-        <pdf:B>Maximum Size, not reached</pdf:B>
-        <pdf:Div styles:class="bordered red sized"  >
+        <doc:Br/>
+        <doc:B>Maximum Size, not reached</doc:B>
+        <doc:Div styles:class="bordered red sized"  >
           This div has a red border with max size.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Br/>
-        <pdf:B>Maximum Size, width reached</pdf:B>
-        <pdf:Div styles:class="bordered red sized" >
+        <doc:Br/>
+        <doc:B>Maximum Size, width reached</doc:B>
+        <doc:Div styles:class="bordered red sized" >
           This div has a red border with max size, and the content will flow as the max-width is reached with the text.
-        </pdf:Div>
+        </doc:Div>
 
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
 
-    <styles:Style applied-type="pdf:Div" >
+    <styles:Style applied-type="doc:Div" >
       <styles:Padding all="10pt"/>
       <styles:Margins bottom="10pt" />
       <styles:Background color="#AAA"/>
     </styles:Style>
    
     <!-- Values set on the styles class-->
-    <styles:Style applied-type="pdf:Line" applied-class="red" >
+    <styles:Style applied-type="doc:Line" applied-class="red" >
       <styles:Padding top="5pt" bottom="5pt" />
       <styles:Stroke color="red" width="3pt"/>
     </styles:Style>
@@ -20,41 +20,41 @@
   </Styles>
   <Pages>
     
-    <pdf:Page styles:margins="20pt" >
+    <doc:Page styles:margins="20pt" >
      <Content>
-       <pdf:Div >
+       <doc:Div >
          This is some content
-         <pdf:Line />
+         <doc:Line />
          After the line.
-       </pdf:Div>
+       </doc:Div>
 
-       <pdf:Div >
+       <doc:Div >
          This is some content
-         <pdf:Line styles:class="red" />
+         <doc:Line styles:class="red" />
          After the line.
-       </pdf:Div>
+       </doc:Div>
 
-       <pdf:Div >
+       <doc:Div >
          This is some content
-         <pdf:Line styles:class="red" styles:width="40pt" />
+         <doc:Line styles:class="red" styles:width="40pt" />
          After the line.
-       </pdf:Div>
+       </doc:Div>
        
-       <pdf:Div >
+       <doc:Div >
          This is some content
-         <pdf:Line styles:class="red" styles:height="40pt" />
+         <doc:Line styles:class="red" styles:height="40pt" />
          After the line.
-       </pdf:Div>
+       </doc:Div>
 
-       <pdf:Div >
+       <doc:Div >
          This is some content
-         <pdf:Line styles:class="red" styles:position-mode="Inline" styles:height="40pt" styles:width="40pt" />
+         <doc:Line styles:class="red" styles:position-mode="Inline" styles:height="40pt" styles:width="40pt" />
          After the line.
-       </pdf:Div>
+       </doc:Div>
        
      
      </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

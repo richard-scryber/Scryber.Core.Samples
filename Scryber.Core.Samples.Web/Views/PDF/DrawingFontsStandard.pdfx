@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
 
   <Styles>
     
     <!-- Add a style to images -->
-    <styles:Style applied-type="pdf:Div" applied-class="std-font" >
+    <styles:Style applied-type="doc:Div" applied-class="std-font" >
       <styles:Font size="20pt" />
       <styles:Background color="#AAA"/>
       <styles:Padding all="4pt"/>
@@ -17,26 +17,26 @@
   </Styles>
   <Pages>
     
-    <pdf:Page styles:padding="10" >
+    <doc:Page styles:padding="10" >
      <Content>
        
-       <pdf:Div styles:class="std-font" styles:font-family="Helvetica" >
-         <pdf:Span>Helvetica is the default font.</pdf:Span>
-       </pdf:Div>
-       <pdf:Div styles:class="std-font" styles:font-family="Times" >
-         <pdf:Span>Times is a standard font.</pdf:Span>
-       </pdf:Div>
-       <pdf:Div styles:class="std-font" styles:font-family="Courier" >
-         <pdf:Span>Courier is a standard font.</pdf:Span>
-       </pdf:Div>
-       <pdf:Div styles:class="std-font" styles:font-family="Zapf Dingbats" >
-         <pdf:Span>Dingbats is a standard font.</pdf:Span>
-       </pdf:Div>
-       <pdf:Div styles:class="std-font" styles:font-family="Symbol" >
-         <pdf:Span>Symbol is a standard font.</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="std-font" styles:font-family="Helvetica" >
+         <doc:Span>Helvetica is the default font.</doc:Span>
+       </doc:Div>
+       <doc:Div styles:class="std-font" styles:font-family="Times" >
+         <doc:Span>Times is a standard font.</doc:Span>
+       </doc:Div>
+       <doc:Div styles:class="std-font" styles:font-family="Courier" >
+         <doc:Span>Courier is a standard font.</doc:Span>
+       </doc:Div>
+       <doc:Div styles:class="std-font" styles:font-family="Zapf Dingbats" >
+         <doc:Span>Dingbats is a standard font.</doc:Span>
+       </doc:Div>
+       <doc:Div styles:class="std-font" styles:font-family="Symbol" >
+         <doc:Span>Symbol is a standard font.</doc:Span>
+       </doc:Div>
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

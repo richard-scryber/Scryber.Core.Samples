@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Params>
-    <pdf:String-Param id="search" value="https://www.google.com" />
+    <doc:String-Param id="search" value="https://www.google.com" />
   </Params>
 
   <Styles>
@@ -22,38 +22,38 @@
   </Styles>
   <Pages>
 
-    <pdf:PageGroup>
+    <doc:PageGroup>
       <Header>
-        <pdf:Div styles:class="nav" >
-          <pdf:Link action="FirstPage" destination-fit="PageWidth" >&lt;&lt; First Page</pdf:Link>
-          <pdf:ColumnBreak/>
-          <pdf:Link action="PrevPage">&lt; Previous Page</pdf:Link>
-          <pdf:ColumnBreak/>
-          <pdf:PageNumber />
-          <pdf:ColumnBreak/>
-          <pdf:Link action="NextPage" > Next Page &gt;</pdf:Link>
-          <pdf:ColumnBreak/>
-          <pdf:Link action="LastPage">Last Page &gt;&gt;</pdf:Link>
-        </pdf:Div>
+        <doc:Div styles:class="nav" >
+          <doc:Link action="FirstPage" destination-fit="PageWidth" >&lt;&lt; First Page</doc:Link>
+          <doc:ColumnBreak/>
+          <doc:Link action="PrevPage">&lt; Previous Page</doc:Link>
+          <doc:ColumnBreak/>
+          <doc:PageNumber />
+          <doc:ColumnBreak/>
+          <doc:Link action="NextPage" > Next Page &gt;</doc:Link>
+          <doc:ColumnBreak/>
+          <doc:Link action="LastPage">Last Page &gt;&gt;</doc:Link>
+        </doc:Div>
       </Header>
       <Pages>
-        <pdf:Page >
+        <doc:Page >
           <Content>Title Page</Content>
-        </pdf:Page>
+        </doc:Page>
 
-        <pdf:Section>
+        <doc:Section>
           <Content>
             Content 1
-            <pdf:PageBreak/>
+            <doc:PageBreak/>
             Content 2
-            <pdf:PageBreak/>
+            <doc:PageBreak/>
             Content 3
           </Content>
-        </pdf:Section>
+        </doc:Section>
       </Pages>
-    </pdf:PageGroup>
+    </doc:PageGroup>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

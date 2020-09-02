@@ -26,6 +26,7 @@ namespace Scryber.Core.Samples.Web
         {
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
+            
             //services.AddScryberServices()
         }
 

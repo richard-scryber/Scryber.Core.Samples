@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
@@ -17,33 +17,33 @@
       <styles:Size min-height="100pt"/>
     </styles:Style>
 
-    <styles:Style applied-type="pdf:Span">
+    <styles:Style applied-type="doc:Span">
       <styles:Fill color="fuchsia"/>
     </styles:Style>
   </Styles>
   <Pages> 
     
-    <pdf:Page styles:padding="40 10 20 10" >
+    <doc:Page styles:padding="40 10 20 10" >
      <Content>
 
-       <pdf:Div styles:class="img-wrap" styles:min-height="160pt" >
-         <pdf:Span> Background image x-size only</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="img-wrap" styles:min-height="160pt" >
+         <doc:Span> Background image x-size only</doc:Span>
+       </doc:Div>
        
-       <pdf:Div styles:class="img-wrap bg-pos" styles:bg-repeat="RepeatX" >
-         <pdf:Span> Background image with X repeat only</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="img-wrap bg-pos" styles:bg-repeat="RepeatX" >
+         <doc:Span> Background image with X repeat only</doc:Span>
+       </doc:Div>
 
-       <pdf:Div styles:class="img-wrap bg-pos" styles:bg-repeat="RepeatY" >
-         <pdf:Span> Background image with Y repeat only</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="img-wrap bg-pos" styles:bg-repeat="RepeatY" >
+         <doc:Span> Background image with Y repeat only</doc:Span>
+       </doc:Div>
 
-       <pdf:Div styles:class="img-wrap bg-pos" styles:bg-repeat="Fill" >
-         <pdf:Span> Background image with Fill, overriding other settings</pdf:Span>
-       </pdf:Div>
+       <doc:Div styles:class="img-wrap bg-pos" styles:bg-repeat="Fill" >
+         <doc:Span> Background image with Fill, overriding other settings</doc:Span>
+       </doc:Div>
         
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
 
   <Styles>
     
-    <styles:Style applied-type="pdf:Page" >
+    <styles:Style applied-type="doc:Page" >
       <styles:Font size="12pt"/>
       <styles:Margins all="20pt"/>
     </styles:Style>
@@ -26,34 +26,34 @@
   </Styles>
   <Pages>
    
-    <pdf:Page styles:class="bordered" > <!--Styles applied to the page type -->
+    <doc:Page styles:class="bordered" > <!--Styles applied to the page type -->
       <Content>
-        <pdf:B>Content truncated by default</pdf:B>
-        <pdf:Div styles:class="bordered red" styles:height="35pt" >
+        <doc:B>Content truncated by default</doc:B>
+        <doc:Div styles:class="bordered red" styles:height="35pt" >
           The content of this div has a red border with no padding or margins, with a height set to 60pt. When the content can no longer fit, 
           it will be truncated to the last word an no other content shown. So this content will not be visible, as it cannot be completely laid out.
-        </pdf:Div>
-        <pdf:Br/>
-        <pdf:B>Content clipped, not truncated</pdf:B>
-        <pdf:Div styles:class="bordered red" styles:height="35pt" styles:overflow-action="Clip" >
+        </doc:Div>
+        <doc:Br/>
+        <doc:B>Content clipped, not truncated</doc:B>
+        <doc:Div styles:class="bordered red" styles:height="35pt" styles:overflow-action="Clip" >
           The content of this div has a red border with no padding or margins, with a height set to 60pt. When the content can no longer fit,
           it will still be rendered on the page, but clipped to the bounds. So this content will be there, in part.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Br/>
-        <pdf:B>Content clipped, with inset of 10pt</pdf:B>
-        <pdf:Div styles:class="bordered red clipped" styles:height="35pt" >
+        <doc:Br/>
+        <doc:B>Content clipped, with inset of 10pt</doc:B>
+        <doc:Div styles:class="bordered red clipped" styles:height="35pt" >
           The content of this div has a red border with no padding or margins, with a height set to 60pt. When the content can no longer fit,
           it will still be rendered on the page, but clipped to the bounds. So this content will be there, in part.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Br/>
-        <pdf:B>Image clipped by container, with inset of 10pt</pdf:B>
-        <pdf:Div styles:class="bordered red clipped" styles:width="100pt" >
-          <pdf:Image src="../../Content/Images/landscape.jpg" />
-        </pdf:Div>
+        <doc:Br/>
+        <doc:B>Image clipped by container, with inset of 10pt</doc:B>
+        <doc:Div styles:class="bordered red clipped" styles:width="100pt" >
+          <doc:Image src="../../Content/Images/landscape.jpg" />
+        </doc:Div>
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

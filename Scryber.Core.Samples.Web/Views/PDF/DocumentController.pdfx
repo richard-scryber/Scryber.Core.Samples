@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <?scryber controller='Scryber.Core.Samples.Web.Controllers.DocumentControllerInstance, Scryber.Core.Samples.Web' ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
               on-loaded="LoadDocument" >
   <Pages>
 
-    <pdf:Page styles:margins="20pt">
+    <doc:Page styles:margins="20pt">
       <Content>
         
           <!-- This will automatically be set on the controller instance property -->
-          <pdf:H1 id="Title" > </pdf:H1>
+          <doc:H1 id="Title" > </doc:H1>
           
-          <pdf:Ul>
+          <doc:Ul>
             <!-- now we call the BindForEach method to set the data value -->
             <data:ForEach on-databinding="BindingForEach" >
               <Template>
                 <!-- and finally we use the item data bound to set the
                      content of the list item for each entry -->
-                <pdf:Li on-databound="BoundListItem"></pdf:Li>
+                <doc:Li on-databound="BoundListItem"></doc:Li>
               </Template>
             </data:ForEach>
-          </pdf:Ul>
+          </doc:Ul>
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

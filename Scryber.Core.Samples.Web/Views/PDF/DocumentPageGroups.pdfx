@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
 
     <!-- set up the default style for the header -->
-    <styles:Style applied-type="pdf:Div" applied-class="header" >
+    <styles:Style applied-type="doc:Div" applied-class="header" >
       <styles:Border color="aqua" width="2" sides="Bottom"/>
       <styles:Padding all="5pt"/>
       <styles:Margins all="10pt"/>
@@ -15,56 +15,56 @@
       <styles:Position h-align="Center"/>
     </styles:Style>
 
-    <styles:Style applied-type="pdf:PageGroup" >
+    <styles:Style applied-type="doc:PageGroup" >
       <styles:Page display-format="Page #{0}" number-style="Decimals"/>
     </styles:Style>
   </Styles>
   
   <Pages>
 
-    <pdf:PageGroup >
+    <doc:PageGroup >
       
       <Params>
-        <pdf:String-Param id="sectTitle" value="Page Group Definitions" ></pdf:String-Param>
+        <doc:String-Param id="sectTitle" value="Page Group Definitions" ></doc:String-Param>
       </Params>
       
       <Header>
-        <pdf:Div styles:class="header" >
-          <pdf:Label text="{@:sectTitle}" />
-          <pdf:ColumnBreak/>
-          <pdf:PageNumber />
-          <pdf:ColumnBreak/>
-          <pdf:Date styles:date-format="dd MMMM yyyy" />
-        </pdf:Div>
+        <doc:Div styles:class="header" >
+          <doc:Label text="{@:sectTitle}" />
+          <doc:ColumnBreak/>
+          <doc:PageNumber />
+          <doc:ColumnBreak/>
+          <doc:Date styles:date-format="dd MMMM yyyy" />
+        </doc:Div>
       </Header>
 
       <Pages>
 
-        <pdf:Page>
+        <doc:Page>
           <Content>
-            <pdf:H3 >This is the first page</pdf:H3>
+            <doc:H3 >This is the first page</doc:H3>
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
-        <pdf:Section>
+        <doc:Section>
           <Content>
-            <pdf:H3>This is the second page</pdf:H3>
-            <pdf:PageBreak/>
-            <pdf:H3>This is the third page</pdf:H3>
+            <doc:H3>This is the second page</doc:H3>
+            <doc:PageBreak/>
+            <doc:H3>This is the third page</doc:H3>
           </Content>
-        </pdf:Section>
+        </doc:Section>
         
       </Pages>
       
-    </pdf:PageGroup>
+    </doc:PageGroup>
     
-    <pdf:Page>
+    <doc:Page>
       <Content>
-        <pdf:H3 >This is after the group</pdf:H3>
+        <doc:H3 >This is after the group</doc:H3>
       </Content>
-    </pdf:Page>
+    </doc:Page>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   
@@ -19,28 +19,28 @@
   </Data>
   <Pages>
 
-        <pdf:Section styles:margins="20pt" styles:font-size="12pt">
+        <doc:Section styles:margins="20pt" styles:font-size="12pt">
           <Content>
             
             <!-- simple list binding on the Name attribute of each of the Entry(s) -->
             <data:With datasource-id="Content"  select="DataSources">
               
-              <pdf:H3 styles:h-align="Center" styles:margins="0 0 20 0" text="{xpath:@title}" />
+              <doc:H3 styles:h-align="Center" styles:margins="0 0 20 0" text="{xpath:@title}" />
               
-              <pdf:Div styles:column-count="2" styles:padding="4pt" styles:bg-color="#CCC" >
-                <pdf:Ol styles:number-style="UppercaseLetters" >
+              <doc:Div styles:column-count="2" styles:padding="4pt" styles:bg-color="#CCC" >
+                <doc:Ol styles:number-style="UppercaseLetters" >
                   <data:ForEach value="{xpath:Entries/Entry}" >
                     <Template>
-                      <pdf:Li >
-                        <pdf:Text value="{xpath:@Name}" />
-                      </pdf:Li>
+                      <doc:Li >
+                        <doc:Text value="{xpath:@Name}" />
+                      </doc:Li>
                     </Template>
                   </data:ForEach>
-                </pdf:Ol>
+                </doc:Ol>
 
-                <pdf:ColumnBreak />
+                <doc:ColumnBreak />
                 <!-- Using a definition list with the binding. -->
-                <pdf:Dl>
+                <doc:Dl>
                   <data:ForEach value="{xpath:Entries/Entry}" >
                     <Template>
                       <data:Choose>
@@ -48,32 +48,32 @@
                         <data:When test="{xpath:@Id = 'ThirdID'}" >
                           <Template>
                             <!-- Complex content for this item -->
-                            <pdf:Di styles:item-label="{xpath:@Id}" >
-                              <pdf:Span styles:font-bold="true" styles:fill-color="#AA0000" >
-                                <pdf:Text value="{xpath:concat('This is the ',@Name,' item')}" />
-                              </pdf:Span>
-                            </pdf:Di>
+                            <doc:Di styles:item-label="{xpath:@Id}" >
+                              <doc:Span styles:font-bold="true" styles:fill-color="#AA0000" >
+                                <doc:Text value="{xpath:concat('This is the ',@Name,' item')}" />
+                              </doc:Span>
+                            </doc:Di>
                           </Template>
                         </data:When>
                         <!-- Just a simple oftherwise -->
                         <data:Otherwise>
                           <Template>
-                            <pdf:Di styles:item-label="{xpath:@Id}" >
-                              <pdf:Text value="{xpath:@Name}" />
-                            </pdf:Di>
+                            <doc:Di styles:item-label="{xpath:@Id}" >
+                              <doc:Text value="{xpath:@Name}" />
+                            </doc:Di>
                           </Template>
                         </data:Otherwise>
                       </data:Choose>
                     </Template>
                   </data:ForEach>
-                </pdf:Dl>
-              </pdf:Div>
+                </doc:Dl>
+              </doc:Div>
               
             </data:With>
 
           </Content>
-        </pdf:Section>
+        </doc:Section>
 
   </Pages>
   
-</pdf:Document>
+</doc:Document>

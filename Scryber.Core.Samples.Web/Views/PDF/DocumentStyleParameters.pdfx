@@ -1,10 +1,10 @@
 ﻿<?xml version='1.0' encoding='utf-8' ?>
-<pdf:Document xmlns:pdf = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
+<doc:Document xmlns:doc = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
                 xmlns:styles = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd'
                 xmlns:data = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd'
                         >
   <Params>
-    <pdf:Object-Param id='Model' ></pdf:Object-Param>
+    <doc:Object-Param id='Model' ></doc:Object-Param>
   </Params>
 
   <Styles>
@@ -26,21 +26,21 @@
 
   <Pages>
 
-    <pdf:Section>
+    <doc:Section>
       <Content>
         <!-- Specify the class names on the components to use the styles -->
-        <pdf:H1 styles:class='head' text='{@:Model.Title}' ></pdf:H1>
-        <pdf:Div styles:class='body' >
+        <doc:H1 styles:class='head' text='{@:Model.Title}' ></doc:H1>
+        <doc:Div styles:class='body' >
           <!-- and then loop through -->
           <data:ForEach value='{@:Model.List}' >
             <Template>
-              <pdf:Label id='{@:.Id}' text='{@:.Name}' ></pdf:Label>
-              <pdf:Br/>
+              <doc:Label id='{@:.Id}' text='{@:.Name}' ></doc:Label>
+              <doc:Br/>
             </Template>
           </data:ForEach>
-        </pdf:Div>
+        </doc:Div>
       </Content>
-    </pdf:Section>
+    </doc:Section>
 
   </Pages>
-</pdf:Document>
+</doc:Document>

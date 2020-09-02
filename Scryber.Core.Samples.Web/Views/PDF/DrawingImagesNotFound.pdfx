@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Styles>
     
     <!-- Add a style to images -->
-    <styles:Style applied-type="pdf:Image" >
+    <styles:Style applied-type="doc:Image" >
       <styles:Border color="#666" style="Solid" width="2pt" />
       <styles:Background color="#AAA"/>
       <styles:Padding all="4pt"/>
@@ -21,23 +21,23 @@
   </Styles>
   <Pages>
     
-    <pdf:Page styles:padding="40 10 20 10" >
+    <doc:Page styles:padding="40 10 20 10" >
      <Content>
        
-       <pdf:Div styles:class="img-wrap" >
+       <doc:Div styles:class="img-wrap" >
          
-         <pdf:Span> Image that does not exist</pdf:Span>
-         <pdf:Image src="../../Content/Images/NotFound.png" />
+         <doc:Span> Image that does not exist</doc:Span>
+         <doc:Image src="../../Content/Images/NotFound.png" />
          
 
-         <pdf:Span> PNG 32bit Image with alpha channel</pdf:Span>
-         <pdf:Image src="../../Content/Images/Toroid32.png" />
+         <doc:Span> PNG 32bit Image with alpha channel</doc:Span>
+         <doc:Image src="../../Content/Images/Toroid32.png" />
 
-       </pdf:Div>
+       </doc:Div>
 
 
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
               auto-bind="true" >
@@ -23,23 +23,23 @@
   </Styles>
 
   <Params>
-    <pdf:String-Param id="doc-title" value="Referenced Files" />
+    <doc:String-Param id="doc-title" value="Referenced Files" />
   </Params>
   
   <Pages>
-    <pdf:Page-Ref source="Pages/HeaderPage.ppfx">
+    <doc:Page-Ref source="Pages/HeaderPage.ppfx">
       <Params>
-        <pdf:String-Param id="doc-title" value="Different Section" />
+        <doc:String-Param id="doc-title" value="Different Section" />
       </Params>
-    </pdf:Page-Ref>
+    </doc:Page-Ref>
 
-    <pdf:Page>
+    <doc:Page>
       <Header>
-        <pdf:Component-Ref source="Components/StdHeader.pcfx"></pdf:Component-Ref>
+        <doc:Component-Ref source="Components/StdHeader.pcfx"></doc:Component-Ref>
       </Header>
       <Content>
-        <pdf:H1 styles:class="title" >This is the second Page </pdf:H1>
+        <doc:H1 styles:class="title" >This is the second Page </doc:H1>
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
-</pdf:Document>
+</doc:Document>

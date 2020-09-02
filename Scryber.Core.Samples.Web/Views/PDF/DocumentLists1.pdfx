@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Pages>
 
-        <pdf:Page styles:margins="20pt" styles:font-size="12pt" styles:column-count="3">
+        <doc:Page styles:margins="20pt" styles:font-size="12pt" styles:column-count="3">
           <Content>
             
-            <pdf:Ul>
-              <pdf:Li >First Item</pdf:Li>
-              <pdf:Li >Second Item</pdf:Li>
-              <pdf:Li >Third Item</pdf:Li>
-              <pdf:Li >Fourth Item</pdf:Li>
-              <pdf:Li >Fifth Item</pdf:Li>
-            </pdf:Ul>
+            <doc:Ul>
+              <doc:Li >First Item</doc:Li>
+              <doc:Li >Second Item</doc:Li>
+              <doc:Li >Third Item</doc:Li>
+              <doc:Li >Fourth Item</doc:Li>
+              <doc:Li >Fifth Item</doc:Li>
+            </doc:Ul>
 
-            <pdf:ColumnBreak/>
+            <doc:ColumnBreak/>
 
-            <pdf:Ol>
-              <pdf:Li>First Item</pdf:Li>
-              <pdf:Li>Second Item</pdf:Li>
-              <pdf:Li>Third Item</pdf:Li>
-              <pdf:Li>Fourth Item</pdf:Li>
-              <pdf:Li>
+            <doc:Ol>
+              <doc:Li>First Item</doc:Li>
+              <doc:Li>Second Item</doc:Li>
+              <doc:Li>Third Item</doc:Li>
+              <doc:Li>Fourth Item</doc:Li>
+              <doc:Li>
                 Complex Item
-                <pdf:Span styles:fill-color="red">
+                <doc:Span styles:fill-color="red">
                   With inner content,
-                  <pdf:Image src="../../Content/Images/Toroid24.png" styles:width="18pt" styles:position-mode="Inline" />
+                  <doc:Image src="../../Content/Images/Toroid24.png" styles:width="18pt" styles:position-mode="Inline" />
                   that flows across the column.
-                </pdf:Span>
-              </pdf:Li>
-            </pdf:Ol>
+                </doc:Span>
+              </doc:Li>
+            </doc:Ol>
 
-            <pdf:ColumnBreak/>
+            <doc:ColumnBreak/>
 
-            <pdf:List styles:number-style="">
-              <pdf:Li>First item roman.</pdf:Li>
-              <pdf:Li>Second item roman.</pdf:Li>
-              <pdf:Li>Third item roman.</pdf:Li>
-              <pdf:Li>Fourth item roman.</pdf:Li>
-              <pdf:Li>Fifth item roman.</pdf:Li>
-            </pdf:List>
+            <doc:List styles:number-style="">
+              <doc:Li>First item roman.</doc:Li>
+              <doc:Li>Second item roman.</doc:Li>
+              <doc:Li>Third item roman.</doc:Li>
+              <doc:Li>Fourth item roman.</doc:Li>
+              <doc:Li>Fifth item roman.</doc:Li>
+            </doc:List>
             
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

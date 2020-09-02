@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
                 xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd" >
 
   <Styles>
@@ -11,29 +11,29 @@
   </Styles>
   <Pages>
    
-    <pdf:Page styles:margins="20pt" styles:font-size="18pt">
+    <doc:Page styles:margins="20pt" styles:font-size="18pt">
       <Content>
-        <pdf:Div styles:class="bordered" >
+        <doc:Div styles:class="bordered" >
           The content of this div is all as a block (by default)
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Div styles:class="bordered" styles:width="300pt" >
-          The content of this div is set to 300pt <pdf:U>wide</pdf:U>, so the content will flow within this width,
+        <doc:Div styles:class="bordered" styles:width="300pt" >
+          The content of this div is set to 300pt <doc:U>wide</doc:U>, so the content will flow within this width,
           and grow the height as needed.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Div styles:class="bordered" styles:height="150pt" >
-          The content of this div is set to 150pt <pdf:U>high</pdf:U>, so the content will flow within this
+        <doc:Div styles:class="bordered" styles:height="150pt" >
+          The content of this div is set to 150pt <doc:U>high</doc:U>, so the content will flow within this
           as full width, but the height will still be 150pt.
-        </pdf:Div>
+        </doc:Div>
 
-        <pdf:Div styles:class="bordered" styles:width="300pt" styles:height="150pt" >
-          The content of this div is set to 300pt <pdf:U>wide</pdf:U> and 150pt <pdf:U>high</pdf:U>, so the content will flow within this
+        <doc:Div styles:class="bordered" styles:width="300pt" styles:height="150pt" >
+          The content of this div is set to 300pt <doc:U>wide</doc:U> and 150pt <doc:U>high</doc:U>, so the content will flow within this
           as full width, but the height will still be 150pt.
-        </pdf:Div>    
+        </doc:Div>    
        
       </Content>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
 
-</pdf:Document>
+</doc:Document>

@@ -1,55 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Pages>
 
-        <pdf:Page styles:margins="20pt" styles:font-size="12pt" >
+        <doc:Page styles:margins="20pt" styles:font-size="12pt" >
           <Content>
 
-            <pdf:Div styles:column-count="3" styles:height="150" styles:border-color="blue">
-              <pdf:Ul>
-                <pdf:Li >1st Item</pdf:Li>
-                <pdf:Li >2nd Item</pdf:Li>
-                <pdf:Li >3rd Item</pdf:Li>
-                <pdf:Li >4th Item</pdf:Li>
-                <pdf:Li >5th Item</pdf:Li>
-                <pdf:Li >6th Item</pdf:Li>
-                <pdf:Li >7th Item</pdf:Li>
-                <pdf:Li >8th Item</pdf:Li>
-                <pdf:Li >9th Item</pdf:Li>
-                <pdf:Li >10th Item</pdf:Li>
-                <pdf:Li >11th Item</pdf:Li>
-                <pdf:Li >12th Item</pdf:Li>
-                <pdf:Li >13th Item</pdf:Li>
-                <pdf:Li >14th Item</pdf:Li>
-              </pdf:Ul>
+            <doc:Div styles:column-count="3" styles:height="150" styles:border-color="blue">
+              <doc:Ul>
+                <doc:Li >1st Item</doc:Li>
+                <doc:Li >2nd Item</doc:Li>
+                <doc:Li >3rd Item</doc:Li>
+                <doc:Li >4th Item</doc:Li>
+                <doc:Li >5th Item</doc:Li>
+                <doc:Li >6th Item</doc:Li>
+                <doc:Li >7th Item</doc:Li>
+                <doc:Li >8th Item</doc:Li>
+                <doc:Li >9th Item</doc:Li>
+                <doc:Li >10th Item</doc:Li>
+                <doc:Li >11th Item</doc:Li>
+                <doc:Li >12th Item</doc:Li>
+                <doc:Li >13th Item</doc:Li>
+                <doc:Li >14th Item</doc:Li>
+              </doc:Ul>
               
-              <pdf:Br/>
+              <doc:Br/>
               
-              <pdf:Ol>
-                <pdf:Li >First Item</pdf:Li>
-                <pdf:Li >Second Item</pdf:Li>
-                <pdf:Li >Third Item</pdf:Li>
-                <pdf:Li >Fourth Item</pdf:Li>
-                <pdf:Li >
+              <doc:Ol>
+                <doc:Li >First Item</doc:Li>
+                <doc:Li >Second Item</doc:Li>
+                <doc:Li >Third Item</doc:Li>
+                <doc:Li >Fourth Item</doc:Li>
+                <doc:Li >
                   Complex Item
-                  <pdf:Span styles:fill-color="red">
+                  <doc:Span styles:fill-color="red">
                     With inner content,
-                    <pdf:Image src="../../Content/Images/Toroid24.png" styles:width="18pt" styles:position-mode="Inline" />
+                    <doc:Image src="../../Content/Images/Toroid24.png" styles:width="18pt" styles:position-mode="Inline" />
                     that flows across the column.
-                  </pdf:Span>
-                </pdf:Li>
-              </pdf:Ol>
+                  </doc:Span>
+                </doc:Li>
+              </doc:Ol>
               
-            </pdf:Div>
+            </doc:Div>
 
             
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

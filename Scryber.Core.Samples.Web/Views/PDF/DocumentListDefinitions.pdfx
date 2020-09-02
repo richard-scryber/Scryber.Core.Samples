@@ -1,41 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Pages>
 
-        <pdf:Page styles:margins="20pt" styles:font-size="12pt" >
+        <doc:Page styles:margins="20pt" styles:font-size="12pt" >
           <Content>
             
-            <pdf:Dl styles:margins="0 0 20 0">
-              <pdf:Di styles:item-label="First" >First Item</pdf:Di>
-              <pdf:Di styles:item-label="Second" >Second Item</pdf:Di>
-              <pdf:Di styles:item-label="Third" >Third Item</pdf:Di>
-              <pdf:Di styles:item-label="Fourth" >Fourth Item</pdf:Di>
-              <pdf:Di styles:item-label="Fifth" >Fifth Item</pdf:Di>
-            </pdf:Dl>
+            <doc:Dl styles:margins="0 0 20 0">
+              <doc:Di styles:item-label="First" >First Item</doc:Di>
+              <doc:Di styles:item-label="Second" >Second Item</doc:Di>
+              <doc:Di styles:item-label="Third" >Third Item</doc:Di>
+              <doc:Di styles:item-label="Fourth" >Fourth Item</doc:Di>
+              <doc:Di styles:item-label="Fifth" >Fifth Item</doc:Di>
+            </doc:Dl>
 
 
-            <pdf:Dl styles:number-inset="150pt" styles:number-alignment="Left">
-              <pdf:Di styles:item-label="Long First" >First Item</pdf:Di>
-              <pdf:Di styles:item-label="Long Second" >Second Item</pdf:Di>
-              <pdf:Di styles:item-label="Long Third" >Third Item</pdf:Di>
-              <pdf:Di styles:item-label="Long Fourth" >Fourth Item</pdf:Di>
-              <pdf:Di styles:item-label="Very Long Fifth that will force a new line" >
+            <doc:Dl styles:number-inset="150pt" styles:number-alignment="Left">
+              <doc:Di styles:item-label="Long First" >First Item</doc:Di>
+              <doc:Di styles:item-label="Long Second" >Second Item</doc:Di>
+              <doc:Di styles:item-label="Long Third" >Third Item</doc:Di>
+              <doc:Di styles:item-label="Long Fourth" >Fourth Item</doc:Di>
+              <doc:Di styles:item-label="Very Long Fifth that will force a new line" >
                 Fifth Item
-                <pdf:Span styles:fill-color="red">
+                <doc:Span styles:fill-color="red">
                   With inner content,
-                  <pdf:Image src="../../Content/Images/Toroid24.png" styles:width="18pt" styles:position-mode="Inline" />
+                  <doc:Image src="../../Content/Images/Toroid24.png" styles:width="18pt" styles:position-mode="Inline" />
                   that flows across the page and onto a new line.
-                </pdf:Span>
-              </pdf:Di>
-            </pdf:Dl>
+                </doc:Span>
+              </doc:Di>
+            </doc:Dl>
             
           </Content>
-        </pdf:Page>
+        </doc:Page>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd" >
   <Pages>
-    <pdf:Page >
+    <doc:Page >
       <Header>
-        <pdf:H4 styles:margins="5pt" styles:border-width="1pt" styles:border-color="aqua" >This is the header</pdf:H4>
+        <doc:H4 styles:margins="5pt" styles:border-width="1pt" styles:border-color="aqua" >This is the header</doc:H4>
       </Header>
       <Content>
-        <pdf:H1 styles:margins="5pt" styles:border-width="1pt" styles:border-color="green" >This is the content</pdf:H1>
+        <doc:H1 styles:margins="5pt" styles:border-width="1pt" styles:border-color="green" >This is the content</doc:H1>
       </Content>
       <Footer>
-        <pdf:H4 styles:margins="5pt" styles:border-width="1pt" styles:border-color="purple" >This is the footer</pdf:H4>
+        <doc:H4 styles:margins="5pt" styles:border-width="1pt" styles:border-color="purple" >This is the footer</doc:H4>
       </Footer>
-    </pdf:Page>
+    </doc:Page>
   </Pages>
   
-</pdf:Document>
+</doc:Document>

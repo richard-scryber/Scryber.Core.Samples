@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pdf:Document xmlns:pdf="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
               xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   
@@ -26,28 +26,28 @@
   </Data>
   <Pages>
 
-        <pdf:Section styles:margins="20pt" styles:font-size="12pt">
+        <doc:Section styles:margins="20pt" styles:font-size="12pt">
           <Content>
             
             <!-- set the current context to the DataSources element of the xml source -->
             <data:With datasource-id="Content"  select="DataSources">
               
-              <pdf:Table styles:margins="0 0 10 0" styles:full-width="true">
+              <doc:Table styles:margins="0 0 10 0" styles:full-width="true">
                 <!-- Header row, not repeating -->
-                <pdf:Header-Row styles:repeat="None"  >
-                  <pdf:Header-Cell styles:column-span="2" styles:h-align="Center" >
-                    <pdf:Image styles:class="header" src="../../Content/Images/landscape.jpg" />
-                    <pdf:Div styles:class="header" >
-                      <pdf:Text value="{xpath:@title}" />
-                    </pdf:Div>
-                  </pdf:Header-Cell>
-                </pdf:Header-Row>
+                <doc:Header-Row styles:repeat="None"  >
+                  <doc:Header-Cell styles:column-span="2" styles:h-align="Center" >
+                    <doc:Image styles:class="header" src="../../Content/Images/landscape.jpg" />
+                    <doc:Div styles:class="header" >
+                      <doc:Text value="{xpath:@title}" />
+                    </doc:Div>
+                  </doc:Header-Cell>
+                </doc:Header-Row>
                 
                 <!-- Header that will repeat -->
-                <pdf:Header-Row>
-                  <pdf:Header-Cell styles:class="first" styles:width="300pt" styles:h-align="Center">ID</pdf:Header-Cell>
-                  <pdf:Header-Cell>Name</pdf:Header-Cell>
-                </pdf:Header-Row>
+                <doc:Header-Row>
+                  <doc:Header-Cell styles:class="first" styles:width="300pt" styles:h-align="Center">ID</doc:Header-Cell>
+                  <doc:Header-Cell>Name</doc:Header-Cell>
+                </doc:Header-Row>
                 
                 <!-- Loop through each of the Entries/Entry values from the current context -->
                 <data:ForEach value="{xpath:Entries/Entry}" >
@@ -57,11 +57,11 @@
                     <data:Choose>
                       <data:When test="{xpath:@Id = 'ThirdID'}" >
                         <Template>
-                          <pdf:Row styles:bg-color="#CCC">
-                            <pdf:Cell styles:column-span="2" >
-                              <pdf:Text value="{xpath:concat('This is the ',@Name,' Row with the id ',@Id)}" />
-                            </pdf:Cell>
-                          </pdf:Row>
+                          <doc:Row styles:bg-color="#CCC">
+                            <doc:Cell styles:column-span="2" >
+                              <doc:Text value="{xpath:concat('This is the ',@Name,' Row with the id ',@Id)}" />
+                            </doc:Cell>
+                          </doc:Row>
                         </Template>
                       </data:When>
                       
@@ -69,28 +69,28 @@
                       <data:Otherwise>
                         <Template>
                           <!-- General row of 2 cells with databound content-->
-                          <pdf:Row>
-                            <pdf:Cell styles:class="first" >
-                              <pdf:Text value="{xpath:@Id}" />
-                            </pdf:Cell>
-                            <pdf:Cell>
-                              <pdf:Text value="{xpath:@Name}" />
-                            </pdf:Cell>
-                          </pdf:Row>
+                          <doc:Row>
+                            <doc:Cell styles:class="first" >
+                              <doc:Text value="{xpath:@Id}" />
+                            </doc:Cell>
+                            <doc:Cell>
+                              <doc:Text value="{xpath:@Name}" />
+                            </doc:Cell>
+                          </doc:Row>
                         </Template>
                       </data:Otherwise>
                     </data:Choose>
                     
                   </Template>
                 </data:ForEach>
-              </pdf:Table>
+              </doc:Table>
               
             </data:With>
 
           </Content>
-        </pdf:Section>
+        </doc:Section>
 
    
   </Pages>
   
-</pdf:Document>
+</doc:Document>

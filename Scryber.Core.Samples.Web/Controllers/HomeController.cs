@@ -212,7 +212,7 @@ namespace Scryber.Core.Samples.Web.Controllers
                 );
             doc.Params["MyData"] = ele;
 
-            doc.Params["MyContent"] = "<pdf:Li><pdf:H1 text='{xpath:text()}' /></pdf:Li>";
+            doc.Params["MyContent"] = "<doc:Li><doc:H1 text='{xpath:text()}' /></doc:Li>";
 
             return this.PDF(doc);
         }
@@ -240,6 +240,17 @@ namespace Scryber.Core.Samples.Web.Controllers
                     )
                 );
             return Content(xml.ToString(), "text/xml");
+        }
+
+        public IActionResult Html(string name = "Other")
+        {
+            var data = new Models.DataContentList();
+            for(var i = 0; i < 12; i++)
+            {
+                data.Add(new DataContent() { ID = i.ToString(), Name = "Item " + i.ToString(), Price = i * 100 });
+            }
+            this.ViewBag.Name = name;
+            return PartialView("HtmlContent", data);
         }
 
         public IActionResult Json()
@@ -274,24 +285,24 @@ namespace Scryber.Core.Samples.Web.Controllers
         protected PDFDocument GetDocument(string title)
         {
             string content = @"<?xml version='1.0' encoding='utf-8' ?>
-                        <pdf:Document xmlns:pdf = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
+                        <doc:Document xmlns:doc = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
                                     xmlns:styles = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd'
                                     xmlns:data = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd' >
                         <Params>
-                            <pdf:Object-Param id='Model' ></pdf:Object-Param>
+                            <doc:Object-Param id='Model' ></doc:Object-Param>
                         </Params>
                         <Pages>
-                            <pdf:Section>
+                            <doc:Section>
                                 <Content>
                                     <data:ForEach id='Foreach2' value='{@:Model.Entries}' >
                                         <Template>
-                                            <pdf:Label text='{@:.Name}' />
+                                            <doc:Label text='{@:.Name}' />
                                         </Template>
                                     </data:ForEach>
                                 </Content>
-                            </pdf:Section>
+                            </doc:Section>
                         </Pages>
-                    </pdf:Document>";
+                    </doc:Document>";
 
             //With a string reader, but could be any stream or source.
             using (var reader = new System.IO.StringReader(content))
