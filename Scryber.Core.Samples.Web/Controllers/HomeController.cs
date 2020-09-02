@@ -101,6 +101,42 @@ namespace Scryber.Core.Samples.Web.Controllers
             return System.Drawing.Bitmap.FromFile(path) as System.Drawing.Bitmap;
         }
 
+
+        [HttpGet]
+        public IActionResult PlaceholderDocument()
+        {
+            var path = _rootPath;
+            path = System.IO.Path.Combine(path, "Views", "PDF", "DocumentPlaceholders.pdfx");
+            var doc = PDFDocument.ParseDocument(path);
+
+            //In this example, just create a random table
+            //Replace with anything needed.
+
+            var place = doc.FindAComponentById("DynamicContent") as PDFPlaceHolder;
+            var table = new PDFTableGrid();
+
+            table.Style.Size.FullWidth = true;
+            table.Style.Padding.All = 5;
+
+            place.Contents.Add(table);
+
+            for(var r = 0; r < 5; r++)
+            {
+                var row = new PDFTableRow();
+                table.Rows.Add(row);
+
+                for (var c = 1; c < 4; c++)
+                {
+                    var cell = new PDFTableCell();
+                    var literal = new PDFTextLiteral("Cell " + ((r * 3) + c));
+                    cell.Contents.Add(literal);
+                    row.Cells.Add(cell);
+                }
+            }
+
+            return this.PDF(doc);
+        }
+
         [HttpGet]
         public IActionResult DocumentParameters()
         {

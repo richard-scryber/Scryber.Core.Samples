@@ -140,6 +140,9 @@
     <None Update="Views\PDF\DocumentLinks1.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\PDF\DocumentPlaceholders.pdfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Views\PDF\DocumentTextInline.pdfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
