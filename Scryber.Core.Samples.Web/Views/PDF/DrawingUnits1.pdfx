@@ -7,7 +7,7 @@
     
     <!-- catch all style-->
     <styles:Style >
-      <styles:Font family="Arial" size="10pt"/>
+      <styles:Font family="serif" size="10pt"/>
     </styles:Style>
     
     <!-- Values set on the styles class-->

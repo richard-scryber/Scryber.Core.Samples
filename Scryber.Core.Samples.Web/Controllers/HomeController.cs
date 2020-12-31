@@ -4,10 +4,16 @@ using Microsoft.AspNetCore.Hosting;
 using Scryber.Core.Samples.Web.Models;
 using Scryber.Components;
 using Scryber.Drawing;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.IO;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Xml.Linq;
 using Scryber.Components.Mvc;
+using System.Text;
+
 
 namespace Scryber.Core.Samples.Web.Controllers
 {
@@ -20,9 +26,6 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             _env = environment;
             _rootPath = environment.ContentRootPath;
-            var configService = Scryber.ServiceProvider.GetService<IScryberConfigurationService>();
-            var imaging = configService.ImagingOptions;
-            var allowMission = imaging.AllowMissingImages;
         }
 
         public IActionResult Index()
@@ -32,16 +35,117 @@ namespace Scryber.Core.Samples.Web.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> ViewHtml(bool pdf = false)
+        {
+            var data = new Models.DataContentList();
+            for (var i = 0; i < 12; i++)
+            {
+                data.Add(new DataContent() { ID = i.ToString(), Name = "Item " + i.ToString(), Price = i * 100 });
+            }
+            
+            if (pdf)
+            {
+                Document doc = await ParseView(this, "HtmlContent", data);
+                return this.PDF(doc);
+            }
+            else
+                return View("HtmlContent", data);
+        }
+
+        public static async Task<Document> ParseView<TModel>(Controller controller, string viewName, TModel model, bool partial = false)
+        {
+            StringBuilder builder = new StringBuilder();
+            string path;
+
+            using (StringWriter sw = new StringWriter(builder))
+            {
+                path = await RenderViewAsync(controller, viewName, model, sw, partial);
+
+                if (string.IsNullOrEmpty(path))
+                    return null;
+            }
+
+            using (StringReader reader = new StringReader(builder.ToString()))
+            {
+                var doc = Document.ParseDocument(reader, ParseSourceType.LocalFile);
+                var request = controller.Request;
+                doc.LoadedSource = request.Scheme + "://" + request.Host.Value + request.Path.Value;
+
+                return doc;
+            }
+        }
+
+        
+
+        public static async Task<string> RenderViewAsync<TModel>(Controller controller, string viewName, TModel model, TextWriter writer, bool partial)
+        {
+            string path;
+            if (string.IsNullOrEmpty(viewName))
+            {
+                viewName = controller.ControllerContext.ActionDescriptor.ActionName;
+            }
+
+            controller.ViewData.Model = model;
+
+
+            IViewEngine viewEngine = controller.HttpContext.RequestServices.GetService(typeof(ICompositeViewEngine)) as ICompositeViewEngine;
+            ViewEngineResult viewResult = viewEngine.FindView(controller.ControllerContext, viewName, !partial);
+
+            if (viewResult.Success == false)
+            {
+                path = string.Empty;
+                return path;
+            }
+
+            path = viewResult.View.Path;
+            ViewContext viewContext = new ViewContext(
+                controller.ControllerContext,
+                viewResult.View,
+                controller.ViewData,
+                controller.TempData,
+                writer,
+                new HtmlHelperOptions()
+            );
+
+            await viewResult.View.RenderAsync(viewContext);
+
+            return path;
+
+        }
+        
+
+        public IActionResult PDF(ViewResult view, string title = null)
+        {
+            var http = this.HttpContext;
+            var body = http.Response.Body;
+            using (var stream = new System.IO.MemoryStream())
+            {
+                http.Response.Body = stream;
+
+                view.ExecuteResult(this.ControllerContext);
+
+                stream.Position = 0;
+                var doc = Document.ParseDocument(stream, ParseSourceType.DynamicContent);
+                doc.LoadedSource = http.Request.Path.ToString();
+
+                http.Response.Body = body;
+
+   
+                return this.PDF(doc);
+            }
+        }
+
+        [HttpGet]
         public IActionResult HelloWorld(string title = "Hello World From Scryber")
         {
             var path = _env.ContentRootPath;
             path = System.IO.Path.Combine(path, "Views", "PDF", "HelloWorld.pdfx");
 
-            using (var doc = PDFDocument.ParseDocument(path))
+            using (var doc = Document.ParseDocument(path))
             {
                 doc.Params["Title"] = title;
-                var page = doc.Pages[0] as PDFPage;
-                page.Contents.Add(new PDFLabel() { Text = "My Content" });
+                var page = doc.Pages[0] as Page;
+                page.Contents.Add(new Label() { Text = "My Content" });
                 return this.PDF(doc); // inline:false, outputFileName:"HelloWorld.pdf"
             }
         }
@@ -54,12 +158,29 @@ namespace Scryber.Core.Samples.Web.Controllers
             path = System.IO.Path.Combine(path, "Views", "PDF", doc + ".pdfx");
             path = System.IO.Path.GetFullPath(path);
 
-            var pdf = PDFDocument.ParseDocument(path);
+            var pdf = Document.ParseDocument(path);
             pdf.Params["theme-bg"] = new Scryber.Drawing.PDFColor(0.0, 0.0, 0.0);
             pdf.Params["theme-bg2"] = new Scryber.Drawing.PDFColor(0.3, 0.3, 0.3);
             pdf.Params["theme-title-fill"] = new Scryber.Drawing.PDFColor(1, 1, 1);
             pdf.Params["theme-title-font"] = "Gill Sans";
 
+            System.Drawing.Bitmap bmp = LoadImageBitmap();
+            Scryber.Drawing.PDFImageData data = Scryber.Drawing.PDFImageData.LoadImageFromBitmap("Dynamic", bmp, false);
+            pdf.Params["toroidBin"] = data;
+
+            return this.PDF(pdf); //, inline:false, outputFileName:"HelloWorld.pdf");
+        }
+
+        [HttpGet]
+        public IActionResult CreateHtml(string doc)
+        {
+            var path = _env.ContentRootPath;
+
+            path = System.IO.Path.Combine(path, "Views", "HTML", doc + ".html");
+            path = System.IO.Path.GetFullPath(path);
+
+            var pdf = Document.ParseDocument(path);
+            
             System.Drawing.Bitmap bmp = LoadImageBitmap();
             Scryber.Drawing.PDFImageData data = Scryber.Drawing.PDFImageData.LoadImageFromBitmap("Dynamic", bmp, false);
             pdf.Params["toroidBin"] = data;
@@ -73,12 +194,12 @@ namespace Scryber.Core.Samples.Web.Controllers
             var path = System.IO.Path.Combine(root, "Views", "PDF", "DrawingImages.pdfx");
             path = System.IO.Path.GetFullPath(path);
 
-            using(var doc = PDFDocument.ParseDocument(path))
+            using(var doc = Document.ParseDocument(path))
             {
                 var images = System.IO.Path.Combine(root, "Content", "Images");
                 
                 //Set the source Directly
-                (doc.FindAComponentById("tiff32") as PDFImage).Source = System.IO.Path.Combine(images, "Toroid32.tiff");
+                (doc.FindAComponentById("tiff32") as Image).Source = System.IO.Path.Combine(images, "Toroid32.tiff");
 
                 //Set the source parameter
                 doc.Params["toroidPath"] = System.IO.Path.Combine(images, "Toroid24.jpg");
@@ -107,13 +228,13 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             var path = _rootPath;
             path = System.IO.Path.Combine(path, "Views", "PDF", "DocumentPlaceholders.pdfx");
-            var doc = PDFDocument.ParseDocument(path);
+            var doc = Document.ParseDocument(path);
 
             //In this example, just create a random table
             //Replace with anything needed.
 
-            var place = doc.FindAComponentById("DynamicContent") as PDFPlaceHolder;
-            var table = new PDFTableGrid();
+            var place = doc.FindAComponentById("DynamicContent") as PlaceHolder;
+            var table = new TableGrid();
 
             table.Style.Size.FullWidth = true;
             table.Style.Padding.All = 5;
@@ -122,13 +243,13 @@ namespace Scryber.Core.Samples.Web.Controllers
 
             for(var r = 0; r < 5; r++)
             {
-                var row = new PDFTableRow();
+                var row = new TableRow();
                 table.Rows.Add(row);
 
                 for (var c = 1; c < 4; c++)
                 {
-                    var cell = new PDFTableCell();
-                    var literal = new PDFTextLiteral("Cell " + ((r * 3) + c));
+                    var cell = new TableCell();
+                    var literal = new TextLiteral("Cell " + ((r * 3) + c));
                     cell.Contents.Add(literal);
                     row.Cells.Add(cell);
                 }
@@ -142,7 +263,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             var path = _rootPath;
             path = System.IO.Path.Combine(path,"Views", "PDF", "DocumentParameters.pdfx");
-            var doc = PDFDocument.ParseDocument(path);
+            var doc = Document.ParseDocument(path);
 
             doc.Params["MyTitle"] = "New Document Title";
             doc.Params["TitleBg"] = new Scryber.Drawing.PDFColor(1, 0, 0);
@@ -155,7 +276,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             var path = _rootPath;
             path = System.IO.Path.Combine(path, "Views", "PDF", "DocumentStyleParameters.pdfx");
-            var doc = PDFDocument.ParseDocument(path);
+            var doc = Document.ParseDocument(path);
            
 
             var model = new
@@ -183,7 +304,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             var path = _rootPath;
             path = System.IO.Path.Combine(path, "Views", "PDF", "DocumentXmlParameters.pdfx");
-            var doc = PDFDocument.ParseDocument(path);
+            var doc = Document.ParseDocument(path);
 
             doc.Params["MyTitle"] = "Xml Document Title";
             var ele = new XElement("Root",
@@ -202,7 +323,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         {
             var path = _rootPath;
             path = System.IO.Path.Combine(path, "Views", "PDF", "DocumentTemplateParameters.pdfx");
-            var doc = PDFDocument.ParseDocument(path);
+            var doc = Document.ParseDocument(path);
 
             doc.Params["MyTitle"] = "Xml Document Title";
             var ele = new XElement("Root",
@@ -282,7 +403,7 @@ namespace Scryber.Core.Samples.Web.Controllers
             }
         }
 
-        protected PDFDocument GetDocument(string title)
+        protected Document GetDocument(string title)
         {
             string content = @"<?xml version='1.0' encoding='utf-8' ?>
                         <doc:Document xmlns:doc = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
@@ -307,7 +428,7 @@ namespace Scryber.Core.Samples.Web.Controllers
             //With a string reader, but could be any stream or source.
             using (var reader = new System.IO.StringReader(content))
             {
-                return PDFDocument.ParseDocument(reader, ParseSourceType.DynamicContent);
+                return Document.ParseDocument(reader, ParseSourceType.DynamicContent);
             }
         }
 

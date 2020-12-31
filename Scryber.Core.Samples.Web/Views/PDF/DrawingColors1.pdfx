@@ -7,7 +7,7 @@
     
     <!-- catch all style-->
     <styles:Style >
-      <styles:Font family="Arial" size="20pt"/>
+      <styles:Font family="serif" size="20pt"/>
     </styles:Style>
 
     <styles:Style applied-class="floating" >

@@ -26,8 +26,8 @@ namespace Scryber.Core.Samples.Web
         {
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
-            
-            //services.AddScryberServices()
+
+            services.AddScryberServices(this.Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

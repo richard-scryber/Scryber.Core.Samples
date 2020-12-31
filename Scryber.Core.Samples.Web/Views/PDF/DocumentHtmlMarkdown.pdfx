@@ -2,48 +2,13 @@
 
 <doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd"
               xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd"
-              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd"
-              xmlns:html="http://www.w3.org/1999/xhtml">
+              xmlns:data="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd">
   <Params>
     <doc:String-Param id="md-url" value="https://raw.githubusercontent.com/richard-scryber/scryber.core/master/README.md" />
   </Params>
 
   <Styles>
-  
-    <styles:Style applied-type="html:p" >
-      <styles:Margins  left="10pt" bottom="5pt" right="5pt" top="5pt"/>
-      <styles:Fill color="#323232"/>
-    </styles:Style>
-    
-    <styles:Style applied-type="html:pre">
-      <styles:Font family="Consolas" size="8pt"/>
-      <styles:Background color="#323232"/>
-      <styles:Margins left="10pt" bottom="5pt" right="5pt" top="5pt"/>
-      <styles:Size full-width="true"/>
-      <styles:Fill color="white"/>
-    </styles:Style>
-    
-    <styles:Style applied-type="html:a" >
-      <styles:Fill color="#00a8a1"/>
-      <styles:Text decoration="Underline"/>
-    </styles:Style>
-    
-    <styles:Style applied-type="doc:Heading" >
-      <styles:Fill color="#323232"/>
-      <styles:Margins all="10pt"/>
-      <styles:Padding bottom="5pt"/>
-      <styles:Border color="#00a8a1" sides="Bottom" style="Solid" width="2pt"/>
-    </styles:Style>
-    
-    <styles:Style applied-type="html:h1" >
-        <styles:Background color="#323232" 
-                           img-src="https://raw.githubusercontent.com/richard-scryber/scryber.core/master/docs/images/ScyberLogo2_alpha_small.png"
-                           repeat="None" x-pos="10" y-pos="10" x-size="35"  />
-        <styles:Fill color="#00a8a1"/>
-        <styles:Padding all="10pt" left="60pt" />
-        <styles:Margins all="0pt" bottom="20pt"/>
-     </styles:Style> 
-    
+    <styles:Styles-Ref source="../Styles/MarkdownStyles.psfx"/>
   </Styles>
 
   <Pages>

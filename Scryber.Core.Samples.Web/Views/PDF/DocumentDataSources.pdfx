@@ -7,7 +7,7 @@
   </Params>
   
   <Data>
-    <data:JsonDataSource id="XmlSource" source-path="http://localhost:5000/Home/Json" ></data:JsonDataSource>
+    <data:XMLDataSource id="XmlSource" source-path="http://localhost:5000/Home/Xml" ></data:XMLDataSource>
   </Data>
   
   <Styles>
@@ -23,18 +23,18 @@
     <!-- Use the models 'DocTitle' property for the outline. -->
     <doc:Page styles:margins="20pt">
       <Content>
-        <data:With datasource-id="JsonSource"  >
+        <data:With datasource-id="XmlSource" select="DataSources"  >
 
           <!-- And use it as the text on the heading -->
-          <doc:H1 styles:class="title" text="{@:Title}" > </doc:H1>
+          <doc:H1 styles:class="title" text="{xpath:@Title}" > </doc:H1>
           
           <doc:Ul>
             <!-- now we loop through the 'Entries' property -->
-            <data:ForEach value="{@:.Entries/Entry}" >
+            <data:ForEach value="{xpath:Entries/Entry}" >
               <Template>
                 <doc:Li>
                   <!-- and create a list item for each entry (. prefix) with the name property. -->
-                  <doc:Text value="{@:.Name}" />
+                  <doc:Text value="{xpath:@Name}" />
                 </doc:Li>
               </Template>
             </data:ForEach>

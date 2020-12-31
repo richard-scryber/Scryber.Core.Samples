@@ -13,7 +13,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         /// The Heading will be set on a controller instance from the parser
         /// </summary>
         [PDFOutlet(Required = true)]
-        public PDFHead1 Title
+        public Head1 Title
         {
             get;set;
         }
@@ -43,7 +43,7 @@ namespace Scryber.Core.Samples.Web.Controllers
         public void BindingForEach(object sender, PDFDataBindEventArgs args)
         {
             //Dynamically set the data on the ForEach component - so it will loop through
-            var forEach = (Data.PDFForEach)sender;
+            var forEach = (Data.ForEach)sender;
             forEach.Value = data;
         }
 
@@ -53,11 +53,11 @@ namespace Scryber.Core.Samples.Web.Controllers
         [PDFAction()]
         public void BoundListItem(object sender, PDFDataBindEventArgs args)
         {
-            var listItem = (PDFListItem)sender;
+            var listItem = (ListItem)sender;
             var index = args.Context.CurrentIndex;
             var text = data[index];
             //Create a new text literal and add it to the listitem
-            PDFTextLiteral literal = new PDFTextLiteral(text);
+            var literal = new TextLiteral(text);
             listItem.Contents.Add(literal);
         }
     }

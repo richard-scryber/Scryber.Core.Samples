@@ -9,13 +9,12 @@
   <Styles>
     <styles:Styles-Ref source="./Styles/Stylesheet.psfx"/>
 
-    <styles:Style applied-class="title" >
+    <styles:Style match=".title" >
       <styles:Font bold="true" size="40"/>
-      <styles:Position h-align="Right"/>
     </styles:Style>
 
 
-    <styles:Style applied-class="page-head" >
+    <styles:Style match=".page-head" >
       <styles:Border color="red" width="2pt"/>
       <styles:Font size="10pt"/>
     </styles:Style>

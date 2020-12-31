@@ -53,7 +53,7 @@
 
     <doc:Section styles:class='pg-num appendix'>
       <Content>
-        <doc:Div>The appendix style has upper case letters with a formatted value to show the current appendix letter.</doc:Div>
+        <doc:Div>The appendix style has letters with a formatted value to show the current appendix letter</doc:Div>
         <!-- Page 4 -->
         <doc:PageNumber />
         <doc:PageBreak />

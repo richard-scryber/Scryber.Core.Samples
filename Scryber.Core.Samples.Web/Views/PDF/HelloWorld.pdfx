@@ -7,7 +7,7 @@
   </Params>
   <Styles>
     <styles:Style applied-type='doc:Page'>
-      <styles:Font family='Arial' size='14pt' />
+      <styles:Font family='sans-serif' size='14pt' />
     </styles:Style>
 
     <styles:Style applied-class='heading' >
