@@ -1,4 +1,4 @@
-var sampleItems = [
+var sampleDirectory = [
     {
         hidden: true,
         title: "Hello World",
