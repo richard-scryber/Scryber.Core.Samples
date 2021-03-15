@@ -13,14 +13,17 @@ namespace Scryber.Core.Samples.Console
 
             //Get the working and temp directory
             string workingDirectory = System.Environment.CurrentDirectory;
-            string tempDirectory = System.IO.Path.GetTempPath();
+            string docsDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string outputDirectory = System.IO.Path.Combine(docsDirectory, "Scryber Test Output");
+            if (System.IO.Directory.Exists(outputDirectory) == false)
+                System.IO.Directory.CreateDirectory(outputDirectory);
 
             //The path to the document to create
-            string docPath = "PDFs\\DocumentRefs.pdfx";
+            string docPath = "DocumentRefs.pdfx";
 
             
             //The path to the output file - could be a stream
-            var outputPath = System.IO.Path.Combine(tempDirectory, "DocumentRefs.pdf");
+            var outputPath = System.IO.Path.Combine(outputDirectory, "DocumentRefs.pdf");
 
             var repeat = true;
 
@@ -32,9 +35,9 @@ namespace Scryber.Core.Samples.Console
 
                 try
                 {
-                    var path = System.IO.Path.Combine(workingDirectory, "PDFs", "DocumentRefs.pdfx");
-                    using (var doc = PDFDocument.ParseDocument(path))
-                        doc.ProcessDocument(outputPath, System.IO.FileMode.OpenOrCreate);
+                    var path = System.IO.Path.Combine(workingDirectory, "PDFs", docPath);
+                    using (var doc = Document.ParseDocument(path))
+                        doc.SaveAsPDF(outputPath, System.IO.FileMode.OpenOrCreate);
 
                     //Notify completion
                     System.Console.WriteLine("PDF File generated at " + outputPath);
@@ -55,19 +58,19 @@ namespace Scryber.Core.Samples.Console
 
         }
 
-        private static PDFComponent StyledComponent()
+        private static Component StyledComponent()
         {
-            var div = new PDFDiv()
+            var div = new Div()
             {
                 BackgroundColor = new Scryber.Drawing.PDFColor(Drawing.ColorSpace.RGB, 255, 0, 0),
                 Margins = new Drawing.PDFThickness(20),
                 Padding = new Drawing.PDFThickness(4),
-                FontFamily = "Arial",
+                FontFamily = (Drawing.PDFFontSelector)"Arial",
                 FontSize = 20,
                 FillColor = Scryber.Drawing.PDFColors.White
             };
 
-            div.Contents.Add(new PDFLabel()
+            div.Contents.Add(new Label()
             {
                 Text = "Hello World from scryber"
             });

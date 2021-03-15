@@ -3,7 +3,7 @@
         xmlns:styles="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd">
 
   <styles:Style applied-class="title" >
-    <styles:Font family="Segoe UI" bold="false" size="60pt"/>
+    <styles:Font family="serif" bold="false" size="60pt"/>
     <styles:Margins all="20pt"/>
     <styles:Padding all="10pt"/>
     <styles:Position h-align="Center" />

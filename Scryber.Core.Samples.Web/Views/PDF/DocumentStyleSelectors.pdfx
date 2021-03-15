@@ -1,0 +1,47 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<doc:Document xmlns:doc = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd'
+              xmlns:styles = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Styles.xsd'
+              xmlns:data = 'http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Data.xsd' >
+  <Params>
+    <doc:Object-Param id='Model' ></doc:Object-Param>
+  </Params>
+
+  <Styles>
+    <!-- Bind the head and body styles to the Theme -->
+    <styles:Style match='.head'>
+      <styles:Padding all='20pt'/>
+      <styles:Background color='#323232' />
+      <styles:Fill color='#00a8a1'/>
+      <styles:Font family='Segoe UI Light' bold='false' italic='false' />
+    </styles:Style>
+
+    <styles:Style match='.body'>
+      <styles:Font family='Segoe UI' size='12pt' />
+      <styles:Fill color='#323232'/>
+      <styles:Padding all='20pt'/>
+    </styles:Style>
+
+    <styles:Style match='.body doc:Para'>
+      <styles:Font family='Segoe UI' size='12pt' />
+      <styles:Fill color='#323232'/>
+      <styles:Padding all='20pt'/>
+    </styles:Style>
+
+  </Styles>
+
+  <Pages>
+
+    <doc:Section>
+      <Content>
+        <!-- Specify the class names on the components to use the styles -->
+        <doc:H1 styles:class='head' text='This is the title' ></doc:H1>
+        <doc:Div styles:class='body' >
+          Content
+          <doc:Para>Another paragraph</doc:Para>
+          <doc:Para>This is the content in a para</doc:Para>
+        </doc:Div>
+      </Content>
+    </doc:Section>
+
+  </Pages>
+</doc:Document>

@@ -3,13 +3,14 @@
     Layout = "_document";
 }
 <p class="strong" style="font-size:20px">This page is sample content from the view controller with title @ViewBag.Name.</p>
-<table style="width:100%">
-    @for(var i = 0; i < Model.Count; i++)
-    {
-        <tr class="@((i % 2) == 0 ? "row even" : "row odd")">
-            <td>@Model[i].ID</td>
-            <td>@Model[i].Name</td>
-            <td style="font-weight:bold; color:#323232; background-color:#00a8a1; text-align:right; width:200px">&#163;@Model[i].Price.ToString("#,##0.00")</td>
-        </tr>
-    }
-</table>
+<div class="print-2-column">
+    <table class="data-table" style="width:100%; padding:20pt">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <tr class="@((i % 2) == 0 ? "row even" : "row odd")">
+                <td>@Model[i].ID</td>
+                <td>@Model[i].Name</td>
+                <td class="sum">&#163;@Model[i].Price.ToString("#,##0.00")</td>
+            </tr>}
+    </table>
+</div>

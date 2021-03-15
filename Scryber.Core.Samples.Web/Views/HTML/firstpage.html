@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd">
+<head>
+    <meta charset="utf-8" />
+    <title>This is the document</title>
+    <style type="text/css" >
+        div.dark {
+            background-color: #333;
+            color:#FFF;
+        }
+        div.head{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:small;
+            padding:20px;
+            margin-top:0px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head dark">Content in the header</div>
+    </header>
+    <footer>
+        <table style="width:100%"><tr><td>Date</td><td>Name</td><td>
+             <doc:PageNumber />
+             </td></tr>
+        </table>
+    </footer>
+    <div style="margin:20px; color:aqua">Just some text in a div</div>
+    <div style="margin:20px; color:aqua; page-break-before:always;">Just some text in a div</div>
+    <section>
+        <header>Section head</header>
+        <content>This is the content</content>
+        <footer>Section footer</footer>
+    </section>
+</body>
+</html>

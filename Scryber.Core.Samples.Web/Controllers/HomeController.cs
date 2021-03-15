@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using System.Xml.Linq;
 using Scryber.Components.Mvc;
 using System.Text;
-
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scryber.Core.Samples.Web.Controllers
 {
@@ -38,102 +38,22 @@ namespace Scryber.Core.Samples.Web.Controllers
         public async Task<IActionResult> ViewHtml(bool pdf = false)
         {
             var data = new Models.DataContentList();
-            for (var i = 0; i < 12; i++)
+            for (var i = 0; i < 100; i++)
             {
                 data.Add(new DataContent() { ID = i.ToString(), Name = "Item " + i.ToString(), Price = i * 100 });
             }
             
             if (pdf)
             {
-                Document doc = await ParseView(this, "HtmlContent", data);
+                Document doc = await this.ParseDocumentView("HtmlContent", data);
                 return this.PDF(doc);
             }
             else
                 return View("HtmlContent", data);
         }
 
-        public static async Task<Document> ParseView<TModel>(Controller controller, string viewName, TModel model, bool partial = false)
-        {
-            StringBuilder builder = new StringBuilder();
-            string path;
-
-            using (StringWriter sw = new StringWriter(builder))
-            {
-                path = await RenderViewAsync(controller, viewName, model, sw, partial);
-
-                if (string.IsNullOrEmpty(path))
-                    return null;
-            }
-
-            using (StringReader reader = new StringReader(builder.ToString()))
-            {
-                var doc = Document.ParseDocument(reader, ParseSourceType.LocalFile);
-                var request = controller.Request;
-                doc.LoadedSource = request.Scheme + "://" + request.Host.Value + request.Path.Value;
-
-                return doc;
-            }
-        }
 
         
-
-        public static async Task<string> RenderViewAsync<TModel>(Controller controller, string viewName, TModel model, TextWriter writer, bool partial)
-        {
-            string path;
-            if (string.IsNullOrEmpty(viewName))
-            {
-                viewName = controller.ControllerContext.ActionDescriptor.ActionName;
-            }
-
-            controller.ViewData.Model = model;
-
-
-            IViewEngine viewEngine = controller.HttpContext.RequestServices.GetService(typeof(ICompositeViewEngine)) as ICompositeViewEngine;
-            ViewEngineResult viewResult = viewEngine.FindView(controller.ControllerContext, viewName, !partial);
-
-            if (viewResult.Success == false)
-            {
-                path = string.Empty;
-                return path;
-            }
-
-            path = viewResult.View.Path;
-            ViewContext viewContext = new ViewContext(
-                controller.ControllerContext,
-                viewResult.View,
-                controller.ViewData,
-                controller.TempData,
-                writer,
-                new HtmlHelperOptions()
-            );
-
-            await viewResult.View.RenderAsync(viewContext);
-
-            return path;
-
-        }
-        
-
-        public IActionResult PDF(ViewResult view, string title = null)
-        {
-            var http = this.HttpContext;
-            var body = http.Response.Body;
-            using (var stream = new System.IO.MemoryStream())
-            {
-                http.Response.Body = stream;
-
-                view.ExecuteResult(this.ControllerContext);
-
-                stream.Position = 0;
-                var doc = Document.ParseDocument(stream, ParseSourceType.DynamicContent);
-                doc.LoadedSource = http.Request.Path.ToString();
-
-                http.Response.Body = body;
-
-   
-                return this.PDF(doc);
-            }
-        }
 
         [HttpGet]
         public IActionResult HelloWorld(string title = "Hello World From Scryber")
@@ -179,6 +99,8 @@ namespace Scryber.Core.Samples.Web.Controllers
             path = System.IO.Path.Combine(path, "Views", "HTML", doc + ".html");
             path = System.IO.Path.GetFullPath(path);
 
+            var model = new { one = "First String" };
+       
             var pdf = Document.ParseDocument(path);
             
             System.Drawing.Bitmap bmp = LoadImageBitmap();
@@ -460,6 +382,8 @@ namespace Scryber.Core.Samples.Web.Controllers
             return View();
         }
 
+
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

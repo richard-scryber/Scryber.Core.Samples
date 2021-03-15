@@ -102,6 +102,7 @@
     <div>HTML Content</div>
     <ul>
         <li><a href="@Url.Action("CreateHtml","Home", new { doc = "firstpage" })" target="_blank">Simple Html content</a></li>
-        <li><a href="@Url.Action("ViewHtml","Home")" target="_blank">Html content from a view</a></li>
+        <li><a href="@Url.Action("ViewHtml","Home", new { pdf = true })" target="_blank">Html content from a view</a></li>
+        <li><a href="@Url.Action("PrivacyPDF","Home")" target="_blank">Html content from a view</a></li>
     </ul>
 </div>

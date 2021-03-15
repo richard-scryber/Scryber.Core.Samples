@@ -1,0 +1,23 @@
+﻿<?ignore
+@{
+    Layout = null;
+}
+?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc:Document xmlns:doc="http://www.scryber.co.uk/schemas/core/release/v1/Scryber.Components.xsd">
+    <Pages>
+        <doc:Page margins="20pt">
+            <Content>
+                <doc:Table>
+                    @for (var i = 0; i < 5; i++)
+                    {
+                        <doc:Row>
+                            <doc:Cell>Content @i.ToString()</doc:Cell>
+                        </doc:Row>
+                    }
+                </doc:Table>
+            </Content>
+        </doc:Page>
+    </Pages>
+    
+</doc:Document>

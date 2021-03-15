@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Scryber" />
+    <title>@ViewData["Title"] - Scryber</title>
+    <link rel="stylesheet" href="/css/site.css" />
+    <style type="text/css" >
+        .sum {
+            font-weight: bold;
+            color: #323232;
+            background-color: #00a8a1;
+            text-align: right;
+            width: 100px
+        }
+    </style>
+    <style type="text/css" media="print" >
+
+        body{
+            font-size:12pt;
+        }
+
+        table.data-table{
+            font-size:8pt;
+            max-width:200pt;
+        }
+
+        .print-2-column{
+            column-count:2;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <p style="background-color:#aaa; padding:10pt; margin-top:0pt" >Consistent page header</p>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div style="margin:20pt">
+            2020 - Scryber - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    
+</body>
+</html>

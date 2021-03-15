@@ -34,15 +34,12 @@
        </doc:Div>
        <doc:Div styles:class="std-font"
                 styles:font-italic="true" >
-         <doc:B>This is Segoe UI within a Bold span, with italic on the div.</doc:B>
+         <doc:B>This is Segoe UI within a Bold span,</doc:B> with italic on the div.
        </doc:Div>
        <doc:Div styles:class="std-font" styles:font-family="Segoe UI Light" >
-         <doc:Span styles:font-bold="true">This is the light variant of the font <doc:I>with Italic inside</doc:I> the span.</doc:Span>
+         <doc:Span styles:font-bold="true">This is the light variant of the font <doc:I >with Italic inside</doc:I> the span.</doc:Span>
        </doc:Div>
-
-       <doc:Div styles:class="std-font" styles:font-family="DoesNotExist" >
-         This is with an unknown font name.
-       </doc:Div>
+       
       </Content>
     </doc:Page>
   </Pages>

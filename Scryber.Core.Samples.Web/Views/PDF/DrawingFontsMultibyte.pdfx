@@ -20,7 +20,7 @@
   <Pages>
     
     <!-- Setting the font on the page, rather than at each level. -->
-    <doc:Page styles:padding="10" styles:font-family="Microsoft JhengHei UI" >
+    <doc:Page styles:padding="10" styles:font-family="Menlo" >
       <Content>
         <doc:Div styles:column-count="3" styles:font-size="14pt" styles:height="150pt">
           記第功際被治年待中所正向持。害供雪指載載道表職渉彩明文界早琶。本要逆使健貿市執多格紙録指璧。
