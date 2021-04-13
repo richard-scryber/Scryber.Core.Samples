@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>Hello World</title>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+          title="Fraunces" />
+
+    <style>
+        body {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 14pt;
+        }
+
+        p.header {
+            color: #AAA;
+            background-color: #333;
+            background-image: url('./HTML/Images/ScyberLogo2_alpha_small.png');
+            background-repeat: no-repeat;
+            background-position: 10pt 10pt;
+            background-size: 20pt 20pt;
+            margin-top: 0pt;
+            padding: 10pt 10pt 10pt 35pt;
+        }
+
+
+        .foot td {
+            border: none;
+            text-align: center;
+            font-size: 10pt;
+            margin-bottom: 10pt;
+        }
+
+    </style>
+    <base href='https://raw.githubusercontent.com/richard-scryber/scryber.core/master/Scryber.Core.UnitTest/Content/' />
+    <!-- Added the styles for the page sizes -->
+    <style type="text/css">
+
+        @media print {
+
+        /* We have a new page before the ordered list
+         * And this new page uses the 'portrait' option (page:portrait) */
+            main ol {
+                page-break-before: always;
+                padding-top: 20pt;
+                page: portrait;
+            }
+
+            /* Change the default style to A4 landscape */
+
+            @page {
+                size: A4 landscape;
+            }
+
+            /* But can use a specific sizes for portrait */
+            @page portrait {
+                size: A4 portrait;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p class="header">Scryber document creation</p>
+    </header>
+    <main style="padding:10pt">
+
+        <h2 style="{@:model.titlestyle}">{@:model.title}</h2>
+        <div>We hope you like it.</div>
+
+        <!-- this will now appear on a new page in
+             portrait with the header and footer -->
+        <ol>
+            <template data-bind='{@:model.items}'>
+                <li>{@:.name}</li>
+            </template>
+        </ol>
+    </main>
+    <footer>
+        <!-- footers in a table with style -->
+        <table class="foot" style="width:100%">
+            <tr>
+                <td>{@:model.author}</td>
+                <!-- the page tag is made up, and has a property attribute
+                (open to suggestions on better syntax)  -->
+
+                <td>Page <page /> of <page property="total" /></td>
+                <td>Hello World Sample</td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>

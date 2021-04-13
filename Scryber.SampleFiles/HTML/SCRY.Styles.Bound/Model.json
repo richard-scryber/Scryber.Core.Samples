@@ -1,0 +1,8 @@
+﻿{
+  "theme": {
+    "headclass": "border",
+    "bg": "background-color:#FFA;padding:20pt;border:solid 1px red;",
+    "title": "font-family:\"Times New Roman\", Times, serif",
+    "number": "font-style: italic"
+  }
+}

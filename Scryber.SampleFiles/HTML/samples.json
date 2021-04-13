@@ -1,0 +1,117 @@
+{
+    "items": [
+      {
+        "hidden": true,
+        "title": "Hello World",
+        "description": "Home page hello world",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.SAMP.HelloWorld"
+      },
+      {
+        "category": "Getting Started",
+        "title": "1. Hello World",
+        "description": "Just the ubiquitous Hello World example",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.SAMP.First"
+      },
+      {
+        "category": "Getting Started",
+        "title": "2. Hello World with data",
+        "description": "A second Hello World example, with a model and data binding",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.SAMP.Second"
+      },
+      {
+        "category": "Getting Started",
+        "title": "3. Hello World with style",
+        "description": "Adding some css to the hello World example with remote fonts and images",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.SAMP.HelloWithStyle"
+      },
+      {
+        "category": "Getting Started",
+        "title": "4. Adding page sizes",
+        "description": "A linked css file with explicit media rules for page layout",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.SAMP.HelloPageSize"
+      },
+      {
+        "category": "File Structure",
+        "title": "1. Basic Structure Example",
+        "description": "A simple file structure with the scryber processing instruction and a remote css",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Files.First"
+      },
+      {
+        "category": "File Structure",
+        "title": "2. Document Info",
+        "description": "Full document info with title, author and keywords",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Files.Second"
+      },
+      {
+        "category": "Styles",
+        "title": "1. Applying styles",
+        "description": "An example of styles applied, inline and multiple",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Styles.First"
+      },
+      {
+        "category": "Styles",
+        "title": "1. Dynamic styles and classes",
+        "description": "Binding style values and style classes to dynamic content",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Styles.Bound"
+      },
+      {
+        "category": "Pages and Sections",
+        "title": "1. A page with headers and footers",
+        "description": "A single page output with the headers and footers in place",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Pages.First"
+      },
+      {
+        "category": "Pages and Sections",
+        "title": "2. Flowing pages with headers and footers",
+        "description": "Pages of long content with the headers and footers in place",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Pages.Second"
+      },
+      {
+        "category": "Pages and Sections",
+        "title": "3. Explicit page breaks",
+        "description": "Applying sections and page breaks to flowing content",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Pages.Third"
+      },
+      {
+        "category": "Pages and Sections",
+        "title": "4. Page size and orientation",
+        "description": "Changing the page size and orientation in a document",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Pages.Fourth"
+      },
+      {
+        "category": "Page Numbers",
+        "title": "1. Current Page number",
+        "description": "Output the current page number onto the footer",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.PageNums.First"
+      },
+      {
+        "category": "Page Numbers",
+        "title": "2. Page Total Count",
+        "description": "Output the current page number and total number of pages",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.PageNums.Second"
+      },
+      {
+        "category": "Page Numbers",
+        "title": "3. Page Number For",
+        "description": "Show the page number where an element will be put",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.PageNums.Third"
+      }
+  
+    ]
+  }

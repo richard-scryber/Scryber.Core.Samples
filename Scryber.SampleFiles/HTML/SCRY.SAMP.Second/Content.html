@@ -1,0 +1,25 @@
+﻿<!DOCTYPE HTML>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+
+    <main style="padding:10pt">
+
+        <!-- binding styles and values on content -->
+        <h2 style="{@:model.titlestyle}">{@:model.title}</h2>
+
+        <div>We hope you like it.</div>
+
+        <!-- Loop with nested item collection binding to the objects -->
+        <ol>
+            <template data-bind='{@:model.items}'>
+                <!-- binding within the model.items content, and can be nested -->
+                <li>{@:.name}</li>
+            </template>
+        </ol>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿{
+  "titlestyle": "color:#ff6347",
+  "title": "Hello from scryber",
+  "items": [
+    { "name": "First item" },
+    { "name": "Second item" },
+    { "name": "Third item" }
+  ]
+}

@@ -1,0 +1,24 @@
+﻿/* HelloPrint.css */
+
+@media print {
+
+    /* We have a new page before the ordered list
+     * And this new page uses the 'portrait' option */
+    main ol {
+        page-break-before: always;
+        padding-top: 20pt;
+        page: portrait;
+    }
+
+    /* Default style is A4 landscape */
+
+    @page {
+        size: A4 landscape;
+    }
+
+    /* But can use specific sizes for sections */
+    @page portrait {
+        size: A4 portrait;
+    }
+
+}

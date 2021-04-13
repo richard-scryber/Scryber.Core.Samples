@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>Hello World</title>
+
+    <!-- support for complex css selectors (or link ot external style sheets )-->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+          title="Fraunces" />
+
+    <style>
+        body {
+            font-family: 'Fraunces', sans-serif;
+            font-size: 14pt;
+        }
+
+        p.header {
+            color: #AAA;
+            background-color: #333;
+            background-image: url('./HTML/Images/ScyberLogo2_alpha_small.png');
+            background-repeat: no-repeat;
+            background-position: 10pt 10pt;
+            background-size: 20pt 20pt;
+            margin-top: 0pt;
+            padding: 10pt 10pt 10pt 35pt;
+        }
+
+
+        .foot td {
+            border: none;
+            text-align: center;
+            font-size: 10pt;
+            margin-bottom: 10pt;
+        }
+    </style>
+    <base href='https://raw.githubusercontent.com/richard-scryber/scryber.core/master/Scryber.Core.UnitTest/Content/' />
+</head>
+<body>
+    <header>
+        <!-- document headers -->
+        <p class="header">Scryber document creation</p>
+    </header>
+    <!-- support for many HTML5 tags-->
+    <main style="padding:10pt">
+
+        <!-- binding style and values on content -->
+        <h2 style="{@:model.titlestyle}">{@:model.title}</h2>
+        <div>We hope you like it.</div>
+        <ol>
+            <!-- Loop through the items in the model -->
+            <template data-bind='{@:model.items}'>
+                <li>{@:.name}</li> <!-- and bind the name value -->
+            </template>
+        </ol>
+    </main>
+    <footer>
+        <!-- footers in a table with style -->
+        <table class="foot" style="width:100%">
+            <tr>
+                <td>{@:model.author}</td>
+                <td>Hello World Sample</td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>
+

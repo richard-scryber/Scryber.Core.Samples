@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE HTML>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>My Document</title>
+    <style>
+
+        /* This style will be applied at the document level specifying
+         the base level font, size and color for text. Because These
+         cascade down, then it will be inherited by components in the document. */
+
+        html {
+            font-family: "Gill Sans", sans-serif;
+            font-size: 14pt;
+            color: #333;
+        }
+
+        /* This style will be applied to the body tag for the first (set of) pages. */
+
+        body {
+            margin: 10px;
+        }
+
+        /* This style will be applied to all top level headings
+         specifying the font size and some spacing */
+
+        h1 {
+            font-weight: bold;
+            font-size: 30pt;
+            margin-top: 20pt;
+            padding: 5pt;
+        }
+
+        /* This style will be applied to all top level headings with a class of 'warning'
+         and give a background colour of red on white text.  */
+
+        .warning {
+            background-color: #FF0000;
+            color: #FFFFFF;
+        }
+
+        /* This style will be applied to all components with a class of 'border'
+         and give a background colour of red with white text */
+
+        .border {
+            border-color: #777;
+            border-width: 1pt;
+            border-style: Solid;
+            color: #444;
+        }
+
+        /* This style will be applied to all H1 Headings with a class of 'border'
+         and give a border colour of red with white text. It has a higher precedence than either h1 or .border */
+
+        h1.border {
+            border-color: #550000;
+            color: white;
+        }
+
+        /* This style will only be applied to a component with ID 'FirstHead'
+         and give a font size of 48pt */
+
+        #FirstHead {
+            font-size: 36pt;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="FirstHead" class="warning border" style="font-style:italic">Hello World, from scryber</h1>
+</body>
+</html>
+

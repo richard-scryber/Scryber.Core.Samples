@@ -1,0 +1,10 @@
+﻿{
+  "titlestyle": "color:#ff6347",
+  "title": "Hello from scryber",
+  "author": "Joe the Mack",
+  "items": [
+    { "name": "First item" },
+    { "name": "Second item" },
+    { "name": "Third item" }
+  ]
+}

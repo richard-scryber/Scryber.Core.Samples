@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE HTML>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>My Document</title>
+    <style>
+
+        html {
+            font-family: "Gill Sans", sans-serif;
+            font-size: 14pt;
+            color: #333;
+        }
+
+        body {
+            margin: 10px;
+        }
+
+        /* this style will be applied as the bound class in the model */
+
+        .border {
+            border-color: #777;
+            border-width: 1pt;
+            border-style: Solid;
+            color: #444;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- apply a theme.headclass and explicit styles -->
+    <div class='{@:model.theme.headclass}' style="{@:model.theme.bg}">
+        <!-- dynamic styles for the title and number -->
+        <span style="{@:model.theme.title}">This is the title</span><br />
+        <span style="{@:model.theme.number}">1</span>
+    </div>
+</body>
+</html>
+
