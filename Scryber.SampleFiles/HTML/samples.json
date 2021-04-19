@@ -111,7 +111,13 @@
         "description": "Show the page number where an element will be put",
         "icon": "/assets/ScyberLogo2_alpha_small.png",
         "id": "SCRY.PageNums.Third"
+      },
+      {
+        "category": "Column Layout",
+        "title": "1. Columns on pages",
+        "description": "Using a 3 column layout for a page",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Columns.First"
       }
-  
     ]
   }
