@@ -118,6 +118,13 @@
         "description": "Using a 3 column layout for a page",
         "icon": "/assets/ScyberLogo2_alpha_small.png",
         "id": "SCRY.Columns.First"
+      },
+      {
+        "category": "Column Layout",
+        "title": "2. Columns on containers",
+        "description": "Using a 3 column layout for a div inside a page",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Columns.First"
       }
     ]
   }
