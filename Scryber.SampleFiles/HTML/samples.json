@@ -125,6 +125,13 @@
         "description": "Using a 3 column layout for a div inside a page",
         "icon": "/assets/ScyberLogo2_alpha_small.png",
         "id": "SCRY.Columns.Second"
+      },
+      {
+        "category": "Column Layout",
+        "title": "3. Column breaks",
+        "description": "Forcing and avoiding breaks in columns",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Columns.Third"
       }
     ]
   }
