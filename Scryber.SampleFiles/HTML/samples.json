@@ -132,6 +132,13 @@
         "description": "Forcing and avoiding breaks in columns",
         "icon": "/assets/ScyberLogo2_alpha_small.png",
         "id": "SCRY.Columns.Third"
+      },
+      {
+        "category": "Column Layout",
+        "title": "4. Column widths and gap",
+        "description": "Specifying the column widths rather than counts and the alley width",
+        "icon": "/assets/ScyberLogo2_alpha_small.png",
+        "id": "SCRY.Columns.Fourth"
       }
     ]
   }
