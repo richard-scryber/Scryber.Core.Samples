@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 <head>
     <title>Hello World</title>
@@ -44,24 +44,24 @@
     <main style="padding:10pt">
 
         <!-- binding style and values on content -->
-        <h2 style="{@:model.titlestyle}">{@:model.title}</h2>
+        <h2 style="{{model.titlestyle}}">{{model.title}}</h2>
         <div>We hope you like it.</div>
         <ol>
             <!-- Loop through the items in the model -->
-            <template data-bind='{@:model.items}'>
-                <li>{@:.name}</li> <!-- and bind the name value -->
+            <template data-bind='{{model.items}}'>
+                <li>{{.name}}</li> <!-- and bind the name value -->
             </template>
+            <li>{{concat('Total number of items is: ',count(model.items))}}</li>
         </ol>
     </main>
     <footer>
         <!-- footers in a table with style -->
         <table class="foot" style="width:100%">
             <tr>
-                <td>{@:model.author}</td>
+                <td>{{model.author}}</td>
                 <td>Hello World Sample</td>
             </tr>
         </table>
     </footer>
 </body>
 </html>
-

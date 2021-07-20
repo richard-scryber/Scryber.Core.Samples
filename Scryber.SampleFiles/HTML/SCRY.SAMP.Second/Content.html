@@ -8,15 +8,15 @@
     <main style="padding:10pt">
 
         <!-- binding styles and values on content -->
-        <h2 style="{@:model.titlestyle}">{@:model.title}</h2>
+        <h2 style="{{model.titlestyle}}">{{model.title}}</h2>
 
         <div>We hope you like it.</div>
 
         <!-- Loop with nested item collection binding to the objects -->
         <ol>
-            <template data-bind='{@:model.items}'>
+            <template data-bind='{{model.items}}'>
                 <!-- binding within the model.items content, and can be nested -->
-                <li>{@:.name}</li>
+                <li>{{.name}}</li>
             </template>
         </ol>
     </main>
