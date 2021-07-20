@@ -66,14 +66,14 @@
     </header>
     <main style="padding:10pt">
 
-        <h2 style="{@:model.titlestyle}">{@:model.title}</h2>
+        <h2 style="{{model.titlestyle}}">{{model.title}}</h2>
         <div>We hope you like it.</div>
 
         <!-- this will now appear on a new page in
              portrait with the header and footer -->
         <ol>
-            <template data-bind='{@:model.items}'>
-                <li>{@:.name}</li>
+            <template data-bind='{{model.items}}'>
+                <li>{{.name}}</li>
             </template>
         </ol>
     </main>
@@ -81,7 +81,7 @@
         <!-- footers in a table with style -->
         <table class="foot" style="width:100%">
             <tr>
-                <td>{@:model.author}</td>
+                <td>{{model.author}}</td>
                 <!-- the page tag is made up, and has a property attribute
                 (open to suggestions on better syntax)  -->
 
